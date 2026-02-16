@@ -39,7 +39,7 @@ class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode }, {
   }
 }
 
-function PremiumPipeMesh({ reduceMotion }: { reduceMotion: boolean }) {
+function PremiumPipeMesh({ reduceMotion, onReady }: { reduceMotion: boolean; onReady: () => void }) {
   const { scene } = useGLTF(pipeModel.premiumGlb);
   const rootRef = useRef<Group>(null);
 
@@ -54,6 +54,10 @@ function PremiumPipeMesh({ reduceMotion }: { reduceMotion: boolean }) {
     });
     return clone;
   }, [scene]);
+
+  useEffect(() => {
+    onReady();
+  }, [onReady]);
 
   useFrame((state) => {
     if (!rootRef.current) {
@@ -86,8 +90,19 @@ function Loader() {
 export function PipeViewer3D() {
   const reduceMotion = usePrefersReducedMotion();
   const [contextLost, setContextLost] = useState(false);
+  const [modelReady, setModelReady] = useState(false);
+  const [timedOut, setTimedOut] = useState(false);
 
-  if (contextLost) {
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (!modelReady) {
+        setTimedOut(true);
+      }
+    }, 5000);
+    return () => window.clearTimeout(timer);
+  }, [modelReady]);
+
+  if (contextLost || timedOut) {
     return <PipeViewerSprite />;
   }
 
@@ -95,7 +110,7 @@ export function PipeViewer3D() {
     <PipeCanvasErrorBoundary>
       <Canvas
         camera={{ position: [0, 0.22, 6.45], fov: 30 }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener(
@@ -114,12 +129,12 @@ export function PipeViewer3D() {
         <directionalLight position={[-3.2, -0.8, 2.5]} intensity={0.8} color="#93c5fd" />
         <spotLight position={[0.4, 2.1, 3.5]} intensity={0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
         <Suspense fallback={<Loader />}>
-          <PremiumPipeMesh reduceMotion={reduceMotion} />
+          <PremiumPipeMesh reduceMotion={reduceMotion} onReady={() => setModelReady(true)} />
           <Environment preset="warehouse" />
         </Suspense>
         <OrbitControls
           autoRotate={!reduceMotion}
-          autoRotateSpeed={0.52}
+          autoRotateSpeed={0.4}
           enableDamping
           dampingFactor={0.09}
           enablePan={false}
@@ -133,5 +148,3 @@ export function PipeViewer3D() {
     </PipeCanvasErrorBoundary>
   );
 }
-
-useGLTF.preload(pipeModel.premiumGlb);

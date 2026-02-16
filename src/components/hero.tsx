@@ -4,9 +4,14 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Building2, ChevronDown, Factory, Sprout, Users } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { company } from "@/lib/data";
-import { PipeViewer3D } from "@/components/hero/pipe-viewer-3d";
 import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
+
+const PipeViewer3D = dynamic(
+  () => import("@/components/hero/pipe-viewer-3d").then((module) => module.PipeViewer3D),
+  { ssr: false, loading: () => <PipeViewerSprite /> }
+);
 
 const dockItems = [
   { name: "CIVIL", href: "/catalog?category=civil", icon: Building2 },
@@ -17,6 +22,7 @@ const dockItems = [
 
 export function Hero() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [allow3D, setAllow3D] = useState(false);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -25,6 +31,25 @@ export function Hero() {
     check();
     mediaQuery.addEventListener("change", check);
     return () => mediaQuery.removeEventListener("change", check);
+  }, []);
+
+  useEffect(() => {
+    const nav = navigator as Navigator & {
+      connection?: { effectiveType?: string; saveData?: boolean };
+      deviceMemory?: number;
+      hardwareConcurrency?: number;
+    };
+
+    const connection = nav.connection;
+    const slowNetwork = Boolean(
+      connection?.saveData || (connection?.effectiveType && /(^2g$|^3g$|slow-2g)/i.test(connection.effectiveType))
+    );
+    const constrainedDevice = Boolean((nav.deviceMemory ?? 8) <= 4 || (nav.hardwareConcurrency ?? 8) <= 4);
+
+    const canvas = document.createElement("canvas");
+    const hasWebGL = Boolean(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+
+    setAllow3D(hasWebGL && !slowNetwork && !constrainedDevice);
   }, []);
 
   const stats = useMemo(
@@ -182,14 +207,14 @@ export function Hero() {
                 <p className="font-mono text-xs tracking-[0.18em] text-cyan-300">3D PREVIEW</p>
               </div>
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-b from-slate-900/40 to-slate-950/10 sm:h-[380px] lg:h-[430px]">
-                {isMobile === false ? <PipeViewer3D /> : <PipeViewerSprite />}
+                {isMobile === false && allow3D ? <PipeViewer3D /> : <PipeViewerSprite />}
                 <div className="pointer-events-none absolute left-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   DN 20-2000
                 </div>
                 <div className="pointer-events-none absolute right-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   HDPE / PVC
                 </div>
-                {isMobile === false ? (
+                {isMobile === false && allow3D ? (
                   <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                     Interactive Preview
                   </div>

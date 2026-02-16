@@ -24,7 +24,7 @@ if (typeof globalThis.FileReader === "undefined") {
 }
 
 function addCorrugatedTube({ group, radius, length, ribs, axis = "x", material }) {
-  const shell = new Mesh(new CylinderGeometry(radius, radius, length, 96, 1, true), material);
+  const shell = new Mesh(new CylinderGeometry(radius, radius, length, 36, 1, true), material);
   shell.name = "pipe-shell";
   if (axis === "x") {
     shell.rotation.z = Math.PI / 2;
@@ -33,7 +33,7 @@ function addCorrugatedTube({ group, radius, length, ribs, axis = "x", material }
   shell.receiveShadow = true;
   group.add(shell);
 
-  const ribGeom = new TorusGeometry(radius, radius * 0.07, 22, 120);
+  const ribGeom = new TorusGeometry(radius, radius * 0.07, 10, 36);
   for (let i = 0; i < ribs; i += 1) {
     const rib = new Mesh(ribGeom, material);
     rib.name = "pipe-rib";
@@ -103,7 +103,7 @@ function addBranding({ group, text, x, y, z, font }) {
 }
 
 function addDetailBand({ group, x, radius, material }) {
-  const band = new Mesh(new TorusGeometry(radius, 0.018, 22, 120), material);
+  const band = new Mesh(new TorusGeometry(radius, 0.018, 10, 40), material);
   band.name = "pipe-detail-band";
   band.rotation.y = Math.PI / 2;
   band.position.x = x;
@@ -143,9 +143,9 @@ async function main() {
   const root = new Group();
   root.name = "SukajPremiumPipe";
 
-  addCorrugatedTube({ group: root, radius: 0.7, length: 4.8, ribs: 52, axis: "x", material: bodyMaterial });
+  addCorrugatedTube({ group: root, radius: 0.7, length: 4.8, ribs: 30, axis: "x", material: bodyMaterial });
 
-  const socketGeomMain = new CylinderGeometry(0.78, 0.78, 0.4, 96, 1, true);
+  const socketGeomMain = new CylinderGeometry(0.78, 0.78, 0.4, 36, 1, true);
   const socketLeft = new Mesh(socketGeomMain, darkMaterial);
   socketLeft.rotation.z = Math.PI / 2;
   socketLeft.name = "pipe-socket";
