@@ -1,16 +1,49 @@
 "use client";
 
-import { Suspense, useMemo, useRef } from "react";
+import { Component, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Center, ContactShadows, Environment, Html, OrbitControls, useGLTF } from "@react-three/drei";
-import { Group, Mesh, MeshPhysicalMaterial, Object3D } from "three";
+import { Group, Mesh, Object3D } from "three";
 import { pipeModel } from "@/lib/assets";
+import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
 
-function PremiumPipeMesh() {
+function usePrefersReducedMotion() {
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return reduceMotion;
+}
+
+class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <PipeViewerSprite />;
+    }
+    return this.props.children;
+  }
+}
+
+function PremiumPipeMesh({ reduceMotion }: { reduceMotion: boolean }) {
   const { scene } = useGLTF(pipeModel.premiumGlb);
   const rootRef = useRef<Group>(null);
 
-  const prepared = useMemo(() => {
+  const prepared = useMemo<Group>(() => {
     const clone = scene.clone(true);
     clone.traverse((object: Object3D) => {
       if (!(object instanceof Mesh)) {
@@ -18,21 +51,6 @@ function PremiumPipeMesh() {
       }
       object.castShadow = true;
       object.receiveShadow = true;
-
-      const name = object.name.toLowerCase();
-      const isSocket = name.includes("socket");
-      const isBranding = name.includes("branding");
-      const isBrandingShadow = name.includes("shadow");
-
-      object.material = new MeshPhysicalMaterial({
-        color: isBrandingShadow ? "#111827" : isBranding ? "#dbe2ee" : isSocket ? "#02040a" : "#030a16",
-        roughness: isBrandingShadow ? 0.72 : isBranding ? 0.35 : isSocket ? 0.7 : 0.54,
-        metalness: isBrandingShadow ? 0 : isBranding ? 0.16 : 0.03,
-        clearcoat: isBrandingShadow ? 0.04 : isBranding ? 0.24 : 0.16,
-        clearcoatRoughness: isBrandingShadow ? 0.9 : isBranding ? 0.42 : 0.68,
-        emissive: isBranding ? "#1f2937" : "#01030a",
-        emissiveIntensity: isBranding ? 0.01 : 0.01,
-      });
     });
     return clone;
   }, [scene]);
@@ -41,9 +59,9 @@ function PremiumPipeMesh() {
     if (!rootRef.current) {
       return;
     }
-    rootRef.current.rotation.y = -0.08;
-    rootRef.current.rotation.x = 0.04 + Math.sin(state.clock.elapsedTime * 0.3) * 0.012;
-    rootRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.45) * 0.014;
+    rootRef.current.rotation.y = reduceMotion ? -0.08 : -0.08 + Math.sin(state.clock.elapsedTime * 0.22) * 0.03;
+    rootRef.current.rotation.x = reduceMotion ? 0.04 : 0.04 + Math.sin(state.clock.elapsedTime * 0.3) * 0.012;
+    rootRef.current.position.y = reduceMotion ? 0 : Math.sin(state.clock.elapsedTime * 0.45) * 0.014;
   });
 
   return (
@@ -66,30 +84,53 @@ function Loader() {
 }
 
 export function PipeViewer3D() {
+  const reduceMotion = usePrefersReducedMotion();
+  const [contextLost, setContextLost] = useState(false);
+
+  if (contextLost) {
+    return <PipeViewerSprite />;
+  }
+
   return (
-    <Canvas camera={{ position: [0.7, 0.22, 6.45], fov: 30 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}>
-      <ambientLight intensity={0.18} />
-      <hemisphereLight args={["#cbd5e1", "#020617", 0.48]} />
-      <directionalLight position={[3.1, 3.1, 2.2]} intensity={1.25} color="#f8fafc" castShadow />
-      <directionalLight position={[-3.2, -0.8, 2.5]} intensity={0.8} color="#93c5fd" />
-      <spotLight position={[0.4, 2.1, 3.5]} intensity={0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
-      <Suspense fallback={<Loader />}>
-        <PremiumPipeMesh />
-        <Environment preset="warehouse" />
-      </Suspense>
-      <OrbitControls
-        autoRotate
-        autoRotateSpeed={0.52}
-        enableDamping
-        dampingFactor={0.09}
-        enablePan={false}
-        enableZoom={false}
-        target={[0, 0, 0]}
-        minPolarAngle={Math.PI / 2.8}
-        maxPolarAngle={Math.PI / 1.95}
-      />
-      <ContactShadows position={[0, -1.28, 0]} scale={6.3} blur={1.9} opacity={0.58} far={3.2} />
-    </Canvas>
+    <PipeCanvasErrorBoundary>
+      <Canvas
+        camera={{ position: [0, 0.22, 6.45], fov: 30 }}
+        dpr={[1, 2]}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener(
+            "webglcontextlost",
+            (event) => {
+              event.preventDefault();
+              setContextLost(true);
+            },
+            { once: true }
+          );
+        }}
+      >
+        <ambientLight intensity={0.18} />
+        <hemisphereLight args={["#cbd5e1", "#020617", 0.48]} />
+        <directionalLight position={[3.1, 3.1, 2.2]} intensity={1.25} color="#f8fafc" castShadow />
+        <directionalLight position={[-3.2, -0.8, 2.5]} intensity={0.8} color="#93c5fd" />
+        <spotLight position={[0.4, 2.1, 3.5]} intensity={0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
+        <Suspense fallback={<Loader />}>
+          <PremiumPipeMesh reduceMotion={reduceMotion} />
+          <Environment preset="warehouse" />
+        </Suspense>
+        <OrbitControls
+          autoRotate={!reduceMotion}
+          autoRotateSpeed={0.52}
+          enableDamping
+          dampingFactor={0.09}
+          enablePan={false}
+          enableZoom={false}
+          target={[0, 0, 0]}
+          minPolarAngle={Math.PI / 2.8}
+          maxPolarAngle={Math.PI / 1.95}
+        />
+        <ContactShadows position={[0, -1.28, 0]} scale={6.3} blur={1.9} opacity={0.58} far={3.2} />
+      </Canvas>
+    </PipeCanvasErrorBoundary>
   );
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Building2, ChevronDown, Factory, Sprout, Users } from "lucide-react";
 import Link from "next/link";
 import { company } from "@/lib/data";
@@ -16,13 +16,15 @@ const dockItems = [
 ];
 
 export function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const check = () => setIsMobile(mediaQuery.matches);
     check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+    mediaQuery.addEventListener("change", check);
+    return () => mediaQuery.removeEventListener("change", check);
   }, []);
 
   const stats = useMemo(
@@ -34,83 +36,75 @@ export function Hero() {
     []
   );
 
+  const reveal = (delay: number) =>
+    reduceMotion ? { duration: 0 } : { duration: 0.6, delay, ease: "easeOut" as const };
+
   return (
     <section className="relative h-[100svh] overflow-hidden">
       <div className="industrial-hero-bg absolute inset-0" />
       <motion.div
         className="absolute inset-0 grid-lines opacity-15"
-        animate={{ backgroundPositionX: [0, 72, 0], backgroundPositionY: [0, 48, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+        animate={reduceMotion ? undefined : { backgroundPositionX: [0, 72, 0], backgroundPositionY: [0, 48, 0] }}
+        transition={reduceMotion ? undefined : { duration: 22, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
         className="absolute inset-0 dot-matrix opacity-15"
-        animate={{ opacity: [0.08, 0.2, 0.08] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        animate={reduceMotion ? undefined : { opacity: [0.08, 0.2, 0.08] }}
+        transition={reduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-slate-950 to-transparent" />
       <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-slate-950/70 to-transparent" />
 
       <div className="relative z-10 site-shell flex h-full flex-col justify-between pb-8 pt-24 sm:pb-10 sm:pt-28 lg:pb-10 lg:pt-32">
         <div className="grid items-center gap-8 lg:grid-cols-[1.06fr_0.94fr] lg:gap-10">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            className="space-y-7"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
+          <div className="space-y-7">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.02)}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2"
+            >
+              <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500" />
               <span className="font-mono text-xs tracking-[0.2em] text-slate-300">SUKAJ SHPK • EST. {company.established}</span>
-            </div>
+            </motion.div>
 
-            <div className="space-y-3">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={reveal(0.08)}
+              className="space-y-3"
+            >
               <motion.h1
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
                 className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[0.05em] text-white sm:text-6xl xl:text-7xl 2xl:text-[5.3rem]"
               >
                 SUKAJ SHPK
               </motion.h1>
               <motion.h2
-                initial={{ opacity: 0, x: -24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
                 className="max-w-4xl text-2xl font-semibold uppercase tracking-[0.16em] text-orange-400 sm:text-3xl xl:text-[2.2rem]"
               >
-                Plastic Pipe And Component Systems
+                Industrial Plastic Pipe Systems
               </motion.h2>
-            </div>
+            </motion.div>
 
-            <div className="space-y-3">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.16)}
+              className="space-y-3"
+            >
               <p className="max-w-2xl font-mono text-xs uppercase tracking-[0.16em] text-slate-300 sm:text-sm">{company.tagline}</p>
               <p className="max-w-2xl text-sm leading-relaxed text-slate-200 sm:text-base">
                 Sukaj SHPK delivers complete pipe-system supply for municipal drainage, agricultural irrigation, and industrial routing projects.
                 We combine European manufacturing partnerships with local execution to shorten lead times and keep technical quality consistent.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid max-w-2xl gap-2 text-sm text-slate-300 sm:grid-cols-2">
-              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">- Project-ready HDPE and PVC solutions across full diameter ranges</p>
-              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">- Technical support from specification to on-site installation stages</p>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Civil Infrastructure",
-                "Agricultural Irrigation",
-                "Industrial Conduits",
-              ].map((label) => (
-                <span
-                  key={label}
-                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 font-mono text-[11px] tracking-[0.14em] text-slate-200"
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.2)}
+              className="flex flex-wrap gap-3"
+            >
               <Link
                 href="/catalog"
                 className="inline-flex items-center rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold tracking-wide text-slate-950 transition-colors hover:bg-orange-400"
@@ -123,22 +117,57 @@ export function Hero() {
               >
                 Contact Sales
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="grid max-w-xl grid-cols-3 gap-4 sm:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.24)}
+              className="grid max-w-2xl gap-2 text-sm text-slate-300 sm:grid-cols-2"
+            >
+              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Diameter Coverage: DN 20-2000</p>
+              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Execution Model: Import + Local Production Support</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.28)}
+              className="flex flex-wrap gap-2"
+            >
+              {[
+                "Civil Infrastructure",
+                "Agricultural Irrigation",
+                "Industrial Conduits",
+              ].map((label) => (
+                <span
+                  key={label}
+                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 font-mono text-[11px] tracking-[0.14em] text-slate-200"
+                >
+                  {label}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reveal(0.32)}
+              className="grid max-w-xl grid-cols-3 gap-4 sm:gap-8"
+            >
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="text-2xl font-black text-white sm:text-3xl">{stat.value}</div>
                   <div className="font-mono text-[10px] tracking-[0.2em] text-slate-400 sm:text-[11px]">{stat.label}</div>
                 </div>
               ))}
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+            transition={reveal(0.36)}
             className="relative"
           >
             <div className="relative">
@@ -153,22 +182,33 @@ export function Hero() {
                 <p className="font-mono text-xs tracking-[0.18em] text-cyan-300">3D PREVIEW</p>
               </div>
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-b from-slate-900/40 to-slate-950/10 sm:h-[380px] lg:h-[430px]">
-                {isMobile ? <PipeViewerSprite /> : <PipeViewer3D />}
+                {isMobile === false ? <PipeViewer3D /> : <PipeViewerSprite />}
                 <div className="pointer-events-none absolute left-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   DN 20-2000
                 </div>
                 <div className="pointer-events-none absolute right-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   HDPE / PVC
                 </div>
-                <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                  DRAG TO ROTATE
-                </div>
+                {isMobile === false ? (
+                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
+                    Interactive Preview
+                  </div>
+                ) : (
+                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
+                    Preview Mode
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-4 lg:mt-7">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reveal(0.46)}
+          className="mt-6 flex flex-col items-center gap-4 lg:mt-7"
+        >
           <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-white/15 bg-slate-900/65 p-3 backdrop-blur-xl">
             {dockItems.map((item) => {
               const Icon = item.icon;
@@ -185,10 +225,8 @@ export function Hero() {
             })}
           </div>
 
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2.2, repeat: Infinity }}>
-            <ChevronDown className="h-6 w-6 text-slate-400" />
-          </motion.div>
-        </div>
+          <ChevronDown className="h-6 w-6 text-slate-400" />
+        </motion.div>
       </div>
     </section>
   );
