@@ -6,7 +6,6 @@ export const heroMedia = {
 export const pipeModel = {
   glb: "/media/models/pipe-curved.glb",
   premiumGlb: "/media/models/sukaj-premium-pipe.glb",
-  liteGlb: "/media/models/sukaj-lite-pipe.glb",
   straightGlb: "/media/models/pipe-straight.glb",
   teeGlb: "/media/models/pipe-t.glb",
   sprite: {

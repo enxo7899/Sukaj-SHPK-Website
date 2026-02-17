@@ -6,25 +6,29 @@ import { Center, ContactShadows, Environment, Html, OrbitControls, useGLTF } fro
 import { Group, Mesh, Object3D } from "three";
 import { pipeModel } from "@/lib/assets";
 import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
-import type { PreviewMode } from "@/lib/preview-capability";
-import { useMediaQuery } from "@/lib/use-media-query";
 
 function usePrefersReducedMotion() {
-  return useMediaQuery("(prefers-reduced-motion: reduce)");
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener("change", update);
+    return () => mediaQuery.removeEventListener("change", update);
+  }, []);
+
+  return reduceMotion;
 }
 
-class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode; onFallback: () => void }, { hasError: boolean }> {
-  constructor(props: { children: React.ReactNode; onFallback: () => void }) {
+class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: React.ReactNode }) {
     super(props);
     this.state = { hasError: false };
   }
 
   static getDerivedStateFromError() {
     return { hasError: true };
-  }
-
-  componentDidCatch() {
-    this.props.onFallback();
   }
 
   render() {
@@ -35,8 +39,8 @@ class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode; onF
   }
 }
 
-function PremiumPipeMesh({ reduceMotion, onReady, modelPath }: { reduceMotion: boolean; onReady: () => void; modelPath: string }) {
-  const { scene } = useGLTF(modelPath);
+function PremiumPipeMesh({ reduceMotion, onReady }: { reduceMotion: boolean; onReady: () => void }) {
+  const { scene } = useGLTF(pipeModel.premiumGlb);
   const rootRef = useRef<Group>(null);
 
   const prepared = useMemo<Group>(() => {
@@ -77,56 +81,37 @@ function Loader() {
   return (
     <Html center>
       <div className="rounded-lg border border-white/15 bg-slate-900/85 px-3 py-2 font-mono text-[11px] tracking-[0.18em] text-slate-200">
-        LOADING 3D MODEL
+        LOADING PREMIUM MODEL
       </div>
     </Html>
   );
 }
 
-export function PipeViewer3D({
-  previewMode,
-  onRuntimeStateChange,
-}: {
-  previewMode: Exclude<PreviewMode, "fallback-preview">;
-  onRuntimeStateChange: (state: "loading" | "3d" | "fallback") => void;
-}) {
+export function PipeViewer3D() {
   const reduceMotion = usePrefersReducedMotion();
   const [contextLost, setContextLost] = useState(false);
   const [modelReady, setModelReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-
-  const isLiteMode = previewMode === "mobile-lite-3d";
-  const modelPath = isLiteMode ? pipeModel.liteGlb : pipeModel.premiumGlb;
-
-  useEffect(() => {
-    setModelReady(false);
-    setTimedOut(false);
-    setContextLost(false);
-  }, [modelPath]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (!modelReady) {
         setTimedOut(true);
       }
-    }, isLiteMode ? 3500 : 5000);
+    }, 5000);
     return () => window.clearTimeout(timer);
-  }, [modelReady, isLiteMode]);
-
-  useEffect(() => {
-    onRuntimeStateChange(contextLost || timedOut ? "fallback" : modelReady ? "3d" : "loading");
-  }, [contextLost, timedOut, modelReady, onRuntimeStateChange]);
+  }, [modelReady]);
 
   if (contextLost || timedOut) {
     return <PipeViewerSprite />;
   }
 
   return (
-    <PipeCanvasErrorBoundary onFallback={() => onRuntimeStateChange("fallback")}>
+    <PipeCanvasErrorBoundary>
       <Canvas
         camera={{ position: [0, 0.22, 6.45], fov: 30 }}
-        dpr={isLiteMode ? [1, 1.2] : [1, 1.5]}
-        gl={{ antialias: !isLiteMode, alpha: true, powerPreference: "high-performance" }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener(
             "webglcontextlost",
@@ -138,18 +123,18 @@ export function PipeViewer3D({
           );
         }}
       >
-        <ambientLight intensity={isLiteMode ? 0.22 : 0.18} />
-        <hemisphereLight args={["#cbd5e1", "#020617", isLiteMode ? 0.42 : 0.48]} />
-        <directionalLight position={[3.1, 3.1, 2.2]} intensity={isLiteMode ? 1.05 : 1.25} color="#f8fafc" castShadow={!isLiteMode} />
-        <directionalLight position={[-3.2, -0.8, 2.5]} intensity={isLiteMode ? 0.65 : 0.8} color="#93c5fd" />
-        <spotLight position={[0.4, 2.1, 3.5]} intensity={isLiteMode ? 0.4 : 0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
+        <ambientLight intensity={0.18} />
+        <hemisphereLight args={["#cbd5e1", "#020617", 0.48]} />
+        <directionalLight position={[3.1, 3.1, 2.2]} intensity={1.25} color="#f8fafc" castShadow />
+        <directionalLight position={[-3.2, -0.8, 2.5]} intensity={0.8} color="#93c5fd" />
+        <spotLight position={[0.4, 2.1, 3.5]} intensity={0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
         <Suspense fallback={<Loader />}>
-          <PremiumPipeMesh reduceMotion={reduceMotion} modelPath={modelPath} onReady={() => setModelReady(true)} />
-          {!isLiteMode && <Environment preset="warehouse" />}
+          <PremiumPipeMesh reduceMotion={reduceMotion} onReady={() => setModelReady(true)} />
+          <Environment preset="warehouse" />
         </Suspense>
         <OrbitControls
           autoRotate={!reduceMotion}
-          autoRotateSpeed={isLiteMode ? 0.32 : 0.4}
+          autoRotateSpeed={0.4}
           enableDamping
           dampingFactor={0.09}
           enablePan={false}
@@ -158,7 +143,7 @@ export function PipeViewer3D({
           minPolarAngle={Math.PI / 2.8}
           maxPolarAngle={Math.PI / 1.95}
         />
-        {!isLiteMode && <ContactShadows position={[0, -1.28, 0]} scale={6.3} blur={1.9} opacity={0.58} far={3.2} />}
+        <ContactShadows position={[0, -1.28, 0]} scale={6.3} blur={1.9} opacity={0.58} far={3.2} />
       </Canvas>
     </PipeCanvasErrorBoundary>
   );

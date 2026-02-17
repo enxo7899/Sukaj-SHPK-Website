@@ -13,10 +13,7 @@
   - URL: `https://raw.githubusercontent.com/ToxSam/cc0-models-Polygonal-Mind/main/projects/avatar-show/T_Pipe.glb`
 - `public/media/models/sukaj-premium-pipe.glb`
   - Source: Generated in-project for Sukaj SHPK hero via `scripts/generate-premium-pipe-glb.mjs`
-  - Notes: Premium single-pipe model tier for desktop/high-capability devices.
-- `public/media/models/sukaj-lite-pipe.glb`
-  - Source: Generated in-project for Sukaj SHPK hero via `scripts/generate-premium-pipe-glb.mjs`
-  - Notes: Ultra-lite single-pipe model tier for capable mobile devices.
+  - Notes: Custom high-detail corrugated pipe assembly with T-branch, sockets, and accent rings.
 
 ## Hero and Partner Visual Base Images
 
