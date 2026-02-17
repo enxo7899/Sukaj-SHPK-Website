@@ -23,46 +23,38 @@ if (typeof globalThis.FileReader === "undefined") {
   };
 }
 
-function addCorrugatedTube({ group, radius, length, ribs, axis = "x", material }) {
-  const shell = new Mesh(new CylinderGeometry(radius, radius, length, 36, 1, true), material);
+function addCorrugatedTube({ group, radius, length, ribs, material, radialSegments, tubularSegments }) {
+  const shell = new Mesh(new CylinderGeometry(radius, radius, length, radialSegments, 1, true), material);
   shell.name = "pipe-shell";
-  if (axis === "x") {
-    shell.rotation.z = Math.PI / 2;
-  }
+  shell.rotation.z = Math.PI / 2;
   shell.castShadow = true;
   shell.receiveShadow = true;
   group.add(shell);
 
-  const ribGeom = new TorusGeometry(radius, radius * 0.07, 10, 36);
+  const ribGeom = new TorusGeometry(radius, radius * 0.07, 10, tubularSegments);
   for (let i = 0; i < ribs; i += 1) {
     const rib = new Mesh(ribGeom, material);
     rib.name = "pipe-rib";
-    if (axis === "x") {
-      rib.rotation.y = Math.PI / 2;
-      rib.position.x = -length / 2 + (i / (ribs - 1 || 1)) * length;
-    } else if (axis === "y") {
-      rib.rotation.x = Math.PI / 2;
-      rib.position.y = -length / 2 + (i / (ribs - 1 || 1)) * length;
-    } else {
-      rib.position.z = -length / 2 + (i / (ribs - 1 || 1)) * length;
-    }
+    rib.rotation.y = Math.PI / 2;
+    rib.position.x = -length / 2 + (i / (ribs - 1 || 1)) * length;
     rib.castShadow = true;
     rib.receiveShadow = true;
     group.add(rib);
   }
 }
 
-function addBranding({ group, text, x, y, z, font }) {
-  const geometry = new TextGeometry(text, {
+function addBranding({ group, font, textSize, textDepth, includeShadow }) {
+  const geometry = new TextGeometry("SUKAJ SHPK", {
     font,
-    size: 0.19,
-    depth: 0.011,
+    size: textSize,
+    depth: textDepth,
     curveSegments: 12,
     bevelEnabled: true,
     bevelThickness: 0.002,
     bevelSize: 0.0015,
     bevelSegments: 3,
   });
+
   geometry.computeBoundingBox();
   const bbox = geometry.boundingBox;
   const width = bbox ? bbox.max.x - bbox.min.x : 0;
@@ -88,33 +80,31 @@ function addBranding({ group, text, x, y, z, font }) {
 
   const label = new Mesh(geometry, textMaterial);
   label.name = "branding-text";
-  label.position.set(x, y, z);
-  label.rotation.x = 0;
+  label.position.set(0, 0.12, 0.748);
   label.castShadow = true;
   label.receiveShadow = true;
 
-  const labelShadow = new Mesh(geometry, shadowMaterial);
-  labelShadow.name = "branding-text-shadow";
-  labelShadow.position.set(x, y - 0.01, z - 0.018);
-  labelShadow.rotation.x = 0;
-
   group.add(label);
-  group.add(labelShadow);
+  if (includeShadow) {
+    const labelShadow = new Mesh(geometry, shadowMaterial);
+    labelShadow.name = "branding-text-shadow";
+    labelShadow.position.set(0, 0.11, 0.73);
+    group.add(labelShadow);
+  }
 }
 
-function addDetailBand({ group, x, radius, material }) {
-  const band = new Mesh(new TorusGeometry(radius, 0.018, 10, 40), material);
+function addDetailBand({ group, x, radius, material, tubularSegments }) {
+  const band = new Mesh(new TorusGeometry(radius, 0.018, 10, tubularSegments), material);
   band.name = "pipe-detail-band";
   band.rotation.y = Math.PI / 2;
   band.position.x = x;
   group.add(band);
 }
 
-async function main() {
+function buildPipeScene({ ribs, radialSegments, tubularSegments, socketSegments, includeBands }) {
   const scene = new Scene();
-  const fontJsonPath = resolve("node_modules/three/examples/fonts/optimer_bold.typeface.json");
-  const fontJson = JSON.parse(await readFile(fontJsonPath, "utf8"));
-  const font = new FontLoader().parse(fontJson);
+  const root = new Group();
+  root.name = "SukajPremiumPipe";
 
   const bodyMaterial = new MeshPhysicalMaterial({
     color: "#070d19",
@@ -140,12 +130,17 @@ async function main() {
     clearcoatRoughness: 0.62,
   });
 
-  const root = new Group();
-  root.name = "SukajPremiumPipe";
+  addCorrugatedTube({
+    group: root,
+    radius: 0.7,
+    length: 4.8,
+    ribs,
+    material: bodyMaterial,
+    radialSegments,
+    tubularSegments,
+  });
 
-  addCorrugatedTube({ group: root, radius: 0.7, length: 4.8, ribs: 30, axis: "x", material: bodyMaterial });
-
-  const socketGeomMain = new CylinderGeometry(0.78, 0.78, 0.4, 36, 1, true);
+  const socketGeomMain = new CylinderGeometry(0.78, 0.78, 0.4, socketSegments, 1, true);
   const socketLeft = new Mesh(socketGeomMain, darkMaterial);
   socketLeft.rotation.z = Math.PI / 2;
   socketLeft.name = "pipe-socket";
@@ -158,25 +153,75 @@ async function main() {
   socketRight.position.x = 2.55;
   root.add(socketRight);
 
-  addDetailBand({ group: root, x: -1.95, radius: 0.705, material: detailMaterial });
-  addDetailBand({ group: root, x: 1.95, radius: 0.705, material: detailMaterial });
+  if (includeBands) {
+    addDetailBand({ group: root, x: -1.95, radius: 0.705, material: detailMaterial, tubularSegments });
+    addDetailBand({ group: root, x: 1.95, radius: 0.705, material: detailMaterial, tubularSegments });
+  }
 
-  addBranding({ group: root, text: "SUKAJ SHPK", x: 0, y: 0.12, z: 0.748, font });
+  return { scene, root };
+}
 
-  scene.add(root);
+async function writeModel({ targetPath, detail }) {
+  const fontJsonPath = resolve("node_modules/three/examples/fonts/optimer_bold.typeface.json");
+  const fontJson = JSON.parse(await readFile(fontJsonPath, "utf8"));
+  const font = new FontLoader().parse(fontJson);
+
+  const sceneData = buildPipeScene(detail);
+  if (detail.includeBranding) {
+    addBranding({
+      group: sceneData.root,
+      font,
+      textSize: detail.textSize,
+      textDepth: detail.textDepth,
+      includeShadow: detail.includeBrandShadow,
+    });
+  }
+  sceneData.scene.add(sceneData.root);
 
   const exporter = new GLTFExporter();
-  const data = await exporter.parseAsync(scene, {
+  const data = await exporter.parseAsync(sceneData.scene, {
     binary: true,
     includeCustomExtensions: false,
     onlyVisible: true,
     maxTextureSize: 1024,
   });
 
-  const target = resolve("public/media/models/sukaj-premium-pipe.glb");
-  await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, Buffer.from(data));
-  console.log(`Generated ${target}`);
+  const output = resolve(targetPath);
+  await mkdir(dirname(output), { recursive: true });
+  await writeFile(output, Buffer.from(data));
+  console.log(`Generated ${output}`);
+}
+
+async function main() {
+  await writeModel({
+    targetPath: "public/media/models/sukaj-premium-pipe.glb",
+    detail: {
+      ribs: 30,
+      radialSegments: 36,
+      tubularSegments: 36,
+      socketSegments: 36,
+      includeBands: true,
+      textSize: 0.19,
+      textDepth: 0.011,
+      includeBranding: true,
+      includeBrandShadow: true,
+    },
+  });
+
+  await writeModel({
+    targetPath: "public/media/models/sukaj-lite-pipe.glb",
+    detail: {
+      ribs: 10,
+      radialSegments: 14,
+      tubularSegments: 14,
+      socketSegments: 14,
+      includeBands: false,
+      textSize: 0.14,
+      textDepth: 0.006,
+      includeBranding: false,
+      includeBrandShadow: false,
+    },
+  });
 }
 
 main().catch((error) => {

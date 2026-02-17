@@ -7,6 +7,8 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { company } from "@/lib/data";
 import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
+import { resolvePreviewMode, type PreviewMode } from "@/lib/preview-capability";
+import { useMediaQuery } from "@/lib/use-media-query";
 
 const PipeViewer3D = dynamic(
   () => import("@/components/hero/pipe-viewer-3d").then((module) => module.PipeViewer3D),
@@ -21,19 +23,21 @@ const dockItems = [
 ];
 
 export function Hero() {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const [allow3D, setAllow3D] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+  const [isReady, setIsReady] = useState(false);
+  const [previewMode, setPreviewMode] = useState<PreviewMode>("fallback-preview");
+  const [runtimeState, setRuntimeState] = useState<"loading" | "3d" | "fallback">("fallback");
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 1023px)");
-    const check = () => setIsMobile(mediaQuery.matches);
-    check();
-    mediaQuery.addEventListener("change", check);
-    return () => mediaQuery.removeEventListener("change", check);
+    setIsReady(true);
   }, []);
 
   useEffect(() => {
+    if (!isReady) {
+      return;
+    }
+
     const nav = navigator as Navigator & {
       connection?: { effectiveType?: string; saveData?: boolean };
       deviceMemory?: number;
@@ -41,16 +45,25 @@ export function Hero() {
     };
 
     const connection = nav.connection;
-    const slowNetwork = Boolean(
-      connection?.saveData || (connection?.effectiveType && /(^2g$|^3g$|slow-2g)/i.test(connection.effectiveType))
-    );
-    const constrainedDevice = Boolean((nav.deviceMemory ?? 8) <= 4 || (nav.hardwareConcurrency ?? 8) <= 4);
-
     const canvas = document.createElement("canvas");
     const hasWebGL = Boolean(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
 
-    setAllow3D(hasWebGL && !slowNetwork && !constrainedDevice);
-  }, []);
+    const mode = resolvePreviewMode({
+      isMobile,
+      reduceMotion: Boolean(reduceMotion),
+      hasWebGL,
+      saveData: connection?.saveData,
+      effectiveType: connection?.effectiveType,
+      deviceMemory: nav.deviceMemory,
+      hardwareConcurrency: nav.hardwareConcurrency,
+    });
+
+    setPreviewMode(mode);
+  }, [isMobile, reduceMotion, isReady]);
+
+  useEffect(() => {
+    setRuntimeState(previewMode === "fallback-preview" ? "fallback" : "loading");
+  }, [previewMode]);
 
   const stats = useMemo(
     () => [
@@ -63,6 +76,15 @@ export function Hero() {
 
   const reveal = (delay: number) =>
     reduceMotion ? { duration: 0 } : { duration: 0.6, delay, ease: "easeOut" as const };
+
+  const effectivePreviewPresentation =
+    runtimeState === "fallback"
+      ? { badge: "PREVIEW", hint: "Preview Mode", status: "RUNTIME: FALLBACK" }
+      : runtimeState === "loading"
+        ? { badge: "LOADING PREVIEW", hint: "Preparing 3D", status: "RUNTIME: LOADING" }
+        : previewMode === "desktop-premium-3d"
+          ? { badge: "3D PREVIEW", hint: "Drag to Inspect", status: "AUTO: PREMIUM" }
+          : { badge: "LITE 3D PREVIEW", hint: isMobile ? "Tap to Inspect" : "Drag to Inspect", status: "AUTO: LITE" };
 
   return (
     <section className="relative h-[100svh] overflow-hidden">
@@ -204,25 +226,30 @@ export function Hero() {
                   <p className="font-mono text-[10px] tracking-[0.2em] text-slate-400">PRODUCT VISUALIZER</p>
                   <p className="text-sm font-semibold text-white">HDPE/PVC Pipe Range</p>
                 </div>
-                <p className="font-mono text-xs tracking-[0.18em] text-cyan-300">3D PREVIEW</p>
+                <div className="text-right">
+                <p className="font-mono text-xs tracking-[0.18em] text-cyan-300">{effectivePreviewPresentation.badge}</p>
+                  <p className="font-mono text-[10px] tracking-[0.16em] text-slate-400">{effectivePreviewPresentation.status}</p>
+                </div>
               </div>
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-b from-slate-900/40 to-slate-950/10 sm:h-[380px] lg:h-[430px]">
-                {isMobile === false && allow3D ? <PipeViewer3D /> : <PipeViewerSprite />}
+                {previewMode === "fallback-preview" ? (
+                  <PipeViewerSprite />
+                ) : (
+                  <PipeViewer3D
+                    key={previewMode}
+                    previewMode={previewMode}
+                    onRuntimeStateChange={setRuntimeState}
+                  />
+                )}
                 <div className="pointer-events-none absolute left-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   DN 20-2000
                 </div>
                 <div className="pointer-events-none absolute right-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   HDPE / PVC
                 </div>
-                {isMobile === false && allow3D ? (
-                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                    Interactive Preview
-                  </div>
-                ) : (
-                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                    Preview Mode
-                  </div>
-                )}
+                <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
+                  {effectivePreviewPresentation.hint}
+                </div>
               </div>
             </div>
           </motion.div>
