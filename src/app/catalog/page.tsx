@@ -1,9 +1,10 @@
 import { Suspense } from "react";
-import { Catalog } from "@/components/catalog";
+import { CatalogShell } from "./catalog-shell";
 
 export const metadata = {
   title: "Product Catalog | Sukaj SHPK",
-  description: "Explore our comprehensive catalog of industrial pipes, conduits, and infrastructure solutions from leading European manufacturers.",
+  description:
+    "Explore our comprehensive catalog of industrial pipes, conduits, and infrastructure solutions from leading European manufacturers.",
 };
 
 function CatalogLoading() {
@@ -23,11 +24,13 @@ function CatalogLoading() {
   );
 }
 
-export default function CatalogPage({
+export default async function CatalogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; partner?: string }>;
 }) {
+  const params = await searchParams;
+
   return (
     <div className="min-h-screen pt-32">
       <div className="site-shell mb-8">
@@ -38,12 +41,16 @@ export default function CatalogPage({
           ENGINEERING SOLUTIONS.
         </h1>
         <p className="mt-4 text-lg text-slate-400 max-w-2xl">
-          Browse our complete range of infrastructure products. Filter by material, application, or diameter.
+          Browse our complete range of infrastructure products. Filter by
+          material, application, or diameter.
         </p>
       </div>
-      
+
       <Suspense fallback={<CatalogLoading />}>
-        <Catalog />
+        <CatalogShell
+          initialCategory={params.category}
+          initialPartner={params.partner}
+        />
       </Suspense>
     </div>
   );

@@ -7,6 +7,15 @@ import { Group, Mesh, Object3D } from "three";
 import { pipeModel } from "@/lib/assets";
 import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
 
+useGLTF.preload(pipeModel.premiumGlb);
+
+interface PipeViewer3DProps {
+  onContextLost?: () => void;
+  onPerformanceDrop?: () => void;
+}
+
+type PerformanceTier = "high" | "medium" | "low";
+
 function usePrefersReducedMotion() {
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -21,14 +30,21 @@ function usePrefersReducedMotion() {
   return reduceMotion;
 }
 
-class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode }, { hasError: boolean }> {
-  constructor(props: { children: React.ReactNode }) {
+class PipeCanvasErrorBoundary extends Component<
+  { children: React.ReactNode; onError?: () => void },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode; onError?: () => void }) {
     super(props);
     this.state = { hasError: false };
   }
 
   static getDerivedStateFromError() {
     return { hasError: true };
+  }
+
+  componentDidCatch() {
+    this.props.onError?.();
   }
 
   render() {
@@ -39,33 +55,50 @@ class PipeCanvasErrorBoundary extends Component<{ children: React.ReactNode }, {
   }
 }
 
-function PremiumPipeMesh({ reduceMotion, onReady }: { reduceMotion: boolean; onReady: () => void }) {
+function PremiumPipeMesh({
+  reduceMotion,
+  onReady,
+  tier,
+}: {
+  reduceMotion: boolean;
+  onReady: () => void;
+  tier: PerformanceTier;
+}) {
   const { scene } = useGLTF(pipeModel.premiumGlb);
   const rootRef = useRef<Group>(null);
+  const calledReady = useRef(false);
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
 
   const prepared = useMemo<Group>(() => {
     const clone = scene.clone(true);
     clone.traverse((object: Object3D) => {
-      if (!(object instanceof Mesh)) {
-        return;
-      }
-      object.castShadow = true;
-      object.receiveShadow = true;
+      if (!(object instanceof Mesh)) return;
+      object.castShadow = tier === "high";
+      object.receiveShadow = tier === "high";
     });
     return clone;
-  }, [scene]);
+  }, [scene, tier]);
 
   useEffect(() => {
-    onReady();
-  }, [onReady]);
+    if (!calledReady.current) {
+      calledReady.current = true;
+      onReadyRef.current();
+    }
+  }, []);
 
   useFrame((state) => {
-    if (!rootRef.current) {
-      return;
+    if (!rootRef.current) return;
+    if (reduceMotion) {
+      rootRef.current.rotation.y = -0.08;
+      rootRef.current.rotation.x = 0.04;
+      rootRef.current.position.y = 0;
+    } else {
+      const t = state.clock.elapsedTime;
+      rootRef.current.rotation.y = -0.08 + Math.sin(t * 0.22) * 0.03;
+      rootRef.current.rotation.x = 0.04 + Math.sin(t * 0.3) * 0.012;
+      rootRef.current.position.y = Math.sin(t * 0.45) * 0.014;
     }
-    rootRef.current.rotation.y = reduceMotion ? -0.08 : -0.08 + Math.sin(state.clock.elapsedTime * 0.22) * 0.03;
-    rootRef.current.rotation.x = reduceMotion ? 0.04 : 0.04 + Math.sin(state.clock.elapsedTime * 0.3) * 0.012;
-    rootRef.current.position.y = reduceMotion ? 0 : Math.sin(state.clock.elapsedTime * 0.45) * 0.014;
   });
 
   return (
@@ -81,46 +114,54 @@ function Loader() {
   return (
     <Html center>
       <div className="rounded-lg border border-white/15 bg-slate-900/85 px-3 py-2 font-mono text-[11px] tracking-[0.18em] text-slate-200">
-        LOADING PREMIUM MODEL
+        LOADING MODEL
       </div>
     </Html>
   );
 }
 
-export function PipeViewer3D() {
+export function PipeViewer3D({ onContextLost }: PipeViewer3DProps) {
   const reduceMotion = usePrefersReducedMotion();
-  const [contextLost, setContextLost] = useState(false);
   const [modelReady, setModelReady] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
+  const tier: PerformanceTier = "high";
+  const modelReadyRef = useRef(false);
+
+  const handleReady = () => {
+    modelReadyRef.current = true;
+    setModelReady(true);
+  };
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      if (!modelReady) {
+      if (!modelReadyRef.current) {
         setTimedOut(true);
       }
-    }, 5000);
+    }, 15000);
     return () => window.clearTimeout(timer);
-  }, [modelReady]);
+  }, []);
 
-  if (contextLost || timedOut) {
+  if (timedOut && !modelReady) {
     return <PipeViewerSprite />;
   }
 
   return (
-    <PipeCanvasErrorBoundary>
+    <PipeCanvasErrorBoundary onError={onContextLost}>
       <Canvas
         camera={{ position: [0, 0.22, 6.45], fov: 30 }}
         dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        gl={{
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+          failIfMajorPerformanceCaveat: false,
+        }}
+        frameloop={reduceMotion ? "demand" : "always"}
         onCreated={({ gl }) => {
-          gl.domElement.addEventListener(
-            "webglcontextlost",
-            (event) => {
-              event.preventDefault();
-              setContextLost(true);
-            },
-            { once: true }
-          );
+          gl.domElement.addEventListener("webglcontextlost", (event) => {
+            event.preventDefault();
+            onContextLost?.();
+          });
         }}
       >
         <ambientLight intensity={0.18} />
@@ -128,10 +169,16 @@ export function PipeViewer3D() {
         <directionalLight position={[3.1, 3.1, 2.2]} intensity={1.25} color="#f8fafc" castShadow />
         <directionalLight position={[-3.2, -0.8, 2.5]} intensity={0.8} color="#93c5fd" />
         <spotLight position={[0.4, 2.1, 3.5]} intensity={0.52} angle={0.28} penumbra={0.9} color="#ffffff" />
+
         <Suspense fallback={<Loader />}>
-          <PremiumPipeMesh reduceMotion={reduceMotion} onReady={() => setModelReady(true)} />
+          <PremiumPipeMesh
+            reduceMotion={reduceMotion}
+            onReady={handleReady}
+            tier={tier}
+          />
           <Environment preset="warehouse" />
         </Suspense>
+
         <OrbitControls
           autoRotate={!reduceMotion}
           autoRotateSpeed={0.4}
@@ -143,7 +190,14 @@ export function PipeViewer3D() {
           minPolarAngle={Math.PI / 2.8}
           maxPolarAngle={Math.PI / 1.95}
         />
-        <ContactShadows position={[0, -1.28, 0]} scale={6.3} blur={1.9} opacity={0.58} far={3.2} />
+
+        <ContactShadows
+          position={[0, -1.28, 0]}
+          scale={6.3}
+          blur={1.9}
+          opacity={0.58}
+          far={3.2}
+        />
       </Canvas>
     </PipeCanvasErrorBoundary>
   );

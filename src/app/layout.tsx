@@ -69,9 +69,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-slate-950 text-slate-50 overflow-x-hidden`}
       >
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         <div className="relative min-h-screen">
           <Navigation />
-          <main>{children}</main>
+          <main id="main-content" role="main" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </div>
       </body>

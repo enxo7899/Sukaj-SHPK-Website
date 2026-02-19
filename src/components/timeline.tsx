@@ -9,7 +9,7 @@ const milestoneIcons: Record<string, LucideIcon> = {
   company_founded: Milestone,
   capital_growth: TrendingUp,
   partnerships: Handshake,
-  vertical_integration: Factory,
+  network_growth: Factory,
 };
 
 export function Timeline() {

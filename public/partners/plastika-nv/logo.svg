@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" fill="transparent"/>
+  <circle cx="22" cy="30" r="16" fill="none" stroke="#64748b" stroke-width="2.5"/>
+  <path d="M14 22 Q22 14 30 22 Q38 30 30 38 Q22 46 14 38 Q6 30 14 22Z" fill="#64748b" opacity="0.2"/>
+  <path d="M18 30 L22 22 L26 30 L22 38 Z" fill="#64748b"/>
+  <text x="46" y="24" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="white" letter-spacing="0.3">PLASTIKA</text>
+  <text x="46" y="37" font-family="Arial, sans-serif" font-weight="400" font-size="9" fill="#94a3b8" letter-spacing="0.5">Nova Varoš</text>
+  <text x="46" y="50" font-family="Arial, sans-serif" font-weight="400" font-size="8" fill="#64748b" letter-spacing="0.5">Serbia</text>
+</svg>

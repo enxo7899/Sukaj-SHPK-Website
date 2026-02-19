@@ -8,6 +8,7 @@ export const pipeModel = {
   premiumGlb: "/media/models/sukaj-premium-pipe.glb",
   straightGlb: "/media/models/pipe-straight.glb",
   teeGlb: "/media/models/pipe-t.glb",
+  staticFallback: "/media/hero/pipe-static-fallback.webp",
   sprite: {
     image: "/media/sprites/pipe-sprite.svg",
     frameWidth: 320,
@@ -19,7 +20,7 @@ export const pipeModel = {
 };
 
 export const partnerVideos: Record<string, string> = {
-  konti: "/media/partners/konti-loop.mp4",
+  "konti-hidroplast": "/media/partners/konti-loop.mp4",
   fitt: "/media/partners/fitt-loop.mp4",
   "plastika-ks": "/media/partners/plastika-loop.mp4",
 };

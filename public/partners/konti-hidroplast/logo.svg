@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect width="200" height="60" fill="transparent"/>
+  <rect x="2" y="8" width="6" height="44" rx="2" fill="#f97316"/>
+  <rect x="12" y="8" width="6" height="44" rx="2" fill="#f97316"/>
+  <polygon points="12,30 24,8 30,8 18,30 30,52 24,52" fill="#f97316"/>
+  <text x="38" y="26" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="0.5">KONTI</text>
+  <text x="38" y="42" font-family="Arial, sans-serif" font-weight="400" font-size="9" fill="#94a3b8" letter-spacing="1">HIDROPLAST</text>
+  <rect x="38" y="46" width="80" height="1" fill="#f97316" opacity="0.6"/>
+</svg>

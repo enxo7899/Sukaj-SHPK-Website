@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Building2, Sprout, Factory, Users, Phone } from "lucide-react";
+import { Menu, X, Building2, Sprout, Factory, Users, Phone, Handshake } from "lucide-react";
 
 const navItems = [
   { name: "CIVIL", href: "/catalog?category=civil", icon: Building2 },
   { name: "AGRI", href: "/catalog?category=agri", icon: Sprout },
   { name: "INDUSTRIAL", href: "/catalog?category=industrial", icon: Factory },
+  { name: "PARTNERS", href: "/partners", icon: Handshake },
   { name: "ABOUT", href: "/about", icon: Users },
   { name: "CONTACT", href: "/contact", icon: Phone },
 ];
@@ -41,16 +42,16 @@ export function Navigation() {
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
-                  <span className="text-slate-950 font-bold text-lg">S</span>
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-400 via-slate-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/10 ring-1 ring-white/10">
+                  <span className="text-white font-black text-lg drop-shadow-sm">S</span>
                 </div>
-                <div className="absolute inset-0 rounded-lg bg-orange-500/50 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-slate-400/50 to-cyan-500/50 blur-lg opacity-0 group-hover:opacity-60 transition-opacity" />
               </div>
               <div className="hidden sm:block">
-                <span className="text-lg font-bold tracking-wider text-white">
+                <span className="text-lg font-black tracking-[0.15em] text-white">
                   SUKAJ
                 </span>
-                <span className="text-xs font-mono text-slate-400 block -mt-1">
+                <span className="text-[10px] font-mono text-slate-400 block -mt-0.5 tracking-wider">
                   SHPK • INDUSTRIAL PLASTICS
                 </span>
               </div>
@@ -78,7 +79,7 @@ export function Navigation() {
             <div className="flex items-center gap-4">
               <Link
                 href="/catalog"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-orange-500 hover:bg-orange-400 text-slate-950 font-semibold text-sm rounded-lg transition-all hover:shadow-lg hover:shadow-orange-500/25"
+                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-slate-950 font-semibold text-sm rounded-xl transition-all hover:shadow-lg hover:shadow-orange-500/25 ring-1 ring-orange-400/20"
               >
                 <span>EXPLORE CATALOG</span>
               </Link>

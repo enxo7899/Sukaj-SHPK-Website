@@ -59,8 +59,8 @@ export default function AboutPage() {
                   applications — delivering precision-engineered solutions for projects of any scale.
                 </p>
                 <p>
-                  With a capital base of {company.capital} and partnerships spanning Slovenia, Italy, 
-                  and beyond, we bring three decades of expertise to every project.
+                  With a capital base of {company.capital} and partnerships spanning Italy, Kosovo, North Macedonia, 
+                  Serbia, Greece, Turkey, and Albania, we bring three decades of expertise to every project.
                 </p>
               </div>
             </motion.div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               {[
                 { icon: MapPin, title: "Strategic Location", desc: "Gateway to Balkan markets" },
                 { icon: Award, title: "30+ Years", desc: "Industry expertise" },
-                { icon: Users, title: "15+ Partners", desc: "European manufacturers" },
+                { icon: Users, title: "12 Partners", desc: "Across 7 countries" },
                 { icon: Leaf, title: "Sustainability", desc: "Eco-conscious solutions" },
               ].map((item, index) => {
                 const Icon = item.icon;
@@ -125,7 +125,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Recycled Materials",
-                desc: "Our Plastika-ks partnership delivers infrastructure from 100% recycled HDPE.",
+                desc: "Our PLASTIKA partnership processes post-consumer waste into granulates and agricultural films.",
                 stat: "100%",
                 label: "RECYCLED CONTENT"
               },
@@ -136,10 +136,10 @@ export default function AboutPage() {
                 label: "YEARS LIFESPAN"
               },
               {
-                title: "Local Manufacturing",
-                desc: "Arol-Plast merger enables local production, reducing transport emissions.",
-                stat: "200K",
-                label: "SQM FACTORY"
+                title: "Regional Sourcing",
+                desc: "Local Albanian and Balkan manufacturers reduce transport distances and emissions.",
+                stat: "7",
+                label: "COUNTRIES"
               },
             ].map((item, index) => (
               <motion.div

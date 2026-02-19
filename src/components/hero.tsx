@@ -1,17 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Building2, ChevronDown, Factory, Sprout, Users } from "lucide-react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { company } from "@/lib/data";
-import { PipeViewerSprite } from "@/components/hero/pipe-viewer-sprite";
-
-const PipeViewer3D = dynamic(
-  () => import("@/components/hero/pipe-viewer-3d").then((module) => module.PipeViewer3D),
-  { ssr: false, loading: () => <PipeViewerSprite /> }
-);
+import { Hero3DClient } from "@/components/hero-3d/hero-3d-client";
 
 const dockItems = [
   { name: "CIVIL", href: "/catalog?category=civil", icon: Building2 },
@@ -21,36 +15,7 @@ const dockItems = [
 ];
 
 export function Hero() {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const [allow3D, setAllow3D] = useState(false);
   const reduceMotion = useReducedMotion();
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 1023px)");
-    const check = () => setIsMobile(mediaQuery.matches);
-    check();
-    mediaQuery.addEventListener("change", check);
-    return () => mediaQuery.removeEventListener("change", check);
-  }, []);
-
-  useEffect(() => {
-    const nav = navigator as Navigator & {
-      connection?: { effectiveType?: string; saveData?: boolean };
-      deviceMemory?: number;
-      hardwareConcurrency?: number;
-    };
-
-    const connection = nav.connection;
-    const slowNetwork = Boolean(
-      connection?.saveData || (connection?.effectiveType && /(^2g$|^3g$|slow-2g)/i.test(connection.effectiveType))
-    );
-    const constrainedDevice = Boolean((nav.deviceMemory ?? 8) <= 4 || (nav.hardwareConcurrency ?? 8) <= 4);
-
-    const canvas = document.createElement("canvas");
-    const hasWebGL = Boolean(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
-
-    setAllow3D(hasWebGL && !slowNetwork && !constrainedDevice);
-  }, []);
 
   const stats = useMemo(
     () => [
@@ -65,7 +30,7 @@ export function Hero() {
     reduceMotion ? { duration: 0 } : { duration: 0.6, delay, ease: "easeOut" as const };
 
   return (
-    <section className="relative h-[100svh] overflow-hidden">
+    <section className="hero-viewport relative overflow-hidden">
       <div className="industrial-hero-bg absolute inset-0" />
       <motion.div
         className="absolute inset-0 grid-lines opacity-15"
@@ -94,25 +59,21 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
+              initial={{ opacity: 0, x: reduceMotion ? 0 : -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={reveal(0.08)}
               className="space-y-3"
             >
-              <motion.h1
-                className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[0.05em] text-white sm:text-6xl xl:text-7xl 2xl:text-[5.3rem]"
-              >
+              <h1 className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[0.05em] text-white sm:text-6xl xl:text-7xl 2xl:text-[5.3rem]">
                 SUKAJ SHPK
-              </motion.h1>
-              <motion.h2
-                className="max-w-4xl text-2xl font-semibold uppercase tracking-[0.16em] text-orange-400 sm:text-3xl xl:text-[2.2rem]"
-              >
+              </h1>
+              <h2 className="max-w-4xl text-2xl font-semibold uppercase tracking-[0.16em] text-orange-400 sm:text-3xl xl:text-[2.2rem]">
                 Industrial Plastic Pipe Systems
-              </motion.h2>
+              </h2>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reveal(0.16)}
               className="space-y-3"
@@ -125,37 +86,37 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reveal(0.2)}
               className="flex flex-wrap gap-3"
             >
               <Link
                 href="/catalog"
-                className="inline-flex items-center rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold tracking-wide text-slate-950 transition-colors hover:bg-orange-400"
+                className="inline-flex items-center rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold tracking-wide text-slate-950 transition-colors hover:bg-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 Explore Catalog
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 Contact Sales
               </Link>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reveal(0.24)}
               className="grid max-w-2xl gap-2 text-sm text-slate-300 sm:grid-cols-2"
             >
-              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Diameter Coverage: DN 20-2000</p>
-              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Execution Model: Import + Local Production Support</p>
+              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">Diameter Coverage: Ø 20–2000 mm</p>
+              <p className="rounded-lg border border-white/10 bg-white/5 px-3 py-2">12 Partners · 7 Countries</p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reveal(0.28)}
               className="flex flex-wrap gap-2"
@@ -175,7 +136,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reveal(0.32)}
               className="grid max-w-xl grid-cols-3 gap-4 sm:gap-8"
@@ -190,7 +151,7 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={reveal(0.36)}
             className="relative"
@@ -207,40 +168,31 @@ export function Hero() {
                 <p className="font-mono text-xs tracking-[0.18em] text-cyan-300">3D PREVIEW</p>
               </div>
               <div className="relative h-[320px] overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-b from-slate-900/40 to-slate-950/10 sm:h-[380px] lg:h-[430px]">
-                {isMobile === false && allow3D ? <PipeViewer3D /> : <PipeViewerSprite />}
-                <div className="pointer-events-none absolute left-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                  DN 20-2000
+                <Hero3DClient />
+                <div className="pointer-events-none absolute left-3 top-3 z-10 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
+                  DN 20–2000
                 </div>
-                <div className="pointer-events-none absolute right-3 top-3 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
+                <div className="pointer-events-none absolute right-3 top-3 z-10 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
                   HDPE / PVC
                 </div>
-                {isMobile === false && allow3D ? (
-                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                    Interactive Preview
-                  </div>
-                ) : (
-                  <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-lg border border-white/15 bg-slate-900/70 px-3 py-2 font-mono text-[10px] tracking-[0.16em] text-slate-200">
-                    Preview Mode
-                  </div>
-                )}
               </div>
             </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reveal(0.46)}
-          className="mt-6 flex flex-col items-center gap-4 lg:mt-7"
+          className="mt-6 flex flex-col items-center gap-4 pb-safe lg:mt-7"
         >
-          <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-white/15 bg-slate-900/65 p-3 backdrop-blur-xl">
+          <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-white/15 bg-slate-900/65 p-3 backdrop-blur-lg">
             {dockItems.map((item) => {
               const Icon = item.icon;
               return (
-                <motion.div key={item.name} whileHover={{ y: -6, scale: 1.08 }} whileTap={{ scale: 0.96 }}>
-                  <Link href={item.href} className="group flex flex-col items-center">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-lg transition-colors group-hover:from-orange-500 group-hover:to-orange-600 sm:h-16 sm:w-16">
+                <motion.div key={item.name} whileHover={reduceMotion ? undefined : { y: -6, scale: 1.08 }} whileTap={{ scale: 0.96 }}>
+                  <Link href={item.href} className="group flex flex-col items-center focus-visible:outline-none">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-slate-700 to-slate-900 text-white shadow-lg transition-colors group-hover:from-orange-500 group-hover:to-orange-600 group-focus-visible:ring-2 group-focus-visible:ring-orange-400 sm:h-16 sm:w-16">
                       <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
                     </div>
                     <span className="mt-2 font-mono text-xs tracking-[0.22em] text-slate-300 sm:text-sm">{item.name}</span>
