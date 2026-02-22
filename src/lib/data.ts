@@ -402,6 +402,7 @@ export const products: Product[] = [
       "Spiral-wound polypropylene sewage pipe for municipal and industrial waste-water networks. Available in large diameters for trunk-line applications.",
     standard: ["EN 13476"],
     pressureClass: "SN4–SN16",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&h=600&fit=crop&q=80",
     specs: {
       wallType: "Spiral-wound structured wall",
       length: "6 m standard",
@@ -423,6 +424,7 @@ export const products: Product[] = [
       "PE100 solid-wall pressure pipe for potable water and gas networks.",
     standard: ["EN 12201"],
     pressureClass: "PN6–PN25",
+    image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop&q=80",
     specs: {
       material: "PE100",
       color: "Black with blue stripe",
@@ -444,6 +446,7 @@ export const products: Product[] = [
       "Double-wall corrugated HDPE pipe at SN4 stiffness class for gravity sewage and storm-water drainage.",
     standard: ["EN 13476", "SN4"],
     pressureClass: "SN4",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop&q=80",
     specs: {
       structure: "Smooth inner / corrugated outer",
       joints: "Coupler with rubber seal",
@@ -465,6 +468,7 @@ export const products: Product[] = [
       "Higher-stiffness corrugated HDPE pipe for deeper burial depths and heavier traffic loads.",
     standard: ["EN 13476", "SN8"],
     pressureClass: "SN8",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop&q=80",
     specs: {
       structure: "Smooth inner / corrugated outer",
       joints: "Coupler with rubber seal",
@@ -486,6 +490,7 @@ export const products: Product[] = [
       "Locally manufactured HDPE PE100 pressure pipe, PN4–PN32, for water supply and irrigation mains.",
     standard: ["EN 12201", "ISO 9001"],
     pressureClass: "PN4–PN32",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&h=600&fit=crop&q=80",
     specs: {
       material: "PE100",
       lengths: "6 m / 12 m bars; coils ≤110 mm",
@@ -506,6 +511,7 @@ export const products: Product[] = [
     description:
       "EN 13476-1:2018 corrugated sewage pipe produced in 12 m lengths for municipal networks.",
     standard: ["EN 13476-1:2018"],
+    image: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=800&h=600&fit=crop&q=80",
     specs: {
       structure: "Double-wall corrugated",
       length: "12 m",
@@ -526,6 +532,7 @@ export const products: Product[] = [
     description:
       "Reinforced PVC hose designed for demanding garden and light irrigation use. High burst-pressure resistance.",
     standard: ["EN ISO 1307"],
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=600&fit=crop&q=80",
     specs: {
       reinforcement: "Textile braid",
       maxPressure: "30 bar burst",
@@ -545,6 +552,7 @@ export const products: Product[] = [
     diameterMax: 25,
     description:
       "Mid-range garden hose with anti-twist technology and NTS® system for easy connection.",
+    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=600&fit=crop&q=80",
     specs: {
       feature: "Anti-twist NTS® system",
       length: "15–50 m",
@@ -564,6 +572,7 @@ export const products: Product[] = [
     diameterMax: 19,
     description:
       "Ultra-lightweight, compact garden hose that expands under pressure. Ideal for small gardens and balconies.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&q=80",
     specs: {
       feature: "Auto-expanding",
       weight: "Ultra-light",
@@ -584,6 +593,7 @@ export const products: Product[] = [
     description:
       "Recycled HDPE and LDPE granulates produced from post-industrial and post-consumer waste. Base material for film and pipe extrusion.",
     standard: ["ISO 14001"],
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&h=600&fit=crop&q=80",
     specs: {
       inputStream: "Post-industrial / post-consumer",
       outputForm: "Pelletised granulate",
@@ -603,6 +613,7 @@ export const products: Product[] = [
     diameterMax: 0,
     description:
       "PE film for greenhouse covering, mulching, and silage — produced from recycled granulates.",
+    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop&q=80",
     specs: {
       thickness: "40–200 µm",
       width: "Up to 12 m",
@@ -623,6 +634,7 @@ export const products: Product[] = [
     description:
       "Heavy-duty rubber hoses for air, water, oil, and chemical transfer in industrial environments.",
     standard: ["ISO 9001"],
+    image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&h=600&fit=crop&q=80",
     specs: {
       reinforcement: "Textile / wire braid",
       temperature: "-30 °C to +100 °C",
@@ -642,6 +654,7 @@ export const products: Product[] = [
     diameterMax: 200,
     description:
       "PVC suction and delivery hose with rigid PVC helix for water, slurry, and light-chemical transfer.",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop&q=80",
     specs: {
       helix: "Rigid PVC spiral",
       vacuum: "Up to −0.9 bar",

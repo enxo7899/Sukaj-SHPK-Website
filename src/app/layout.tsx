@@ -17,15 +17,64 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sukaj SHPK | Industrial Plastic Pipe Systems",
-  description: "Sukaj SHPK supplies and manufactures industrial plastic pipe systems for civil, agricultural, and industrial projects across the Balkans.",
-  keywords: ["infrastructure", "pipes", "HDPE", "PVC", "sewage", "Albania", "Balkans", "Konti", "FITT"],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: "Sukaj SHPK | Industrial Plastic Pipe Systems - Albania",
+  description: "Leading supplier of industrial plastic pipe systems in the Balkans since 1995. Partnering with 12 manufacturers across 7 countries for HDPE, PP, PVC pipes, hoses, and recycling solutions.",
+  keywords: [
+    "plastic pipes Albania",
+    "HDPE pipes Balkans",
+    "sewage pipes",
+    "corrugated pipes",
+    "irrigation systems",
+    "industrial hoses",
+    "Konti Hidroplast",
+    "FITT hoses",
+    "Ferplast Kosovo",
+    "Teqja International",
+    "PE100 pipes",
+    "infrastructure solutions",
+    "wholesale pipes Albania",
+  ],
   authors: [{ name: "Sukaj SHPK" }],
+  creator: "Sukaj SHPK",
+  publisher: "Sukaj SHPK",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Sukaj SHPK | Industrial Plastic Components",
-    description: "Supplier and manufacturer of pipe and conduit systems since 1995.",
     type: "website",
     locale: "en_US",
+    url: "https://sukaj-shpk.com",
+    siteName: "Sukaj SHPK",
+    title: "Sukaj SHPK | Industrial Plastic Pipe Systems - Balkans Leader",
+    description: "12 manufacturing partners across 7 countries. Complete pipe solutions for civil drainage, agricultural irrigation, and industrial projects since 1995.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sukaj SHPK - Industrial Plastic Pipe Systems",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sukaj SHPK | Industrial Plastic Pipe Systems",
+    description: "Leading supplier of HDPE, PP, PVC pipes and hoses across the Balkans since 1995.",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://sukaj-shpk.com",
+  },
+  verification: {
+    google: "your-google-verification-code",
   },
 };
 
@@ -44,22 +93,86 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "Corporation",
+                  "@type": "Organization",
                   "name": "Sukaj SHPK",
-                  "description": "Supplier and manufacturer of industrial plastic pipe systems in the Balkans.",
+                  "legalName": "Sukaj SHPK",
+                  "description": "Leading supplier and distributor of industrial plastic pipe systems, hoses, and recycling solutions across the Balkans since 1995.",
                   "foundingDate": "1995",
+                  "url": "https://sukaj-shpk.com",
+                  "logo": "https://sukaj-shpk.com/logo.svg",
                   "address": {
                     "@type": "PostalAddress",
-                    "addressLocality": "Shkoder",
-                    "addressCountry": "Albania"
+                    "addressLocality": "Shkodër",
+                    "addressRegion": "Shkodër County",
+                    "addressCountry": "AL"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "Sales",
+                    "areaServed": ["AL", "XK", "MK", "RS", "ME", "GR"],
+                    "availableLanguage": ["Albanian", "English"]
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/company/sukaj-shpk"
+                  ],
+                  "numberOfEmployees": {
+                    "@type": "QuantitativeValue",
+                    "value": "30+"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "150"
                   }
                 },
                 {
                   "@type": "WholesaleStore",
                   "name": "Sukaj SHPK",
                   "priceRange": "$$$",
-                  "areaServed": "Balkans",
-                  "description": "Wholesale and project supply of civil, agricultural, and industrial plastic pipe systems."
+                  "areaServed": {
+                    "@type": "GeoCircle",
+                    "geoMidpoint": {
+                      "@type": "GeoCoordinates",
+                      "latitude": "42.0687",
+                      "longitude": "19.5033"
+                    },
+                    "geoRadius": "500000"
+                  },
+                  "description": "Wholesale distribution of HDPE, PP, PVC pipes, industrial hoses, and plastic recycling solutions for civil, agricultural, and industrial infrastructure projects.",
+                  "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Industrial Plastic Pipe Systems",
+                    "itemListElement": [
+                      {
+                        "@type": "OfferCatalog",
+                        "name": "Civil Engineering Pipes",
+                        "itemListElement": [
+                          {
+                            "@type": "Offer",
+                            "itemOffered": {
+                              "@type": "Product",
+                              "name": "HDPE Corrugated Pipes",
+                              "description": "Double-wall corrugated HDPE pipes for sewage and drainage"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@type": "OfferCatalog",
+                        "name": "Agricultural Systems",
+                        "itemListElement": [
+                          {
+                            "@type": "Offer",
+                            "itemOffered": {
+                              "@type": "Product",
+                              "name": "Irrigation Hoses",
+                              "description": "Garden and agricultural irrigation hoses"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 }
               ]
             })

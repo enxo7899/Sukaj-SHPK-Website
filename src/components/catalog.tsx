@@ -237,6 +237,7 @@ function QuickViewDialog({
 
 function ProductImage({ product }: { product: Product }) {
   const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const imageSrc = product.image || `/media/products/${product.slug}.webp`;
   const categoryColor = categoryColors[product.category] || "#f97316";
 
@@ -259,13 +260,30 @@ function ProductImage({ product }: { product: Product }) {
   }
 
   return (
-    <Image
-      src={imageSrc}
-      alt={product.name}
-      fill
-      className="object-cover"
-      onError={() => setImageError(true)}
-    />
+    <>
+      {!imageLoaded && (
+        <div
+          className="absolute inset-0 flex items-center justify-center animate-pulse"
+          style={{
+            background: `linear-gradient(135deg, ${categoryColor}10, ${categoryColor}05)`,
+          }}
+        >
+          <Layers className="h-8 w-8 opacity-30" style={{ color: categoryColor }} />
+        </div>
+      )}
+      <Image
+        src={imageSrc}
+        alt={`${product.name} - ${product.partner}`}
+        fill
+        loading="lazy"
+        className={`object-cover transition-opacity duration-300 ${
+          imageLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageError(true)}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </>
   );
 }
 
