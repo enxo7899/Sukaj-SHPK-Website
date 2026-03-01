@@ -30,12 +30,14 @@ type Filter = PartnerType | typeof ALL;
 
 const logoPartners = partners.filter((p) => p.logo.dark);
 
-function LogoCard({ partner }: { partner: (typeof partners)[0] }) {
+function LogoCard({ partner, onHoverChange }: { partner: (typeof partners)[0]; onHoverChange?: (isHovered: boolean) => void }) {
   const accent = typeAccent[partner.partnerType];
   return (
     <div
       className="group flex h-16 w-40 shrink-0 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 mx-2 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]"
       title={partner.name}
+      onMouseEnter={() => onHoverChange?.(true)}
+      onMouseLeave={() => onHoverChange?.(false)}
     >
       {partner.logo.dark ? (
         <Image
@@ -189,6 +191,7 @@ function PartnerCard({
 
 export function PartnersSection() {
   const [active, setActive] = useState<Filter>(ALL);
+  const [isPaused, setIsPaused] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const inView = useInView(gridRef, { once: true, margin: "-80px" });
 
@@ -274,14 +277,14 @@ export function PartnersSection() {
         <div className="relative mb-12 -mx-4 sm:-mx-6 lg:-mx-8">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10" style={{ background: "linear-gradient(90deg, #020617, transparent)" }} />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10" style={{ background: "linear-gradient(270deg, #020617, transparent)" }} />
-          <Marquee duration={35} className="py-2.5">
+          <Marquee duration={60} isPaused={isPaused} className="py-2.5">
             {logoPartners.map((p) => (
-              <LogoCard key={p.id} partner={p} />
+              <LogoCard key={p.id} partner={p} onHoverChange={setIsPaused} />
             ))}
           </Marquee>
-          <Marquee duration={42} reverse className="py-2.5">
+          <Marquee duration={70} reverse isPaused={isPaused} className="py-2.5">
             {[...logoPartners].reverse().map((p) => (
-              <LogoCard key={p.id} partner={p} />
+              <LogoCard key={p.id} partner={p} onHoverChange={setIsPaused} />
             ))}
           </Marquee>
         </div>

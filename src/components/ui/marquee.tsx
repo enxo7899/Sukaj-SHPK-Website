@@ -6,6 +6,7 @@ interface MarqueeProps {
   className?: string;
   reverse?: boolean;
   pauseOnHover?: boolean;
+  isPaused?: boolean;
 }
 
 export function Marquee({
@@ -14,8 +15,10 @@ export function Marquee({
   className = "",
   reverse = false,
   pauseOnHover = false,
+  isPaused = false,
 }: MarqueeProps) {
   const animName = reverse ? "marquee-reverse" : "marquee";
+  
   return (
     <div
       className={`relative flex overflow-hidden ${className}`}
@@ -35,9 +38,9 @@ export function Marquee({
         className="flex min-w-full shrink-0 gap-0"
         style={{
           animation: `${animName} ${duration}s linear infinite`,
+          animationPlayState: isPaused ? 'paused' : 'running',
           willChange: "transform",
         }}
-        aria-hidden
       >
         {/* four copies so there's always content visible at any screen width */}
         {children}
