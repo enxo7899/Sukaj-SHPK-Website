@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import { company, partners } from "@/lib/data";
 
@@ -16,18 +17,13 @@ export function Footer() {
       <div className="site-shell relative py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-400 via-slate-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/10 ring-1 ring-white/10">
-                <span className="text-white font-black text-xl drop-shadow-sm">S</span>
-              </div>
-              <div>
-                <span className="text-xl font-black tracking-[0.12em] text-white">
-                  SUKAJ SHPK
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 block tracking-wider">
-                  EST. {company.established} • ALBANIA
-                </span>
-              </div>
+            <div className="relative h-16 w-48 mb-6">
+              <Image
+                src="/media/hero/logo.png"
+                alt="Sukaj SHPK"
+                fill
+                className="object-contain object-left"
+              />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
               Import-export of plastic materials &amp; wholesale trading of
@@ -43,21 +39,21 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors"
               >
-                <MapPin className="w-4 h-4 text-orange-500" />
+                <MapPin className="w-4 h-4 text-cyan-400" />
                 {company.location}
               </a>
               <a
                 href="tel:+355123456789"
                 className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors"
               >
-                <Phone className="w-4 h-4 text-orange-500" />
+                <Phone className="w-4 h-4 text-cyan-400" />
                 +355 123 456 789
               </a>
               <a
                 href="mailto:info@sukaj.al"
                 className="flex items-center gap-3 text-sm text-slate-400 hover:text-white transition-colors"
               >
-                <Mail className="w-4 h-4 text-orange-500" />
+                <Mail className="w-4 h-4 text-cyan-400" />
                 info@sukaj.al
               </a>
             </div>
@@ -105,7 +101,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/partners"
-                  className="text-sm text-orange-400 hover:text-orange-300 transition-colors"
+                  className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   View all partners →
                 </Link>

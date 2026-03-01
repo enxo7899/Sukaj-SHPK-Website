@@ -1,0 +1,23 @@
+<svg width="650" height="200" viewBox="0 0 650 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular pipe design -->
+  <g id="pipe-circle">
+    <!-- Gray segment (bottom-left) -->
+    <path d="M 80 100 A 60 60 0 0 1 140 40 L 160 60 A 40 40 0 0 0 120 100 Z" fill="#64748B"/>
+    <!-- Blue segment (top-right) -->
+    <path d="M 140 40 A 60 60 0 0 1 200 100 L 180 100 A 40 40 0 0 0 160 60 Z" fill="#0891B2"/>
+    <!-- Blue segment (bottom-right) -->
+    <path d="M 200 100 A 60 60 0 0 1 140 160 L 160 140 A 40 40 0 0 0 180 100 Z" fill="#0891B2"/>
+    <!-- Gray segment (top-left) -->
+    <path d="M 140 160 A 60 60 0 0 1 80 100 L 120 100 A 40 40 0 0 0 160 140 Z" fill="#64748B"/>
+    
+    <!-- Center circle -->
+    <circle cx="140" cy="100" r="30" fill="#F8FAFC"/>
+    
+    <!-- M&L text in center -->
+    <text x="140" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#64748B" text-anchor="middle">M&L</text>
+  </g>
+  
+  <!-- SUKAJ text -->
+  <text x="230" y="95" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="#64748B" letter-spacing="2">SUKAJ</text>
+  <text x="230" y="125" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#94A3B8" letter-spacing="8">SH.P.K</text>
+</svg>

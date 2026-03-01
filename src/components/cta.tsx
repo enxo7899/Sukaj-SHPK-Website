@@ -6,7 +6,7 @@ import { ArrowRight, Phone, Mail } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-slate-950 to-cyan-500/10" />
       <div className="absolute inset-0 dot-matrix opacity-20" />
       
@@ -23,7 +23,7 @@ export function CTA() {
             START YOUR PROJECT
           </span>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
             READY TO BUILD?
           </h2>
           
@@ -31,12 +31,12 @@ export function CTA() {
             From technical specifications to project consultations — our engineering team is ready to support your infrastructure needs.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
             <Link
               href="/contact"
-              className="group flex items-center gap-3 px-8 py-4 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-orange-500/25"
+              className="inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-cyan-500 hover:shadow-xl hover:shadow-cyan-500/25 focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span>GET A QUOTE</span>
+              GET A QUOTE
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link

@@ -1,18 +1,20 @@
-import { Hero } from "@/components/hero";
-import { BentoGrid } from "@/components/bento-grid";
-import { Categories } from "@/components/categories";
-import { Stats } from "@/components/stats";
-import { Timeline } from "@/components/timeline";
+import { HeroUltimate } from "@/components/hero-ultimate";
+import { StatsPremium } from "@/components/stats-premium";
+import { WhyUs } from "@/components/why-us";
+import { PartnersSection } from "@/components/partners-section";
+import { CategoriesPremium } from "@/components/categories-premium";
+import { TimelinePremium } from "@/components/timeline-premium";
 import { CTA } from "@/components/cta";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Stats />
-      <BentoGrid />
-      <Categories />
-      <Timeline />
+      <HeroUltimate />
+      <StatsPremium />
+      <WhyUs />
+      <PartnersSection />
+      <CategoriesPremium />
+      <TimelinePremium />
       <CTA />
     </>
   );

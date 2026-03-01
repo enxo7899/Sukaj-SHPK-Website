@@ -42,7 +42,7 @@ const categoryIcons: Record<string, React.FC<{ className?: string }>> = {
 };
 
 const categoryColors: Record<string, string> = {
-  civil: "#f97316",
+  civil: "#0891b2",
   agri: "#22c55e",
   industrial: "#22d3ee",
 };
@@ -205,7 +205,7 @@ function QuickViewDialog({
           )}
           <Link
             href={`/contact?product=${product.slug}&partner=${product.partnerId}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-orange-400"
+            className="inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-500"
           >
             <Send className="w-4 h-4" /> Request Quote
           </Link>
@@ -320,141 +320,107 @@ function SpecCard({
 }) {
   const partner = partners.find((p) => p.id === product.partnerId);
   const CategoryIcon = categoryIcons[product.category] || Layers;
-  const catColor = categoryColors[product.category] || "#f97316";
-  const showScale = product.diameterMax >= 800;
+  const catColor = categoryColors[product.category] || "#0891b2";
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 12 }}
       transition={{ duration: 0.2 }}
-      className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-950 hover:border-cyan-400/40 transition-all"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-slate-900/60 hover:border-white/20 hover:bg-slate-900/90 transition-all duration-200"
     >
-      <div className="absolute inset-0 grid-lines opacity-10" />
+      {/* Top accent */}
       <div
-        className="absolute top-0 left-0 right-0 h-px opacity-50"
-        style={{
-          background: `linear-gradient(90deg, transparent, ${catColor}80, transparent)`,
-        }}
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: `linear-gradient(90deg, transparent, ${catColor}60, transparent)` }}
       />
 
-      {/* Product Image */}
-      <div className="relative h-40 w-full overflow-hidden bg-slate-900">
+      {/* Image area */}
+      <div className="relative h-44 w-full overflow-hidden bg-slate-950/60 shrink-0">
         <ProductImage product={product} />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-        
-        {/* Category badge */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
         <div
-          className="absolute left-3 top-3 flex items-center gap-1.5 rounded-lg px-2 py-1 text-[10px] font-mono tracking-wider"
-          style={{ backgroundColor: `${catColor}20`, color: catColor }}
+          className="absolute left-3 top-3 flex items-center gap-1.5 rounded-md px-2 py-1 text-[10px] font-mono tracking-wider backdrop-blur-sm"
+          style={{ backgroundColor: `${catColor}20`, color: catColor, border: `1px solid ${catColor}30` }}
         >
-          <span style={{ color: catColor }}>
-            <CategoryIcon className="h-3 w-3" />
-          </span>
-          {product.category.toUpperCase()}
+          <CategoryIcon className="h-3 w-3" />
+          {product.category === "civil" ? "Civil" : product.category === "agri" ? "Agri" : "Industrial"}
         </div>
-
-        {/* Material badge */}
-        <div className="absolute right-3 top-3 rounded-lg border border-white/10 bg-slate-900/80 px-2 py-1 text-[10px] font-mono text-slate-300">
+        <div className="absolute right-3 top-3 rounded-md border border-white/10 bg-slate-950/70 px-2 py-1 text-[10px] font-mono text-slate-300 backdrop-blur-sm">
           {product.material}
         </div>
       </div>
 
-      <div className="p-5">
-        {/* Partner + Name */}
-        <div className="mb-3">
-          <div className="flex items-center gap-2 mb-1">
-            {partner && (
-              <div
-                className="h-5 w-5 shrink-0 rounded flex items-center justify-center text-[9px] font-black text-slate-950"
-                style={{ backgroundColor: partner.color }}
-              >
-                {partner.name.charAt(0)}
-              </div>
-            )}
-            <span
-              className="text-[10px] font-mono tracking-wider truncate"
-              style={{ color: partner?.color || "#f97316" }}
+      <div className="flex flex-col flex-1 p-5">
+        {/* Partner */}
+        <div className="flex items-center gap-2 mb-2">
+          {partner && (
+            <div
+              className="h-4 w-4 shrink-0 rounded text-[8px] font-black flex items-center justify-center text-white"
+              style={{ backgroundColor: `${partner.color}30`, color: partner.color }}
             >
-              {product.partner.toUpperCase()}
-            </span>
-          </div>
-          <h3 className="text-lg font-bold text-white leading-tight">
-            {product.name}
-          </h3>
+              {partner.name.charAt(0)}
+            </div>
+          )}
+          <span
+            className="text-[10px] font-mono tracking-wider truncate"
+            style={{ color: partner?.color || catColor }}
+          >
+            {product.partner}
+          </span>
         </div>
 
-        {/* Key specs grid */}
-        <div className="grid grid-cols-2 gap-2 mb-3">
-          <div className="rounded-lg bg-slate-900/80 border border-white/5 p-2">
-            <span className="text-[9px] font-mono text-slate-500 block tracking-wider">
-              DIAMETER
-            </span>
-            <span className="text-sm font-bold text-white">
+        {/* Product name */}
+        <h3 className="text-base font-bold text-white leading-snug mb-4">
+          {product.name}
+        </h3>
+
+        {/* Specs */}
+        <div className="grid grid-cols-2 gap-2 mb-3 mt-auto">
+          <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
+            <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">DIAMETER</span>
+            <span className="text-sm font-bold text-white leading-none">
               {formatDiameter(product.diameterMin, product.diameterMax)}
             </span>
           </div>
-          <div className="rounded-lg bg-slate-900/80 border border-white/5 p-2">
-            <span className="text-[9px] font-mono text-slate-500 block tracking-wider">
-              APPLICATION
-            </span>
-            <span className="text-sm font-bold text-white">
-              {product.application}
-            </span>
+          <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
+            <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">USE</span>
+            <span className="text-sm font-bold text-white leading-none">{product.application}</span>
           </div>
         </div>
 
-        {/* Pressure class */}
-        {product.pressureClass && (
-          <div className="mb-3 inline-block rounded-md border border-cyan-500/20 bg-cyan-500/10 px-2 py-1 font-mono text-[10px] tracking-wider text-cyan-300">
-            {product.pressureClass}
-          </div>
-        )}
-
-        {/* Standards */}
-        {product.standard && product.standard.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            {product.standard.slice(0, 3).map((s) => (
-              <span
-                key={s}
-                className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[9px] tracking-wider text-slate-400"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* Scale indicator for large pipes */}
-        {showScale && (
-          <div className="mb-3">
-            <ScaleIndicator diameterMax={product.diameterMax} />
-          </div>
-        )}
+        {/* Tags row */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {product.pressureClass && (
+            <span className="rounded border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 font-mono text-[9px] tracking-wider text-cyan-400">
+              {product.pressureClass}
+            </span>
+          )}
+          {product.standard?.slice(0, 2).map((s) => (
+            <span key={s} className="rounded border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[9px] tracking-wider text-slate-500">
+              {s}
+            </span>
+          ))}
+        </div>
 
         {/* Actions */}
-        <div className="flex gap-2 border-t border-white/10 pt-3">
+        <div className="flex gap-2 border-t border-white/[0.08] pt-4 mt-auto">
           <button
             onClick={() => onQuickView(product)}
-            className="flex-1 flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 py-2.5 text-xs font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-orange-400"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-xs font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
           >
-            <Eye className="w-3.5 h-3.5" /> View Specs
+            <Eye className="h-3.5 w-3.5" /> Specs
           </button>
           <Link
             href={`/contact?product=${product.slug}&partner=${product.partnerId}`}
-            className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-orange-500 py-2.5 text-xs font-semibold text-slate-950 hover:bg-orange-400 transition-colors focus-visible:ring-2 focus-visible:ring-orange-400"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-cyan-600 py-2.5 text-xs font-semibold text-white hover:bg-cyan-500 transition-colors"
           >
-            <Send className="w-3.5 h-3.5" /> Quote
+            <Send className="h-3.5 w-3.5" /> Quote
           </Link>
         </div>
       </div>
-
-      <div
-        className="absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity"
-        style={{ backgroundColor: catColor }}
-      />
     </motion.div>
   );
 }
@@ -675,7 +641,7 @@ export function Catalog({
             ))}
             <button
               onClick={clearAll}
-              className="text-xs text-orange-400 hover:text-orange-300 ml-1"
+              className="text-xs text-cyan-400 hover:text-cyan-300 ml-1"
             >
               Clear all
             </button>
@@ -695,7 +661,7 @@ export function Catalog({
                   onChange={(e) =>
                     setFilters((prev) => ({ ...prev, search: e.target.value }))
                   }
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-colors"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
                 />
               </div>
 
@@ -731,9 +697,9 @@ export function Catalog({
                       <button
                         key={material}
                         onClick={() => toggleFilter("materials", material)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-orange-400 ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                           filters.materials.includes(material)
-                            ? "bg-orange-500 text-slate-950"
+                            ? "bg-cyan-600 text-white"
                             : "bg-white/5 text-slate-400 hover:bg-white/10"
                         }`}
                       >
@@ -868,7 +834,7 @@ export function Catalog({
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={clearAll}
-                    className="rounded-xl bg-orange-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-orange-400 transition-colors"
+                    className="rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-500 transition-colors"
                   >
                     Clear All Filters
                   </button>

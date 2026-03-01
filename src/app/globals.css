@@ -39,10 +39,10 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --color-industrial-orange: #f97316;
-  --color-hydraulic-blue: #22d3ee;
+  --color-brand-blue: #0891b2;
+  --color-brand-gray: #64748b;
+  --color-accent-cyan: #22d3ee;
   --color-industrial-green: #22c55e;
-  --color-industrial-purple: #a855f7;
   --color-industrial-red: #ef4444;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -62,8 +62,8 @@
   --card-foreground: #f8fafc;
   --popover: #0f172a;
   --popover-foreground: #f8fafc;
-  --primary: #f97316;
-  --primary-foreground: #020617;
+  --primary: #0891b2;
+  --primary-foreground: #f8fafc;
   --secondary: #1e293b;
   --secondary-foreground: #f8fafc;
   --muted: #1e293b;
@@ -73,20 +73,20 @@
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
-  --ring: #f97316;
-  --chart-1: #f97316;
+  --ring: #0891b2;
+  --chart-1: #0891b2;
   --chart-2: #22d3ee;
   --chart-3: #22c55e;
-  --chart-4: #a855f7;
+  --chart-4: #64748b;
   --chart-5: #ef4444;
   --sidebar: #0f172a;
   --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #f97316;
-  --sidebar-primary-foreground: #020617;
+  --sidebar-primary: #0891b2;
+  --sidebar-primary-foreground: #f8fafc;
   --sidebar-accent: #1e293b;
   --sidebar-accent-foreground: #f8fafc;
   --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #f97316;
+  --sidebar-ring: #0891b2;
 }
 
 @layer base {
@@ -98,12 +98,12 @@
   }
   
   ::selection {
-    background: rgba(249, 115, 22, 0.3);
+    background: rgba(8, 145, 178, 0.3);
     color: #f8fafc;
   }
 
   :focus-visible {
-    outline: 2px solid #f97316;
+    outline: 2px solid #0891b2;
     outline-offset: 2px;
   }
 
@@ -113,7 +113,7 @@
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid #f97316;
+    outline: 2px solid #0891b2;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -125,8 +125,8 @@
     transform: translateX(-50%);
     z-index: 9999;
     padding: 1rem 2rem;
-    background: #f97316;
-    color: #020617;
+    background: #0891b2;
+    color: #f8fafc;
     font-weight: 600;
     border-radius: 0 0 0.5rem 0.5rem;
     transition: top 0.2s ease;
@@ -156,21 +156,21 @@
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #f97316 0%, #22d3ee 100%);
+    background: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
-  .text-gradient-orange {
-    background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
   .text-gradient-brand {
-    background: linear-gradient(135deg, #94a3b8 0%, #64748b 40%, #22d3ee 100%);
+    background: linear-gradient(135deg, #64748b 0%, #0891b2 60%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -185,7 +185,7 @@
   }
   
   .glow-brand {
-    box-shadow: 0 0 20px rgba(100, 116, 139, 0.3), 0 0 40px rgba(34, 211, 238, 0.15);
+    box-shadow: 0 0 20px rgba(8, 145, 178, 0.3), 0 0 40px rgba(34, 211, 238, 0.15);
   }
   
   .dot-matrix {
@@ -226,11 +226,11 @@
     left: 20px;
     right: 20px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(8, 145, 178, 0.5), transparent);
   }
   
-  .glow-orange {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.1);
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(8, 145, 178, 0.3), 0 0 40px rgba(8, 145, 178, 0.1);
   }
   
   .glow-cyan {
@@ -271,8 +271,8 @@
 
   .industrial-hero-bg {
     background-image:
-      radial-gradient(circle at 12% 16%, rgba(249, 115, 22, 0.28), transparent 42%),
-      radial-gradient(circle at 84% 22%, rgba(34, 211, 238, 0.2), transparent 40%),
+      radial-gradient(circle at 12% 16%, rgba(8, 145, 178, 0.18), transparent 42%),
+      radial-gradient(circle at 84% 22%, rgba(34, 211, 238, 0.15), transparent 40%),
       radial-gradient(circle at 48% 72%, rgba(30, 41, 59, 0.85), transparent 55%),
       linear-gradient(130deg, #020617 0%, #0b1220 48%, #0f172a 100%);
   }

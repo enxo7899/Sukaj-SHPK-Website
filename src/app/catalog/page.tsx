@@ -32,17 +32,34 @@ export default async function CatalogPage({
   const params = await searchParams;
 
   return (
-    <div className="min-h-screen pt-32">
-      <div className="site-shell mb-8">
-        <span className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-400 tracking-wider mb-6">
-          PRODUCT CATALOG
-        </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
-          ENGINEERING SOLUTIONS.
+    <div className="min-h-screen pt-28 sm:pt-32">
+      <div className="site-shell pb-8 sm:pb-12 border-b border-white/[0.06]">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="h-px w-8 bg-cyan-500/60" />
+          <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+            Product Catalog
+          </span>
+        </div>
+        <h1
+          className="font-black text-white leading-[1.05] tracking-tight mb-4"
+          style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}
+        >
+          Pipes, Hoses &amp;
+          <br />
+          <span
+            style={{
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+            }}
+          >
+            Infrastructure Systems.
+          </span>
         </h1>
-        <p className="mt-4 text-lg text-slate-400 max-w-2xl">
-          Browse our complete range of infrastructure products. Filter by
-          material, application, or diameter.
+        <p className="text-base sm:text-lg text-slate-400 max-w-2xl">
+          24 products across civil, agricultural and industrial applications —
+          from 12 European manufacturing partners.
         </p>
       </div>
 

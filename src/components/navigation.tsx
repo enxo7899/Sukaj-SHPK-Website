@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Building2, Sprout, Factory, Users, Phone, Handshake } from "lucide-react";
 
@@ -40,20 +41,15 @@ export function Navigation() {
       >
         <div className="site-shell">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-400 via-slate-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/10 ring-1 ring-white/10">
-                  <span className="text-white font-black text-lg drop-shadow-sm">S</span>
-                </div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-slate-400/50 to-cyan-500/50 blur-lg opacity-0 group-hover:opacity-60 transition-opacity" />
-              </div>
-              <div className="hidden sm:block">
-                <span className="text-lg font-black tracking-[0.15em] text-white">
-                  SUKAJ
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 block -mt-0.5 tracking-wider">
-                  SHPK • INDUSTRIAL PLASTICS
-                </span>
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative h-12 w-48 sm:w-56">
+                <Image
+                  src="/media/hero/logo.png"
+                  alt="Sukaj SHPK"
+                  fill
+                  className="object-contain object-left transition-opacity group-hover:opacity-80"
+                  priority
+                />
               </div>
             </Link>
 
@@ -79,7 +75,7 @@ export function Navigation() {
             <div className="flex items-center gap-4">
               <Link
                 href="/catalog"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-400 hover:to-orange-300 text-slate-950 font-semibold text-sm rounded-xl transition-all hover:shadow-lg hover:shadow-orange-500/25 ring-1 ring-orange-400/20"
+                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-semibold text-sm rounded-xl transition-all hover:shadow-lg hover:shadow-cyan-500/25 ring-1 ring-cyan-400/20"
               >
                 <span>EXPLORE CATALOG</span>
               </Link>
@@ -133,7 +129,7 @@ export function Navigation() {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
                       >
-                        <Icon className="w-5 h-5 text-orange-500" />
+                        <Icon className="w-5 h-5 text-cyan-400" />
                         <span className="text-lg font-medium tracking-wider">
                           {item.name}
                         </span>
@@ -151,7 +147,7 @@ export function Navigation() {
                 <Link
                   href="/catalog"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-4 bg-orange-500 hover:bg-orange-400 text-slate-950 font-bold text-lg rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-lg rounded-xl transition-colors"
                 >
                   EXPLORE CATALOG
                 </Link>
