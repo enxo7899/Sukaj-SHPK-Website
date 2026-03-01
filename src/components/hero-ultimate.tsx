@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { company } from "@/lib/data";
 import { BackgroundPaths } from "@/components/ui/background-paths";
+import { FallingPipes } from "@/components/ui/falling-pipes";
 
 export function HeroUltimate() {
   const reduceMotion = useReducedMotion();
@@ -124,80 +125,81 @@ export function HeroUltimate() {
       {/* ─── Content ─── */}
       <motion.div
         style={reduceMotion ? {} : { y, opacity }}
-        className="relative z-10 site-shell flex flex-col items-center text-center py-28 sm:py-36 lg:py-40"
+        className="relative z-10 site-shell py-28 sm:py-36 lg:py-40"
       >
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col items-center"
-        >
-          {/* Eyebrow */}
-          <motion.div variants={item} className="flex items-center gap-3 mb-10">
-            <div className="h-px w-6 bg-cyan-500/60" />
-            <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Shkodër, Albania — Est. {company.established}
-            </span>
-            <div className="h-px w-6 bg-cyan-500/60" />
-          </motion.div>
-
-          {/* Logo */}
-          <motion.div variants={item} className="mb-8 sm:mb-10">
-            <div className="relative h-16 w-56 sm:h-20 sm:w-72 lg:h-24 lg:w-96">
-              <Image
-                src="/media/hero/logo.png"
-                alt="Sukaj SH.P.K"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            variants={item}
-            className="font-black text-white leading-[1.05] tracking-tight mb-6 max-w-4xl"
-            style={{ fontSize: "clamp(2.6rem, 6vw, 5.5rem)" }}
-          >
-            Industrial Pipe Systems
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage:
-                  "linear-gradient(90deg, #22d3ee 0%, #0891b2 50%, #38bdf8 100%)",
-              }}
-            >
-              for the Balkans.
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            variants={item}
-            className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-12"
-          >
-            We import and wholesale HDPE, PP and PVC pipe systems —
-            sewage, drainage, irrigation and industrial — partnering
-            with&nbsp;
-            <span className="text-slate-200 font-medium">
-              {company.stats.partnersCount} European manufacturers
-            </span>{" "}
-            to serve contractors and municipalities across&nbsp;
-            <span className="text-slate-200 font-medium">
-              {company.stats.countriesServed} countries
-            </span>
-            .
-          </motion.p>
-
-          {/* CTAs */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text Content */}
           <motion.div
-            variants={item}
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16"
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col"
           >
+            {/* Eyebrow */}
+            <motion.div variants={item} className="flex items-center gap-3 mb-8">
+              <div className="h-px w-6 bg-cyan-500/60" />
+              <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+                Shkodër, Albania — Est. {company.established}
+              </span>
+            </motion.div>
+
+            {/* Logo */}
+            <motion.div variants={item} className="mb-8">
+              <div className="relative h-14 w-48 sm:h-16 sm:w-56 lg:h-20 lg:w-72">
+                <Image
+                  src="/media/hero/logo.png"
+                  alt="Sukaj SH.P.K"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              variants={item}
+              className="font-black text-white leading-[1.05] tracking-tight mb-6"
+              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+            >
+              Premium Pipe Solutions
+              <br />
+              <span
+                style={{
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundImage:
+                    "linear-gradient(90deg, #22d3ee 0%, #0891b2 50%, #38bdf8 100%)",
+                }}
+              >
+                Built for the Balkans.
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={item}
+              className="text-base sm:text-lg text-slate-400 leading-relaxed mb-12"
+            >
+              Leading importer and wholesaler of HDPE, PP, and PVC pipe systems.
+              From sewage to irrigation, we deliver European-grade infrastructure
+              solutions partnering with&nbsp;
+              <span className="text-slate-200 font-medium">
+                {company.stats.partnersCount} manufacturers
+              </span>{" "}
+              across&nbsp;
+              <span className="text-slate-200 font-medium">
+                {company.stats.countriesServed} countries
+              </span>
+              .
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              variants={item}
+              className="flex flex-wrap items-center gap-3 sm:gap-4 mb-12"
+            >
             <Link
               href="/catalog"
               className="group inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-8 py-4 text-sm font-bold text-white transition-all duration-200 hover:bg-cyan-500 hover:-translate-y-px hover:shadow-xl hover:shadow-cyan-700/30"
@@ -214,24 +216,30 @@ export function HeroUltimate() {
             </Link>
           </motion.div>
 
-          {/* Standards strip */}
-          <motion.div variants={item} className="w-full max-w-2xl">
-            <div
-              className="h-px w-full mb-6"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent)",
-              }}
-            />
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-              {["EN 13476","EN 12201","ISO 9001","PE100","HDPE","PP","PVC","SN4 / SN8"].map((s) => (
-                <span key={s} className="font-mono text-[10px] tracking-[0.18em] text-slate-600 uppercase">
-                  {s}
-                </span>
-              ))}
-            </div>
+            {/* Standards strip */}
+            <motion.div variants={item} className="w-full">
+              <div
+                className="h-px w-full mb-6"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.06) 50%, transparent 100%)",
+                }}
+              />
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                {["EN 13476","EN 12201","ISO 9001","PE100","HDPE","PP","PVC","SN4 / SN8"].map((s) => (
+                  <span key={s} className="font-mono text-[10px] tracking-[0.18em] text-slate-600 uppercase">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Right: Animated Pipes */}
+          <div className="relative hidden lg:block">
+            <FallingPipes />
+          </div>
+        </div>
       </motion.div>
 
       {/* ─── Scroll hint ─── */}
