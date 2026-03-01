@@ -6,44 +6,33 @@ import { useMemo } from "react";
 interface Pipe {
   id: number;
   x: number;
+  y: number;
   rotation: number;
   delay: number;
   duration: number;
-  size: "sm" | "md" | "lg";
-  color: string;
+  diameter: number;
+  length: number;
 }
 
 export function FallingPipes() {
   const pipes = useMemo<Pipe[]>(() => {
-    const colors = [
-      "rgba(34,211,238,0.8)",   // cyan
-      "rgba(14,165,233,0.8)",   // blue
-      "rgba(8,145,178,0.8)",    // teal
-    ];
-    
-    return Array.from({ length: 8 }, (_, i) => ({
+    return Array.from({ length: 6 }, (_, i) => ({
       id: i,
-      x: (i % 4) * 25 + 10,
-      rotation: Math.random() * 360,
-      delay: i * 0.8,
-      duration: 15 + Math.random() * 5,
-      size: ["sm", "md", "lg"][Math.floor(Math.random() * 3)] as "sm" | "md" | "lg",
-      color: colors[i % colors.length],
+      x: (i % 3) * 30 + 15,
+      y: -100 - (i * 80),
+      rotation: -15 + (i * 10),
+      delay: i * 1.2,
+      duration: 18 + (i % 3) * 2,
+      diameter: 50 + (i % 3) * 15,
+      length: 250 + (i % 2) * 100,
     }));
   }, []);
 
-  const sizeMap = {
-    sm: { width: 40, height: 200 },
-    md: { width: 50, height: 280 },
-    lg: { width: 60, height: 350 },
-  };
-
   return (
     <div className="relative w-full h-[600px] overflow-hidden">
-      {/* Perspective container */}
-      <div className="absolute inset-0" style={{ perspective: "1000px" }}>
+      <div className="absolute inset-0" style={{ perspective: "1200px" }}>
         {pipes.map((pipe) => {
-          const { width, height } = sizeMap[pipe.size];
+          const ribCount = Math.floor(pipe.length / 8);
           
           return (
             <motion.div
@@ -51,15 +40,14 @@ export function FallingPipes() {
               className="absolute"
               style={{
                 left: `${pipe.x}%`,
-                top: "-400px",
-                width: `${width}px`,
-                height: `${height}px`,
+                width: `${pipe.diameter}px`,
+                height: `${pipe.length}px`,
                 transformStyle: "preserve-3d",
               }}
+              initial={{ y: pipe.y }}
               animate={{
-                y: ["0vh", "120vh"],
-                rotateX: [pipe.rotation, pipe.rotation + 180],
-                rotateY: [0, 360],
+                y: [pipe.y, 700],
+                rotateZ: [pipe.rotation, pipe.rotation + 15, pipe.rotation],
               }}
               transition={{
                 duration: pipe.duration,
@@ -68,42 +56,83 @@ export function FallingPipes() {
                 delay: pipe.delay,
               }}
             >
-              {/* Pipe body - cylindrical appearance */}
-              <div
-                className="relative w-full h-full rounded-lg"
-                style={{
-                  background: `linear-gradient(90deg, 
-                    ${pipe.color.replace("0.8", "0.3")} 0%, 
-                    ${pipe.color} 50%, 
-                    ${pipe.color.replace("0.8", "0.3")} 100%)`,
-                  boxShadow: `
-                    inset -4px 0 8px rgba(0,0,0,0.3),
-                    inset 4px 0 8px rgba(255,255,255,0.1),
-                    0 10px 30px rgba(0,0,0,0.3)
-                  `,
-                  border: `1px solid ${pipe.color.replace("0.8", "0.4")}`,
-                }}
-              >
-                {/* Pipe rings/grooves */}
-                {[...Array(Math.floor(height / 60))].map((_, i) => (
+              {/* Corrugated HDPE Pipe */}
+              <div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
+                {/* Pipe body with corrugations */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: `linear-gradient(90deg, 
+                      #1a1a1a 0%, 
+                      #2d2d2d 45%, 
+                      #404040 50%, 
+                      #2d2d2d 55%, 
+                      #1a1a1a 100%)`,
+                    borderRadius: "4px",
+                    boxShadow: `
+                      inset -3px 0 6px rgba(0,0,0,0.6),
+                      inset 3px 0 6px rgba(255,255,255,0.1),
+                      0 8px 24px rgba(0,0,0,0.4)
+                    `,
+                  }}
+                >
+                  {/* Corrugated ribs */}
+                  {[...Array(ribCount)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute inset-x-0"
+                      style={{
+                        top: `${i * 8}px`,
+                        height: "4px",
+                        background: `linear-gradient(90deg, 
+                          rgba(0,0,0,0.4) 0%, 
+                          rgba(80,80,80,0.3) 50%, 
+                          rgba(0,0,0,0.4) 100%)`,
+                        borderTop: "1px solid rgba(0,0,0,0.3)",
+                        borderBottom: "1px solid rgba(100,100,100,0.2)",
+                      }}
+                    />
+                  ))}
+                  
+                  {/* Highlight streak */}
                   <div
-                    key={i}
-                    className="absolute inset-x-0 h-1"
+                    className="absolute top-0 left-[30%] w-[15%] h-full"
                     style={{
-                      top: `${i * 60 + 30}px`,
-                      background: `linear-gradient(90deg, 
-                        rgba(0,0,0,0.2) 0%, 
-                        rgba(255,255,255,0.1) 50%, 
-                        rgba(0,0,0,0.2) 100%)`,
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)",
+                      borderRadius: "2px",
                     }}
                   />
-                ))}
-                
-                {/* Highlight */}
+                </div>
+
+                {/* Top end cap - blue interior visible */}
                 <div
-                  className="absolute top-0 left-1/4 w-1/4 h-full rounded-lg"
+                  className="absolute top-0 left-0 right-0"
                   style={{
-                    background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%)",
+                    height: `${pipe.diameter * 0.3}px`,
+                    background: `radial-gradient(ellipse at center, 
+                      #3b82f6 0%, 
+                      #2563eb 40%, 
+                      #1e40af 70%, 
+                      #1a1a1a 100%)`,
+                    borderRadius: "50%",
+                    transform: "translateY(-50%) rotateX(75deg)",
+                    boxShadow: "inset 0 -2px 8px rgba(0,0,0,0.5)",
+                  }}
+                />
+
+                {/* Bottom end cap - blue interior visible */}
+                <div
+                  className="absolute bottom-0 left-0 right-0"
+                  style={{
+                    height: `${pipe.diameter * 0.3}px`,
+                    background: `radial-gradient(ellipse at center, 
+                      #3b82f6 0%, 
+                      #2563eb 40%, 
+                      #1e40af 70%, 
+                      #1a1a1a 100%)`,
+                    borderRadius: "50%",
+                    transform: "translateY(50%) rotateX(-75deg)",
+                    boxShadow: "inset 0 2px 8px rgba(0,0,0,0.5)",
                   }}
                 />
               </div>
@@ -112,11 +141,11 @@ export function FallingPipes() {
         })}
       </div>
 
-      {/* Glow effect overlay */}
+      {/* Subtle ambient glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(34,211,238,0.1) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(59,130,246,0.08) 0%, transparent 70%)",
         }}
       />
     </div>
