@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 interface Pipe {
   id: number;
   width: number;
-  finalY: number;
-  finalRotation: number;
   delay: number;
+  initialRotation: number;
+  groundLevel: number;
 }
 
 const pipes: Pipe[] = [
-  { id: 1, width: 280, finalY: 420, finalRotation: -8, delay: 0 },
-  { id: 2, width: 320, finalY: 280, finalRotation: 5, delay: 0.15 },
-  { id: 3, width: 260, finalY: 150, finalRotation: -3, delay: 0.3 },
-  { id: 4, width: 300, finalY: 10, finalRotation: 7, delay: 0.45 },
+  { id: 1, width: 280, delay: 0, initialRotation: -45, groundLevel: 480 },
+  { id: 2, width: 320, delay: 0.2, initialRotation: 30, groundLevel: 420 },
+  { id: 3, width: 260, delay: 0.4, initialRotation: -60, groundLevel: 360 },
+  { id: 4, width: 300, delay: 0.6, initialRotation: 50, groundLevel: 300 },
 ];
 
 function CorrugatedPipe({ width }: { width: number }) {
@@ -114,27 +114,37 @@ export function FallingPipes() {
             x: "-50%",
           }}
           initial={{
-            y: -400,
-            rotate: pipe.finalRotation - 20,
+            y: -200,
+            rotate: pipe.initialRotation,
           }}
           animate={{
-            y: pipe.finalY,
-            rotate: pipe.finalRotation,
+            y: [
+              -200,
+              pipe.groundLevel - 50,
+              pipe.groundLevel - 20,
+              pipe.groundLevel - 5,
+              pipe.groundLevel,
+            ],
+            rotate: [
+              pipe.initialRotation,
+              pipe.initialRotation + 180,
+              pipe.initialRotation + 270,
+              pipe.initialRotation + 340,
+              pipe.initialRotation + 360,
+            ],
           }}
           transition={{
             delay: pipe.delay,
-            duration: 1.2,
-            ease: [0.34, 1.56, 0.64, 1],
+            duration: 1.8,
+            times: [0, 0.5, 0.7, 0.85, 1],
+            ease: "easeIn",
             y: {
-              type: "spring",
-              damping: 12,
-              stiffness: 100,
-              mass: 1.5,
+              type: "tween",
+              ease: [0.25, 0.1, 0.25, 1],
             },
             rotate: {
-              type: "spring",
-              damping: 15,
-              stiffness: 80,
+              type: "tween",
+              ease: "linear",
             },
           }}
         >
