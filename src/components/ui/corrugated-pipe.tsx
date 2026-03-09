@@ -15,9 +15,9 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
   color = "#0f172a",
   marking = "SUKAJ SH.P.K",
 }: CorrugatedPipeProps) {
-  const ribSize = Math.max(4, Math.round(width / 38));
-  const endCapW = Math.max(4, Math.round(height * 0.08));
-  const fontSize = Math.max(6, Math.round(height * 0.15));
+  const ribSize = Math.max(4, Math.round(width / 34));
+  const endCapW = Math.max(6, Math.round(height * 0.18));
+  const fontSize = Math.max(6, Math.round(height * 0.14));
 
   return (
     <div
@@ -45,17 +45,19 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           border: "1px solid rgba(100,116,139,0.08)",
         }}
       >
-        {/* Corrugation ribs — subtle dark grooves */}
+        {/* Corrugation ribs — pronounced grooves like real corrugated pipe */}
         <div
-          className="absolute inset-y-[6%] inset-x-[1%] rounded-[999px] overflow-hidden"
+          className="absolute inset-y-[5%] inset-x-[1%] rounded-[999px] overflow-hidden"
           style={{
             backgroundImage: `repeating-linear-gradient(90deg,
-              rgba(0,0,0,0.18) 0px,
-              rgba(0,0,0,0.18) 1px,
+              rgba(0,0,0,0.28) 0px,
+              rgba(0,0,0,0.22) 1px,
               transparent 1px,
-              transparent ${ribSize - 1}px,
-              rgba(255,255,255,0.025) ${ribSize - 1}px,
-              rgba(255,255,255,0.025) ${ribSize}px
+              transparent ${Math.max(2, ribSize - 2)}px,
+              rgba(255,255,255,0.04) ${Math.max(2, ribSize - 2)}px,
+              rgba(255,255,255,0.04) ${ribSize - 1}px,
+              rgba(0,0,0,0.12) ${ribSize - 1}px,
+              rgba(0,0,0,0.12) ${ribSize}px
             )`,
             backgroundSize: `${ribSize}px 100%`,
           }}
@@ -105,53 +107,93 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           </span>
         </div>
 
-        {/* Thin colored marking stripe — subtle like real pipe markings */}
+        {/* Orange marking stripe — like real HDPE pipes */}
         <div
-          className="absolute left-[4%] right-[4%] rounded-full"
+          className="absolute left-[3%] right-[3%] rounded-full"
           style={{
-            top: `${Math.round(height * 0.66)}px`,
-            height: "1.5px",
+            top: `${Math.round(height * 0.62)}px`,
+            height: "2px",
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(56,189,248,0.15) 15%, rgba(56,189,248,0.25) 50%, rgba(56,189,248,0.15) 85%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.35) 10%, rgba(249,115,22,0.5) 50%, rgba(234,88,12,0.35) 90%, transparent 100%)",
+          }}
+        />
+        {/* Second thin orange stripe */}
+        <div
+          className="absolute left-[3%] right-[3%] rounded-full"
+          style={{
+            top: `${Math.round(height * 0.67)}px`,
+            height: "1px",
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.2) 15%, rgba(249,115,22,0.3) 50%, rgba(234,88,12,0.2) 85%, transparent 100%)",
           }}
         />
       </div>
 
-      {/* Left end — subtle flush ring, same material color */}
+      {/* Left end — dark outer ring with blue interior (like real HDPE pipe cross-section) */}
       <div
-        className="absolute left-0 top-[3%] bottom-[3%] z-[2]"
+        className="absolute left-0 top-[2%] bottom-[2%] z-[2] overflow-hidden"
         style={{
           width: `${endCapW}px`,
           borderRadius: "999px",
-          transform: "translateX(-20%)",
-          background: `linear-gradient(180deg,
-            rgba(15,23,42,0.95) 0%,
-            rgba(30,41,59,0.9) 35%,
-            rgba(51,65,85,0.85) 50%,
-            rgba(30,41,59,0.9) 65%,
-            rgba(15,23,42,0.95) 100%)`,
-          boxShadow: "inset 1px 0 2px rgba(0,0,0,0.6)",
-          border: "1px solid rgba(100,116,139,0.12)",
+          transform: "translateX(-25%)",
         }}
-      />
+      >
+        {/* Outer dark ring (pipe wall) */}
+        <div
+          className="absolute inset-0 rounded-[999px]"
+          style={{
+            background: `linear-gradient(180deg,
+              #0a0f1a 0%, #141c2b 25%, #1e293b 50%, #141c2b 75%, #0a0f1a 100%)`,
+            border: "1px solid rgba(100,116,139,0.15)",
+          }}
+        />
+        {/* Blue interior lining — visible through the opening */}
+        <div
+          className="absolute rounded-[999px]"
+          style={{
+            top: "18%",
+            bottom: "18%",
+            left: "15%",
+            right: "10%",
+            background: `linear-gradient(180deg,
+              #1e40af 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 50%, #3b82f6 55%, #2563eb 75%, #1e40af 100%)`,
+            boxShadow: "inset 0 0 3px rgba(0,0,0,0.4)",
+          }}
+        />
+      </div>
 
-      {/* Right end — subtle flush ring */}
+      {/* Right end — dark outer ring with blue interior */}
       <div
-        className="absolute right-0 top-[3%] bottom-[3%] z-[2]"
+        className="absolute right-0 top-[2%] bottom-[2%] z-[2] overflow-hidden"
         style={{
           width: `${endCapW}px`,
           borderRadius: "999px",
-          transform: "translateX(20%)",
-          background: `linear-gradient(180deg,
-            rgba(15,23,42,0.95) 0%,
-            rgba(30,41,59,0.9) 35%,
-            rgba(51,65,85,0.85) 50%,
-            rgba(30,41,59,0.9) 65%,
-            rgba(15,23,42,0.95) 100%)`,
-          boxShadow: "inset -1px 0 2px rgba(0,0,0,0.6)",
-          border: "1px solid rgba(100,116,139,0.12)",
+          transform: "translateX(25%)",
         }}
-      />
+      >
+        {/* Outer dark ring (pipe wall) */}
+        <div
+          className="absolute inset-0 rounded-[999px]"
+          style={{
+            background: `linear-gradient(180deg,
+              #0a0f1a 0%, #141c2b 25%, #1e293b 50%, #141c2b 75%, #0a0f1a 100%)`,
+            border: "1px solid rgba(100,116,139,0.15)",
+          }}
+        />
+        {/* Blue interior lining */}
+        <div
+          className="absolute rounded-[999px]"
+          style={{
+            top: "18%",
+            bottom: "18%",
+            left: "10%",
+            right: "15%",
+            background: `linear-gradient(180deg,
+              #1e40af 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 50%, #3b82f6 55%, #2563eb 75%, #1e40af 100%)`,
+            boxShadow: "inset 0 0 3px rgba(0,0,0,0.4)",
+          }}
+        />
+      </div>
     </div>
   );
 });

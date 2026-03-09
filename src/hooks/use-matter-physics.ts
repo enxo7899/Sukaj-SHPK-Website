@@ -151,11 +151,24 @@ export function useMatterPhysics({
         }
 
         if (steps > 0) {
+          const MAX_ANGLE_RAD = HERO_PIPE_WORLD.maxAngleDeg * (Math.PI / 180);
+
           entries.forEach((entry) => {
             if (!entry.added || !entry.pipeRef?.el) return;
 
             const b = entry.body;
             const el = entry.pipeRef.el;
+
+            // Clamp rotation so pipes never go upside-down (text stays readable)
+            if (Math.abs(b.angle) > MAX_ANGLE_RAD) {
+              const clamped = Math.max(-MAX_ANGLE_RAD, Math.min(MAX_ANGLE_RAD, b.angle));
+              Body.setAngle(b, clamped);
+              // Kill angular velocity when hitting the limit to prevent fighting
+              if (Math.sign(b.angularVelocity) === Math.sign(b.angle)) {
+                Body.setAngularVelocity(b, -b.angularVelocity * 0.3);
+              }
+            }
+
             const x = b.position.x - entry.config.width * 0.5;
             const y = b.position.y - entry.config.height * 0.5;
             const angle = b.angle * RAD_TO_DEG;

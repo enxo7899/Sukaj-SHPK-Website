@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -12,13 +12,22 @@ import { FallingPipes } from "@/components/ui/falling-pipes";
 export function HeroUltimate() {
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "12%" : "22%"]);
+  // On mobile: fade much slower (0.85 = 85% scrolled). On desktop: current behavior (0.65)
+  const opacity = useTransform(scrollYProgress, [0, isMobile ? 0.85 : 0.65], [1, 0]);
 
   const container: Variants = {
     hidden: {},
