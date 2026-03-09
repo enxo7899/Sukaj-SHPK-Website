@@ -339,6 +339,39 @@ export const timeline = [
   },
 ];
 
+export const locations = [
+  {
+    id: "vore-tirana",
+    name: "Vorë, Tirana",
+    label: "Warehouse & Distribution",
+    address: "Rruga Dytësore, Vorë, Tiranë 1001",
+    description: "Central distribution hub on the Tiranë–Vorë highway, serving the capital region and southern Albania.",
+    coordinates: { lat: 41.3748627, lng: 19.6773701 },
+    mapUrl: "https://maps.app.goo.gl/4sfk7zTCD12MdgHj7?g_st=aw",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.5!2d19.6517!3d41.3928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDIzJzM0LjEiTiAxOcKwMzknMDYuMSJF!5e0!3m2!1sen!2s!4v1",
+  },
+  {
+    id: "shkoder",
+    name: "Shkodër",
+    label: "Headquarters",
+    address: "Shkodër, Albania",
+    description: "Company headquarters and primary operations center since 1995. Main office and showroom.",
+    coordinates: { lat: 42.1188879, lng: 19.4960235 },
+    mapUrl: "https://maps.app.goo.gl/YTsRT62aPVW9BXnb6",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.5!2d19.5033!3d42.0693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDA0JzA5LjUiTiAxOcKwMzAnMTEuOSJF!5e0!3m2!1sen!2s!4v1",
+  },
+  {
+    id: "lac",
+    name: "Laç",
+    label: "Regional Depot",
+    address: "Laç, Kurbin, Albania",
+    description: "Northern regional storage and fast-delivery depot for Kurbin and surrounding districts.",
+    coordinates: { lat: 41.6035026, lng: 19.6686082 },
+    mapUrl: "https://maps.app.goo.gl/14Q7Hq7PxrW2xstx8",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2982.5!2d19.7131!3d41.6358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDM4JzA4LjkiTiAxOcKwNDInNDcuMiJF!5e0!3m2!1sen!2s!4v1",
+  },
+];
+
 export const categories = [
   {
     id: "civil",

@@ -37,73 +37,6 @@ export function HeroUltimate() {
       {/* ─── Background ─── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <BackgroundPaths />
-        {/* Aurora blob 1 — top-left, slow drift */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: 800,
-            height: 800,
-            top: "-20%",
-            left: "-10%",
-            background:
-              "radial-gradient(ellipse at center, rgba(8,145,178,0.11) 0%, rgba(6,182,212,0.05) 45%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-          animate={reduceMotion ? {} : {
-            x: [0, 60, 20, -30, 0],
-            y: [0, 40, -20, 30, 0],
-          }}
-          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
-        />
-        {/* Aurora blob 2 — center-right */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: 700,
-            height: 600,
-            top: "10%",
-            right: "-15%",
-            background:
-              "radial-gradient(ellipse at center, rgba(14,165,233,0.08) 0%, rgba(8,145,178,0.04) 50%, transparent 70%)",
-            filter: "blur(50px)",
-          }}
-          animate={reduceMotion ? {} : {
-            x: [0, -50, -20, 40, 0],
-            y: [0, 60, 20, -40, 0],
-          }}
-          transition={{ duration: 34, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-        />
-        {/* Aurora blob 3 — bottom-center */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: 900,
-            height: 500,
-            bottom: "0%",
-            left: "20%",
-            background:
-              "radial-gradient(ellipse at center, rgba(34,211,238,0.06) 0%, rgba(8,145,178,0.03) 50%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-          animate={reduceMotion ? {} : {
-            x: [0, 40, -30, 20, 0],
-            y: [0, -30, 20, -10, 0],
-          }}
-          transition={{ duration: 40, repeat: Infinity, ease: "easeInOut", delay: 8 }}
-        />
-        {/* Fine dot grid — masked to center */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(148,163,184,0.09) 1px, transparent 1px)",
-            backgroundSize: "36px 36px",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 75% 75% at 50% 40%, black 20%, transparent 100%)",
-            maskImage:
-              "radial-gradient(ellipse 75% 75% at 50% 40%, black 20%, transparent 100%)",
-          }}
-        />
         {/* Thin top accent line */}
         <div
           className="absolute top-0 inset-x-0 h-px"
@@ -112,7 +45,7 @@ export function HeroUltimate() {
               "linear-gradient(90deg, transparent, rgba(34,211,238,0.4) 35%, rgba(8,145,178,0.6) 50%, rgba(34,211,238,0.4) 65%, transparent)",
           }}
         />
-        {/* Subtle vignette to darken edges */}
+        {/* Vignette */}
         <div
           className="absolute inset-0"
           style={{
@@ -127,13 +60,13 @@ export function HeroUltimate() {
         style={reduceMotion ? {} : { y, opacity }}
         className="relative z-10 site-shell py-28 sm:py-36 lg:py-40"
       >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-12 xl:gap-16 items-center">
           {/* Left: Text Content */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex flex-col"
+            className="flex flex-col order-1 lg:order-1"
           >
             {/* Eyebrow */}
             <motion.div variants={item} className="flex items-center gap-3 mb-8">
@@ -236,7 +169,7 @@ export function HeroUltimate() {
           </motion.div>
 
           {/* Right: Animated Pipes */}
-          <div className="relative hidden lg:block">
+          <div className="relative w-full order-2 lg:order-2">
             <FallingPipes />
           </div>
         </div>

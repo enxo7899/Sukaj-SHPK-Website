@@ -72,102 +72,97 @@ function PartnerCard({
   const isExternal = partner.website.startsWith("http");
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.45, delay: index * 0.06, ease: "easeOut" }}
-      className="group relative flex flex-col gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.05] hover:-translate-y-0.5 hover:shadow-xl"
-      style={{
-        boxShadow: "0 0 0 0 transparent",
-      }}
-      whileHover={{
-        boxShadow: `0 8px 32px -8px ${accent}22, 0 0 0 1px ${accent}18`,
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
+      className="group relative flex flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
     >
-      {/* Glow top accent */}
+      {/* Top accent line on hover */}
       <div
-        className="absolute top-0 inset-x-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute top-0 inset-x-4 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: `linear-gradient(90deg, transparent 10%, ${accent}80 50%, transparent 90%)`,
+          background: `linear-gradient(90deg, transparent, ${accent}60, transparent)`,
         }}
       />
 
-      {/* Type badge top-right */}
-      <div
-        className="absolute top-4 right-4 rounded-full px-2 py-0.5 font-mono text-[9px] tracking-widest uppercase"
-        style={{
-          backgroundColor: `${accent}15`,
-          color: `${accent}`,
-          border: `1px solid ${accent}25`,
-        }}
-      >
-        {partnerTypeLabels[partner.partnerType]}
-      </div>
-
-      {/* Logo / avatar */}
-      <div className="flex items-start gap-3 pr-20">
-        <div
-          className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl overflow-hidden"
-          style={{
-            backgroundColor: `${accent}12`,
-            border: `1px solid ${accent}28`,
-          }}
-        >
-          {partner.logo.dark ? (
-            <Image
-              src={partner.logo.dark}
-              alt={partner.name}
-              width={40}
-              height={40}
-              className="h-8 w-auto object-contain opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
-            />
-          ) : (
-            <span className="text-lg font-black" style={{ color: accent }}>
-              {partner.name.charAt(0)}
-            </span>
-          )}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="font-bold text-white text-sm leading-snug">{partner.name}</p>
-          <div className="flex items-center gap-1 mt-0.5">
-            <MapPin className="h-3 w-3 text-slate-500 shrink-0" />
-            <span className="text-xs font-mono text-slate-500">{partner.country}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Tagline */}
-      <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">{partner.tagline}</p>
-
-      {/* Metric chips */}
-      <div className="flex flex-wrap gap-1.5">
-        {partner.heroMetrics.slice(0, 3).map((m) => (
-          <span
-            key={m}
-            className="rounded-md border border-white/[0.08] bg-white/[0.04] px-2 py-0.5 font-mono text-[9px] tracking-wider text-slate-400"
-          >
-            {m}
-          </span>
-        ))}
-        {partner.keyStandards.slice(0, 2).map((s) => (
-          <span
-            key={s}
-            className="rounded-md border px-2 py-0.5 font-mono text-[9px] tracking-wider"
+      <div className="flex flex-col gap-4 p-5">
+        {/* Header: Logo + name + country */}
+        <div className="flex items-start gap-3.5">
+          <div
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden transition-all duration-300"
             style={{
-              borderColor: `${accent}30`,
-              backgroundColor: `${accent}10`,
-              color: accent,
+              backgroundColor: `${accent}08`,
+              border: `1px solid ${accent}20`,
             }}
           >
-            {s}
+            {partner.logo.dark ? (
+              <Image
+                src={partner.logo.dark}
+                alt={partner.name}
+                width={36}
+                height={36}
+                className="h-7 w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+              />
+            ) : (
+              <span className="text-base font-black" style={{ color: accent }}>
+                {partner.name.charAt(0)}
+              </span>
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold text-white text-[13px] leading-snug">{partner.name}</p>
+            <div className="flex items-center gap-1.5 mt-1">
+              <MapPin className="h-3 w-3 text-slate-600 shrink-0" />
+              <span className="text-[11px] text-slate-500">{partner.country}</span>
+            </div>
+          </div>
+          {/* Type pill */}
+          <span
+            className="shrink-0 rounded-full px-2 py-0.5 font-mono text-[8px] tracking-[0.08em] uppercase"
+            style={{
+              backgroundColor: `${accent}10`,
+              color: accent,
+              border: `1px solid ${accent}20`,
+            }}
+          >
+            {partnerTypeLabels[partner.partnerType]}
           </span>
-        ))}
+        </div>
+
+        {/* Specialty */}
+        <p className="text-[12px] text-slate-400 leading-relaxed line-clamp-2">{partner.specialty}</p>
+
+        {/* Metrics */}
+        <div className="flex flex-wrap gap-1.5">
+          {partner.heroMetrics.slice(0, 3).map((m) => (
+            <span
+              key={m}
+              className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-[3px] font-mono text-[9px] tracking-wide text-slate-500"
+            >
+              {m}
+            </span>
+          ))}
+          {partner.keyStandards.slice(0, 2).map((s) => (
+            <span
+              key={s}
+              className="rounded-md border px-2 py-[3px] font-mono text-[9px] tracking-wide"
+              style={{
+                borderColor: `${accent}25`,
+                backgroundColor: `${accent}08`,
+                color: accent,
+              }}
+            >
+              {s}
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Footer row */}
-      <div className="mt-auto flex items-center justify-between border-t border-white/[0.06] pt-3">
+      {/* Footer */}
+      <div className="mt-auto flex items-center justify-between border-t border-white/[0.05] px-5 py-3">
         <Link
           href={`/catalog?partner=${partner.id}`}
-          className="group/link inline-flex items-center gap-1 text-xs font-medium text-slate-500 transition-colors hover:text-cyan-400"
+          className="group/link inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 transition-colors hover:text-cyan-400"
         >
           View products
           <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200" />
@@ -177,7 +172,7 @@ function PartnerCard({
             href={partner.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-white/10 bg-white/5 p-1.5 text-slate-500 transition-colors hover:border-white/25 hover:text-white"
+            className="rounded-lg border border-white/[0.08] bg-white/[0.03] p-1.5 text-slate-600 transition-colors hover:border-white/20 hover:text-slate-300"
             aria-label={`Visit ${partner.name}`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -243,34 +238,52 @@ export function PartnersSection() {
 
       <div className="site-shell relative">
         {/* Header */}
-        <div className="mb-10 sm:mb-12">
+        <div className="mb-12 sm:mb-14 lg:mb-16">
           <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Partner Ecosystem
+              Partner Network
             </span>
           </div>
-          <h2
-            className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
-          >
-            Strategic Partners
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-              }}
-            >
-              across 7 countries.
-            </span>
-          </h2>
-          <p className="text-slate-400 max-w-xl text-base leading-relaxed">
-            12 manufacturing and processing partners — from Italy to Turkey —
-            covering every pipe, hose, film, and packaging need.
-          </p>
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div>
+              <h2
+                className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+              >
+                Strategic Partners{" "}
+                <span
+                  style={{
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+                  }}
+                >
+                  across 7 countries.
+                </span>
+              </h2>
+              <p className="text-slate-400 max-w-lg text-base leading-relaxed">
+                12 manufacturing and processing partners — from Italy to Turkey —
+                covering every pipe, hose, film, and packaging need.
+              </p>
+            </div>
+            {/* Summary stats for desktop */}
+            <div className="hidden lg:flex items-center gap-8 pb-1">
+              {[
+                { value: "12", label: "Partners" },
+                { value: "7", label: "Countries" },
+                { value: "5", label: "Sectors" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-2xl font-black text-white">{stat.value}</div>
+                  <div className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ─── Marquee logo strip ─── */}
@@ -290,33 +303,31 @@ export function PartnersSection() {
         </div>
 
         {/* Filter tabs */}
-        <div className="mb-10 flex flex-wrap gap-2">
+        <div className="mb-8 sm:mb-10 flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-hide">
           {tabs.map((tab) => {
             const isActive = active === tab.id;
-            const accent =
+            const tabAccent =
               tab.id === ALL ? "#0891b2" : typeAccent[tab.id as PartnerType];
             return (
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className="relative rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200"
+                className="relative shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200"
                 style={{
                   color: isActive ? "#fff" : "#64748b",
-                  backgroundColor: isActive ? `${accent}18` : "transparent",
+                  backgroundColor: isActive ? `${tabAccent}15` : "transparent",
                   border: isActive
-                    ? `1px solid ${accent}40`
-                    : "1px solid rgba(255,255,255,0.06)",
+                    ? `1px solid ${tabAccent}35`
+                    : "1px solid transparent",
                 }}
               >
-                {tab.label}
                 {isActive && (
-                  <motion.div
-                    layoutId="tab-indicator"
-                    className="absolute inset-0 rounded-lg"
-                    style={{ border: `1px solid ${accent}40` }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  <span
+                    className="absolute left-3 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full"
+                    style={{ backgroundColor: tabAccent }}
                   />
                 )}
+                <span className={isActive ? "ml-3" : ""}>{tab.label}</span>
               </button>
             );
           })}
@@ -367,12 +378,21 @@ export function PartnersSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-14 flex items-center gap-4 border-t border-white/[0.06] pt-10">
+        <div className="mt-14 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-white/[0.06] pt-10">
+          <div>
+            <p className="text-sm text-slate-400 mb-1">
+              Explore our complete product range from all partners.
+            </p>
+            <p className="text-xs text-slate-600">
+              Filter by material, application, or partner.
+            </p>
+          </div>
           <Link
             href="/catalog"
-            className="inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-cyan-500"
+            className="group inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-cyan-500 hover:-translate-y-px hover:shadow-lg hover:shadow-cyan-600/20"
           >
-            Browse catalog
+            Browse Full Catalog
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
       </div>
