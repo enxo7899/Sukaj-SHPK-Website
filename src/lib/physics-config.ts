@@ -40,13 +40,13 @@ export const HERO_PIPE_WORLD = {
 } as const;
 
 const PIPE_COLORS = [
-  "#0c1220",
-  "#0a1018",
-  "#0e141f",
-  "#0b111c",
-  "#0d1321",
-  "#091019",
-  "#0f1623",
+  "#111827",
+  "#0f1624",
+  "#131b2e",
+  "#101825",
+  "#121a29",
+  "#0e1521",
+  "#141c2d",
 ];
 
 const PIPE_MARKINGS = [

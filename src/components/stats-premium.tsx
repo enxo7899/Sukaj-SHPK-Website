@@ -56,11 +56,11 @@ export function StatsPremium() {
                 i < 2 ? "border-b border-white/[0.06] lg:border-b-0" : ""
               }`}
             >
-              <span className="text-4xl sm:text-5xl font-black text-white mb-2 tabular-nums">
+              <span className="text-4xl sm:text-5xl font-black mb-2 tabular-nums text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-400">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </span>
               <span className="text-sm font-semibold text-slate-300 mb-1">{stat.label}</span>
-              <span className="text-xs font-mono text-slate-600 tracking-widest uppercase">{stat.detail}</span>
+              <span className="text-[10px] font-mono text-slate-600 tracking-[0.2em] uppercase">{stat.detail}</span>
             </motion.div>
           ))}
         </div>

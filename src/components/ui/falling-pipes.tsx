@@ -45,11 +45,35 @@ export function FallingPipes() {
       className="relative h-[360px] w-full overflow-hidden sm:h-[420px] lg:h-[500px] xl:h-[540px]"
       aria-hidden="true"
     >
-      {/* Subtle ambient glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_60%_70%,rgba(14,165,233,0.04),transparent_60%)]" />
+      {/* Stage spotlight from above — dramatic top-down lighting */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 80% 40% at 50% -5%, rgba(148,163,184,0.07) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Warm accent glow where pipes accumulate */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 70% 50% at 50% 85%, rgba(14,165,233,0.06) 0%, transparent 60%)",
+        }}
+      />
+
+      {/* Ground reflection — subtle lit surface */}
+      <div
+        className="pointer-events-none absolute inset-x-[8%] rounded-full"
+        style={{
+          bottom: "18px",
+          height: "24px",
+          background: "radial-gradient(ellipse at center, rgba(148,163,184,0.06) 0%, transparent 70%)",
+          filter: "blur(12px)",
+        }}
+      />
 
       {/* Bottom fade into background */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#020617] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#020617] to-transparent" />
 
       {/* Pipes wrapper — faded in/out by the physics loop */}
       <div ref={wrapperRef} style={{ opacity: 1 }}>

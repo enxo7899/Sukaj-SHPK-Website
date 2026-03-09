@@ -1,18 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Award, TrendingUp, Globe, Sparkles } from "lucide-react";
+import { Calendar, Award, TrendingUp, Globe } from "lucide-react";
 import { timeline } from "@/lib/data";
 
 const milestoneIcons = [Calendar, Award, TrendingUp, Globe];
 
 export function TimelinePremium() {
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(8,145,178,0.08),transparent)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_-10%,rgba(8,145,178,0.06),transparent)]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       </div>
 
       <div className="site-shell relative">
@@ -23,23 +23,29 @@ export function TimelinePremium() {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 backdrop-blur-sm mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm font-semibold text-cyan-100">Our Journey</span>
-          </motion.div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-white">
-              Three Decades of
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="h-px w-8 bg-cyan-500/60" />
+            <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+              Our Journey
             </span>
+            <div className="h-px w-8 bg-cyan-500/60" />
+          </div>
+
+          <h2
+            className="font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+          >
+            Three Decades of
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
-              Excellence
+            <span
+              style={{
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+              }}
+            >
+              Excellence.
             </span>
           </h2>
         </motion.div>

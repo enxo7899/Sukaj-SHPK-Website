@@ -37,12 +37,13 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
             color-mix(in srgb, ${color} 82%, #1e293b) 75%,
             color-mix(in srgb, ${color} 92%, #000) 100%)`,
           boxShadow: `
-            0 3px 12px rgba(0,0,0,0.6),
-            0 8px 28px rgba(0,0,0,0.3),
-            inset 0 -4px 10px rgba(0,0,0,0.6),
-            inset 0 2px 4px rgba(255,255,255,0.04)
+            0 4px 16px rgba(0,0,0,0.7),
+            0 12px 40px rgba(0,0,0,0.35),
+            0 0 60px rgba(14,165,233,0.03),
+            inset 0 -5px 12px rgba(0,0,0,0.6),
+            inset 0 3px 6px rgba(255,255,255,0.05)
           `,
-          border: "1px solid rgba(100,116,139,0.08)",
+          border: "1px solid rgba(100,116,139,0.1)",
         }}
       >
         {/* Corrugation ribs — pronounced grooves like real corrugated pipe */}
@@ -68,7 +69,7 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           className="absolute left-[8%] right-[8%] top-[14%] h-[18%] rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.09) 20%, rgba(255,255,255,0.06) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.08) 50%, transparent 100%)",
           }}
         />
 
@@ -99,8 +100,8 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
             style={{
               fontSize: `${fontSize}px`,
               letterSpacing: `${Math.max(1, Math.round(width * 0.008))}px`,
-              color: "rgba(255,255,255,0.35)",
-              textShadow: "0 1px 2px rgba(0,0,0,0.8)",
+              color: "rgba(255,255,255,0.45)",
+              textShadow: "0 1px 3px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.05)",
             }}
           >
             {marking}
@@ -114,7 +115,7 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
             top: `${Math.round(height * 0.62)}px`,
             height: "2px",
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.35) 10%, rgba(249,115,22,0.5) 50%, rgba(234,88,12,0.35) 90%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.4) 10%, rgba(249,115,22,0.6) 50%, rgba(234,88,12,0.4) 90%, transparent 100%)",
           }}
         />
         {/* Second thin orange stripe */}
@@ -124,7 +125,7 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
             top: `${Math.round(height * 0.67)}px`,
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.2) 15%, rgba(249,115,22,0.3) 50%, rgba(234,88,12,0.2) 85%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(234,88,12,0.25) 15%, rgba(249,115,22,0.35) 50%, rgba(234,88,12,0.25) 85%, transparent 100%)",
           }}
         />
       </div>

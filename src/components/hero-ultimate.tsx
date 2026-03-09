@@ -25,9 +25,10 @@ export function HeroUltimate() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "12%" : "22%"]);
-  // On mobile: fade much slower (0.85 = 85% scrolled). On desktop: current behavior (0.65)
-  const opacity = useTransform(scrollYProgress, [0, isMobile ? 0.85 : 0.65], [1, 0]);
+  // Desktop: parallax + fade for clean section separation
+  // Mobile: no fade at all — the stacked layout means animation is below the fold
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "0%" : "22%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, isMobile ? 1 : 0]);
 
   const container: Variants = {
     hidden: {},

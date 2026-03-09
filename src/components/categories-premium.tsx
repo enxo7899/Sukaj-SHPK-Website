@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { Building2, Sprout, Factory, ArrowRight, Sparkles } from "lucide-react";
+import { Building2, Sprout, Factory, ArrowRight } from "lucide-react";
 import { categories } from "@/lib/data";
 
 const iconMap: Record<string, React.FC<{ className?: string }>> = {
@@ -36,11 +36,11 @@ export function CategoriesPremium() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
       {/* Background effects */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.1),transparent)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.06),transparent)]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       </div>
 
       <div className="site-shell relative">
@@ -52,23 +52,29 @@ export function CategoriesPremium() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 backdrop-blur-sm mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm font-semibold text-cyan-100">Industry Solutions</span>
-          </motion.div>
-          
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-white">
-              Engineered for Every
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="h-px w-8 bg-cyan-500/60" />
+            <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+              Industry Solutions
             </span>
+            <div className="h-px w-8 bg-cyan-500/60" />
+          </div>
+          
+          <h2
+            className="font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+          >
+            Engineered for Every
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
-              Application
+            <span
+              style={{
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+              }}
+            >
+              Application.
             </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
@@ -103,7 +109,7 @@ export function CategoriesPremium() {
                     />
 
                     {/* Card */}
-                    <div className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 group-hover:border-white/30 transition-all overflow-hidden">
+                    <div className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.07] group-hover:border-white/[0.15] group-hover:bg-white/[0.05] transition-all overflow-hidden">
                       {/* Animated gradient overlay */}
                       <motion.div
                         className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity"

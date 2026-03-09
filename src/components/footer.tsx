@@ -10,9 +10,8 @@ export function Footer() {
     .slice(0, 6);
 
   return (
-    <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-white/10">
-      <div className="absolute inset-0 dot-matrix opacity-20" />
-      <div className="absolute inset-0 noise" />
+    <footer className="relative bg-[#020617] border-t border-white/[0.06]">
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
       <div className="site-shell relative py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
