@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { CatalogShell } from "./catalog-shell";
+import { productGroups, getAllSupplierCount } from "@/lib/products-data";
 
 export const metadata = {
   title: "Product Catalog | Sukaj SHPK",
@@ -58,8 +59,9 @@ export default async function CatalogPage({
           </span>
         </h1>
         <p className="text-base sm:text-lg text-slate-400 max-w-2xl">
-          24 products across civil, agricultural and industrial applications —
-          from 12 European manufacturing partners.
+          {productGroups.length} product types across civil, agricultural and
+          industrial applications — from {getAllSupplierCount()} European
+          manufacturing partners.
         </p>
       </div>
 
