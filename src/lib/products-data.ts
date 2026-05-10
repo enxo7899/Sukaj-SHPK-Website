@@ -253,8 +253,7 @@ export const productGroups: ProductGroup[] = [
     application: "Large-Diameter Municipal Sewage",
     description:
       "Spiral-wound polypropylene structured-wall pipe for large-diameter trunk sewers and industrial wastewater. The spiral manufacturing process enables diameters far beyond standard extrusion, making this the preferred solution for major municipal infrastructure. 95% of production is exported across Southeast Europe.",
-    image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/konti-kan-corrugated-sewage.jpg",
     standards: ["EN 13476"],
     keyProperties: {
       "Material": "Polypropylene (PP) structured wall",
@@ -304,8 +303,7 @@ export const productGroups: ProductGroup[] = [
     application: "Gas Distribution",
     description:
       "PE100-RC (Resistance to Crack) gas distribution pipe with characteristic yellow stripe for unmistakable identification on site. Engineered to EN 1555 for natural gas and LPG networks, SDR 11 and SDR 17 ratings. The enhanced crack-resistance compound makes this suitable for difficult installation conditions.",
-    image:
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&h=800&fit=crop&q=80",
+    image: "https://nmtester.com/kontihidroplast/wp-content/uploads/2024/08/PE80-2-min.jpg",
     standards: ["EN 1555", "EN 12201"],
     keyProperties: {
       "Material": "PE100-RC",
@@ -538,8 +536,7 @@ export const productGroups: ProductGroup[] = [
     application: "Waterproofing & Construction",
     description:
       "Heavy-duty polyethylene damp-proof membrane for under-slab and foundation waterproofing. Produced from recycled PE granulates to EN 13967. Available in multiple thicknesses up to 500 µm and widths up to 8 m for large continuous pours.",
-    image:
-      "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=1200&h=800&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/7728082/pexels-photo-7728082.jpeg?auto=compress&cs=tinysrgb&w=800",
     standards: ["EN 13967"],
     keyProperties: {
       "Material": "LDPE (recycled compound)",
@@ -681,8 +678,7 @@ export const productGroups: ProductGroup[] = [
     application: "Garden & Light Irrigation",
     description:
       "Flexible PVC garden hose with textile yarn reinforcement for improved burst pressure and kink resistance. Available in 1/2″, 3/4″, and 1″ diameters in roll lengths from 20 to 50 m. Flexoper 3 model features enhanced flexibility for low-temperature use.",
-    image:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/perplast-classic-pvc-hose.jpg",
     standards: [],
     keyProperties: {
       "Models": "Perplast Classic · Flexoper 3",
@@ -726,8 +722,7 @@ export const productGroups: ProductGroup[] = [
     application: "Precision Irrigation",
     description:
       "Thin-wall LDPE drip irrigation lateral with integrated or insertable pressure-compensating emitters at 20, 30, or 50 cm spacing. Designed for row crops, vineyards, and orchards. Supplied in 200 m and 500 m rolls for large-area installations.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-ldpe-pipe.jpg",
     standards: ["ISO 9261"],
     keyProperties: {
       "Material": "LDPE",
@@ -768,8 +763,7 @@ export const productGroups: ProductGroup[] = [
     application: "Pressurised Irrigation",
     description:
       "PE100 solid-wall mainline pipe for pressurised sprinkler and drip irrigation networks. PN10 and PN16 pressure ratings for pumped systems. Compatible with standard compression and electrofusion fittings. Coil sizes up to 200 m for field installation without joints.",
-    image:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-hdpe-pipe.jpg",
     standards: ["ISO 4427", "EN 12201"],
     keyProperties: {
       "Material": "PE100",
@@ -871,8 +865,7 @@ export const productGroups: ProductGroup[] = [
     application: "Air · Water · Oil · Chemical Transfer",
     description:
       "Heavy-duty rubber hoses for compressed air, water, oil, and chemical transfer in industrial, construction, and mining environments. Two-ply textile or wire braid reinforcement for high-pressure and vacuum applications. SEL-Polimer has been manufacturing rubber hoses since 1957.",
-    image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/sel-troy-green-spiral-hose.jpg",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "Natural / synthetic rubber",
@@ -920,8 +913,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water · Slurry · Chemical Transfer",
     description:
       "Flexible PVC suction and delivery hose with rigid PVC spiral helix for shape retention under vacuum. Used for water, slurry, and light-chemical transfer in agriculture, construction, and industry. Handles up to −0.9 bar vacuum and positive delivery pressure.",
-    image:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/perplast-classic-pvc-hose.jpg",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "PVC with rigid PVC helix",
@@ -1013,8 +1005,7 @@ export const productGroups: ProductGroup[] = [
     application: "Plastic Processing & Re-manufacture",
     description:
       "Post-industrial and post-consumer polyethylene granulates for use as base material in film extrusion, pipe production, and injection moulding. Processed under ISO 14001 environmental management. Two regional recycling partners provide continuous supply.",
-    image:
-      "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1200&h=800&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&w=800",
     standards: ["ISO 14001"],
     keyProperties: {
       "Input Streams": "Post-industrial · Post-consumer PE",
@@ -1060,8 +1051,7 @@ export const productGroups: ProductGroup[] = [
     application: "Pallet Wrapping & Product Protection",
     description:
       "Stretch and shrink PE films for pallet wrapping, product bundling, and protective industrial packaging. Widths up to 2000 mm. Produced at solar-powered facility with in-house PE recycling. Most catalogue lines in stock except the black specialty variants.",
-    image:
-      "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1200&h=800&fit=crop&q=80",
+    image: "/products/industrial/plastika-nv-agricultural-film.jpg",
     standards: [],
     keyProperties: {
       "Material": "LDPE",
@@ -1149,8 +1139,7 @@ export const productGroups: ProductGroup[] = [
     application: "Gravity Drainage & Cable Protection",
     description:
       "Unplasticised PVC (PVC-U) pipe for gravity drainage, municipal sewerage, and underground cable protection. Available in three wall series: SN2 (light duty), SN4 (standard), and SN8 (heavy load). Smooth inner bore for maximum flow, rubber-seal socket for leak-free jointing. Teqja International produces locally in Albania across the full diameter range.",
-    image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/konti-kan-corrugated-sewage.jpg",
     standards: ["EN 1401", "EN 13476"],
     keyProperties: {
       "Material":        "PVC-U (unplasticised)",
@@ -1202,8 +1191,7 @@ export const productGroups: ProductGroup[] = [
     application: "Food Storage & Transport",
     description:
       "EU food-contact certified HDPE barrels for storage and transport of liquids, semi-liquids, and solid foodstuffs. Stackable design with screw-top lids. Standard capacities 30–220 L. Specialist and custom barrels available on order from ASSOS-VIOKON (Greece).",
-    image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=800&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg?auto=compress&cs=tinysrgb&w=800",
     standards: ["EU 10/2011 Food Contact"],
     keyProperties: {
       "Material": "Food-grade HDPE",
@@ -1298,8 +1286,7 @@ export const productGroups: ProductGroup[] = [
     application: "Landscaping & Outdoor Décor",
     description:
       "A full catalogue of designer plastic planters and outdoor vases by Roto (North Macedonia). Styles include Edelweis, Stoniness, Teak, Modern, Samba, Balcone, Tulip, Margerita, Vase, Jazz, Rumba, Barrel and Nusa series — supplied in S / M / L / XL / XXL sizes with matching wall-mounted units and watering cans.",
-    image:
-      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/roto-edelweis-planter.jpg",
     standards: [],
     keyProperties: {
       "Material": "UV-stabilised injection-moulded PE",
@@ -1340,8 +1327,7 @@ export const productGroups: ProductGroup[] = [
     application: "Spraying & Plant Treatment",
     description:
       "Polins doo, established in 1996 in Odžaci, Serbia, produces this manual pump-action garden sprayer for hobby and small-scale professional use in applying water-soluble plant-care agents — herbicides, insecticides, fungicides, and liquid fertilisers. Each unit includes a piston pump with a safety pressure-relief valve, a carrying strap, a spray hose with trigger handle, and an extension lance. Available in 5 L, 8 L, and 10 L tank capacities to match plot size.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/polins-sprayer-manual.jpg",
     standards: [],
     keyProperties: {
       "Manufacturer": "Polins doo, Odžaci, Serbia (est. 1996)",
@@ -1383,8 +1369,7 @@ export const productGroups: ProductGroup[] = [
     application: "Battery-Powered Crop Spraying",
     description:
       "The Polins Electra Lux 16 is a 16-litre battery-powered back sprayer for semi-professional use across larger agricultural plots and orchards. A rechargeable lithium-ion battery drives an electric pump that delivers consistent spray pressure through the lance — eliminating the physical effort of manual pumping. Pressure is adjustable via a potentiometer for fine fog to coarser jet patterns. Designed exclusively for water-soluble plant-care agents.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/polins-electra-battery-sprayer.jpg",
     standards: [],
     keyProperties: {
       "Manufacturer": "Polins doo, Odžaci, Serbia",
@@ -1427,8 +1412,7 @@ export const productGroups: ProductGroup[] = [
     application: "Pressurised Irrigation Mainline",
     description:
       "Palaplast's HDPE 100 irrigation pipe is manufactured from high-density polyethylene PE100 compound to EN 12201-2. Designed for primary mainlines and sub-mainlines in pressurised agricultural irrigation systems, the pipe is supplied in straight lengths and coils across a wide diameter range. The material offers excellent chemical resistance and long service life, making it suitable for both above-ground seasonal layouts and buried permanent networks.",
-    image:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-hdpe-pipe.jpg",
     standards: ["EN 12201-2", "ISO 9001"],
     keyProperties: {
       "Material": "HDPE PE100",
@@ -1488,8 +1472,7 @@ export const productGroups: ProductGroup[] = [
     application: "Tool-Free PE Pipe Jointing",
     description:
       "Palaplast's PN10 ATM compression fittings are manufactured from high-quality polypropylene for reliable tool-free connections to PE and LDPE irrigation pipes. The full range includes couplings, elbows, tees, end-caps, reducers, and saddles covering Ø16–63 mm. The fitting design ensures a watertight seal under pressure without specialist equipment, making them ideal for agricultural installers and irrigation contractors. A PN16 ATM series is also available for higher-pressure applications.",
-    image:
-      "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-compression-fittings.jpg",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "Polypropylene (PP)",
@@ -1532,8 +1515,7 @@ export const productGroups: ProductGroup[] = [
     application: "In-Line Drip Irrigation",
     description:
       "Paladrip is Palaplast's in-line drip irrigation line, featuring flat turbulent-flow emitters integrated at uniform spacing along an LDPE tape. Designed for row-crop and vegetable irrigation, Paladrip delivers low, consistent drip flows per emitter to minimise water waste and maximise root-zone efficiency. The Paladrip range includes standard, FC (flat-emitter), XL and Slim variants to suit different soil types, crop spacings, and installation depths.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-ldpe-pipe.jpg",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "LDPE",
@@ -1578,8 +1560,7 @@ export const productGroups: ProductGroup[] = [
     application: "Drip & Micro-Sprinkler Filtration",
     description:
       "Palaplast's plastic irrigation filters protect downstream drip emitters, micro-sprinklers, and valves from sand, sediment, and debris in agricultural water supplies. The range includes Y-type screen filters, self-cleaning disc filters, filter heads with transparent body for visual inspection, and complete filtration systems for larger networks. Available in ¾″, 1″, 1½″, and 2″ inlet sizes.",
-    image:
-      "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&h=800&fit=crop&q=80",
+    image: "/products/agri/palaplast-filter.jpg",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "Polypropylene (PP)",
