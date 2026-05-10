@@ -577,7 +577,7 @@ export const productGroups: ProductGroup[] = [
     description:
       "Italian-engineered PVC hoses from FITT — Europe's reference brand for garden and light irrigation hose systems. Three flagship lines cover every requirement from professional reinforced use (Force) to everyday gardening (Mint) to ultra-compact expandable storage (Mimosa). Anti-twist NTS® system on Mint. Sizes 1/2″, 3/4″, and 1″ in stock.",
     image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1200&h=800&fit=crop&q=80",
     standards: ["EN ISO 1307", "REACH"],
     keyProperties: {
       "Sizes": "1/2″ (13 mm) · 3/4″ (19 mm) · 1″ (25 mm)",
@@ -761,7 +761,7 @@ export const productGroups: ProductGroup[] = [
     description:
       "UV-stabilised PE film for greenhouse cover, ground mulching, and silage. Available in black/transparent for season extension and in white-on-black for reflective mulching. Multiple UV-lifetime ratings (2–5 years). Standard width 4 m, length 100 m per roll. Both Plastika KS (Kosovo) and Polins (Serbia) supply from recycled-grade PE.",
     image:
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&h=800&fit=crop&q=80",
+      "https://plastika-ks.com/wp-content/uploads/2018/01/greenhouse_2.jpg",
     standards: ["ISO 14001"],
     keyProperties: {
       "Material": "LDPE / LLDPE",
@@ -910,7 +910,7 @@ export const productGroups: ProductGroup[] = [
     description:
       "Clear or caramel-tinted PVC spiral hose with rigid helix reinforcement for suction and delivery of water, light chemicals, and granular materials. Excellent bend radius and full transparency for flow monitoring. Troy ST range covers Ø19–120 mm in standard hose reel and cut lengths.",
     image:
-      "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1200&h=800&fit=crop&q=80",
+      "https://cdn.shopify.com/s/files/1/0565/8991/0105/products/01.2422.0012.0000_1.jpg?v=1679143405",
     standards: [],
     keyProperties: {
       "Material": "Clear / Caramel PVC with rigid spiral",
@@ -1025,6 +1025,113 @@ export const productGroups: ProductGroup[] = [
         diameterMin: 0,
         diameterMax: 0,
         specificSpecs: { "Thickness": "15–50 µm", "Width": "Up to 2000 mm", "Core": "76 mm" },
+      },
+    ],
+  },
+
+  // ── Water storage tanks ────────────────────────────────────────────────────
+
+  {
+    id: "pe-water-storage-tank",
+    slug: "pe-water-storage-tank",
+    name: "Polyethylene Water Storage Tank",
+    shortName: "PE Water Tank",
+    category: "civil",
+    material: "HDPE",
+    application: "Water Storage & Cisterns",
+    description:
+      "Rotationally moulded one-piece HDPE tanks for residential, agricultural, and municipal water storage. UV-stabilised, food-contact safe, and frost-resistant. Standard capacities from 300 L to 10 000 L. Flat-bottom vertical tanks and horizontal transport tanks both available. Ø500 L and Ø1000 L are in regular stock.",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+    standards: ["Food-contact HDPE", "EU 10/2011"],
+    keyProperties: {
+      "Material":       "HDPE (food-grade)",
+      "Manufacturing":  "Rotational moulding — seamless one-piece",
+      "UV Stabilised":  "Yes",
+      "Colours":        "Black / Green / Blue",
+      "Fittings":       "Bottom outlet · Lid · Float valve",
+      "Capacities":     "300 L · 500 L · 1 000 L · 2 000 L · 5 000 L · 10 000 L",
+    },
+    dimensions: [
+      { dn: 300,   lengths: "vertical",   available: "order" },
+      { dn: 500,   lengths: "vertical",   available: "stock" },
+      { dn: 1000,  lengths: "vertical",   available: "stock" },
+      { dn: 2000,  lengths: "vertical",   available: "order" },
+      { dn: 5000,  lengths: "vertical",   available: "order" },
+      { dn: 10000, lengths: "vertical",   available: "order" },
+    ],
+    tags: ["tank", "cistern", "water-storage", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "500 L and 1 000 L tanks in stock",
+        orderNote: "300 L, 2 000 L, 5 000 L, 10 000 L on order",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Stock sizes": "500 L · 1 000 L",
+          "Outlet":      "Bottom ¾″ BSP fitting",
+          "Lid":         "Included",
+        },
+      },
+    ],
+  },
+
+  // ── PVC underground drainage pipe ─────────────────────────────────────────
+
+  {
+    id: "pvc-underground-drainage",
+    slug: "pvc-underground-drainage",
+    name: "PVC Underground Drainage Pipe",
+    shortName: "PVC Drainage",
+    category: "civil",
+    material: "PVC-U",
+    application: "Gravity Drainage & Cable Protection",
+    description:
+      "Unplasticised PVC (PVC-U) pipe for gravity drainage, municipal sewerage, and underground cable protection. Available in three wall series: SN2 (light duty), SN4 (standard), and SN8 (heavy load). Smooth inner bore for maximum flow, rubber-seal socket for leak-free jointing. Teqja International produces locally in Albania across the full diameter range.",
+    image:
+      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=800&fit=crop&q=80",
+    standards: ["EN 1401", "EN 13476"],
+    keyProperties: {
+      "Material":        "PVC-U (unplasticised)",
+      "Wall Series":     "SN2 (light) · SN4 (standard) · SN8 (heavy)",
+      "Colour":          "Orange (cable protection) · Grey (drainage)",
+      "Standard Length": "6 m with socket",
+      "Jointing":        "Rubber-seal socket or solvent cement",
+      "Application":     "Gravity drainage · Municipal sewers · Cable conduit",
+    },
+    dimensions: [
+      { dn: 110, od: 110, wallByClass: { "SN2": 2.2, "SN4": 3.2, "SN8": 4.2 }, lengths: "6 m", available: "stock" },
+      { dn: 125, od: 125, wallByClass: { "SN2": 2.5, "SN4": 3.7, "SN8": 4.8 }, lengths: "6 m", available: "stock" },
+      { dn: 160, od: 160, wallByClass: { "SN2": 3.2, "SN4": 4.7, "SN8": 6.2 }, lengths: "6 m", available: "stock" },
+      { dn: 200, od: 200, wallByClass: { "SN2": 4.0, "SN4": 5.9, "SN8": 7.7 }, lengths: "6 m", available: "stock" },
+      { dn: 250, od: 250, wallByClass: { "SN4": 7.3, "SN8": 9.6 }, lengths: "6 m", available: "partial" },
+      { dn: 315, od: 315, wallByClass: { "SN4": 9.2, "SN8": 12.1 }, lengths: "6 m", available: "partial" },
+      { dn: 400, od: 400, wallByClass: { "SN4": 11.7 }, lengths: "6 m", available: "order" },
+      { dn: 500, od: 500, wallByClass: { "SN4": 14.6 }, lengths: "6 m", available: "order" },
+    ],
+    tags: ["PVC", "drainage", "sewer", "cable-protection", "SN4", "SN8"],
+    suppliers: [
+      {
+        partnerId: "teqja",
+        partnerName: "Teqja International",
+        country: "Albania",
+        color: "#22d3ee",
+        availability: "partial",
+        stockNote: "SN2 · SN4 · SN8 in Ø110–200 mm — full range in stock",
+        orderNote: "Ø250+ and SN8 large diameters on order",
+        diameterMin: 110,
+        diameterMax: 500,
+        standards: ["EN 1401"],
+        specificSpecs: {
+          "Production":    "Local Albanian",
+          "Stock range":   "Ø110–200 mm all wall classes",
+          "Cable colour":  "Orange for cable protection · Grey for drainage",
+        },
       },
     ],
   },
