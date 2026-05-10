@@ -1174,6 +1174,146 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  // ─── HDPE Socket Coupling for Corrugated Pipe (Konti) ──────────────────────
+
+  {
+    id: "hdpe-socket-coupling",
+    slug: "hdpe-socket-coupling",
+    name: "HDPE Socket Coupling",
+    shortName: "Socket Coupler",
+    category: "civil",
+    material: "HDPE",
+    application: "Corrugated Pipe Jointing",
+    description:
+      "Injection-moulded and rotomoulded HDPE sockets for joining corrugated sewage and drainage pipes. Manufactured by Konti Hidroplast to match the full OD/ID dimension series — from Ø110 through Ø1000 mm — with paired EPDM gaskets for leak-tight gravity-line joints.",
+    image:
+      "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&h=800&fit=crop&q=80",
+    standards: ["EN 13476"],
+    keyProperties: {
+      "Material": "HDPE",
+      "Manufacturing": "Injection (Ø110–800) · Rotomould (Ø800–1000)",
+      "Sealing": "Paired EPDM rubber gasket",
+      "OD Range": "Ø110–1000 mm",
+      "ID Range": "Ø111.6–1010 mm",
+      "Length Range": "140–330 mm",
+    },
+    dimensions: [
+      { dn: 110,  od: 126,   lengths: "140 mm",  available: "stock" },
+      { dn: 125,  od: 138.8, lengths: "144 mm",  available: "stock" },
+      { dn: 160,  od: 178.1, lengths: "200 mm",  available: "stock" },
+      { dn: 200,  od: 218.1, lengths: "220 mm",  available: "stock" },
+      { dn: 250,  od: 273,   lengths: "220 mm",  available: "stock" },
+      { dn: 315,  od: 352.7, lengths: "255 mm",  available: "stock" },
+      { dn: 400,  od: 432.5, lengths: "225 mm",  available: "stock" },
+      { dn: 500,  od: 540.5, lengths: "255 mm",  available: "stock" },
+      { dn: 630,  od: 683.8, lengths: "320 mm",  available: "stock" },
+      { dn: 800,  od: 856,   lengths: "237 mm",  available: "order" },
+      { dn: 1000, od: 1066,  lengths: "330 mm",  available: "order" },
+    ],
+    tags: ["coupling", "socket", "corrugated", "fitting"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "Ø110–630 mm in stock",
+        orderNote: "Ø800 & Ø1000 (injection and rotomould) on order",
+        diameterMin: 110,
+        diameterMax: 1000,
+        standards: ["EN 13476"],
+        specificSpecs: {
+          "Production Methods": "Injection · Rotomould",
+          "Catalogue Reference": "Konti Kan Fittings — HDPE Socket OD",
+        },
+      },
+    ],
+  },
+
+  // ─── Decorative Plastic Planters (Roto) ─────────────────────────────────────
+
+  {
+    id: "decorative-plastic-planters",
+    slug: "decorative-plastic-planters",
+    name: "Decorative Plastic Planters",
+    shortName: "Planters",
+    category: "agri",
+    material: "Injection-Moulded PE",
+    application: "Landscaping & Outdoor Décor",
+    description:
+      "A full catalogue of designer plastic planters and outdoor vases by Roto (North Macedonia). Styles include Edelweis, Stoniness, Teak, Modern, Samba, Balcone, Tulip, Margerita, Vase, Jazz, Rumba, Barrel and Nusa series — supplied in S / M / L / XL / XXL sizes with matching wall-mounted units and watering cans.",
+    image:
+      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=1200&h=800&fit=crop&q=80",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised injection-moulded PE",
+      "Style Families": "Edelweis · Stoniness · Teak · Modern · Samba · Balcone · Tulip · Vase · Barrel · Nusa",
+      "Size Range": "S · M · L · XL · XXL",
+      "Wall Mount": "Available in select styles",
+      "Watering Cans": "Available",
+    },
+    tags: ["planter", "decorative", "garden", "landscaping"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "partial",
+        stockNote: "Most lines stocked by size",
+        orderNote: "Bulk orders & full ranges shipped on request",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Catalogue": "Roto General Offer 2022",
+          "Range": "12+ style families across S–XXL sizing",
+        },
+      },
+    ],
+  },
+
+  // ─── Manual Sprayer Pumps (Polins) ──────────────────────────────────────────
+
+  {
+    id: "manual-sprayer-pump",
+    slug: "manual-sprayer-pump",
+    name: "Manual Sprayer Pump",
+    shortName: "Sprayer",
+    category: "agri",
+    material: "PE / PP",
+    application: "Spraying & Plant Treatment",
+    description:
+      "Hand-pressurised manual sprayer pumps for agricultural treatment, pesticide and herbicide application, and home garden use. Manufactured by Polins (Serbia) in a complete range from 1 L hand bottle up to 16 L back-pack format, including a clear-tank variant for fill-level monitoring.",
+    image:
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&h=800&fit=crop&q=80",
+    standards: [],
+    keyProperties: {
+      "Material": "PE / PP body, PP fittings",
+      "Capacities": "1 L · 1.5 L · 2 L · 2.5 L · 5 L · 10 L · 12 L · 16 L",
+      "Pressurisation": "Manual hand pump",
+      "Clear-Tank Variant": "Available (Polins Clear)",
+      "Use Cases": "Pesticides · Fertilisers · Disinfection",
+    },
+    tags: ["sprayer", "pump", "agriculture", "treatment"],
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "1–16 L sizes in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Range": "1 L to 16 L manual",
+          "Variants": "Standard · Clear",
+        },
+      },
+    ],
+  },
+
 ];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
