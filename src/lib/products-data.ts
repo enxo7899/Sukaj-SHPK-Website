@@ -51,6 +51,12 @@ export interface ProductGroup {
   suppliers: SupplierOffer[];
   tags?: string[];
   featured?: boolean;
+  /** Optional list of partner IDs (from src/lib/data.ts) that also supply
+   *  an equivalent product. Rendered as an "Also available from" callout
+   *  on the product detail page. */
+  alsoAvailableFrom?: string[];
+  /** Optional source URL for verified product specs */
+  sourceUrl?: string;
 }
 
 // ─── PE100 Pressure Pipe ────────────────────────────────────────────────────
@@ -1653,6 +1659,7 @@ export const productGroups: ProductGroup[] = [
       { dn: 630, od: 630, wallByClass: { "SDR26/PN6": 24.1, "SDR17/PN10": 37.4 }, available: "order" },
     ],
     tags: ["water", "PE100", "HDPE", "konti", "pressure", "EN12201"],
+    alsoAvailableFrom: ["ferplast-ks"],
     suppliers: [
       {
         partnerId: "konti-hidroplast",
@@ -1720,6 +1727,7 @@ export const productGroups: ProductGroup[] = [
       { dn: 630, od: 630, wallByClass: { "SDR17/PN10": 37.4 }, available: "order" },
     ],
     tags: ["water", "PE100-RC", "HDPE", "konti", "trenchless", "PAS1075"],
+    alsoAvailableFrom: ["ferplast-ks"],
     suppliers: [
       {
         partnerId: "konti-hidroplast",
@@ -1781,6 +1789,7 @@ export const productGroups: ProductGroup[] = [
       { dn: 1000, od: 1000, weightPerMeter: 31.00, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
     ],
     tags: ["sewage", "corrugated", "SN4", "HDPE", "konti", "drainage"],
+    alsoAvailableFrom: ["ferplast-ks"],
     suppliers: [
       {
         partnerId: "konti-hidroplast",
@@ -2052,6 +2061,7 @@ export const productGroups: ProductGroup[] = [
       { dn: 630, od: 630, wallByClass: { "SDR17/PN10": 37.4 }, available: "order" },
     ],
     tags: ["water", "PE100", "HDPE", "ferplast", "pressure", "EN12201"],
+    alsoAvailableFrom: ["konti-hidroplast"],
     suppliers: [
       {
         partnerId: "ferplast-ks",
@@ -2117,6 +2127,1637 @@ export const productGroups: ProductGroup[] = [
           "Single tube SDR 17": "Ø32×1 (2.0 mm) · Ø40×1 (2.4 mm) · Ø50×1 (3.0 mm) — on order",
           "Twin tube SDR 17": "Ø32×2 (2.0 mm) · Ø40×2 (2.4 mm) — Ø40×2 in stock",
         },
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ─── PHASE 2 PRODUCTS — Polins, Palaplast, Roto, Perplast, SEL, Confort,
+  //                        Xier Valve, Plastika NV
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ─── Polins — Manual Garden Sprayer (range 1–16 L) ─────────────────────────
+
+  {
+    id: "polins-manual-sprayer",
+    slug: "polins-manual-sprayer",
+    name: "Polins Manual Garden Sprayer",
+    shortName: "Manual Sprayer Range",
+    category: "agri",
+    material: "HDPE / PP",
+    application: "Plant Treatment & Spraying",
+    description:
+      "Polins doo manufactures a complete range of manual pump-action garden sprayers (Pompe Sperkatje). All models feature an HDPE tank, a manual piston pump with safety pressure-relief valve, carry strap, spray hose, trigger handle, and lance extension. The Clear variant (2 L) has a transparent tank for easy liquid level monitoring. All models are suitable for water-soluble herbicides, insecticides, fungicides, and liquid plant nutrition products.",
+    image: "/products/agri/polins-sprayer-manual.jpg",
+    standards: [],
+    keyProperties: {
+      "Manufacturer": "Polins doo, Odžaci, Serbia (est. 1996)",
+      "Capacity Range": "1 L · 1.5 L · 2 L · 2.5 L · 5 L · 10 L · 12 L · 16 L",
+      "Tank Material": "HDPE",
+      "Pump Type": "Manual piston with safety pressure-relief valve",
+      "Clear Variant": "2 L transparent tank for level monitoring",
+      "Package": "Tank + pump · Carry strap · Spray hose · Trigger handle · Lance",
+      "Application": "Herbicides · Insecticides · Fungicides · Liquid fertilisers",
+    },
+    dimensions: [
+      { dn: 1,    lengths: "1 L",       available: "stock" },
+      { dn: 2,    lengths: "1.5 L",     available: "stock" },
+      { dn: 3,    lengths: "2 L",       available: "stock" },
+      { dn: 4,    lengths: "2 L Clear", available: "stock" },
+      { dn: 5,    lengths: "5 L",       available: "stock" },
+      { dn: 10,   lengths: "10 L",      available: "stock" },
+      { dn: 12,   lengths: "12 L",      available: "stock" },
+      { dn: 16,   lengths: "16 L",      available: "stock" },
+    ],
+    tags: ["sprayer", "polins", "manual", "agriculture", "treatment"],
+    sourceUrl: "https://polins.co.rs/products/sprayers/?lang=en",
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "Full range 1 L–16 L in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Variants": "1 L · 1.5 L · 2 L · 2 L Clear · 5 L · 10 L · 12 L · 16 L",
+          "Source": "polins.co.rs/products/sprayers",
+        },
+      },
+    ],
+  },
+
+  // ─── Polins — Livestock Water Trough ───────────────────────────────────────
+
+  {
+    id: "polins-water-trough",
+    slug: "polins-water-trough",
+    name: "Polins Livestock Water Trough",
+    shortName: "Water Trough",
+    category: "agri",
+    material: "HDPE",
+    application: "Poultry & Livestock Watering",
+    description:
+      "Polins doo manufactures durable HDPE livestock water troughs (Vaska Uji per Pula) designed for poultry and small livestock. Available as open round troughs and as troughs with integrated water-bottle holders. Sizes: 200 mm, 250 mm, and 340 mm diameter.",
+    image: "/products/agri/polins-water-trough.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "HDPE — UV-stable, food-grade",
+      "Sizes": "Ø 200 mm · Ø 250 mm · Ø 340 mm",
+      "Variants": "Open round trough · With bottle holder (me Bidon)",
+      "Application": "Poultry · Small livestock · Hobby farming",
+    },
+    dimensions: [
+      { dn: 200, lengths: "Ø 200 mm round", available: "stock" },
+      { dn: 250, lengths: "Ø 250 mm round", available: "stock" },
+      { dn: 340, lengths: "Ø 340 mm round", available: "stock" },
+    ],
+    tags: ["trough", "livestock", "poultry", "polins", "agriculture"],
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "All sizes in stock",
+        diameterMin: 200,
+        diameterMax: 340,
+        specificSpecs: {
+          "Models": "Vaska Uji per Pula · Vaska Uji per Pula me Bidon",
+        },
+      },
+    ],
+  },
+
+  // ─── Polins — Livestock Feed Trough ────────────────────────────────────────
+
+  {
+    id: "polins-feed-trough",
+    slug: "polins-feed-trough",
+    name: "Polins Livestock Feed Trough",
+    shortName: "Feed Trough",
+    category: "agri",
+    material: "PP",
+    application: "Poultry & Livestock Feeding",
+    description:
+      "Polins doo manufactures polypropylene feed troughs (Vaska Ushqyese per Pula) for poultry and small livestock. Robust PP construction is easy to clean and resistant to feed acids. Available in four sizes from 200 mm to 445 mm.",
+    image: "/products/agri/polins-water-trough.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Polypropylene — feed-acid resistant",
+      "Sizes": "200 mm · 250 mm · 400 mm · 445 mm",
+      "Application": "Poultry · Small livestock",
+    },
+    dimensions: [
+      { dn: 200, lengths: "200 mm", available: "stock" },
+      { dn: 250, lengths: "250 mm", available: "stock" },
+      { dn: 400, lengths: "400 mm", available: "stock" },
+      { dn: 445, lengths: "445 mm", available: "stock" },
+    ],
+    tags: ["trough", "feed", "livestock", "poultry", "polins"],
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "All sizes in stock",
+        diameterMin: 200,
+        diameterMax: 445,
+        specificSpecs: { "Model": "Vaska Ushqyese per Pula" },
+      },
+    ],
+  },
+
+  // ─── Polins — Milk & Honey Canister (Bidon Mjalt + Qumesht) ───────────────
+
+  {
+    id: "polins-milk-canister",
+    slug: "polins-milk-canister",
+    name: "Polins Food-Grade Milk & Honey Canister",
+    shortName: "Milk Canister",
+    category: "agri",
+    material: "HDPE",
+    application: "Milk · Honey · Food Liquid Storage",
+    description:
+      "Polins doo food-grade HDPE canisters (Bidon Mjalt + Qumesht) for safe storage of milk, honey, and food liquids on small farms and in dairy operations. Available in 5 L, 10 L, 15 L, and 20 L capacities with sealing lid.",
+    image: "/products/agri/polins-milk-can.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Food-grade HDPE",
+      "Capacities": "5 L · 10 L · 15 L · 20 L",
+      "Closure": "Sealing lid",
+      "Application": "Milk · Honey · Food liquids",
+    },
+    dimensions: [
+      { dn: 5,  lengths: "5 L",  available: "stock" },
+      { dn: 10, lengths: "10 L", available: "stock" },
+      { dn: 15, lengths: "15 L", available: "stock" },
+      { dn: 20, lengths: "20 L", available: "stock" },
+    ],
+    tags: ["canister", "milk", "honey", "food", "polins", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "5 L · 10 L · 15 L · 20 L in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Model": "Bidon Mjalt + Qumesht Polins" },
+      },
+    ],
+  },
+
+  // ─── Polins — Water Canister (Bidon Uji) ──────────────────────────────────
+
+  {
+    id: "polins-water-canister",
+    slug: "polins-water-canister",
+    name: "Polins HDPE Water Canister",
+    shortName: "Water Canister",
+    category: "agri",
+    material: "HDPE",
+    application: "Drinking Water Storage & Transport",
+    description:
+      "HDPE water storage canisters (Bidon Uji) for drinking water and general purpose liquid storage. Available in 10 L and 20 L capacities. Stackable design with sealing cap.",
+    image: "/products/agri/polins-milk-can.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "HDPE — food-grade",
+      "Capacities": "10 L · 20 L",
+      "Application": "Drinking water · General liquid storage",
+    },
+    dimensions: [
+      { dn: 10, lengths: "10 L", available: "stock" },
+      { dn: 20, lengths: "20 L", available: "stock" },
+    ],
+    tags: ["canister", "water", "polins", "HDPE", "storage"],
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "10 L and 20 L in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Model": "Bidon Uji Polins" },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // PALAPLAST — Greece
+  // Source: palaplast.com + internal offer images (dated 05.07.2023)
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Palaplast — LDPE Irrigation Pipe 6 ATM ──────────────────────────────
+
+  {
+    id: "palaplast-ldpe-pipe-6atm",
+    slug: "palaplast-ldpe-pipe-6atm",
+    name: "Palaplast LDPE Irrigation Pipe — 6 ATM",
+    shortName: "LDPE 6 ATM",
+    category: "agri",
+    material: "LDPE",
+    application: "Sub-Lateral & Secondary Irrigation",
+    description:
+      "Palaplast LDPE irrigation pipes rated at 6 ATM are used as sub-laterals and secondary mainlines in agricultural irrigation networks. Highly flexible for easy field layout. Sold by the metre. Diameters: 20, 25, 32 mm.",
+    image: "/products/agri/palaplast-ldpe-pipe.jpg",
+    standards: ["EN 12201-2"],
+    keyProperties: {
+      "Material": "LDPE",
+      "Working Pressure": "6 ATM",
+      "Diameter Range": "Ø 20 · 25 · 32 mm",
+      "Sale Unit": "Per metre",
+      "Flexibility": "High — easy field layout",
+    },
+    dimensions: [
+      { dn: 20, od: 20, wallByClass: { "6 ATM": 1.4 }, available: "stock" },
+      { dn: 25, od: 25, wallByClass: { "6 ATM": 1.6 }, available: "stock" },
+      { dn: 32, od: 32, wallByClass: { "6 ATM": 1.9 }, available: "stock" },
+    ],
+    tags: ["irrigation", "LDPE", "palaplast", "agriculture", "6 ATM"],
+    sourceUrl: "https://palaplast.com/product-category/irrigation-en/irrigation-pipes-en/ldpe-en/",
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "Ø 20–32 mm in stock",
+        diameterMin: 20,
+        diameterMax: 32,
+        pressureClasses: ["6 ATM"],
+        standards: ["EN 12201-2"],
+        specificSpecs: { "Sale Unit": "Per metre" },
+      },
+    ],
+  },
+
+  // ─── Palaplast — HDPE Irrigation Pipe 6 ATM ──────────────────────────────
+
+  {
+    id: "palaplast-hdpe-pipe-6atm",
+    slug: "palaplast-hdpe-pipe-6atm",
+    name: "Palaplast HDPE Irrigation Pipe — 6 ATM",
+    shortName: "HDPE 6 ATM",
+    category: "agri",
+    material: "HDPE",
+    application: "Mainline Irrigation",
+    description:
+      "Palaplast HDPE irrigation mainline pipe rated at 6 ATM. Sizes Ø 40–110 mm. Sold per metre. For pressurised distribution in larger agricultural irrigation networks where flexible LDPE is unsuitable.",
+    image: "/products/agri/palaplast-hdpe-pipe.jpg",
+    standards: ["EN 12201-2"],
+    keyProperties: {
+      "Material": "HDPE",
+      "Working Pressure": "6 ATM",
+      "Diameter Range": "Ø 40–110 mm",
+      "Sale Unit": "Per metre",
+    },
+    dimensions: [
+      { dn: 40,  od: 40,  wallByClass: { "6 ATM": 2.0 }, available: "stock" },
+      { dn: 50,  od: 50,  wallByClass: { "6 ATM": 2.0 }, available: "stock" },
+      { dn: 63,  od: 63,  wallByClass: { "6 ATM": 2.5 }, available: "stock" },
+      { dn: 75,  od: 75,  wallByClass: { "6 ATM": 2.9 }, available: "stock" },
+      { dn: 90,  od: 90,  wallByClass: { "6 ATM": 3.5 }, available: "stock" },
+      { dn: 110, od: 110, wallByClass: { "6 ATM": 4.3 }, available: "stock" },
+    ],
+    tags: ["irrigation", "HDPE", "palaplast", "agriculture", "6 ATM"],
+    sourceUrl: "https://palaplast.com/product-category/irrigation-en/irrigation-pipes-en/",
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "Ø 40–110 mm in stock",
+        diameterMin: 40,
+        diameterMax: 110,
+        pressureClasses: ["6 ATM"],
+        standards: ["EN 12201-2"],
+        specificSpecs: { "Sale Unit": "Per metre" },
+      },
+    ],
+  },
+
+  // ─── Palaplast — HDPE Irrigation Pipe 10 ATM ─────────────────────────────
+
+  {
+    id: "palaplast-hdpe-pipe-10atm",
+    slug: "palaplast-hdpe-pipe-10atm",
+    name: "Palaplast HDPE Irrigation Pipe — 10 ATM",
+    shortName: "HDPE 10 ATM",
+    category: "agri",
+    material: "HDPE",
+    application: "High-Pressure Mainline Irrigation",
+    description:
+      "High-pressure HDPE irrigation mainline pipe rated at 10 ATM. For primary distribution networks requiring higher working pressure. Sizes Ø 20–75 mm. Sold per metre.",
+    image: "/products/agri/palaplast-hdpe-pipe.jpg",
+    standards: ["EN 12201-2"],
+    keyProperties: {
+      "Material": "HDPE",
+      "Working Pressure": "10 ATM",
+      "Diameter Range": "Ø 20–75 mm",
+      "Sale Unit": "Per metre",
+    },
+    dimensions: [
+      { dn: 20, od: 20, wallByClass: { "10 ATM": 2.0 }, available: "stock" },
+      { dn: 25, od: 25, wallByClass: { "10 ATM": 2.0 }, available: "stock" },
+      { dn: 32, od: 32, wallByClass: { "10 ATM": 2.0 }, available: "stock" },
+      { dn: 40, od: 40, wallByClass: { "10 ATM": 2.4 }, available: "stock" },
+      { dn: 50, od: 50, wallByClass: { "10 ATM": 3.0 }, available: "stock" },
+      { dn: 75, od: 75, wallByClass: { "10 ATM": 4.5 }, available: "stock" },
+    ],
+    tags: ["irrigation", "HDPE", "palaplast", "agriculture", "10 ATM", "high-pressure"],
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "Ø 20–75 mm at 10 ATM in stock",
+        diameterMin: 20,
+        diameterMax: 75,
+        pressureClasses: ["10 ATM"],
+        standards: ["EN 12201-2"],
+        specificSpecs: { "Sale Unit": "Per metre" },
+      },
+    ],
+  },
+
+  // ─── Palaplast — Compression Fittings (Rekorder) 10 ATM ─────────────────
+
+  {
+    id: "palaplast-rekorder-10atm",
+    slug: "palaplast-rekorder-10atm",
+    name: "Palaplast Compression Fittings (Rekorder) — 10 ATM",
+    shortName: "Rekorder 10 ATM",
+    category: "agri",
+    material: "PP",
+    application: "Tool-Free PE Pipe Jointing",
+    description:
+      "Palaplast's 10 ATM compression fittings (rekorder) are manufactured from polypropylene for tool-free connection to PE and LDPE irrigation pipes. The range from internal offer page 5 (dated 05.07.2023) includes BRRYL MASHKULL (male elbow), BRRRYL FEMER (female elbow), TIJA (equal tee), and TIJA RED MASHKULL (reducing tee, male thread). Available Ø 20–110 mm. PN 10 / 10 ATM rated.",
+    image: "/products/agri/palaplast-rekorder-fittings.jpg",
+    standards: ["PN 10"],
+    keyProperties: {
+      "Material": "Polypropylene (PP)",
+      "Pressure Rating": "PN 10 / 10 ATM",
+      "Diameter Range": "Ø 20–110 mm",
+      "Connection": "Compression — tool-free",
+      "Range": "Brryl Mashkull (male elbow) · Brryl Femer (female elbow) · Tija (equal tee) · Tija Red Mashkull (reducing tee)",
+      "Pipe Compatibility": "PE100 · HDPE · LDPE",
+    },
+    dimensions: [
+      { dn: 20,  lengths: "Tija / Tija Red", available: "stock" },
+      { dn: 25,  lengths: "Tija / Tija Red", available: "stock" },
+      { dn: 32,  lengths: "Tija / Tija Red", available: "stock" },
+      { dn: 40,  lengths: "Tija / Tija Red", available: "stock" },
+      { dn: 50,  lengths: "Brryl Mashkull / Tija", available: "stock" },
+      { dn: 63,  lengths: "Brryl Mashkull / Tija", available: "stock" },
+      { dn: 75,  lengths: "Brryl Mashkull / Tija / Brryl Femer", available: "stock" },
+      { dn: 90,  lengths: "Brryl Mashkull / Brryl Femer / Tija", available: "stock" },
+      { dn: 110, lengths: "Tija / Brryl Femer", available: "stock" },
+    ],
+    tags: ["fittings", "rekorder", "compression", "palaplast", "PP", "irrigation", "10 ATM"],
+    sourceUrl: "https://palaplast.com/product-category/irrigation-en/irrigation-fittings/compression-en/",
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "Full range Ø 20–110 mm in stock",
+        diameterMin: 20,
+        diameterMax: 110,
+        pressureClasses: ["PN10", "10 ATM"],
+        standards: ["PN 10"],
+        specificSpecs: {
+          "Brryl Mashkull (male elbow)": "50-1½″ · 50-2″ · 63-1½″ · 63-2″ · 75-2½″ · 90-3″",
+          "Brryl Femer (female elbow)": "75-2½″ · 90-3″ · 110-4″",
+          "Tija (equal tee)": "20–110 mm",
+          "Tija Red (reducer)": "25-20 · 32-25",
+        },
+      },
+    ],
+  },
+
+  // ─── Palaplast — End Caps, Joiners & Drip Emitters ──────────────────────
+
+  {
+    id: "palaplast-end-caps-joiners",
+    slug: "palaplast-end-caps-joiners",
+    name: "Palaplast End Caps, Pipe Joiners & Drip Emitters",
+    shortName: "Caps · Joiners · Emitters",
+    category: "agri",
+    material: "PP",
+    application: "Irrigation Accessories",
+    description:
+      "Palaplast irrigation accessories: pipe end caps (TAPA) ½″–4″, pipe joiners / couplings (BASHKUESE KALLAM) Ø 16–32 mm, and drip emitters (LOTUESE) in red (Ø 70 L/h), green (Ø 100 L/h), and black (Ø 150 L/h) flow ratings. All in stock.",
+    image: "/products/agri/palaplast-compression-fittings.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Polypropylene (PP)",
+      "End Caps (Tapa)": "½″ · ¾″ · 1″ · 1¼″ · 1½″ · 2″ · 2½″ · 3″ · 4″",
+      "Joiners (Bashkuese Kallam)": "Ø 16 · 20 · 25 · 32 mm",
+      "Drip Emitters (Lotuese)": "Ø 70 (Red) · Ø 100 (Green) · Ø 150 (Black)",
+    },
+    dimensions: [
+      { dn: 16, lengths: "Bashkuese · Lotuese", available: "stock" },
+      { dn: 20, lengths: "Bashkuese · Tapa",    available: "stock" },
+      { dn: 25, lengths: "Bashkuese · Tapa",    available: "stock" },
+      { dn: 32, lengths: "Bashkuese · Tapa",    available: "stock" },
+      { dn: 50, lengths: "Tapa",                available: "stock" },
+      { dn: 75, lengths: "Tapa · Lotuese",      available: "stock" },
+    ],
+    tags: ["fittings", "endcaps", "joiners", "drippers", "palaplast", "irrigation"],
+    sourceUrl: "https://palaplast.com/",
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "Full range in stock",
+        diameterMin: 16,
+        diameterMax: 110,
+        standards: [],
+        specificSpecs: {
+          "Tapa sizes": "½″ – 4″",
+          "Bashkuese Kallam": "Ø 16 / 20 / 25 / 32 mm",
+          "Lotuese (drippers)": "Red Ø 70 · Green Ø 100 · Black Ø 150",
+        },
+      },
+    ],
+  },
+
+  // ─── Palaplast — Saracineska (Stopcock Valve) ──────────────────────────
+
+  {
+    id: "palaplast-saracineska-valve",
+    slug: "palaplast-saracineska-valve",
+    name: "Palaplast Plastic Stopcock (Saracineska)",
+    shortName: "Saracineska Valve",
+    category: "agri",
+    material: "PP",
+    application: "Irrigation Inline Shut-Off",
+    description:
+      "Plastic inline stopcock valves (Saracineska) for PE and LDPE irrigation pipes. Types include standard SARACINESKA KALLAM, A&K (blue), Pipet 3158, Plote 3162, and Komplete with full pipe-fittings package. Sizes 16, 20, and 25 mm.",
+    image: "/products/agri/palaplast-compression-fittings.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Polypropylene (PP)",
+      "Sizes": "16 mm · 20 mm · 25 mm",
+      "Variants": "Saracineska Kallam · Pipet (Kod 3158) · A&K (Blu) · Plote (3162) · Komplete (31672020 / 31672525)",
+      "Operation": "Inline shut-off (¼-turn handle)",
+    },
+    dimensions: [
+      { dn: 16, lengths: "Kallam · Pipet · A&K · Plote", available: "stock" },
+      { dn: 20, lengths: "Kallam · Pipet · Plote · Komplete", available: "stock" },
+      { dn: 25, lengths: "Kallam · Komplete", available: "stock" },
+    ],
+    tags: ["valve", "stopcock", "saracineska", "palaplast", "irrigation"],
+    suppliers: [
+      {
+        partnerId: "palaplast",
+        partnerName: "Palaplast",
+        country: "Greece",
+        color: "#84cc16",
+        availability: "in-stock",
+        stockNote: "16 / 20 / 25 mm variants in stock",
+        diameterMin: 16,
+        diameterMax: 25,
+        specificSpecs: {
+          "Codes": "3158 (Pipet) · 3162 (Plote) · 31672020 / 31672525 (Komplete)",
+        },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // ROTO — North Macedonia (decorative planters & water tanks)
+  // Source: shop-roto.eu + internal offer images 6–12 (dated 19.02.2022)
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Roto — Edelweis Decorative Planter ────────────────────────────────
+
+  {
+    id: "roto-edelweis-planter",
+    slug: "roto-edelweis-planter",
+    name: "Roto Edelweis Decorative Planter",
+    shortName: "Edelweis",
+    category: "agri",
+    material: "PP",
+    application: "Outdoor Décor & Landscaping",
+    description:
+      "Roto's Edelweis is a rectangular decorative planter with a natural stone-texture finish, available in Small, Large, and XL. The Edelweis Ovale is an oval variant, while Edelweis Round S/M offer round-body sizes. Made from UV-stabilised rotomoulded polypropylene for long outdoor use. A wall-mount Murale variant is also available.",
+    image: "/products/agri/roto-edelweis-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised rotomoulded PP",
+      "Finish": "Natural stone-texture",
+      "Variants": "Rectangular S / L / XL · Ovale · Round S / M · Wall-Murale",
+    },
+    dimensions: [
+      { dn: 1, lengths: "Edelweis S (16138)",    available: "stock" },
+      { dn: 2, lengths: "Edelweis L (16139)",    available: "stock" },
+      { dn: 3, lengths: "Edelweis XL (16199)",   available: "stock" },
+      { dn: 4, lengths: "Edelweis Ovale (16198)",available: "stock" },
+      { dn: 5, lengths: "Edelweis Round S (16113)",available: "stock" },
+      { dn: 6, lengths: "Edelweis Round M (16154)",available: "stock" },
+      { dn: 7, lengths: "Wall-Murale (16035)",   available: "stock" },
+    ],
+    tags: ["planter", "decorative", "roto", "edelweis", "stone-texture"],
+    sourceUrl: "https://shop-roto.eu/shop/",
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "All Edelweis sizes in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Codes": "16138 · 16139 · 16199 · 16198 · 16113 · 16154 · 16035" },
+      },
+    ],
+  },
+
+  // ─── Roto — Stoniness Decorative Planter ───────────────────────────────
+
+  {
+    id: "roto-stoniness-planter",
+    slug: "roto-stoniness-planter",
+    name: "Roto Stoniness Decorative Planter",
+    shortName: "Stoniness",
+    category: "agri",
+    material: "PP",
+    application: "Outdoor Décor & Landscaping",
+    description:
+      "Round textured stone-effect garden planter. The Stoniness range comes in four sizes — S, M, L, and XL — for use on terraces, balconies, and around landscaped beds. UV-stabilised rotomoulded polypropylene.",
+    image: "/products/agri/roto-stoniness-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised rotomoulded PP",
+      "Finish": "Textured stone-effect",
+      "Sizes": "S · M · L · XL",
+    },
+    dimensions: [
+      { dn: 1, lengths: "Stoniness S (16144)",  available: "stock" },
+      { dn: 2, lengths: "Stoniness M (16143)",  available: "stock" },
+      { dn: 3, lengths: "Stoniness L (16142)",  available: "stock" },
+      { dn: 4, lengths: "Stoniness XL (16159)", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "roto", "stoniness"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "S · M · L · XL in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Codes": "16144 · 16143 · 16142 · 16159" },
+      },
+    ],
+  },
+
+  // ─── Roto — Jazz Garden Planter ───────────────────────────────────────
+
+  {
+    id: "roto-jazz-planter",
+    slug: "roto-jazz-planter",
+    name: "Roto Jazz Garden Planter",
+    shortName: "Jazz",
+    category: "agri",
+    material: "PP",
+    application: "Indoor & Outdoor Décor",
+    description:
+      "Round Jazz garden planter in three sizes. Sleek design suitable for indoor and outdoor placement. Dimensions: S Ø 300 × 270 mm · M Ø 490 × 350 mm · L Ø 500 × 430 mm.",
+    image: "/products/agri/roto-jazz-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded PP",
+      "Sizes": "S Ø 300×270 mm · M Ø 490×350 mm · L Ø 500×430 mm",
+    },
+    dimensions: [
+      { dn: 300, lengths: "Vazo Jazz S (16687) · Ø 300×270 mm", available: "stock" },
+      { dn: 490, lengths: "Vazo Jazz M (16686) · Ø 490×350 mm", available: "stock" },
+      { dn: 500, lengths: "Vazo Jazz L (16688) · Ø 500×430 mm", available: "stock" },
+    ],
+    tags: ["planter", "roto", "jazz"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "S · M · L in stock",
+        diameterMin: 300,
+        diameterMax: 500,
+        specificSpecs: { "Codes": "16687 · 16686 · 16688" },
+      },
+    ],
+  },
+
+  // ─── Roto — Rumba Garden Planter ──────────────────────────────────────
+
+  {
+    id: "roto-rumba-planter",
+    slug: "roto-rumba-planter",
+    name: "Roto Rumba Garden Planter",
+    shortName: "Rumba",
+    category: "agri",
+    material: "PP",
+    application: "Indoor & Outdoor Décor",
+    description:
+      "Wide-mouth round Rumba garden planter in S, M, and L sizes. Generous opening makes it ideal for shrubs and bushy plantings.",
+    image: "/products/agri/roto-rumba-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded PP",
+      "Sizes": "S · M · L",
+    },
+    dimensions: [
+      { dn: 1, lengths: "Vazo Rumba S (16680)", available: "stock" },
+      { dn: 2, lengths: "Vazo Rumba M (16679)", available: "stock" },
+      { dn: 3, lengths: "Vazo Rumba L (16681)", available: "stock" },
+    ],
+    tags: ["planter", "roto", "rumba"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "S · M · L in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Codes": "16680 · 16679 · 16681" },
+      },
+    ],
+  },
+
+  // ─── Roto — Barrel Decorative Planter ─────────────────────────────────
+
+  {
+    id: "roto-barrel-planter",
+    slug: "roto-barrel-planter",
+    name: "Roto Barrel Decorative Planter",
+    shortName: "Barrel",
+    category: "agri",
+    material: "PP",
+    application: "Outdoor Décor & Landscaping",
+    description:
+      "Barrel-shaped decorative planter / garden ornament. Available as a single Vazo Barrel and as a sized range Barrel S / M / L / XL / XXL for matched garden compositions.",
+    image: "/products/agri/roto-barrel-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded PP",
+      "Sizes": "Single · S · M · L · XL · XXL",
+    },
+    dimensions: [
+      { dn: 1, lengths: "Vazo Barrel single (16140)", available: "stock" },
+      { dn: 2, lengths: "Vazo Barrel S (16167)",      available: "stock" },
+      { dn: 3, lengths: "Vazo Barrel M (16168)",      available: "stock" },
+      { dn: 4, lengths: "Vazo Barrel L (16169)",      available: "stock" },
+      { dn: 5, lengths: "Vazo Barrel XL (16663)",     available: "stock" },
+      { dn: 6, lengths: "Vazo Barrel XXL (16664)",    available: "stock" },
+    ],
+    tags: ["planter", "barrel", "roto", "decorative"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Full barrel size range in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Codes": "16140 · 16167 · 16168 · 16169 · 16663 · 16664" },
+      },
+    ],
+  },
+
+  // ─── Roto — Nusa Decorative Planter ───────────────────────────────────
+
+  {
+    id: "roto-nusa-planter",
+    slug: "roto-nusa-planter",
+    name: "Roto Nusa Decorative Planter",
+    shortName: "Nusa",
+    category: "agri",
+    material: "PP",
+    application: "Outdoor Décor & Landscaping",
+    description:
+      "Rectangular ribbed Nusa planter and round Nusa variant. The Squareds S, S, XL and Round versions cover small balcony to large terrace use.",
+    image: "/products/agri/roto-nusa-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded PP",
+      "Variants": "Squareds S · S · XL · Round",
+    },
+    dimensions: [
+      { dn: 1, lengths: "Nusa Squareds S (16160)", available: "stock" },
+      { dn: 2, lengths: "Nusa S (16030)",          available: "stock" },
+      { dn: 3, lengths: "Nusa XL (16076)",         available: "stock" },
+      { dn: 4, lengths: "Nusa Round (16014)",      available: "stock" },
+    ],
+    tags: ["planter", "roto", "nusa"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "S · XL · Squareds · Round in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Codes": "16160 · 16030 · 16076 · 16014" },
+      },
+    ],
+  },
+
+  // ─── Roto — Tulip & Novelty Planters ───────────────────────────────────
+
+  {
+    id: "roto-novelty-planters",
+    slug: "roto-novelty-planters",
+    name: "Roto Tulip & Novelty Decorative Planters",
+    shortName: "Novelty Range",
+    category: "agri",
+    material: "PP",
+    application: "Outdoor Décor & Garden Ornaments",
+    description:
+      "A broad range of Roto novelty decorative planters and garden ornaments — Tulip (S/L/XL), Shoe (Kepuce S/L), Elephant, Sack (Thes), Vase (S/M/L), Margerita (S/M/L), Bell (S/M/L), Amphora, Herb, Shell (Guacke), Snail (Kermill S/L), Swan (Mjelme S/L), Donkey (Gomari), Carriage (Karroce), and Sea Girl (Vajze Deti). For statement landscaping and decorative garden displays.",
+    image: "/products/agri/roto-tulip-planter.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded PP",
+      "Range": "Tulip · Shoe · Elephant · Sack · Vase · Margerita · Bell · Amphora · Snail · Swan · Donkey · Carriage",
+      "Sizes": "S / L / XL where applicable",
+    },
+    dimensions: [
+      { dn: 1,  lengths: "Tulip S (16032)",     available: "stock" },
+      { dn: 2,  lengths: "Tulip L (16036)",     available: "stock" },
+      { dn: 3,  lengths: "Tulip XL (16666)",    available: "stock" },
+      { dn: 4,  lengths: "Shoe (Kepuce) S (16015)", available: "stock" },
+      { dn: 5,  lengths: "Shoe (Kepuce) L (16103)", available: "stock" },
+      { dn: 6,  lengths: "Elephant (16149)",    available: "stock" },
+      { dn: 7,  lengths: "Sack/Thes (16000)",   available: "stock" },
+      { dn: 8,  lengths: "Vase S (16053)",      available: "stock" },
+      { dn: 9,  lengths: "Vase M (16005)",      available: "stock" },
+      { dn: 10, lengths: "Vase L (16099)",      available: "stock" },
+      { dn: 11, lengths: "Margerita S/M/L (16085–87)", available: "stock" },
+      { dn: 12, lengths: "Bell S/M/L (16060–62)",      available: "stock" },
+      { dn: 13, lengths: "Amphora (16108)",     available: "stock" },
+      { dn: 14, lengths: "Herb (16050)",        available: "stock" },
+      { dn: 15, lengths: "Shell/Guacke (16101)",available: "stock" },
+      { dn: 16, lengths: "Snail/Kermill S (16104) · L (16182)", available: "stock" },
+      { dn: 17, lengths: "Swan/Mjelme S (16082) · L (16084)",   available: "stock" },
+      { dn: 18, lengths: "Donkey/Gomari (6054)", available: "stock" },
+      { dn: 19, lengths: "Carriage/Karroce (6192)", available: "stock" },
+      { dn: 20, lengths: "Sea Girl (16094)",    available: "stock" },
+    ],
+    tags: ["planter", "roto", "novelty", "ornamental", "decorative"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Full novelty range in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Codes": "16032 · 16036 · 16666 · 16015 · 16103 · 16149 · 16000 · 16053 · 16005 · 16099 · 16085–16087 · 16060–16062 · 16108 · 16050 · 16101 · 16104 · 16182 · 16082 · 16084 · 6054 · 6192 · 16094",
+        },
+      },
+    ],
+  },
+
+  // ─── Roto — OTW Square Water Storage Tank ─────────────────────────────
+
+  {
+    id: "roto-water-tank-otw",
+    slug: "roto-water-tank-otw",
+    name: "Roto OTW Square Water Storage Tank",
+    shortName: "OTW Barrel",
+    category: "civil",
+    material: "HDPE",
+    application: "Water Storage",
+    description:
+      "Rotomoulded HDPE square-body water storage tank (Barrel OTW). Capacities: 60 L, 100 L, 150 L, 200 L, and 300 L. Stackable square form for efficient placement on terraces and in storage rooms.",
+    image: "/products/agri/roto-water-tank-otw.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded HDPE",
+      "Body": "Square (stackable)",
+      "Capacities": "60 L · 100 L · 150 L · 200 L · 300 L",
+    },
+    dimensions: [
+      { dn: 60,  lengths: "Barrel OTW 60 L (151171)",  available: "stock" },
+      { dn: 100, lengths: "Barrel OTW 100 L (151187)", available: "stock" },
+      { dn: 150, lengths: "Barrel OTW 150 L (151175)", available: "stock" },
+      { dn: 200, lengths: "Barrel OTW 200 L (151117)", available: "stock" },
+      { dn: 300, lengths: "Barrel OTW 300 L (151180)", available: "stock" },
+    ],
+    tags: ["tank", "water", "roto", "OTW", "storage", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "60 L–300 L in stock",
+        diameterMin: 60,
+        diameterMax: 300,
+        specificSpecs: { "Codes": "151171 · 151187 · 151175 · 151117 · 151180" },
+      },
+    ],
+  },
+
+  // ─── Roto — OTW Cisterna (Large Capacity) ──────────────────────────────
+
+  {
+    id: "roto-cisterna-otw",
+    slug: "roto-cisterna-otw",
+    name: "Roto OTW Water Storage Cistern",
+    shortName: "OTW Cisterna",
+    category: "civil",
+    material: "HDPE",
+    application: "Large-Capacity Water Storage",
+    description:
+      "Large rotomoulded HDPE water cisterns (Depozita / Cisterna). Capacities 500 L, 1000 L, and 1500 L. Suitable for residential, agricultural and small-municipal water storage.",
+    image: "/products/agri/roto-water-tank-otw.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded HDPE",
+      "Capacities": "500 L · 1000 L · 1500 L",
+    },
+    dimensions: [
+      { dn: 500,  lengths: "Barrel OTW-Roto 500 L (16578)",  available: "stock" },
+      { dn: 1000, lengths: "Barrel OTW-Roto 1000 L (16580)", available: "stock" },
+      { dn: 1500, lengths: "Barrel OTW-Roto 1500 L (16590)", available: "stock" },
+    ],
+    tags: ["tank", "cistern", "water", "roto", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "500 L · 1000 L · 1500 L in stock",
+        diameterMin: 500,
+        diameterMax: 1500,
+        specificSpecs: { "Codes": "16578 · 16580 · 16590" },
+      },
+    ],
+  },
+
+  // ─── Roto — TCW Vezake Water Storage Tank ─────────────────────────────
+
+  {
+    id: "roto-water-tank-tcw",
+    slug: "roto-water-tank-tcw",
+    name: "Roto TCW Vezake Water Storage Tank",
+    shortName: "TCW Vezake",
+    category: "civil",
+    material: "HDPE",
+    application: "Vertical Water Storage",
+    description:
+      "Vertical oval HDPE water storage tank (Cisterna TCW / Barrel TCW). Capacities from 70 L to 750 L. The TCW 750 L variant is supplied in black for UV protection. Vertical form factor suits narrow installation spaces.",
+    image: "/products/agri/roto-water-tank-tcw.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded HDPE",
+      "Body": "Vertical oval",
+      "Capacities": "70 L · 100 L · 150 L · 200 L · 300 L · 500 L · 750 L (black)",
+    },
+    dimensions: [
+      { dn: 70,  lengths: "Barrel TCW 70 L (152636)",  available: "stock" },
+      { dn: 100, lengths: "Barrel TCW 100 L (152640)", available: "stock" },
+      { dn: 150, lengths: "Barrel TCW 150 L (152646)", available: "stock" },
+      { dn: 200, lengths: "Barrel TCW 200 L (152650)", available: "stock" },
+      { dn: 300, lengths: "Barrel TCW 300 L (152796)", available: "stock" },
+      { dn: 500, lengths: "Barrel TCW 500 L (152794)", available: "stock" },
+      { dn: 750, lengths: "Barrel TCW 750 L Black (153080)", available: "stock" },
+    ],
+    tags: ["tank", "water", "roto", "TCW", "vertical", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "70 L–750 L in stock",
+        diameterMin: 70,
+        diameterMax: 750,
+        specificSpecs: { "Codes": "152636 · 152640 · 152646 · 152650 · 152796 · 152794 · 153080" },
+      },
+    ],
+  },
+
+  // ─── Roto — Plastik Tank (Large Capacity 2500–5000 L) ─────────────────
+
+  {
+    id: "roto-plastik-tank-large",
+    slug: "roto-plastik-tank-large",
+    name: "Roto Plastik Tank — Large Capacity",
+    shortName: "Plastik Tank",
+    category: "civil",
+    material: "HDPE",
+    application: "Large-Volume Water Storage",
+    description:
+      "Large-capacity HDPE storage tanks for water. Sizes 2500 L, 3500 L, and 5000 L. Connector kits (Bashkuese) are available for the 5000 L tank in 400×200 and 600×200 configurations to chain multiple tanks for higher total capacity.",
+    image: "/products/agri/roto-plastik-tank.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Rotomoulded HDPE",
+      "Capacities": "2500 L · 3500 L · 5000 L",
+      "Connectors (5000 L)": "400×200 (16358) · 600×200 (16357)",
+    },
+    dimensions: [
+      { dn: 2500, lengths: "Plastik Tank 2500 L (16543)", available: "stock" },
+      { dn: 3500, lengths: "Plastik Tank 3500 L (36233)", available: "stock" },
+      { dn: 5000, lengths: "Plastik Tank 5000 L (16234)", available: "stock" },
+    ],
+    tags: ["tank", "water", "roto", "large-capacity", "HDPE"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "2500 L · 3500 L · 5000 L in stock",
+        diameterMin: 2500,
+        diameterMax: 5000,
+        specificSpecs: {
+          "Codes": "16543 · 36233 · 16234",
+          "5000 L connectors": "16358 (400×200) · 16357 (600×200)",
+        },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // PERPLAST — North Macedonia
+  // Source: perplastkompani.com
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Perplast — Classic PVC Garden Hose ────────────────────────────────
+
+  {
+    id: "perplast-pvc-hose",
+    slug: "perplast-pvc-hose",
+    name: "Perplast Classic PVC Garden Hose",
+    shortName: "Perplast Classic",
+    category: "agri",
+    material: "PVC",
+    application: "Garden & Light Agriculture Watering",
+    description:
+      "Perplast Kompani's Classic PVC garden hose is a multi-layer construction for general garden and agricultural watering, car washing, and light cleaning applications. Manufactured at their factory in Tetovo, North Macedonia from laboratory-tested premium PVC compound. In stock in ½″, ¾″, and 1″ (13 / 19 / 25 mm internal diameter).",
+    image: "/products/agri/perplast-classic-pvc-hose.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "Multi-layer PVC",
+      "Sizes": "½″ (13 mm) · ¾″ (19 mm) · 1″ (25 mm)",
+      "Origin": "Tetovo, North Macedonia",
+      "Application": "Garden watering · Light agriculture · Car washing",
+    },
+    dimensions: [
+      { dn: 13, lengths: "½″ — 20 / 25 / 30 / 50 m rolls", available: "stock" },
+      { dn: 19, lengths: "¾″ — 20 / 25 / 50 m rolls",      available: "stock" },
+      { dn: 25, lengths: "1″ — 25 / 50 m rolls",           available: "stock" },
+    ],
+    tags: ["hose", "garden", "PVC", "perplast", "classic"],
+    sourceUrl: "https://perplastkompani.com/product/perplast-classic-pvc-hose/",
+    suppliers: [
+      {
+        partnerId: "perplast",
+        partnerName: "Perplast Kompani",
+        country: "North Macedonia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "½″ · ¾″ · 1″ in stock",
+        diameterMin: 13,
+        diameterMax: 25,
+        specificSpecs: {
+          "Roll Lengths": "20 / 25 / 30 / 50 m",
+          "Construction": "Multi-layer PVC",
+        },
+      },
+    ],
+  },
+
+  // ─── Perplast — Flexoper-3 Reinforced Hose ────────────────────────────
+
+  {
+    id: "perplast-flexoper-3",
+    slug: "perplast-flexoper-3",
+    name: "Perplast Flexoper-3 Reinforced PVC Hose",
+    shortName: "Flexoper-3",
+    category: "agri",
+    material: "PVC",
+    application: "Garden & Reinforced Light Pressure Use",
+    description:
+      "The Perplast Flexoper-3 is a three-layer reinforced PVC hose offering improved pressure resistance over the Classic model. In stock in ½″ (13 mm internal diameter) in coil lengths of 20 m, 25 m, and 50 m.",
+    image: "/products/agri/perplast-flexoper3.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "3-layer reinforced PVC",
+      "Size": "½″ (13 mm)",
+      "Roll Lengths": "20 m · 25 m · 50 m",
+    },
+    dimensions: [
+      { dn: 13, lengths: "20 m", available: "stock" },
+      { dn: 13, lengths: "25 m", available: "stock" },
+      { dn: 13, lengths: "50 m", available: "stock" },
+    ],
+    tags: ["hose", "garden", "PVC", "perplast", "flexoper", "reinforced"],
+    sourceUrl: "https://perplastkompani.com/product/flexoper-3/",
+    suppliers: [
+      {
+        partnerId: "perplast",
+        partnerName: "Perplast Kompani",
+        country: "North Macedonia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "½″ in 20 / 25 / 50 m in stock",
+        diameterMin: 13,
+        diameterMax: 13,
+        specificSpecs: { "Construction": "3-layer reinforced PVC" },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // SEL-POLIMER (Hidrotek) — Turkey
+  // Source: hidrotekhortum.com.tr
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── SEL-Troy Green PVC Spiral Suction Hose ──────────────────────────
+
+  {
+    id: "sel-troy-green-spiral-hose",
+    slug: "sel-troy-green-spiral-hose",
+    name: "SEL-Troy Green PVC Spiral Suction Hose",
+    shortName: "SEL-Troy Green",
+    category: "industrial",
+    material: "PVC",
+    application: "Suction & Delivery — Agriculture, Irrigation, Chemicals",
+    description:
+      "The SEL-Troy ST green spiral hose by SEL-Polimer (distributed via Hidrotek Hortum, Turkey) is a robust PVC suction and delivery hose with a smooth flexible inner PVC layer and shock-resistant rigid PVC helix spiral. The spiral reinforcement prevents collapse under vacuum (suction). Used in agriculture for irrigation, pesticide application, fertiliser transfer, and light chemical handling. Available Ø 19–120 mm in stock.",
+    image: "/products/agri/sel-troy-green-spiral-hose.jpg",
+    standards: [],
+    keyProperties: {
+      "Construction": "Smooth flexible PVC inner + rigid PVC helix spiral",
+      "Colour": "Green",
+      "Diameter Range (stock)": "Ø 19–120 mm",
+      "Vacuum Rated": "Yes — spiral prevents collapse",
+      "Application": "Irrigation · Pesticides · Fertilisers · Light chemicals",
+    },
+    dimensions: [
+      { dn: 19,  lengths: "per metre / coil", available: "stock" },
+      { dn: 25,  lengths: "per metre / coil", available: "stock" },
+      { dn: 32,  lengths: "per metre / coil", available: "stock" },
+      { dn: 50,  lengths: "per metre / coil", available: "stock" },
+      { dn: 75,  lengths: "per metre / coil", available: "stock" },
+      { dn: 100, lengths: "per metre / coil", available: "stock" },
+      { dn: 120, lengths: "per metre / coil", available: "stock" },
+    ],
+    tags: ["hose", "spiral", "suction", "PVC", "sel-polimer", "green", "agriculture"],
+    sourceUrl: "https://hidrotekhortum.com.tr/en/collections/yesil-spiral-hortum-sel-troy-st",
+    suppliers: [
+      {
+        partnerId: "sel-polimer",
+        partnerName: "SEL-Polimer",
+        country: "Turkey",
+        color: "#f59e0b",
+        availability: "in-stock",
+        stockNote: "Ø 19–120 mm in stock",
+        diameterMin: 19,
+        diameterMax: 120,
+        specificSpecs: {
+          "Brand": "SEL-Troy ST",
+          "Inner": "Smooth flexible PVC",
+          "Spiral": "Rigid PVC helix (vacuum/suction rated)",
+        },
+      },
+    ],
+  },
+
+  // ─── SEL Caramel PVC Garden Hose ─────────────────────────────────────
+
+  {
+    id: "sel-caramel-garden-hose",
+    slug: "sel-caramel-garden-hose",
+    name: "SEL Caramel PVC Garden Hose",
+    shortName: "SEL Caramel",
+    category: "agri",
+    material: "PVC",
+    application: "Garden Watering & General Use",
+    description:
+      "Caramel-orange PVC garden hose by SEL-Polimer (distributed via Hidrotek Hortum, Turkey). In stock in ½″, ¾″, and 1″ sizes. For garden watering and general use.",
+    image: "/products/agri/sel-caramel-garden-hose.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "PVC",
+      "Colour": "Caramel orange",
+      "Sizes": "½″ (13 mm) · ¾″ (19 mm) · 1″ (25 mm)",
+    },
+    dimensions: [
+      { dn: 13, lengths: "½″", available: "stock" },
+      { dn: 19, lengths: "¾″", available: "stock" },
+      { dn: 25, lengths: "1″", available: "stock" },
+    ],
+    tags: ["hose", "garden", "PVC", "sel-polimer", "caramel"],
+    sourceUrl: "https://hidrotekhortum.com.tr/en/products/1-caramel-turuncu-bahce-hortumu",
+    suppliers: [
+      {
+        partnerId: "sel-polimer",
+        partnerName: "SEL-Polimer",
+        country: "Turkey",
+        color: "#f59e0b",
+        availability: "in-stock",
+        stockNote: "½″ · ¾″ · 1″ in stock",
+        diameterMin: 13,
+        diameterMax: 25,
+        specificSpecs: { "Colour": "Caramel orange" },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // CONFORT-AL — Albania
+  // Source: confort-al.com (est. 1995, Durrës)
+  // All products are IN STOCK
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Confort — PPHT Pipes & Fittings ──────────────────────────────────
+
+  {
+    id: "confort-ppht-pipes",
+    slug: "confort-ppht-pipes",
+    name: "Confort PPHT Building Drainage Pipe & Fittings",
+    shortName: "PPHT Pipe",
+    category: "civil",
+    material: "PP",
+    application: "Internal Building Sewage & Drainage",
+    description:
+      "Confort sh.p.k produces two-layer PPHT pipes and fittings to EN 1329-1:2014+A1:2008 for internal sewage and waste-water drainage in civil and industrial buildings. Available in grey colour, Ø 32–160 mm, in lengths of 0.25 m, 0.5 m, 1 m, 2 m, and 3 m with single or double socket. Complete range of fittings available. Manufactured in Durrës, Albania since 1995. All products in stock.",
+    image: "/products/civil/confort-ppht-pipe.jpg",
+    standards: ["EN 1329-1:2014+A1:2008", "ISO 9001:2015"],
+    keyProperties: {
+      "Material": "PPHT (polypropylene high-temperature)",
+      "Diameter Range": "Ø 32 / 40 / 50 / 75 / 90 / 100 / 110 / 125 / 160 mm",
+      "Lengths": "0.25 m · 0.5 m · 1 m · 2 m · 3 m",
+      "Colour": "Grey",
+      "Joint": "Single or double socket",
+      "Origin": "Made in Albania (Durrës)",
+    },
+    dimensions: [
+      { dn: 32,  od: 32,  lengths: "0.25–3 m", available: "stock" },
+      { dn: 40,  od: 40,  lengths: "0.25–3 m", available: "stock" },
+      { dn: 50,  od: 50,  lengths: "0.25–3 m", available: "stock" },
+      { dn: 75,  od: 75,  lengths: "0.5–3 m",  available: "stock" },
+      { dn: 90,  od: 90,  lengths: "0.5–3 m",  available: "stock" },
+      { dn: 100, od: 100, lengths: "0.5–3 m",  available: "stock" },
+      { dn: 110, od: 110, lengths: "0.5–3 m",  available: "stock" },
+      { dn: 125, od: 125, lengths: "0.5–3 m",  available: "stock" },
+      { dn: 160, od: 160, lengths: "1–3 m",    available: "stock" },
+    ],
+    tags: ["PPHT", "pipe", "sewage", "drainage", "confort", "albania", "EN 1329"],
+    sourceUrl: "https://confort-al.com/ppht-pipes-and-fittings/",
+    suppliers: [
+      {
+        partnerId: "confort-al",
+        partnerName: "Confort sh.p.k",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Full range Ø 32–160 mm in stock",
+        diameterMin: 32,
+        diameterMax: 160,
+        standards: ["EN 1329-1:2014+A1:2008", "ISO 9001:2015"],
+        specificSpecs: { "Origin": "Durrës, Albania (est. 1995)" },
+      },
+    ],
+  },
+
+  // ─── Confort — PVC Sewage & Drainage Fittings ─────────────────────────
+
+  {
+    id: "confort-pvc-fittings",
+    slug: "confort-pvc-fittings",
+    name: "Confort PVC Sewage & Drainage Fittings",
+    shortName: "PVC Fittings",
+    category: "civil",
+    material: "PVC",
+    application: "Building Sewage & Drainage Fittings",
+    description:
+      "Confort produces PVC fittings for high and low temperature piping systems, buried and underground sewage, and drainage systems. Certified to EN 1329-1:2014+A1:2008. Complete fitting range: elbows, tees, Y-branches, reducers, couplings, end caps. Every product from the Confort PVC fittings catalogue is available in stock. Manufactured in Durrës, Albania since 1995.",
+    image: "/products/civil/confort-pvc-fittings.jpg",
+    standards: ["EN 1329-1:2014+A1:2008", "ISO 9001:2015"],
+    keyProperties: {
+      "Material": "PVC",
+      "Diameter Range": "Ø 32–160 mm",
+      "Product Types": "Elbows · Tees · Y-branches · Reducers · Couplings · End caps",
+      "Origin": "Made in Albania (Durrës)",
+    },
+    dimensions: [
+      { dn: 32,  lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+      { dn: 40,  lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+      { dn: 50,  lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+      { dn: 75,  lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+      { dn: 110, lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+      { dn: 160, lengths: "Elbow / Tee / Y / Reducer / Cap", available: "stock" },
+    ],
+    tags: ["PVC", "fittings", "sewage", "drainage", "confort", "albania", "EN 1329"],
+    sourceUrl: "https://confort-al.com/pvc-fittings/",
+    suppliers: [
+      {
+        partnerId: "confort-al",
+        partnerName: "Confort sh.p.k",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Full PVC fitting range Ø 32–160 mm in stock",
+        diameterMin: 32,
+        diameterMax: 160,
+        standards: ["EN 1329-1:2014+A1:2008", "ISO 9001:2015"],
+        specificSpecs: { "Origin": "Durrës, Albania (est. 1995)" },
+      },
+    ],
+  },
+
+  // ─── Confort — PPR Hot & Cold Water Pipes ─────────────────────────────
+
+  {
+    id: "confort-ppr-pipes",
+    slug: "confort-ppr-pipes",
+    name: "Confort PPR Hot & Cold Water Pipe & Fittings",
+    shortName: "PPR Pipe",
+    category: "civil",
+    material: "PP",
+    application: "Hot & Cold Potable Water · Heating",
+    description:
+      "Polypropylene Random (PPR) pipes and fittings for hot and cold potable water, central heating, and underfloor heating systems. Ø 20–63 mm. Made in Albania at Confort's Durrës facility.",
+    image: "/products/civil/confort-ppht-pipe.jpg",
+    standards: ["ISO 9001:2015"],
+    keyProperties: {
+      "Material": "PPR (Polypropylene Random)",
+      "Diameter Range": "Ø 20 · 25 · 32 · 40 · 50 · 63 mm",
+      "Applications": "Hot/cold potable water · Central heating · Underfloor heating",
+      "Origin": "Durrës, Albania",
+    },
+    dimensions: [
+      { dn: 20, od: 20, available: "stock" },
+      { dn: 25, od: 25, available: "stock" },
+      { dn: 32, od: 32, available: "stock" },
+      { dn: 40, od: 40, available: "stock" },
+      { dn: 50, od: 50, available: "stock" },
+      { dn: 63, od: 63, available: "stock" },
+    ],
+    tags: ["PPR", "pipe", "water", "heating", "confort", "albania"],
+    sourceUrl: "https://confort-al.com/ppr-pipes-and-fittings/",
+    suppliers: [
+      {
+        partnerId: "confort-al",
+        partnerName: "Confort sh.p.k",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Ø 20–63 mm in stock",
+        diameterMin: 20,
+        diameterMax: 63,
+        standards: ["ISO 9001:2015"],
+        specificSpecs: {
+          "Applications": "Hot/cold potable water · Central heating · Underfloor",
+        },
+      },
+    ],
+  },
+
+  // ─── Confort — PVC Rectangular Gutters & Rainpipes ─────────────────────
+
+  {
+    id: "confort-pvc-gutters",
+    slug: "confort-pvc-gutters",
+    name: "Confort PVC Rectangular Gutters & Rainpipes",
+    shortName: "PVC Gutters",
+    category: "civil",
+    material: "PVC",
+    application: "Rainwater Drainage",
+    description:
+      "PVC rectangular gutters and downpipes for rainwater drainage. Full system including brackets, connectors, and corner pieces. Made in Albania at Confort's Durrës facility.",
+    image: "/products/civil/confort-pvc-fittings.jpg",
+    standards: ["ISO 9001:2015"],
+    keyProperties: {
+      "Material": "PVC",
+      "Profile": "Rectangular",
+      "System": "Gutters · Downpipes · Brackets · Connectors",
+      "Origin": "Durrës, Albania",
+    },
+    tags: ["gutter", "PVC", "rainpipe", "confort", "albania", "drainage"],
+    sourceUrl: "https://confort-al.com/rectangular-pipes-and-fittings/",
+    suppliers: [
+      {
+        partnerId: "confort-al",
+        partnerName: "Confort sh.p.k",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Complete gutter system in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        standards: ["ISO 9001:2015"],
+      },
+    ],
+  },
+
+  // ─── Confort — PP Manholes & Inspection Sumps ──────────────────────────
+
+  {
+    id: "confort-pp-manholes",
+    slug: "confort-pp-manholes",
+    name: "Confort PP Manholes & Inspection Sumps",
+    shortName: "PP Manhole",
+    category: "civil",
+    material: "PP",
+    application: "Underground Sewage Inspection",
+    description:
+      "Polypropylene manholes and inspection sumps for underground sewage systems. Made in Albania at Confort's Durrës facility. All products in stock.",
+    image: "/products/civil/confort-pvc-fittings.jpg",
+    standards: ["ISO 9001:2015"],
+    keyProperties: {
+      "Material": "PP (polypropylene)",
+      "Application": "Underground sewage inspection chambers",
+      "Origin": "Durrës, Albania",
+    },
+    tags: ["manhole", "PP", "sewage", "confort", "albania", "inspection"],
+    sourceUrl: "https://confort-al.com/",
+    suppliers: [
+      {
+        partnerId: "confort-al",
+        partnerName: "Confort sh.p.k",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "PP manholes in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        standards: ["ISO 9001:2015"],
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // XIER VALVE — China
+  // Source: xiervalve.com
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Xier — UPVC Compact Ball Valve (Long Handle) ──────────────────────
+
+  {
+    id: "xier-upvc-ball-valve",
+    slug: "xier-upvc-ball-valve",
+    name: "Xier UPVC Compact Ball Valve — Long Handle",
+    shortName: "UPVC Ball Valve",
+    category: "civil",
+    material: "PVC",
+    application: "Water · Irrigation · Pool Systems",
+    description:
+      "Xier Valve's UPVC compact ball valve (long handle series XE01007–XE01009) is a full-bore PVC valve for water supply, irrigation networks, and industrial fluid control. The compact body and long handle allow easy operation in tight spaces. UPVC construction is corrosion-free and suitable for potable water, agricultural chemicals, and mild industrial fluids. Sizes ½″ to 4″.",
+    image: "/products/civil/xier-upvc-ball-valve.jpg",
+    standards: ["ISO 9001"],
+    keyProperties: {
+      "Material": "UPVC (unplasticised PVC)",
+      "Models": "XE01007 · XE01008 · XE01009",
+      "Size Range": "½″–4″ (DN 15–110 mm)",
+      "Operation": "¼ turn, long ergonomic handle",
+      "Connection": "Socket or threaded",
+      "Bore": "Full bore — minimal flow restriction",
+      "Applications": "Water supply · Irrigation · Pool systems",
+    },
+    dimensions: [
+      { dn: 15,  lengths: "½″ · XE01007", available: "stock" },
+      { dn: 20,  lengths: "¾″ · XE01007", available: "stock" },
+      { dn: 25,  lengths: "1″ · XE01008",  available: "stock" },
+      { dn: 32,  lengths: "1¼″ · XE01008", available: "stock" },
+      { dn: 40,  lengths: "1½″ · XE01008", available: "stock" },
+      { dn: 50,  lengths: "2″ · XE01008",  available: "stock" },
+      { dn: 63,  lengths: "2½″ · XE01009", available: "stock" },
+      { dn: 75,  lengths: "3″ · XE01009",  available: "stock" },
+      { dn: 110, lengths: "4″ · XE01009",  available: "stock" },
+    ],
+    tags: ["valve", "UPVC", "ball-valve", "xier", "water", "irrigation"],
+    sourceUrl: "https://www.xiervalve.com/product/upvc-compact-ball-valve/upvc-compact-ball-valve-upvc-compact-ball-valve/xe01007-xe01009-long-handle.html",
+    suppliers: [
+      {
+        partnerId: "xier-valve",
+        partnerName: "Xier Valve",
+        country: "China",
+        color: "#7c3aed",
+        availability: "in-stock",
+        stockNote: "½″–4″ in stock (XE01007–XE01009)",
+        diameterMin: 15,
+        diameterMax: 110,
+        standards: ["ISO 9001"],
+        specificSpecs: {
+          "Operation": "Quarter-turn long handle",
+          "Bore": "Full bore",
+        },
+      },
+    ],
+  },
+
+  // ═════════════════════════════════════════════════════════════════════════
+  // PLASTIKA NV — Serbia
+  // Source: plastikanv.com + offer images
+  // ═════════════════════════════════════════════════════════════════════════
+
+  // ─── Plastika NV — 2-Year Agricultural PE Film 4 m × 100 m (50 kg) ────
+
+  {
+    id: "plastika-nv-agri-film-2yr-50kg",
+    slug: "plastika-nv-agri-film-2yr-50kg",
+    name: "Plastika NV 2-Year Agricultural PE Film — 4×100 m (50 kg)",
+    shortName: "Agri Film 50 kg",
+    category: "agri",
+    material: "LDPE",
+    application: "Greenhouse Cover & Mulching",
+    description:
+      "2-year UV-stabilised agricultural polyethylene film. Width 4 m, length 100 m per roll, weight 50 kg. For greenhouse covering and protected-crop production. Manufactured at Plastika NV's solar-powered facility in Serbia using in-house recycled PE.",
+    image: "/products/industrial/plastika-nv-agricultural-film.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "LDPE (UV-stabilised, 2-year life)",
+      "Width": "4 m",
+      "Length": "100 m per roll",
+      "Roll Weight": "50 kg",
+      "Application": "Greenhouse cover · Mulching",
+    },
+    dimensions: [
+      { dn: 4000, lengths: "4 × 100 m · 50 kg roll", available: "stock" },
+    ],
+    tags: ["film", "PE", "agricultural", "plastika-nv", "greenhouse", "2-year UV"],
+    suppliers: [
+      {
+        partnerId: "plastika-nv",
+        partnerName: "Plastika DOO Nova Varoš",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "4 m × 100 m × 50 kg rolls in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "UV Life": "2 years", "Recycling": "In-house solar-powered facility" },
+      },
+    ],
+  },
+
+  // ─── Plastika NV — 2-Year Agricultural PE Film 4 m × 100 m (60 kg) ────
+
+  {
+    id: "plastika-nv-agri-film-2yr-60kg",
+    slug: "plastika-nv-agri-film-2yr-60kg",
+    name: "Plastika NV 2-Year Agricultural PE Film — 4×100 m (60 kg)",
+    shortName: "Agri Film 60 kg",
+    category: "agri",
+    material: "LDPE",
+    application: "Greenhouse Cover (Heavier Roll)",
+    description:
+      "Heavier 2-year UV-stabilised PE film roll. Width 4 m, length 100 m, weight 60 kg per roll. For greenhouse coverings requiring greater film thickness or extra UV durability.",
+    image: "/products/industrial/plastika-nv-agricultural-film.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "LDPE (UV-stabilised, 2-year life)",
+      "Width": "4 m",
+      "Length": "100 m per roll",
+      "Roll Weight": "60 kg",
+    },
+    dimensions: [
+      { dn: 4000, lengths: "4 × 100 m · 60 kg roll", available: "stock" },
+    ],
+    tags: ["film", "PE", "agricultural", "plastika-nv", "greenhouse", "heavy"],
+    suppliers: [
+      {
+        partnerId: "plastika-nv",
+        partnerName: "Plastika DOO Nova Varoš",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "4 m × 100 m × 60 kg rolls in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "UV Life": "2 years" },
+      },
+    ],
+  },
+
+  // ─── Plastika NV — 2-Year Agricultural PE Film 6.3 m × 100 m (60 kg) ─
+
+  {
+    id: "plastika-nv-agri-film-2yr-6m",
+    slug: "plastika-nv-agri-film-2yr-6m",
+    name: "Plastika NV 2-Year Agricultural PE Film — 6.3×100 m (60 kg)",
+    shortName: "Agri Film 6.3 m",
+    category: "agri",
+    material: "LDPE",
+    application: "Wide-Span Greenhouse Cover",
+    description:
+      "Extra-wide 2-year UV-stabilised agricultural PE film. Width 6.3 m, length 100 m, weight 60 kg per roll. For wide-span greenhouse and tunnel installations requiring fewer joints.",
+    image: "/products/industrial/plastika-nv-agricultural-film.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "LDPE (UV-stabilised, 2-year life)",
+      "Width": "6.3 m",
+      "Length": "100 m per roll",
+      "Roll Weight": "60 kg",
+    },
+    dimensions: [
+      { dn: 6300, lengths: "6.3 × 100 m · 60 kg roll", available: "stock" },
+    ],
+    tags: ["film", "PE", "agricultural", "plastika-nv", "greenhouse", "wide-span"],
+    suppliers: [
+      {
+        partnerId: "plastika-nv",
+        partnerName: "Plastika DOO Nova Varoš",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "6.3 m × 100 m × 60 kg rolls in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "UV Life": "2 years", "Width advantage": "Fewer joints in wide tunnels" },
+      },
+    ],
+  },
+
+  // ─── Plastika NV — White PE Agricultural Film ─────────────────────────
+
+  {
+    id: "plastika-nv-white-film",
+    slug: "plastika-nv-white-film",
+    name: "Plastika NV White PE Agricultural Film",
+    shortName: "White PE Film",
+    category: "agri",
+    material: "LDPE",
+    application: "Reflective Mulching & Greenhouse",
+    description:
+      "White polyethylene film for greenhouse or agricultural covering. Width 4 m, length 100 m. Available in 30 kg, 40 kg, and 50 kg rolls. The reflective white surface helps regulate plant temperature and improves under-canopy light distribution.",
+    image: "/products/industrial/plastika-nv-agricultural-film.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "LDPE",
+      "Colour": "White (reflective)",
+      "Width": "4 m",
+      "Length": "100 m per roll",
+      "Available Weights": "30 kg · 40 kg · 50 kg",
+    },
+    dimensions: [
+      { dn: 4000, lengths: "4 × 100 m · 30 kg roll", available: "stock" },
+      { dn: 4001, lengths: "4 × 100 m · 40 kg roll", available: "stock" },
+      { dn: 4002, lengths: "4 × 100 m · 50 kg roll", available: "stock" },
+    ],
+    tags: ["film", "PE", "white", "plastika-nv", "agricultural", "reflective"],
+    suppliers: [
+      {
+        partnerId: "plastika-nv",
+        partnerName: "Plastika DOO Nova Varoš",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "30 / 40 / 50 kg rolls in stock",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: { "Width": "4 m × 100 m", "Roll weights": "30 / 40 / 50 kg" },
       },
     ],
   },

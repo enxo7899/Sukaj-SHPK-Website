@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import type { ProductGroup, SupplierOffer, DimensionRow } from "@/lib/products-data";
 import { productGroups } from "@/lib/products-data";
+import { partners } from "@/lib/data";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -555,6 +556,46 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
               <SupplierCard key={supplier.partnerId} supplier={supplier} />
             ))}
           </div>
+
+          {/* ── Also Available From — Cross-Provider Callout ── */}
+          {product.alsoAvailableFrom && product.alsoAvailableFrom.length > 0 && (() => {
+            const alsoPartners = product.alsoAvailableFrom!
+              .map((id) => partners.find((p) => p.id === id))
+              .filter((p): p is NonNullable<typeof p> => Boolean(p));
+            if (alsoPartners.length === 0) return null;
+            return (
+              <div className="mt-6 rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/[0.06] to-transparent p-5">
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 rounded-lg bg-cyan-500/15 p-2.5 border border-cyan-500/25">
+                    <Layers className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs uppercase tracking-wider text-cyan-300/80 font-mono mb-1">
+                      Cross-Supplier Equivalent
+                    </p>
+                    <p className="text-sm text-slate-200 mb-3">
+                      An equivalent product is also available from{" "}
+                      {alsoPartners.length > 1 ? "these partners" : "this partner"}:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {alsoPartners.map((p) => (
+                        <Link
+                          key={p.id}
+                          href={`/catalog?partner=${p.id}`}
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-3 py-1.5 text-sm font-semibold text-cyan-200 hover:border-cyan-400/60 hover:bg-cyan-500/20 transition-colors"
+                        >
+                          <Globe className="w-3.5 h-3.5" />
+                          {p.name}
+                          <span className="text-xs text-cyan-300/60 font-mono">· {p.country}</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </div>
 
         {/* ── Dimension Table ── */}
