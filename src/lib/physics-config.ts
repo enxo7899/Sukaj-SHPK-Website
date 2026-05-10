@@ -4,6 +4,7 @@ export interface PipeConfig {
   height: number;
   color: string;
   marking: string;
+  markingColor?: string;
   density: number;
   friction: number;
   restitution: number;
@@ -22,8 +23,8 @@ interface PipePreset extends Omit<PipeConfig, "width"> {
 }
 
 export const HERO_PIPE_WORLD = {
-  gravityY: 1.2,
-  timeScale: 1.1,
+  gravityY: 1.6,
+  timeScale: 1.0,
   fixedDt: 16.667,
   maxSubSteps: 4,
   floorOffset: 22,
@@ -34,20 +35,21 @@ export const HERO_PIPE_WORLD = {
   linearSleepThreshold: 0.08,
   angularSleepThreshold: 0.008,
   maxAngularVelocity: 0.25,
-  maxAngleDeg: 45,
-  loopPauseMs: 3500,
-  loopFadeMs: 700,
+  maxAngleDeg: 35,
 } as const;
 
+// Visible dark charcoal/graphite range — reads against #020617 background
 const PIPE_COLORS = [
-  "#111827",
-  "#0f1624",
-  "#131b2e",
-  "#101825",
-  "#121a29",
-  "#0e1521",
-  "#141c2d",
+  "#1e2d3d",
+  "#243343",
+  "#1f2e3e",
+  "#253545",
+  "#1e2d3d",
+  "#222f3f",
+  "#253545",
 ];
+
+const CYAN_MARKING = "rgba(34,211,238,0.7)";
 
 const PIPE_MARKINGS = [
   "SUKAJ SH.P.K  —  PE100  HDPE",
@@ -259,11 +261,23 @@ export function createPipeConfigs({
   const presets = isMobile ? MOBILE_PIPE_PRESETS : DESKTOP_PIPE_PRESETS;
   const safeContainerWidth = Math.max(containerWidth, isMobile ? 320 : 520);
 
-  return presets.map(({ baseWidth, ...preset }) => {
+  return presets.map(({ baseWidth, ...preset }, index) => {
     const maxPipeWidth = safeContainerWidth * (isMobile ? 0.84 : 0.78);
+    // Heavy industrial tuning: heavier, less bouncy, slower tumble.
+    const tunedRestitution = clamp(preset.restitution * 0.3, 0.08, 0.12);
+    const tunedDensity = preset.density * 1.4;
+    const tunedFrictionAir = 0.012;
+    const tunedAngularVel = preset.initialAngularVelocity * 0.5;
+    // One pipe gets a bright cyan marking for visual variety.
+    const markingColor = index === 2 ? CYAN_MARKING : preset.markingColor;
     return {
       ...preset,
       width: Math.round(clamp(baseWidth, 200, maxPipeWidth)),
+      restitution: tunedRestitution,
+      density: tunedDensity,
+      frictionAir: tunedFrictionAir,
+      initialAngularVelocity: tunedAngularVel,
+      markingColor,
     };
   });
 }

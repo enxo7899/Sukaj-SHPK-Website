@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useCallback, type RefObject } from "react";
+import { useEffect, useCallback, type RefObject } from "react";
 import Matter from "matter-js";
-import { createPipeConfigs, HERO_PIPE_WORLD, type PipeConfig } from "@/lib/physics-config";
+import { HERO_PIPE_WORLD, type PipeConfig } from "@/lib/physics-config";
 
 const RAD_TO_DEG = 180 / Math.PI;
 
@@ -35,15 +35,17 @@ export function useMatterPhysics({
   enabled = true,
   reduceMotion = false,
 }: UseMatterPhysicsOptions) {
-  const loopCountRef = useRef(0);
-
   const createAndRunSimulation = useCallback(
     (container: HTMLDivElement, onSettled: () => void) => {
       const { width, height } = getContainerSize(container);
       if (width === 0 || height === 0) return () => {};
 
-      const isMobile = width < 768;
-      const configs = createPipeConfigs({ isMobile, containerWidth: width });
+      // Use the configs already attached to each rendered pipe so the simulation
+      // body sizes always match the DOM elements being driven.
+      const configs: PipeConfig[] = pipeRefs.current
+        .map((ref) => ref?.config)
+        .filter((c): c is PipeConfig => Boolean(c));
+      if (configs.length === 0) return () => {};
       const floorY = height - HERO_PIPE_WORLD.floorOffset;
 
       const { Engine, Bodies, Body, Composite } = Matter;
@@ -230,15 +232,14 @@ export function useMatterPhysics({
     const container = containerRef.current;
     if (!container || !enabled) return;
 
-    if (reduceMotion) {
+    const renderStatic = () => {
       const { width, height } = getContainerSize(container);
-      const isMobile = width < 768;
-      const configs = createPipeConfigs({ isMobile, containerWidth: width });
+      if (width === 0 || height === 0) return;
       const floorY = height - HERO_PIPE_WORLD.floorOffset;
 
-      configs.forEach((config, i) => {
-        const ref = pipeRefs.current[i];
-        if (!ref?.el) return;
+      pipeRefs.current.forEach((ref, i) => {
+        if (!ref?.el || !ref.config) return;
+        const config = ref.config;
         const cx = width * 0.5 + (i % 2 === 0 ? -40 : 40);
         const cy = floorY - config.height * 0.5 - i * 18;
         const x = cx - config.width * 0.5;
@@ -247,17 +248,20 @@ export function useMatterPhysics({
         ref.el.style.transform = `translate3d(${x}px,${y}px,0) rotate(${angle}deg)`;
         ref.el.style.opacity = "1";
       });
-      return;
+    };
+
+    if (reduceMotion) {
+      renderStatic();
+      const ro = new ResizeObserver(() => renderStatic());
+      ro.observe(container);
+      return () => ro.disconnect();
     }
 
     let cleanup: (() => void) | null = null;
-    let loopTimeout: number | null = null;
     let disposed = false;
 
-    const startLoop = () => {
+    const start = () => {
       if (disposed) return;
-
-      loopCountRef.current++;
 
       pipeRefs.current.forEach((ref) => {
         if (ref.el) {
@@ -268,38 +272,22 @@ export function useMatterPhysics({
 
       if (wrapperRef.current) {
         wrapperRef.current.style.opacity = "1";
-        wrapperRef.current.style.transition = `opacity ${HERO_PIPE_WORLD.loopFadeMs}ms ease-in`;
+        wrapperRef.current.style.transition = "none";
       }
 
+      // Drop once and stay. No loop, no fade-out, no restart.
       cleanup = createAndRunSimulation(container, () => {
-        if (disposed) return;
-
-        loopTimeout = window.setTimeout(() => {
-          if (disposed) return;
-
-          if (wrapperRef.current) {
-            wrapperRef.current.style.transition = `opacity ${HERO_PIPE_WORLD.loopFadeMs}ms ease-out`;
-            wrapperRef.current.style.opacity = "0";
-          }
-
-          window.setTimeout(() => {
-            if (disposed) return;
-            if (cleanup) cleanup();
-            cleanup = null;
-            startLoop();
-          }, HERO_PIPE_WORLD.loopFadeMs + 50);
-        }, HERO_PIPE_WORLD.loopPauseMs);
+        // Pipes have settled. Intentionally do nothing — they rest permanently.
       });
     };
 
-    startLoop();
+    start();
 
     const resizeObserver = new ResizeObserver(() => {
       if (disposed) return;
       if (cleanup) cleanup();
       cleanup = null;
-      if (loopTimeout) clearTimeout(loopTimeout);
-      startLoop();
+      start();
     });
     resizeObserver.observe(container);
 
@@ -307,7 +295,6 @@ export function useMatterPhysics({
       disposed = true;
       resizeObserver.disconnect();
       if (cleanup) cleanup();
-      if (loopTimeout) clearTimeout(loopTimeout);
     };
   }, [containerRef, pipeRefs, wrapperRef, pipeCount, enabled, reduceMotion, createAndRunSimulation]);
 }

@@ -7,45 +7,58 @@ interface CorrugatedPipeProps {
   height: number;
   color?: string;
   marking?: string;
+  markingColor?: string;
 }
 
 export const CorrugatedPipe = memo(function CorrugatedPipe({
   width,
   height,
-  color = "#0f172a",
+  color = "#243343",
   marking = "SUKAJ SH.P.K",
+  markingColor = "rgba(255,255,255,0.65)",
 }: CorrugatedPipeProps) {
   const ribSize = Math.max(4, Math.round(width / 34));
-  const endCapW = Math.max(6, Math.round(height * 0.18));
-  const fontSize = Math.max(6, Math.round(height * 0.14));
+  // End caps enlarged ~1.5× for vivid blue interior visibility.
+  const endCapW = Math.max(9, Math.round(height * 0.27));
+  const fontSize = Math.max(7, Math.round(height * 0.16));
 
   return (
     <div
       className="relative"
       style={{ width: `${width}px`, height: `${height}px` }}
     >
-      {/* Pipe body — dark matte HDPE plastic */}
+      {/* Pipe body — dark matte HDPE plastic with vertical shading */}
       <div
         className="absolute inset-0 rounded-[999px]"
         style={{
           background: `linear-gradient(180deg, 
-            ${color} 0%,
-            color-mix(in srgb, ${color} 82%, #1e293b) 15%,
-            color-mix(in srgb, ${color} 65%, #334155) 35%,
-            color-mix(in srgb, ${color} 55%, #475569) 47%,
-            color-mix(in srgb, ${color} 65%, #334155) 55%,
-            color-mix(in srgb, ${color} 82%, #1e293b) 75%,
-            color-mix(in srgb, ${color} 92%, #000) 100%)`,
+            color-mix(in srgb, ${color} 88%, #000) 0%,
+            ${color} 18%,
+            color-mix(in srgb, ${color} 70%, #475569) 38%,
+            color-mix(in srgb, ${color} 58%, #64748b) 50%,
+            color-mix(in srgb, ${color} 70%, #475569) 62%,
+            ${color} 82%,
+            color-mix(in srgb, ${color} 88%, #000) 100%)`,
           boxShadow: `
             0 4px 16px rgba(0,0,0,0.7),
-            0 12px 40px rgba(0,0,0,0.35),
-            0 0 60px rgba(14,165,233,0.03),
+            0 12px 40px rgba(0,0,0,0.4),
+            0 0 40px rgba(6,182,212,0.12),
+            0 0 80px rgba(6,182,212,0.06),
             inset 0 -5px 12px rgba(0,0,0,0.6),
-            inset 0 3px 6px rgba(255,255,255,0.05)
+            inset 0 3px 6px rgba(255,255,255,0.06)
           `,
-          border: "1px solid rgba(100,116,139,0.1)",
+          border: "1px solid rgba(148,163,184,0.16)",
         }}
       >
+        {/* Lateral light sweep — left-to-right gradient gives 3D cylinder feel */}
+        <div
+          className="absolute inset-0 rounded-[999px] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 18%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.04) 65%, rgba(0,0,0,0.18) 100%)",
+            mixBlendMode: "overlay",
+          }}
+        />
         {/* Corrugation ribs — pronounced grooves like real corrugated pipe */}
         <div
           className="absolute inset-y-[5%] inset-x-[1%] rounded-[999px] overflow-hidden"
@@ -64,12 +77,12 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           }}
         />
 
-        {/* Subtle top highlight — matte plastic sheen */}
+        {/* Top highlight — stronger lit edge for cylindrical read */}
         <div
-          className="absolute left-[8%] right-[8%] top-[14%] h-[18%] rounded-full"
+          className="absolute left-[8%] right-[8%] top-[12%] h-[20%] rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 20%, rgba(255,255,255,0.08) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 25%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.1) 75%, transparent 100%)",
           }}
         />
 
@@ -99,9 +112,9 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
             className="font-bold uppercase whitespace-nowrap"
             style={{
               fontSize: `${fontSize}px`,
-              letterSpacing: `${Math.max(1, Math.round(width * 0.008))}px`,
-              color: "rgba(255,255,255,0.45)",
-              textShadow: "0 1px 3px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.05)",
+              letterSpacing: `${Math.max(1, Math.round(width * 0.006))}px`,
+              color: markingColor,
+              textShadow: "0 1px 3px rgba(0,0,0,0.95), 0 0 6px rgba(0,0,0,0.6)",
             }}
           >
             {marking}
@@ -130,7 +143,7 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
         />
       </div>
 
-      {/* Left end — dark outer ring with blue interior (like real HDPE pipe cross-section) */}
+      {/* Left end — dark outer ring with vivid blue interior (HDPE cross-section) */}
       <div
         className="absolute left-0 top-[2%] bottom-[2%] z-[2] overflow-hidden"
         style={{
@@ -139,31 +152,29 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           transform: "translateX(-25%)",
         }}
       >
-        {/* Outer dark ring (pipe wall) */}
         <div
           className="absolute inset-0 rounded-[999px]"
           style={{
             background: `linear-gradient(180deg,
               #0a0f1a 0%, #141c2b 25%, #1e293b 50%, #141c2b 75%, #0a0f1a 100%)`,
-            border: "1px solid rgba(100,116,139,0.15)",
+            border: "1px solid rgba(148,163,184,0.18)",
           }}
         />
-        {/* Blue interior lining — visible through the opening */}
         <div
           className="absolute rounded-[999px]"
           style={{
-            top: "18%",
-            bottom: "18%",
-            left: "15%",
-            right: "10%",
+            top: "14%",
+            bottom: "14%",
+            left: "14%",
+            right: "8%",
             background: `linear-gradient(180deg,
-              #1e40af 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 50%, #3b82f6 55%, #2563eb 75%, #1e40af 100%)`,
-            boxShadow: "inset 0 0 3px rgba(0,0,0,0.4)",
+              #1d4ed8 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 55%, #3b82f6 70%, #2563eb 85%, #1d4ed8 100%)`,
+            boxShadow: "inset 0 0 4px rgba(0,0,0,0.45), 0 0 6px rgba(37,99,235,0.35)",
           }}
         />
       </div>
 
-      {/* Right end — dark outer ring with blue interior */}
+      {/* Right end — dark outer ring with vivid blue interior */}
       <div
         className="absolute right-0 top-[2%] bottom-[2%] z-[2] overflow-hidden"
         style={{
@@ -172,26 +183,24 @@ export const CorrugatedPipe = memo(function CorrugatedPipe({
           transform: "translateX(25%)",
         }}
       >
-        {/* Outer dark ring (pipe wall) */}
         <div
           className="absolute inset-0 rounded-[999px]"
           style={{
             background: `linear-gradient(180deg,
               #0a0f1a 0%, #141c2b 25%, #1e293b 50%, #141c2b 75%, #0a0f1a 100%)`,
-            border: "1px solid rgba(100,116,139,0.15)",
+            border: "1px solid rgba(148,163,184,0.18)",
           }}
         />
-        {/* Blue interior lining */}
         <div
           className="absolute rounded-[999px]"
           style={{
-            top: "18%",
-            bottom: "18%",
-            left: "10%",
-            right: "15%",
+            top: "14%",
+            bottom: "14%",
+            left: "8%",
+            right: "14%",
             background: `linear-gradient(180deg,
-              #1e40af 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 50%, #3b82f6 55%, #2563eb 75%, #1e40af 100%)`,
-            boxShadow: "inset 0 0 3px rgba(0,0,0,0.4)",
+              #1d4ed8 0%, #2563eb 25%, #3b82f6 45%, #60a5fa 55%, #3b82f6 70%, #2563eb 85%, #1d4ed8 100%)`,
+            boxShadow: "inset 0 0 4px rgba(0,0,0,0.45), 0 0 6px rgba(37,99,235,0.35)",
           }}
         />
       </div>
