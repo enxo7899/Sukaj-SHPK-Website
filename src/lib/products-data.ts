@@ -113,8 +113,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water Supply & Pressure Systems",
     description:
       "High-density polyethylene PE100 pressure pipe for potable water distribution, irrigation mains, and pressurised industrial networks. Engineered for 50+ year service life with full fusion-weld compatibility. Available in solid-wall SDR series from PN6 to PN32 across three Balkan-region suppliers.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/konti-pe100-water-pipe.jpg",
     standards: ["EN 12201", "ISO 4427", "ISO 9001"],
     keyProperties: {
       "Material": "PE100 (HDPE)",
@@ -183,8 +182,7 @@ export const productGroups: ProductGroup[] = [
     application: "Gravity Sewage & Stormwater",
     description:
       "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater drainage and subsurface cable protection. SN4 class features a distinctive blue interior lining; SN8 features yellow lining for easy site identification. Available in diameters up to Ø2000 mm.",
-    image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/konti-kan-corrugated-sewage.jpg",
     standards: ["EN 13476", "EN 13476-1:2018"],
     keyProperties: {
       "Wall Type": "Double-wall corrugated (smooth inner)",
@@ -348,8 +346,7 @@ export const productGroups: ProductGroup[] = [
     application: "Cable Protection",
     description:
       "HDPE conduit pipe for underground protection of electrical cables, fibre-optic lines, and telecommunications infrastructure. PTT-standard monotube in single and twin configurations. Smooth inner bore allows easy cable pulling. Available in opaque black for electrical and with stripe coding for fibre-optic identification.",
-    image:
-      "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=1200&h=800&fit=crop&q=80",
+    image: "/products/industrial/konti-cable-duct.jpg",
     standards: ["EN 61386", "PTT Standard"],
     keyProperties: {
       "Material": "HDPE",
@@ -404,8 +401,7 @@ export const productGroups: ProductGroup[] = [
     application: "Gravity Drainage & Soil Stacks",
     description:
       "PP-H (polypropylene homopolymer) gravity drainage pipe with distinctive white lining for building drainage, soil stacks, and acoustic-rated installations. PP-H Silent uses mineral-filled compounds to reduce flow noise — ideal for multi-storey residential and hotel construction.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/ferplast-pp-h-pipe.png",
     standards: ["EN 1451"],
     keyProperties: {
       "Material": "PP-H / PP-H Silent (mineral filled)",
@@ -453,9 +449,8 @@ export const productGroups: ProductGroup[] = [
     material: "HDPE",
     application: "Sewage Access & Maintenance",
     description:
-      "Prefabricated HDPE inspection chamber for gravity sewage and stormwater networks. Factory-assembled risers and base units reduce on-site installation time by up to 60% compared to traditional concrete chambers. Compatible with standard corrugated pipe couplers.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+      "Prefabricated HDPE inspection chamber for gravity sewage and stormwater networks. Factory-assembled risers and base units reduce on-site installation time by up to 60% compared to traditional concrete chambers. Compatible with standard corrugated pipe couplers. Produced to EN 13598-2:2009; standard inner diameters ID 800, 1000, and 1200 mm.",
+    image: "/products/civil/ferplast-hdpe-corrugated.png",
     standards: ["EN 13598"],
     keyProperties: {
       "Material": "HDPE",
@@ -496,8 +491,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water Storage",
     description:
       "Rotationally moulded HDPE water storage tanks for residential, agricultural, and light industrial water supply. Food-grade compound suitable for potable water. Standard 500 L and 1000 L sizes in stock; larger capacities and custom configurations available on order.",
-    image:
-      "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/ferplast-water-reservoir.png",
     standards: ["EU Food Contact Regulations"],
     keyProperties: {
       "Material": "Food-grade HDPE",
@@ -1098,8 +1092,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water Storage & Cisterns",
     description:
       "Rotationally moulded one-piece HDPE tanks for residential, agricultural, and municipal water storage. UV-stabilised, food-contact safe, and frost-resistant. Standard capacities from 300 L to 10 000 L. Flat-bottom vertical tanks and horizontal transport tanks both available. Ø500 L and Ø1000 L are in regular stock.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/ferplast-water-reservoir.png",
     standards: ["Food-contact HDPE", "EU 10/2011"],
     keyProperties: {
       "Material":       "HDPE (food-grade)",
@@ -1243,8 +1236,7 @@ export const productGroups: ProductGroup[] = [
     application: "Corrugated Pipe Jointing",
     description:
       "Injection-moulded and rotomoulded HDPE sockets for joining corrugated sewage and drainage pipes. Manufactured by Konti Hidroplast to match the full OD/ID dimension series — from Ø110 through Ø1000 mm — with paired EPDM gaskets for leak-tight gravity-line joints.",
-    image:
-      "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1200&h=800&fit=crop&q=80",
+    image: "/products/civil/konti-kan-fittings-socket.jpg",
     standards: ["EN 13476"],
     keyProperties: {
       "Material": "HDPE",
@@ -1607,6 +1599,573 @@ export const productGroups: ProductGroup[] = [
         specificSpecs: {
           "Source": "palaplast.com/product-category/irrigation-en/irrigation-fittings/filters-en",
           "Inlet Threads": "BSP",
+        },
+      },
+    ],
+  },
+
+  // ─── Konti Hidroplast — PE-100 Water Supply Pipe ──────────────────────────
+
+  {
+    id: "konti-pe100-water-pipe",
+    slug: "konti-pe100-water-pipe",
+    name: "Konti PE-100 Water Supply Pipe",
+    shortName: "PE-100 Water Pipe",
+    category: "civil",
+    material: "HDPE PE-100",
+    application: "Water Supply & Pressure Distribution",
+    description:
+      "Konti Hidroplast's PE-100 water supply pipes are manufactured from third-generation high-density polyethylene (HDPE PE-100) to EN 12201-2 and ISO 4427. Rated for pressures from PN 6 to PN 25 (PN 32 on order), they are suitable for municipal water supply, pressurised distribution networks, gas transport, and irrigation mainlines. Pipes Ø 16–110 mm are supplied in coils; Ø 125–800 mm in straight 6 m or 12 m bars. The black outer colour with coextruded blue lines or full blue ensures UV stability and easy identification.",
+    image: "/products/civil/konti-pe100-water-pipe.jpg",
+    standards: ["EN 12201-2", "ISO 4427", "DIN 8074"],
+    keyProperties: {
+      "Material": "HDPE PE-100",
+      "MRS": "10 MPa",
+      "Safety Factor": "C = 1.25",
+      "Diameter Range (stock)": "Ø 20–200 mm",
+      "Diameter Range (order)": "Ø 20–630 mm",
+      "Pressure Classes (stock)": "PN 6 · PN 10 · PN 16",
+      "Pressure Classes (order)": "PN 25 · PN 32",
+      "Colour": "Black + coextruded blue lines",
+      "Coil Lengths": "Ø 16–110 mm",
+      "Bar Lengths": "6 m / 12 m (Ø 125+)",
+      "Certifications": "EN 12201-2 · ISO 4427 · DIN 8074",
+      "Service Life": "50+ years",
+    },
+    dimensions: [
+      { dn: 20,  od: 20,  wallByClass: { "SDR26/PN6": 1.9, "SDR17/PN10": 1.9, "SDR11/PN16": 2.3 }, available: "stock" },
+      { dn: 25,  od: 25,  wallByClass: { "SDR26/PN6": 1.9, "SDR17/PN10": 1.9, "SDR11/PN16": 2.3 }, available: "stock" },
+      { dn: 32,  od: 32,  wallByClass: { "SDR26/PN6": 2.0, "SDR17/PN10": 2.0, "SDR11/PN16": 3.0 }, available: "stock" },
+      { dn: 40,  od: 40,  wallByClass: { "SDR26/PN6": 2.3, "SDR17/PN10": 2.4, "SDR11/PN16": 3.7 }, available: "stock" },
+      { dn: 50,  od: 50,  wallByClass: { "SDR26/PN6": 2.0, "SDR17/PN10": 3.0, "SDR11/PN16": 4.6 }, available: "stock" },
+      { dn: 63,  od: 63,  wallByClass: { "SDR26/PN6": 2.5, "SDR17/PN10": 3.8, "SDR11/PN16": 5.8 }, available: "stock" },
+      { dn: 75,  od: 75,  wallByClass: { "SDR26/PN6": 2.9, "SDR17/PN10": 4.5, "SDR11/PN16": 6.8 }, available: "stock" },
+      { dn: 90,  od: 90,  wallByClass: { "SDR26/PN6": 3.5, "SDR17/PN10": 5.4, "SDR11/PN16": 8.2 }, available: "stock" },
+      { dn: 110, od: 110, wallByClass: { "SDR26/PN6": 4.3, "SDR17/PN10": 6.6, "SDR11/PN16": 10.0 }, available: "stock" },
+      { dn: 125, od: 125, wallByClass: { "SDR26/PN6": 4.9, "SDR17/PN10": 7.4, "SDR11/PN16": 11.4 }, available: "partial" },
+      { dn: 140, od: 140, wallByClass: { "SDR26/PN6": 5.5, "SDR17/PN10": 8.3, "SDR11/PN16": 12.7 }, available: "partial" },
+      { dn: 160, od: 160, wallByClass: { "SDR26/PN6": 6.2, "SDR17/PN10": 9.5, "SDR11/PN16": 14.6 }, available: "partial" },
+      { dn: 200, od: 200, wallByClass: { "SDR26/PN6": 7.7, "SDR17/PN10": 11.9, "SDR11/PN16": 18.2 }, available: "partial" },
+      { dn: 250, od: 250, wallByClass: { "SDR26/PN6": 9.6, "SDR17/PN10": 14.8 }, available: "order" },
+      { dn: 315, od: 315, wallByClass: { "SDR26/PN6": 12.1, "SDR17/PN10": 18.7 }, available: "order" },
+      { dn: 400, od: 400, wallByClass: { "SDR26/PN6": 15.4, "SDR17/PN10": 23.7 }, available: "order" },
+      { dn: 500, od: 500, wallByClass: { "SDR26/PN6": 19.1, "SDR17/PN10": 29.7 }, available: "order" },
+      { dn: 630, od: 630, wallByClass: { "SDR26/PN6": 24.1, "SDR17/PN10": 37.4 }, available: "order" },
+    ],
+    tags: ["water", "PE100", "HDPE", "konti", "pressure", "EN12201"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "Ø 20–200 mm in stock (PN 6, PN 10, PN 16)",
+        orderNote: "Ø 200–630 mm and PN 25 / PN 32 on order",
+        diameterMin: 20,
+        diameterMax: 630,
+        pressureClasses: ["PN6", "PN10", "PN16", "PN25", "PN32"],
+        standards: ["EN 12201-2", "ISO 4427", "DIN 8074"],
+        specificSpecs: {
+          "Coils": "Ø 16–110 mm",
+          "Straight bars": "6 m / 12 m (Ø 125+)",
+          "Temperature": "−40 °C to +60 °C",
+          "Jointing": "Butt fusion · Electrofusion · Mechanical fittings",
+        },
+      },
+    ],
+  },
+
+  // ─── Konti Hidroplast — PE-100 RC Water Supply Pipe ───────────────────────
+
+  {
+    id: "konti-pe100rc-water-pipe",
+    slug: "konti-pe100rc-water-pipe",
+    name: "Konti PE-100 RC Water Supply Pipe",
+    shortName: "PE-100 RC Pipe",
+    category: "civil",
+    material: "HDPE PE-100 RC",
+    application: "Trenchless Installation & Water Supply",
+    description:
+      "PE-100 RC (Resistance to Crack) is a specialist variant of PE-100 engineered for exceptional resistance to slow crack growth and environmental stress cracking. Available as single-layer full-wall, double-layer coextruded, and triple-layer coextruded types (Types 1, 2, 3 to PAS 1075), these pipes are the preferred choice for trenchless installation methods such as directional drilling, pipe bursting, and sliplining. In stock Ø 25–110 mm at PN 10 and PN 16; full size range Ø 25–630 mm available on order.",
+    image: "/products/civil/konti-pe100rc-pipe.jpg",
+    standards: ["EN 12201-2", "PAS 1075"],
+    keyProperties: {
+      "Material": "HDPE PE-100 RC",
+      "Types": "Type 1 (single-wall) · Type 2 (coextruded RC inner) · Type 3 (PP outer protective layer)",
+      "Diameter Range (stock)": "Ø 25–110 mm",
+      "Diameter Range (order)": "Ø 25–630 mm",
+      "Pressure (stock)": "PN 10 · PN 16",
+      "Pressure (order)": "PN 6 · PN 20 · PN 25 · PN 32",
+      "Colour": "Black + yellow / orange lines, or full orange",
+      "Service Life": "100+ years",
+      "Application": "Trenchless installation · Directional drilling · Pipe bursting",
+    },
+    dimensions: [
+      { dn: 25,  od: 25,  wallByClass: { "SDR17/PN10": 1.9, "SDR11/PN16": 2.3 }, available: "stock" },
+      { dn: 32,  od: 32,  wallByClass: { "SDR17/PN10": 2.0, "SDR11/PN16": 3.0 }, available: "stock" },
+      { dn: 40,  od: 40,  wallByClass: { "SDR17/PN10": 2.4, "SDR11/PN16": 3.7 }, available: "stock" },
+      { dn: 50,  od: 50,  wallByClass: { "SDR17/PN10": 3.0, "SDR11/PN16": 4.6 }, available: "stock" },
+      { dn: 63,  od: 63,  wallByClass: { "SDR17/PN10": 3.8, "SDR11/PN16": 5.8 }, available: "stock" },
+      { dn: 75,  od: 75,  wallByClass: { "SDR17/PN10": 4.5, "SDR11/PN16": 6.8 }, available: "stock" },
+      { dn: 90,  od: 90,  wallByClass: { "SDR17/PN10": 5.4, "SDR11/PN16": 8.2 }, available: "stock" },
+      { dn: 110, od: 110, wallByClass: { "SDR17/PN10": 6.6, "SDR11/PN16": 10.0 }, available: "stock" },
+      { dn: 125, od: 125, wallByClass: { "SDR17/PN10": 7.4 }, available: "order" },
+      { dn: 160, od: 160, wallByClass: { "SDR17/PN10": 9.5 }, available: "order" },
+      { dn: 200, od: 200, wallByClass: { "SDR17/PN10": 11.9 }, available: "order" },
+      { dn: 250, od: 250, wallByClass: { "SDR17/PN10": 14.8 }, available: "order" },
+      { dn: 315, od: 315, wallByClass: { "SDR17/PN10": 18.7 }, available: "order" },
+      { dn: 400, od: 400, wallByClass: { "SDR17/PN10": 23.7 }, available: "order" },
+      { dn: 500, od: 500, wallByClass: { "SDR17/PN10": 29.7 }, available: "order" },
+      { dn: 630, od: 630, wallByClass: { "SDR17/PN10": 37.4 }, available: "order" },
+    ],
+    tags: ["water", "PE100-RC", "HDPE", "konti", "trenchless", "PAS1075"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "Ø 25–110 mm in stock at PN 10 and PN 16",
+        orderNote: "Full range including PN 20, PN 25, PN 32 on order",
+        diameterMin: 25,
+        diameterMax: 630,
+        pressureClasses: ["PN10", "PN16", "PN20", "PN25", "PN32"],
+        standards: ["EN 12201-2", "PAS 1075"],
+        specificSpecs: {
+          "Crack Resistance": "Superior slow crack growth vs standard PE-100",
+          "Safety factor": "C = 1.25",
+          "Design stress": "σ = 8.0 MPa",
+        },
+      },
+    ],
+  },
+
+  // ─── Konti Kan — HDPE Corrugated Sewage Pipe SN4 ─────────────────────────
+
+  {
+    id: "konti-kan-corrugated-sn4",
+    slug: "konti-kan-corrugated-sn4",
+    name: "Konti Kan HDPE Corrugated Sewage Pipe — SN4",
+    shortName: "Konti Kan SN4",
+    category: "civil",
+    material: "HDPE",
+    application: "Gravity Sewage & Stormwater Drainage",
+    description:
+      "Konti Kan HDPE corrugated sewage pipes (SN4 stiffness class) are manufactured to EN 13476-3 and ISO 9969. The double-wall construction combines a smooth inner bore (minimum Manning's coefficient 0.009) with a corrugated outer wall that delivers structural ring stiffness ≥ 4 kN/m². Available in lengths of 6 m with integrated socket joints. Suitable for gravity sewage, stormwater drainage, agricultural drainage, and industrial wastewater systems. Ø 110–1000 mm in stock; SN8 class available on order.",
+    image: "/products/civil/konti-kan-corrugated-sewage.jpg",
+    standards: ["EN 13476-3", "ISO 9969"],
+    keyProperties: {
+      "Wall Type": "Double-wall: smooth inner / corrugated outer",
+      "Ring Stiffness": "SN4 (≥ 4 kN/m²)",
+      "Pipe Length": "6 m with integrated socket",
+      "Diameter Range (stock)": "Ø 110–1000 mm (OD)",
+      "Material": "HDPE — corrosion-proof, chemical-resistant",
+      "Temperature": "−40 °C to +60 °C",
+      "Service Life": "50+ years",
+      "SN8": "Available on order",
+    },
+    dimensions: [
+      { dn: 110,  od: 110,  weightPerMeter: 0.65, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 125,  od: 125,  weightPerMeter: 0.82, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 140,  od: 140,  sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 160,  od: 160,  weightPerMeter: 1.20, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 200,  od: 200,  weightPerMeter: 1.65, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 250,  od: 250,  weightPerMeter: 2.50, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 315,  od: 315,  weightPerMeter: 3.70, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 400,  od: 400,  weightPerMeter: 6.30, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 500,  od: 500,  weightPerMeter: 8.60, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 630,  od: 630,  weightPerMeter: 15.15, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 800,  od: 800,  weightPerMeter: 20.50, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+      { dn: 1000, od: 1000, weightPerMeter: 31.00, sn: { sn4: true, sn8: false }, lengths: "6 m", available: "stock" },
+    ],
+    tags: ["sewage", "corrugated", "SN4", "HDPE", "konti", "drainage"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "in-stock",
+        stockNote: "SN4 in stock Ø 110–1000 mm",
+        orderNote: "SN8 class available on order",
+        diameterMin: 110,
+        diameterMax: 1000,
+        standards: ["EN 13476-3", "ISO 9969"],
+        specificSpecs: {
+          "Ring stiffness": "≥ 4 kN/m² (SN4)",
+          "Length": "6 m with integrated socket",
+          "Manning n": "≥ 0.009 (smooth inner bore)",
+        },
+      },
+    ],
+  },
+
+  // ─── Konti Kan — Duct Cable Protection (Small Diameter) ──────────────────
+
+  {
+    id: "konti-kan-cable-duct",
+    slug: "konti-kan-cable-duct",
+    name: "Konti Kan Duct — Cable Protection Pipe",
+    shortName: "Cable Duct",
+    category: "industrial",
+    material: "HDPE",
+    application: "Cable Canalization & Protection",
+    description:
+      "Konti Kan Duct cable protection pipes have a smooth exterior and longitudinally ribbed interior surface, produced in coils up to 500 m. The ribbed interior reduces friction during cable installation. Available as single-tube (Ø 32, 40, 50 mm), twin-tube (bitub: Ø 32, 40, 50 mm), and quad configurations. In stock: Ø 40×1 at 2.0 mm wall (SDR 17 / 8 ATM) and 2.4 mm wall (SDR 13.6 / 10 ATM). Other configurations on order.",
+    image: "/products/industrial/konti-cable-duct.jpg",
+    standards: ["EN 61386", "EN 12201-2"],
+    keyProperties: {
+      "Exterior": "Smooth",
+      "Interior": "Longitudinal ribbed (reduces pull-through friction)",
+      "Configurations": "Single · Twin (bitub) · Quad",
+      "Sizes": "Ø 32, 40, 50 mm (single & twin); Ø 32+40 mm quad",
+      "In-Stock Size": "Ø 40×1 — SDR 17 (2.0 mm, 8 ATM) and SDR 13.6 (2.4 mm, 10 ATM)",
+      "Coil Lengths": "Up to 500 m",
+      "Colour": "Black / Orange / Grey",
+      "Temperature": "−40 °C to +60 °C",
+    },
+    dimensions: [
+      { dn: 32, od: 32, wallByClass: { "SDR17/8ATM": 2.0, "SDR13.6/10ATM": 2.4 }, lengths: "coils up to 500 m", available: "order" },
+      { dn: 40, od: 40, wallByClass: { "SDR17/8ATM": 2.0, "SDR13.6/10ATM": 2.4 }, lengths: "coils up to 500 m", available: "stock" },
+      { dn: 50, od: 50, wallByClass: { "SDR17/8ATM": 3.0 }, lengths: "coils up to 500 m", available: "order" },
+    ],
+    tags: ["cable", "conduit", "duct", "HDPE", "konti", "EN61386"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "Ø 40×1 monotube at 2.0 mm (8 ATM) and 2.4 mm (10 ATM) in stock",
+        orderNote: "Bitub (twin) and other sizes on order",
+        diameterMin: 32,
+        diameterMax: 75,
+        standards: ["EN 61386", "EN 12201-2"],
+        specificSpecs: {
+          "In-stock": "Ø40×1 SDR 17 (2.0 mm) · Ø40×1 SDR 13.6 (2.4 mm)",
+          "Bitub": "On order only",
+          "Max coil length": "500 m",
+        },
+      },
+    ],
+  },
+
+  // ─── Konti Kan — Optic Cable Protection (Double-Wall Corrugated) ──────────
+
+  {
+    id: "konti-kan-optic-cable-protection",
+    slug: "konti-kan-optic-cable-protection",
+    name: "Konti Kan Optic Cable Protection Pipe",
+    shortName: "Optic Cable Duct",
+    category: "industrial",
+    material: "HDPE",
+    application: "Fibre Optic & Telecom Cable Protection",
+    description:
+      "Konti Kan Optic Cable Protection pipes are double-wall HDPE pipes with a corrugated outer surface and smooth inner surface. Used as holders or protection conduits for fibre optic, telecommunications, and power cables — especially at road and bridge crossings. Produced in black, red, and yellow (custom colours on request) in straight lengths of 6 m or 12 m, and coils of 50 m. Nominal diameter: 75–200 mm OD. In stock: Ø 40 and Ø 50 mm sizes; all others on order.",
+    image: "/products/industrial/konti-optic-cable-protection.jpg",
+    standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+    keyProperties: {
+      "Wall Type": "Double-wall: smooth inner / corrugated outer",
+      "Diameter Range": "Ø 75–200 mm (OD)",
+      "Length Options": "6 m / 12 m straight · 50 m coils",
+      "Colour": "Black / Red / Yellow / Custom",
+      "In Stock": "Ø 40 and Ø 50 mm",
+      "Application": "Optic fibre · Telecom · Power cable at road crossings",
+      "UV Stabilised": "Yes",
+    },
+    dimensions: [
+      { dn: 40,  od: 40,  lengths: "50 m coil", available: "stock" },
+      { dn: 50,  od: 50,  lengths: "50 m coil", available: "stock" },
+      { dn: 75,  od: 75,  lengths: "6 m / 12 m", available: "order" },
+      { dn: 110, od: 110, lengths: "6 m / 12 m", available: "order" },
+      { dn: 160, od: 160, lengths: "6 m / 12 m", available: "order" },
+      { dn: 200, od: 200, lengths: "6 m / 12 m", available: "order" },
+    ],
+    tags: ["optic", "cable", "conduit", "HDPE", "konti", "EN50086", "telecom"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "partial",
+        stockNote: "Ø 40 and Ø 50 mm in stock",
+        orderNote: "Ø 75–200 mm on order",
+        diameterMin: 40,
+        diameterMax: 200,
+        standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+        specificSpecs: {
+          "Colour options": "Black · Red · Yellow · Custom",
+          "Coil lengths": "50 m",
+          "Bar lengths": "6 m and 12 m",
+          "Application": "Road and bridge crossings, underground cable routes",
+        },
+      },
+    ],
+  },
+
+  // ─── Ferplast KS — HDPE Drainage Pipe ────────────────────────────────────
+
+  {
+    id: "ferplast-drainage-pipe",
+    slug: "ferplast-drainage-pipe",
+    name: "Ferplast HDPE Drainage Pipe",
+    shortName: "HDPE Drainage",
+    category: "civil",
+    material: "HDPE",
+    application: "Agricultural & Construction Sub-Surface Drainage",
+    description:
+      "Ferplast KS drainage pipes are manufactured from HDPE to EN 13476-3 and ISO 9969 for sub-surface drainage of agricultural land and construction sites. The pipe features a perforated section that faces upward during installation to allow water ingress, with the non-perforated section facing down to channel collected water away. Supplied in coils (Ø 90–160 mm) and 6 m bars (Ø 200–500 mm). In stock: Ø 110–200 mm. Ø 250–500 mm on order.",
+    image: "/products/civil/ferplast-drainage-pipe.png",
+    standards: ["EN 13476-3", "ISO 9969"],
+    keyProperties: {
+      "Material": "HDPE — perforated double-wall",
+      "Application": "Sub-surface drainage · Agricultural land drainage",
+      "Diameter Range (stock)": "Ø 110–200 mm",
+      "Diameter Range (order)": "Ø 250–500 mm",
+      "Supply Form": "Coils (Ø 90–160 mm) · 6 m bars (Ø 200–500 mm)",
+      "Perforation": "Upper half perforated for water ingress",
+    },
+    dimensions: [
+      { dn: 110, od: 110, weightPerMeter: 0.55, lengths: "50 m coil", available: "stock" },
+      { dn: 125, od: 125, weightPerMeter: 0.65, lengths: "50 m coil", available: "stock" },
+      { dn: 160, od: 160, weightPerMeter: 1.00, lengths: "50 m coil", available: "stock" },
+      { dn: 200, od: 200, weightPerMeter: 1.65, lengths: "6 m",       available: "stock" },
+      { dn: 250, od: 250, weightPerMeter: 2.50, lengths: "6 m",       available: "order" },
+      { dn: 315, od: 315, weightPerMeter: 3.70, lengths: "6 m",       available: "order" },
+      { dn: 400, od: 400, weightPerMeter: 6.30, lengths: "6 m",       available: "order" },
+      { dn: 500, od: 500, weightPerMeter: 8.60, lengths: "6 m",       available: "order" },
+    ],
+    tags: ["drainage", "HDPE", "ferplast", "perforated", "agriculture"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "partial",
+        stockNote: "Ø 110–200 mm in stock",
+        orderNote: "Ø 250–500 mm on order",
+        diameterMin: 110,
+        diameterMax: 500,
+        standards: ["EN 13476-3", "ISO 9969"],
+        specificSpecs: {
+          "Perforation": "Upper half — allows water ingress during installation",
+          "Force Applied": "450 N (all sizes)",
+          "Supply form": "50 m coils (≤Ø200 mm) · 6 m bars (Ø200+)",
+        },
+      },
+    ],
+  },
+
+  // ─── Ferplast KS — HDPE Electric Cable Conduit ──────────────────────────
+
+  {
+    id: "ferplast-electric-conduit",
+    slug: "ferplast-electric-conduit",
+    name: "Ferplast HDPE Electric Cable Conduit",
+    shortName: "Electric Conduit",
+    category: "industrial",
+    material: "HDPE",
+    application: "Underground Electrical Cable Protection",
+    description:
+      "Ferplast KS electric cable conduits are manufactured from HDPE to EN 50086-2-4. Corrugated construction provides flexibility for routing while maintaining mechanical protection for electrical cables. Supplied in 50 m coils. In stock Ø 40–110 mm; Ø 125–160 mm on order.",
+    image: "/products/industrial/ferplast-electric-conduit.png",
+    standards: ["EN 50086-2-4"],
+    keyProperties: {
+      "Material": "HDPE — corrugated flexible",
+      "Diameter Range (stock)": "Ø 40–110 mm",
+      "Diameter Range (order)": "Ø 125–160 mm",
+      "Supply Form": "50 m coils",
+      "Standard": "EN 50086-2-4",
+    },
+    dimensions: [
+      { dn: 40,  od: 40,  weightPerMeter: 0.113, lengths: "50 m coil", available: "stock" },
+      { dn: 50,  od: 50,  weightPerMeter: 0.139, lengths: "50 m coil", available: "stock" },
+      { dn: 63,  od: 63,  weightPerMeter: 0.200, lengths: "50 m coil", available: "stock" },
+      { dn: 75,  od: 75,  weightPerMeter: 0.256, lengths: "50 m coil", available: "stock" },
+      { dn: 90,  od: 90,  weightPerMeter: 0.350, lengths: "50 m coil", available: "stock" },
+      { dn: 110, od: 110, weightPerMeter: 0.520, lengths: "50 m coil", available: "stock" },
+      { dn: 125, od: 125, weightPerMeter: 0.650, lengths: "50 m coil", available: "order" },
+      { dn: 160, od: 160, weightPerMeter: 1.000, lengths: "50 m coil", available: "order" },
+    ],
+    tags: ["conduit", "electric", "HDPE", "ferplast", "cable", "EN50086"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "partial",
+        stockNote: "Ø 40–110 mm in stock",
+        orderNote: "Ø 125–160 mm on order",
+        diameterMin: 40,
+        diameterMax: 160,
+        standards: ["EN 50086-2-4"],
+        specificSpecs: {
+          "Type": "Corrugated flexible HDPE",
+          "Supply": "50 m coils",
+          "Force applied": "450 N (all sizes)",
+        },
+      },
+    ],
+  },
+
+  // ─── Ferplast KS — PE-100 / PE-100 RC Water Supply Pipe ─────────────────
+
+  {
+    id: "ferplast-pe100-water-pipe",
+    slug: "ferplast-pe100-water-pipe",
+    name: "Ferplast PE-100 / PE-100 RC Water Supply Pipe",
+    shortName: "Ferplast PE-100",
+    category: "civil",
+    material: "HDPE PE-100 / PE-100 RC",
+    application: "Water Supply & Pressure Distribution",
+    description:
+      "Ferplast KS manufactures PE-100 and PE-100 RC water supply pipes to EN 12201-2 and ISO 4427 at its Kosovo production facility. In stock: Ø 20–90 mm. The full size range up to Ø 630 mm is available on order. Both PE-100 and the crack-resistant PE-100 RC grade are available across standard SDR pressure classes.",
+    image: "/products/civil/ferplast-water-supply-pipe.png",
+    standards: ["EN 12201-2", "ISO 4427"],
+    keyProperties: {
+      "Grades": "PE-100 · PE-100 RC",
+      "Standard": "EN 12201-2 / ISO 4427",
+      "Diameter (stock)": "Ø 20–90 mm",
+      "Diameter (order)": "Ø 20–630 mm",
+      "Pressure Classes": "PN 6 · PN 10 · PN 16 (PN 20 / PN 25 on order)",
+      "Origin": "Kosovo production",
+    },
+    dimensions: [
+      { dn: 20,  od: 20,  wallByClass: { "SDR17/PN10": 1.9, "SDR11/PN16": 2.3 }, available: "stock" },
+      { dn: 25,  od: 25,  wallByClass: { "SDR17/PN10": 1.9, "SDR11/PN16": 2.3 }, available: "stock" },
+      { dn: 32,  od: 32,  wallByClass: { "SDR17/PN10": 2.0, "SDR11/PN16": 3.0 }, available: "stock" },
+      { dn: 40,  od: 40,  wallByClass: { "SDR17/PN10": 2.4, "SDR11/PN16": 3.7 }, available: "stock" },
+      { dn: 50,  od: 50,  wallByClass: { "SDR17/PN10": 3.0, "SDR11/PN16": 4.6 }, available: "stock" },
+      { dn: 63,  od: 63,  wallByClass: { "SDR17/PN10": 3.8, "SDR11/PN16": 5.8 }, available: "stock" },
+      { dn: 75,  od: 75,  wallByClass: { "SDR17/PN10": 4.5, "SDR11/PN16": 6.8 }, available: "stock" },
+      { dn: 90,  od: 90,  wallByClass: { "SDR17/PN10": 5.4, "SDR11/PN16": 8.2 }, available: "stock" },
+      { dn: 110, od: 110, wallByClass: { "SDR17/PN10": 6.6, "SDR11/PN16": 10.0 }, available: "order" },
+      { dn: 160, od: 160, wallByClass: { "SDR17/PN10": 9.5 }, available: "order" },
+      { dn: 200, od: 200, wallByClass: { "SDR17/PN10": 11.9 }, available: "order" },
+      { dn: 315, od: 315, wallByClass: { "SDR17/PN10": 18.7 }, available: "order" },
+      { dn: 630, od: 630, wallByClass: { "SDR17/PN10": 37.4 }, available: "order" },
+    ],
+    tags: ["water", "PE100", "HDPE", "ferplast", "pressure", "EN12201"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "partial",
+        stockNote: "Ø 20–90 mm in stock",
+        orderNote: "Ø 90–630 mm on order",
+        diameterMin: 20,
+        diameterMax: 630,
+        pressureClasses: ["PN6", "PN10", "PN16"],
+        standards: ["EN 12201-2", "ISO 4427"],
+        specificSpecs: {
+          "Grades": "PE-100 · PE-100 RC",
+          "Origin": "Kosovo production",
+        },
+      },
+    ],
+  },
+
+  // ─── Ferplast KS — PE Optic Cable Protection Pipe ────────────────────────
+
+  {
+    id: "ferplast-optic-cable-pipe",
+    slug: "ferplast-optic-cable-pipe",
+    name: "Ferplast PE Optic Cable Protection Pipe",
+    shortName: "Optic Cable Pipe",
+    category: "industrial",
+    material: "HDPE",
+    application: "Fibre Optic & Telecom Cable Protection",
+    description:
+      "Ferplast KS optic cable protection pipes are manufactured from PE material to EN 12201, ISO 4427, and DIN 8074. Available as single-tube (një fish) and twin-tube (dy fish). Diameters: Ø 32, 40, 50 mm. In stock: Ø 40×2 (twin, 2.4 mm wall). All other configurations on order. SDR 17 PN 10 — Ø32×1 (2.0 mm), Ø40×1 (2.4 mm), Ø50×1 (3.0 mm). SDR 17 PN 10 twin — Ø32×2 (2.0 mm), Ø40×2 (2.4 mm), Ø50×2 (3.0 mm).",
+    image: "/products/industrial/ferplast-optic-cable-pipe.png",
+    standards: ["EN 12201", "ISO 4427", "DIN 8074"],
+    keyProperties: {
+      "Material": "PE (HDPE)",
+      "Configurations": "Single (1 tube) · Twin (2 tubes)",
+      "Sizes": "Ø 32 · 40 · 50 mm",
+      "SDR Classes": "SDR 17 (PN 10) · SDR 13.6 (PN 12.5)",
+      "In Stock": "Ø 40×2 (twin), 2.4 mm wall (SDR 17 PN 10)",
+      "All Others": "On order",
+    },
+    dimensions: [
+      { dn: 32, od: 32, wallByClass: { "SDR17/PN10": 2.0 }, lengths: "coils", available: "order" },
+      { dn: 40, od: 40, wallByClass: { "SDR17/PN10": 2.4 }, lengths: "coils", available: "stock" },
+      { dn: 50, od: 50, wallByClass: { "SDR17/PN10": 3.0 }, lengths: "coils", available: "order" },
+    ],
+    tags: ["optic", "cable", "PE", "ferplast", "telecom", "twin-tube"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "partial",
+        stockNote: "Ø 40×2 twin (2.4 mm wall, SDR 17 PN 10) in stock",
+        orderNote: "All single-tube and other twin-tube sizes on order",
+        diameterMin: 32,
+        diameterMax: 50,
+        standards: ["EN 12201", "ISO 4427", "DIN 8074"],
+        specificSpecs: {
+          "Single tube SDR 17": "Ø32×1 (2.0 mm) · Ø40×1 (2.4 mm) · Ø50×1 (3.0 mm) — on order",
+          "Twin tube SDR 17": "Ø32×2 (2.0 mm) · Ø40×2 (2.4 mm) — Ø40×2 in stock",
+        },
+      },
+    ],
+  },
+
+  // ─── Ferplast KS — HDPE Water Storage Tank ───────────────────────────────
+
+  {
+    id: "ferplast-water-reservoir",
+    slug: "ferplast-water-reservoir",
+    name: "Ferplast HDPE Water Storage Tank",
+    shortName: "HDPE Water Tank",
+    category: "civil",
+    material: "HDPE",
+    application: "Potable Water Storage",
+    description:
+      "Ferplast KS manufactures rotationally moulded HDPE water storage tanks (rezervarë) from 500 litres to 5000 litres. The HDPE material ensures food-grade safety, UV resistance, and long service life. In stock: 500 L and 1000 L. Capacities from 1500 L to 5000 L are available on order.",
+    image: "/products/civil/ferplast-water-reservoir.png",
+    standards: [],
+    keyProperties: {
+      "Material": "HDPE (rotationally moulded)",
+      "Capacity Range": "500 L – 5000 L",
+      "In Stock": "500 L · 1000 L",
+      "On Order": "1500 L · 2000 L · 3000 L · 5000 L",
+      "Applications": "Potable water · Agricultural water · Industrial fluid storage",
+      "UV Stabilised": "Yes",
+    },
+    dimensions: [
+      { dn: 500,  lengths: "500 L",  available: "stock" },
+      { dn: 1000, lengths: "1000 L", available: "stock" },
+      { dn: 1500, lengths: "1500 L", available: "order" },
+      { dn: 2000, lengths: "2000 L", available: "order" },
+      { dn: 3000, lengths: "3000 L", available: "order" },
+      { dn: 5000, lengths: "5000 L", available: "order" },
+    ],
+    tags: ["tank", "water", "HDPE", "ferplast", "storage", "reservoir"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "partial",
+        stockNote: "500 L and 1000 L in stock",
+        orderNote: "1500 L – 5000 L on order",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Manufacturing": "Rotational moulding — seamless one-piece HDPE",
+          "Food grade": "Yes — suitable for potable water",
         },
       },
     ],
