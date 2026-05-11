@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Building2, Sprout, Factory, Users, Phone, Handshake } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/context";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 
 export function Navigation() {
   const { t } = useTranslation();
@@ -38,9 +39,10 @@ export function Navigation() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10"
+            ? "backdrop-blur-xl"
             : "bg-transparent"
         }`}
+        style={isScrolled ? { background: "color-mix(in oklab, var(--site-bg) 82%, transparent)", borderBottom: "1px solid var(--site-border)" } : undefined}
       >
         <div className="site-shell">
           <div className="flex items-center justify-between h-20">
@@ -63,11 +65,12 @@ export function Navigation() {
                   href={item.href}
                   className="group relative px-4 py-2"
                 >
-                  <span className="relative z-10 text-sm font-medium tracking-wider text-slate-300 group-hover:text-white transition-colors">
+                  <span className="relative z-10 text-sm font-medium tracking-wider transition-colors" style={{ color: "var(--site-text-muted)" }}>
                     {t(`nav.${item.key}`)}
                   </span>
                   <motion.div
-                    className="absolute inset-0 rounded-lg bg-white/5 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                    style={{ background: "var(--site-surface)" }}
                     layoutId="nav-hover"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
@@ -76,6 +79,7 @@ export function Navigation() {
             </nav>
 
             <div className="flex items-center gap-3">
+              <ThemeSwitcher />
               <LanguageSwitcher />
               <Link
                 href="/catalog"
@@ -86,7 +90,8 @@ export function Navigation() {
 
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                className="lg:hidden p-2 rounded-lg transition-colors"
+                style={{ background: "var(--site-surface)", color: "var(--site-text)" }}
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? (
@@ -109,10 +114,11 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div
-              className="absolute inset-0 bg-slate-950/95 backdrop-blur-xl"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
+              <div
+                className="absolute inset-0 backdrop-blur-xl"
+                style={{ background: "color-mix(in oklab, var(--site-bg) 92%, transparent)" }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              />
             <motion.nav
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -132,7 +138,8 @@ export function Navigation() {
                       <Link
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                        className="flex items-center gap-4 p-4 rounded-xl transition-colors"
+                        style={{ background: "var(--site-surface)", color: "var(--site-text)" }}
                       >
                         <Icon className="w-5 h-5 text-cyan-400" />
                         <span className="text-lg font-medium tracking-wider">

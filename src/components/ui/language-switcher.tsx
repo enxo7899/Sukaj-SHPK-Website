@@ -38,9 +38,10 @@ export function LanguageSwitcher({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium tracking-wider text-slate-300 transition-colors hover:border-white/20 hover:bg-white/[0.08] hover:text-white ${
+        className={`flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium tracking-wider transition-colors ${
           variant === "compact" ? "" : "min-w-[68px]"
         }`}
+        style={{ borderColor: "var(--site-border)", background: "var(--site-surface)", color: "var(--site-text-muted)" }}
         aria-label="Change language"
         aria-haspopup="menu"
         aria-expanded={open}
@@ -51,7 +52,8 @@ export function LanguageSwitcher({
 
       {open && (
         <div
-          className="absolute right-0 mt-2 w-44 origin-top-right rounded-xl border border-white/[0.08] bg-slate-950/95 p-1 shadow-xl shadow-black/50 backdrop-blur-xl"
+          className="absolute right-0 mt-2 w-44 origin-top-right rounded-xl border p-1 shadow-xl backdrop-blur-xl"
+          style={{ borderColor: "var(--site-border)", background: "var(--site-surface-strong)" }}
           role="menu"
         >
           {LOCALES.map((loc) => {
@@ -66,9 +68,10 @@ export function LanguageSwitcher({
                 aria-checked={active}
                 className={`flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                   active
-                    ? "bg-cyan-500/10 text-cyan-100"
-                    : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                    ? ""
+                    : ""
                 }`}
+                style={active ? { background: "rgba(8,145,178,0.1)", color: "#0891b2" } : { color: "var(--site-text-muted)" }}
               >
                 <span className="flex items-center gap-2">
                   <span className="font-mono text-[10px] tracking-widest text-slate-500">

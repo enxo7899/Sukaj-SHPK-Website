@@ -126,10 +126,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sq" className="scroll-smooth">
+    <html lang="sq" className="scroll-smooth" data-theme="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-slate-950 text-slate-50 overflow-x-hidden`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased overflow-x-hidden`}
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => { try { const mode = localStorage.getItem('theme-mode') || 'system'; const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; const resolved = mode === 'system' ? (prefersDark ? 'dark' : 'light') : mode; document.documentElement.setAttribute('data-theme', resolved); } catch (e) {} })();`,
+          }}
+        />
         <script
           type="application/ld+json"
           suppressHydrationWarning
