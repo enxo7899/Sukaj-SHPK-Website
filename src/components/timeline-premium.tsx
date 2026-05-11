@@ -9,6 +9,12 @@ const milestoneIcons = [Calendar, Award, TrendingUp, Globe];
 
 export function TimelinePremium() {
   const { t } = useTranslation();
+  const milestoneText = [
+    { title: t("timeline.m1Title"), description: t("timeline.m1Desc") },
+    { title: t("timeline.m2Title"), description: t("timeline.m2Desc") },
+    { title: t("timeline.m3Title"), description: t("timeline.m3Desc") },
+    { title: t("timeline.m4Title"), description: t("timeline.m4Desc") },
+  ];
   return (
     <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
       {/* Background */}
@@ -50,6 +56,10 @@ export function TimelinePremium() {
             {timeline.map((milestone, index) => {
               const Icon = milestoneIcons[index % milestoneIcons.length];
               const isEven = index % 2 === 0;
+              const text = milestoneText[index] ?? {
+                title: milestone.title,
+                description: milestone.description,
+              };
 
               return (
                 <motion.div
@@ -84,11 +94,9 @@ export function TimelinePremium() {
                         </span>
                       </div>
 
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                        {milestone.title}
-                      </h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{text.title}</h3>
                       <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-                        {milestone.description}
+                        {text.description}
                       </p>
                     </div>
                   </div>

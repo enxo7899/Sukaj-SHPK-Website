@@ -22,6 +22,7 @@ import {
 import type { ProductGroup, SupplierOffer, DimensionRow } from "@/lib/products-data";
 import { productGroups } from "@/lib/products-data";
 import { partners } from "@/lib/data";
+import { getApplicationFamily, getMaterialFamily } from "@/lib/catalog-filters";
 import { useTranslation } from "@/lib/i18n/context";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -70,6 +71,28 @@ const categoryMetaBase = {
   agri: { Icon: Sprout, color: "#22c55e" },
   industrial: { Icon: Factory, color: "#22d3ee" },
 } as const;
+
+const materialTranslationKeys: Record<string, string> = {
+  "pe-hdpe": "catalog.matPeHdpe",
+  pp: "catalog.matPp",
+  pvc: "catalog.matPvc",
+  rubber: "catalog.matRubber",
+  other: "catalog.matOther",
+};
+
+const applicationTranslationKeys: Record<string, string> = {
+  "water-pressure": "catalog.appWaterPressure",
+  "sewage-drainage": "catalog.appSewageDrainage",
+  irrigation: "catalog.appIrrigation",
+  "cable-telecom": "catalog.appCableTelecom",
+  "storage-tanks": "catalog.appStorageTanks",
+  "industrial-transfer": "catalog.appIndustrialTransfer",
+  "packaging-construction": "catalog.appPackagingConstruction",
+  "outdoor-decor": "catalog.appOutdoorDecor",
+  gas: "catalog.appGas",
+  fittings: "catalog.appFittings",
+  "other-app": "catalog.appOther",
+};
 
 // ─── Supplier Card ─────────────────────────────────────────────────────────────
 
@@ -349,6 +372,12 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
 export function ProductDetailPage({ product }: { product: ProductGroup }) {
   const [imageError, setImageError] = useState(false);
   const { t, tp } = useTranslation();
+  const materialFamily = getMaterialFamily(product.material);
+  const materialKey = materialTranslationKeys[materialFamily.id];
+  const materialLabel = materialKey ? t(materialKey as never) : materialFamily.label;
+  const appFamily = getApplicationFamily(product.application);
+  const appKey = applicationTranslationKeys[appFamily.id];
+  const appLabel = appKey ? t(appKey as never) : appFamily.label;
   const catBase = categoryMetaBase[product.category];
   const CatIcon = catBase.Icon;
   const catMeta = { ...catBase, label: product.category === "civil" ? t("categories.civilName") : product.category === "agri" ? t("categories.agriName") : t("categories.industrialName") };
@@ -449,11 +478,11 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-sm text-slate-400 font-mono">
-              {product.material}
+              {materialLabel}
             </span>
             <span className="text-slate-700">·</span>
             <span className="text-sm text-slate-400 font-mono">
-              {product.application}
+              {appLabel}
             </span>
             {product.standards.map((s) => (
               <span key={s} className="flex items-center gap-1.5">

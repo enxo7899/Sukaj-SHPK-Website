@@ -36,7 +36,7 @@ export const translations = {
     headline1: { sq: "Zgjidhje Premium", en: "Premium Pipe Solutions" },
     headline2: { sq: "Tubash për Ballkanin.", en: "Built for the Balkans." },
     description: {
-      sq: "Importues dhe shpërndarës kryesor i sistemeve të tubave HDPE, PP dhe PVC. Nga kanalizimet te ujitja, ofrojmë zgjidhje infrastrukturore me standarde europiane në bashkëpunim me",
+      sq: "Importues dhe shpërndarës kryesor i sistemeve të tubave HDPE, PP dhe PVC. Nga kanalizimet tek ujitja, ofrojmë zgjidhje infrastrukturore me standarde evropiane në bashkëpunim me",
       en: "Leading importer and wholesaler of HDPE, PP, and PVC pipe systems. From sewage to irrigation, we deliver European-grade infrastructure solutions partnering with",
     },
     descriptionPartners: { sq: "prodhues", en: "manufacturers" },
@@ -49,10 +49,10 @@ export const translations = {
   // ── Categories section (homepage) ──────────────────────────────────────
   categories: {
     eyebrow: { sq: "Zgjidhje Industriale", en: "Industry Solutions" },
-    title1: { sq: "Të Inxhinjeruara për Çdo", en: "Engineered for Every" },
+    title1: { sq: "Të projektuara për çdo", en: "Engineered for Every" },
     title2: { sq: "Aplikim.", en: "Application." },
     subtitle: {
-      sq: "Nga sistemet komunale të kanalizimit te ujitja bujqësore — zgjidhje precize për çdo sektor.",
+      sq: "Nga sistemet komunale të kanalizimit tek ujitja bujqësore — zgjidhje të sakta për çdo sektor.",
       en: "From municipal sewage systems to agricultural irrigation — precision solutions for every sector.",
     },
     civilName: { sq: "Inxhinieri Civile", en: "Civil Engineering" },
@@ -65,7 +65,7 @@ export const translations = {
       sq: "Sisteme ujitjeje, menaxhim uji dhe kullim bujqësor.",
       en: "Irrigation systems, water management, and agricultural drainage.",
     },
-    industrialName: { sq: "Industrial", en: "Industrial" },
+    industrialName: { sq: "Industriale", en: "Industrial" },
     industrialDescription: {
       sq: "Tubacione të rënda, mbrojtje kabllosh dhe infrastrukturë fabrikash.",
       en: "Heavy-duty conduits, cable protection, and factory infrastructure.",
@@ -111,7 +111,7 @@ export const translations = {
   // ── CTA ────────────────────────────────────────────────────────────────
   cta: {
     eyebrow: { sq: "Filloni Projektin Tuaj", en: "Start Your Project" },
-    title: { sq: "Gati për diskutimin e radhës?", en: "Ready for the next conversation?" },
+    title: { sq: "Gati për hapin e radhës të projektit tuaj?", en: "Ready for the next conversation?" },
     subtitle: {
       sq: "Kontaktoni ekipin tonë për një ofertë teknike, konsulencë dimensionimi ose disponueshmëri të materialeve.",
       en: "Contact our team for a technical quote, sizing consultation, or material availability.",
@@ -129,7 +129,7 @@ export const translations = {
     solutionsHeading: { sq: "Zgjidhjet", en: "Solutions" },
     civilEngineering: { sq: "Inxhinieri Civile", en: "Civil Engineering" },
     agriculture: { sq: "Bujqësi", en: "Agriculture" },
-    industrial: { sq: "Industrial", en: "Industrial" },
+    industrial: { sq: "Industriale", en: "Industrial" },
     fullCatalog: { sq: "Katalogu i Plotë", en: "Full Catalog" },
     partnersHeading: { sq: "Partnerët", en: "Partners" },
     viewAllPartners: { sq: "Shiko të gjithë partnerët →", en: "View all partners →" },
@@ -149,7 +149,7 @@ export const translations = {
       sq: "Eksploroni gamën tonë të plotë të sistemeve të tubave nga prodhues europianë të certifikuar.",
       en: "Explore our complete range of pipe systems from certified European manufacturers.",
     },
-    searchPlaceholder: { sq: "Kërko tuba, depozita, raccordi...", en: "Search pipes, tanks, fittings..." },
+    searchPlaceholder: { sq: "Kërko tuba, depozita, fitingje...", en: "Search pipes, tanks, fittings..." },
     filters: { sq: "Filtrat", en: "Filters" },
     quickFilters: { sq: "Filtra të Shpejta", en: "Quick filters" },
     material: { sq: "Materiali", en: "Material" },
@@ -181,7 +181,7 @@ export const translations = {
     standardsLabel: { sq: "STANDARDET", en: "STANDARDS" },
     categoryLabel: { sq: "KATEGORIA", en: "CATEGORY" },
     proprietary: { sq: "Pronësore", en: "Proprietary" },
-    noResultsTitle: { sq: "Asnjë produkt nuk përputhet me filtrat tuaja", en: "No products match your filters" },
+    noResultsTitle: { sq: "Asnjë produkt nuk përputhet me filtrat tuaj", en: "No products match your filters" },
     noResultsSubtitle: {
       sq: "Provoni të zgjeroni kriteret e kërkimit ose hiqni disa filtra.",
       en: "Try broadening your search criteria or removing some filters.",
@@ -207,13 +207,13 @@ export const translations = {
     appPackagingConstruction: { sq: "Paketim & ndërtim", en: "Packaging & construction" },
     appOutdoorDecor: { sq: "Mjedis i jashtëm & dekor", en: "Outdoor & décor" },
     appGas: { sq: "Shpërndarje gazi", en: "Gas distribution" },
-    appFittings: { sq: "Raccordi & aksesorë", en: "Fittings & accessories" },
+    appFittings: { sq: "Fitingje & aksesorë", en: "Fittings & accessories" },
     appOther: { sq: "Të tjera", en: "Other" },
     // Quick filters
     qfInStock: { sq: "Në stok", en: "In Stock" },
     qfCivil: { sq: "Civile", en: "Civil" },
     qfAgriculture: { sq: "Bujqësi", en: "Agriculture" },
-    qfIndustrial: { sq: "Industrial", en: "Industrial" },
+    qfIndustrial: { sq: "Industriale", en: "Industrial" },
     qfLargeDiameter: { sq: "Diametër i madh", en: "Large diameter" },
     qfPressureSystems: { sq: "Sisteme me presion", en: "Pressure systems" },
   },
@@ -259,13 +259,20 @@ export const translations = {
     pillarYearsDetail: { sq: "Tregti e pandërprerë që nga 1995", en: "Uninterrupted trading since 1995" },
     partnerCountries: { sq: "Vendet e Partnerëve", en: "Partner Countries" },
     manufacturingNetwork: { sq: "Rrjeti i Prodhimit", en: "Manufacturing Network" },
+    countryAlbania: { sq: "Shqipëri", en: "Albania" },
+    countryKosovo: { sq: "Kosovë", en: "Kosovo" },
+    countryNorthMacedonia: { sq: "Maqedonia e Veriut", en: "North Macedonia" },
+    countrySerbia: { sq: "Serbi", en: "Serbia" },
+    countryGreece: { sq: "Greqi", en: "Greece" },
+    countryItaly: { sq: "Itali", en: "Italy" },
+    countryTurkey: { sq: "Turqi", en: "Turkey" },
     partnerSingular: { sq: "partner", en: "partner" },
     partnerPlural: { sq: "partnerë", en: "partners" },
     sustainability: { sq: "Qëndrueshmëria", en: "Sustainability" },
     sustainTitle1: { sq: "Ndërtuar për të qëndruar.", en: "Built to last." },
     sustainTitle2: { sq: "Ndërtuar me përgjegjësi.", en: "Built responsibly." },
     sustainSubtitle: {
-      sq: "Qëndrueshmëria fillon me jetëgjatësinë. Çdo tubë që furnizojmë është projektuar për dekada shërbimi — dhe disa partnerë mbyllin ciklin nëpërmjet programeve aktive të riciklimit.",
+      sq: "Qëndrueshmëria fillon me jetëgjatësinë. Çdo tub që furnizojmë është projektuar për dekada shërbimi — dhe disa partnerë mbyllin ciklin nëpërmjet programeve aktive të riciklimit.",
       en: "Durability is sustainability. Every pipe we supply is engineered for decades of service — and several of our partners close the loop through active recycling programmes.",
     },
     sustainLife: { sq: "Vite jetë shërbimi", en: "Years service life" },
@@ -320,14 +327,14 @@ export const translations = {
   partners: {
     eyebrow: { sq: "Rrjeti Ynë i Partnerëve", en: "Our Partner Network" },
     title: {
-      sq: "Prodhues të certifikuar nga gjithë Europa.",
+      sq: "Prodhues të certifikuar nga e gjithë Evropa.",
       en: "Certified manufacturers from across Europe.",
     },
     subtitle: {
       sq: "Bashkëpunojmë vetëm me prodhues që plotësojnë standardet më të rrepta të cilësisë.",
       en: "We partner only with manufacturers meeting the strictest quality standards.",
     },
-    pageEyebrow: { sq: "DREJTORIA E PARTNERËVE", en: "PARTNER DIRECTORY" },
+    pageEyebrow: { sq: "PORTOFOLI I PARTNERËVE", en: "PARTNER DIRECTORY" },
     pageTitle: { sq: "EKSCELENCË RAJONALE.", en: "REGIONAL EXCELLENCE." },
     pageSubtitle: {
       sq: "12 partnerë prodhues dhe furnizimi në Shqipëri, Kosovë, Maqedoninë e Veriut, Serbi, Greqi, Itali dhe Turqi.",
@@ -345,11 +352,14 @@ export const translations = {
     factory: { sq: "Fabrika", en: "Factory" },
     maxDiameter: { sq: "DIAMETRI MAKSIMAL", en: "MAX DIAMETER" },
     typeManufacturer: { sq: "Prodhues", en: "Manufacturer" },
-    typeRecycler: { sq: "Riciklim & Foljet", en: "Recycling & Foils" },
+    typeRecycler: { sq: "Riciklim & Folie", en: "Recycling & Foils" },
     typePackaging: { sq: "Paketim", en: "Packaging" },
     typeHoses: { sq: "Tuba të Butë", en: "Hoses" },
     typeLocalAlbania: { sq: "Lokal Shqipëri", en: "Local Albania" },
     website: { sq: "Faqja e internetit", en: "Website" },
+    statsPartners: { sq: "Partnerë", en: "Partners" },
+    statsCountries: { sq: "Vende", en: "Countries" },
+    statsSectors: { sq: "Sektorë", en: "Sectors" },
   },
 
   // ── Product detail page ────────────────────────────────────────────────
@@ -387,12 +397,47 @@ export const translations = {
     viewOnMaps: { sq: "Shiko në Hartë", en: "View on Maps" },
     getDirections: { sq: "Merr udhëzimet", en: "Get directions" },
     openInGoogleMaps: { sq: "Hap në Google Maps", en: "Open in Google Maps" },
+    labelWarehouse: { sq: "Magazinë & Shpërndarje", en: "Warehouse & Distribution" },
+    labelHeadquarters: { sq: "Selia Qendrore", en: "Headquarters" },
+    labelRegionalDepot: { sq: "Depo Rajonale", en: "Regional Depot" },
+    voreDescription: {
+      sq: "Qendër kryesore shpërndarjeje në aksin Tiranë–Vorë, që mbulon rajonin e kryeqytetit dhe Shqipërinë e jugut.",
+      en: "Central distribution hub on the Tiranë–Vorë highway, serving the capital region and southern Albania.",
+    },
+    shkoderDescription: {
+      sq: "Selia e kompanisë dhe qendra kryesore e operacioneve që nga viti 1995, me zyrë dhe showroom.",
+      en: "Company headquarters and primary operations center since 1995. Main office and showroom.",
+    },
+    lacDescription: {
+      sq: "Depo rajonale veriore për stok dhe furnizim të shpejtë në Kurbin dhe zonat përreth.",
+      en: "Northern regional storage and fast-delivery depot for Kurbin and surrounding districts.",
+    },
   },
 
   // ── Timeline ──────────────────────────────────────────────────────────
   timeline: {
     eyebrow: { sq: "Historia Jonë", en: "Our History" },
-    title: { sq: "Tre dekada rritjeje.", en: "Three decades of growth." },
+    title: { sq: "Tre dekada zhvillimi dhe besimi.", en: "Three decades of growth." },
+    m1Title: { sq: "Themelimi", en: "Foundation" },
+    m1Desc: {
+      sq: "Sukaj SHPK u themelua në zonën e Shkodrës si kompani tregtare e specializuar në import-eksportin e materialeve plastike.",
+      en: "Sukaj SHPK established in the Shkodër area as a specialized trading company focused on import-export of plastic materials.",
+    },
+    m2Title: { sq: "Ristrukturimi i Kapitalit", en: "Capital Restructuring" },
+    m2Desc: {
+      sq: "Kompania realizoi ristrukturim të rëndësishëm të kapitalit, duke arritur 74,482,766 ALL dhe zgjeruar partneritetet me shumicë në Evropën Juglindore.",
+      en: "Major capital restructuring reaching 74,482,766 ALL. Expanding wholesale partnerships across Southeast Europe.",
+    },
+    m3Title: { sq: "Zgjerimi Evropian", en: "European Expansion" },
+    m3Desc: {
+      sq: "U formalizuan partneritete me Konti Hidroplast dhe FITT, duke forcuar pozicionin e kompanisë si distributore kryesore e sistemeve të tubave në Ballkan.",
+      en: "Formal partnerships with Konti Hidroplast and FITT. Becoming a premier pipe-system distributor for the Balkans.",
+    },
+    m4Title: { sq: "Rrjeti Rajonal", en: "Regional Network" },
+    m4Desc: {
+      sq: "U konsolidua rrjeti me 12 partnerë prodhues në 7 vende: Shqipëri, Kosovë, Maqedoni e Veriut, Serbi, Greqi, Itali dhe Turqi.",
+      en: "Consolidated a network of 12 partner manufacturers across 7 countries — Albania, Kosovo, North Macedonia, Serbia, Greece, Italy, and Turkey.",
+    },
   },
 } as const;
 
@@ -407,50 +452,50 @@ export const productTranslations: Record<
   { name: { sq: string; en: string }; shortName: { sq: string; en: string }; description: { sq: string; en: string } }
 > = {
   "pe100-pressure-pipe": {
-    name: { sq: "Tubë Presioni PE100", en: "PE100 Pressure Pipe" },
+    name: { sq: "Tub Presioni PE100", en: "PE100 Pressure Pipe" },
     shortName: { sq: "PE100", en: "PE100" },
     description: {
-      sq: "Tubë presioni PE100 me densitet të lartë për shpërndarje uji të pijshëm, linja kryesore ujitjeje dhe aplikime industriale me presion. Certifikuar sipas EN 12201 dhe ISO 4427 për siguri maksimale.",
+      sq: "Tub presioni PE100 me densitet të lartë për shpërndarje uji të pijshëm, linja kryesore ujitjeje dhe aplikime industriale me presion. Certifikuar sipas EN 12201 dhe ISO 4427 për siguri maksimale.",
       en: "High-density polyethylene PE100 pressure pipe for potable water distribution, irrigation mains, and pressurised industrial applications.",
     },
   },
   "corrugated-hdpe-sewage": {
-    name: { sq: "Tubë Kanalizimi Koritore HDPE", en: "Corrugated HDPE Sewage Pipe" },
-    shortName: { sq: "HDPE Koritore", en: "Corrugated HDPE" },
+    name: { sq: "Tub Kanalizimi i Korruguar HDPE", en: "Corrugated HDPE Sewage Pipe" },
+    shortName: { sq: "HDPE i Korruguar", en: "Corrugated HDPE" },
     description: {
-      sq: "Tubë koritore me mur të dyfishtë HDPE me sipërfaqe të brendshme të lëmuar, projektuar për kanalizim gravitacional, stuhi uji dhe kullim nëntokësor.",
+      sq: "Tub i korruguar me mur të dyfishtë HDPE me sipërfaqe të brendshme të lëmuar, projektuar për kanalizim gravitacional, ujëra atmosferike dhe kullim nëntokësor.",
       en: "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater, and sub-surface drainage.",
     },
   },
   "spiral-pp-sewage-pipe": {
-    name: { sq: "Tubë Kanalizimi PP Spirale", en: "Spiral PP Sewage Pipe" },
+    name: { sq: "Tub Kanalizimi PP Spiral", en: "Spiral PP Sewage Pipe" },
     shortName: { sq: "PP Spirale", en: "Spiral PP" },
     description: {
-      sq: "Tubë polipropileni me mur të strukturuar spiral për kanalizime kryesore me diametër të madh dhe ujëra të ndotura industriale.",
+      sq: "Tub polipropileni me mur të strukturuar spiral për kanalizime kryesore me diametër të madh dhe ujëra të ndotura industriale.",
       en: "Spiral-wound polypropylene structured-wall pipe for large-diameter trunk sewers and industrial wastewater.",
     },
   },
   "pe-gas-pipe": {
-    name: { sq: "Tubë Shpërndarjeje Gazi PE", en: "PE Gas Distribution Pipe" },
+    name: { sq: "Tub Shpërndarjeje Gazi PE", en: "PE Gas Distribution Pipe" },
     shortName: { sq: "PE Gaz", en: "PE Gas" },
     description: {
-      sq: "Tubë shpërndarjeje gazi PE100-RC me vijë të verdhë karakteristike për identifikim të sigurt në rrjetet e gazit natyror dhe GLN.",
+      sq: "Tub shpërndarjeje gazi PE100-RC me vijë të verdhë karakteristike për identifikim të sigurt në rrjetet e gazit natyror dhe GLN.",
       en: "PE100-RC gas distribution pipe with characteristic yellow stripe for identification in natural gas and LPG networks.",
     },
   },
   "electric-optic-conduit": {
-    name: { sq: "Tubë Mbrojtëse për Kabllo Elektrike & Optike", en: "Electric & Optical Conduit" },
+    name: { sq: "Tub Mbrojtës për Kabllo Elektrike & Optike", en: "Electric & Optical Conduit" },
     shortName: { sq: "Kanal HDPE", en: "HDPE Conduit" },
     description: {
-      sq: "Tubë kanali HDPE për mbrojtjen nëntokësore të kabllove elektrike, linjave me fibër optike dhe infrastrukturës së telekomunikacionit.",
+      sq: "Tub kanali HDPE për mbrojtjen nëntokësore të kabllove elektrike, linjave me fibër optike dhe infrastrukturës së telekomunikacionit.",
       en: "HDPE conduit pipe for underground protection of electrical cables, fibre-optic lines, and telecommunications infrastructure.",
     },
   },
   "pph-drainage-pipe": {
-    name: { sq: "Tubë Kullimi Gravitacional PP-H", en: "PP-H Gravity Drainage Pipe" },
+    name: { sq: "Tub Kullimi Gravitacional PP-H", en: "PP-H Gravity Drainage Pipe" },
     shortName: { sq: "PP-H Kullim", en: "PP-H Drainage" },
     description: {
-      sq: "Tubë kullimi gravitacional PP-H me veshje të bardhë të brendshme për kullim ndërtesash, kolona sanitare dhe ventilim.",
+      sq: "Tub kullimi gravitacional PP-H me veshje të bardhë të brendshme për kullim ndërtesash, kolona sanitare dhe ventilim.",
       en: "PP-H gravity drainage pipe with distinctive white lining for building drainage, soil stacks, and ventilation.",
     },
   },
@@ -503,18 +548,18 @@ export const productTranslations: Record<
     },
   },
   "drip-irrigation-pipe": {
-    name: { sq: "Tubë Ujitjeje me Pika", en: "Drip Irrigation Lateral Pipe" },
+    name: { sq: "Tub Ujitjeje me Pika", en: "Drip Irrigation Lateral Pipe" },
     shortName: { sq: "Ujitje me Pika", en: "Drip Lateral" },
     description: {
-      sq: "Tubë anësore LDPE me mur të hollë për ujitje me pika, me emetues të integruar ose të futshëm në distanca 20, 30 ose 50 cm.",
+      sq: "Tub anësor LDPE me mur të hollë për ujitje me pika, me emetues të integruar ose të futshëm në distanca 20, 30 ose 50 cm.",
       en: "Thin-wall LDPE drip irrigation lateral with integrated or insertable emitters at 20, 30, or 50 cm spacing.",
     },
   },
   "pe-irrigation-mainline": {
-    name: { sq: "Tubë Kryesore Ujitjeje PE100", en: "PE100 Irrigation Mainline" },
+    name: { sq: "Tub Kryesor Ujitjeje PE100", en: "PE100 Irrigation Mainline" },
     shortName: { sq: "Linjë Kryesore", en: "Irrigation Main" },
     description: {
-      sq: "Tubë kryesore PE100 me mur solid për rrjete ujitjeje me presion. Klasat PN10 dhe PN16 për shpërndarje të besueshme uji.",
+      sq: "Tub kryesor PE100 me mur solid për rrjete ujitjeje me presion. Klasat PN10 dhe PN16 për shpërndarje të besueshme uji.",
       en: "PE100 solid-wall mainline pipe for pressurised sprinkler and drip irrigation networks.",
     },
   },
@@ -575,10 +620,10 @@ export const productTranslations: Record<
     },
   },
   "pvc-underground-drainage": {
-    name: { sq: "Tubë Kullimi Nëntokësor PVC", en: "PVC Underground Drainage Pipe" },
+    name: { sq: "Tub Kullimi Nëntokësor PVC", en: "PVC Underground Drainage Pipe" },
     shortName: { sq: "Kullim PVC", en: "PVC Drainage" },
     description: {
-      sq: "Tubë PVC-U për kullim gravitacional, kanalizim komunal dhe mbrojtje kabllosh nëntokësore.",
+      sq: "Tub PVC-U për kullim gravitacional, kanalizim komunal dhe mbrojtje kabllosh nëntokësore.",
       en: "PVC-U pipe for gravity drainage, municipal sewerage, and underground cable protection.",
     },
   },
@@ -594,7 +639,7 @@ export const productTranslations: Record<
     name: { sq: "Bashkues Socket HDPE", en: "HDPE Socket Coupling" },
     shortName: { sq: "Bashkues Socket", en: "Socket Coupler" },
     description: {
-      sq: "Bashkues HDPE të formuar me injeksion dhe rrotullim për lidhjen e tubave koritore të kanalizimit dhe kullimit.",
+      sq: "Bashkues HDPE të formuar me injeksion dhe rrotullim për lidhjen e tubave të korruguar të kanalizimit dhe kullimit.",
       en: "Injection-moulded and rotomoulded HDPE sockets for joining corrugated sewage and drainage pipes.",
     },
   },
@@ -623,18 +668,18 @@ export const productTranslations: Record<
     },
   },
   "palaplast-hdpe100-irrigation": {
-    name: { sq: "Tubë Ujitjeje HDPE 100 Palaplast", en: "Palaplast HDPE 100 Irrigation Pipe" },
+    name: { sq: "Tub Ujitjeje HDPE 100 Palaplast", en: "Palaplast HDPE 100 Irrigation Pipe" },
     shortName: { sq: "Palaplast HDPE100", en: "Palaplast HDPE100" },
     description: {
-      sq: "Tubë ujitjeje HDPE 100 e prodhuar sipas EN 12201-2 për rrjete ujitjeje me presion, furnizim uji dhe aplikime industriale.",
+      sq: "Tub ujitjeje HDPE 100 i prodhuar sipas EN 12201-2 për rrjete ujitjeje me presion, furnizim uji dhe aplikime industriale.",
       en: "Palaplast's HDPE 100 irrigation pipe manufactured to EN 12201-2 for pressurised irrigation, water supply, and industrial applications.",
     },
   },
   "palaplast-compression-fittings": {
-    name: { sq: "Raccordi Kompresioni Palaplast", en: "Palaplast Compression Fittings" },
-    shortName: { sq: "Raccordi PE", en: "PE Compression Fittings" },
+    name: { sq: "Fitingje Kompresioni Palaplast", en: "Palaplast Compression Fittings" },
+    shortName: { sq: "Fitingje PE", en: "PE Compression Fittings" },
     description: {
-      sq: "Raccordi kompresioni PN10 ATM nga polipropilen i cilësisë së lartë për lidhje pa vegla të tubave PE dhe HDPE.",
+      sq: "Fitingje kompresioni PN10 ATM nga polipropilen i cilësisë së lartë për lidhje pa vegla të tubave PE dhe HDPE.",
       en: "PN10 ATM compression fittings manufactured from high-quality polypropylene for reliable tool-free connections.",
     },
   },
@@ -655,7 +700,7 @@ export const productTranslations: Record<
     },
   },
   "konti-pe100-water-pipe": {
-    name: { sq: "Tubë Furnizimi Uji PE-100 Konti", en: "Konti PE-100 Water Supply Pipe" },
+    name: { sq: "Tub Furnizimi Uji PE-100 Konti", en: "Konti PE-100 Water Supply Pipe" },
     shortName: { sq: "PE-100 Ujësjellës", en: "PE-100 Water Pipe" },
     description: {
       sq: "Tuba furnizimi uji PE-100 nga Konti Hidroplast, të prodhuara nga polietileni me densitet të lartë i gjeneratës së tretë.",
@@ -663,7 +708,7 @@ export const productTranslations: Record<
     },
   },
   "konti-pe100rc-water-pipe": {
-    name: { sq: "Tubë Furnizimi Uji PE-100 RC Konti", en: "Konti PE-100 RC Water Supply Pipe" },
+    name: { sq: "Tub Furnizimi Uji PE-100 RC Konti", en: "Konti PE-100 RC Water Supply Pipe" },
     shortName: { sq: "PE-100 RC", en: "PE-100 RC Pipe" },
     description: {
       sq: "PE-100 RC (Rezistencë ndaj Çarjes) — variant i specializuar i PE-100 me rezistencë të jashtëzakonshme ndaj rritjes së ngadaltë të çarjeve.",
@@ -671,10 +716,10 @@ export const productTranslations: Record<
     },
   },
   "konti-kan-corrugated-sn4": {
-    name: { sq: "Tubë Kanalizimi Koritore HDPE Konti Kan — SN4", en: "Konti Kan HDPE Corrugated Sewage Pipe — SN4" },
+    name: { sq: "Tub Kanalizimi i Korruguar HDPE Konti Kan — SN4", en: "Konti Kan HDPE Corrugated Sewage Pipe — SN4" },
     shortName: { sq: "Konti Kan SN4", en: "Konti Kan SN4" },
     description: {
-      sq: "Tuba kanalizimi koritore HDPE (klasa SN4) të prodhuara sipas EN 13476-3 dhe ISO 9969 me mur të dyfishtë.",
+      sq: "Tuba kanalizimi të korruguar HDPE (klasa SN4) të prodhuar sipas EN 13476-3 dhe ISO 9969 me mur të dyfishtë.",
       en: "HDPE corrugated sewage pipes (SN4 stiffness class) manufactured to EN 13476-3 and ISO 9969.",
     },
   },
@@ -687,15 +732,15 @@ export const productTranslations: Record<
     },
   },
   "konti-kan-optic-cable-protection": {
-    name: { sq: "Tubë Mbrojtëse Kabllo Optike Konti Kan", en: "Konti Kan Optic Cable Protection Pipe" },
+    name: { sq: "Tub Mbrojtës Kabllo Optike Konti Kan", en: "Konti Kan Optic Cable Protection Pipe" },
     shortName: { sq: "Kanal Optik", en: "Optic Cable Duct" },
     description: {
-      sq: "Tuba HDPE me mur të dyfishtë me sipërfaqe të jashtme koritore dhe të brendshme të lëmuar për mbrojtje fibër optike.",
+      sq: "Tuba HDPE me mur të dyfishtë me sipërfaqe të jashtme të korruguar dhe të brendshme të lëmuar për mbrojtje fibër optike.",
       en: "Double-wall HDPE pipes with corrugated outer surface and smooth inner surface for fibre-optic cable protection.",
     },
   },
   "ferplast-drainage-pipe": {
-    name: { sq: "Tubë Kullimi HDPE Ferplast", en: "Ferplast HDPE Drainage Pipe" },
+    name: { sq: "Tub Kullimi HDPE Ferplast", en: "Ferplast HDPE Drainage Pipe" },
     shortName: { sq: "Kullim HDPE", en: "HDPE Drainage" },
     description: {
       sq: "Tuba kullimi HDPE sipas EN 13476-3 dhe ISO 9969 për kullim nëntokësor të tokës bujqësore dhe rrugore.",
@@ -706,12 +751,12 @@ export const productTranslations: Record<
     name: { sq: "Kanal Kabllor Elektrik HDPE Ferplast", en: "Ferplast HDPE Electric Cable Conduit" },
     shortName: { sq: "Kanal Elektrik", en: "Electric Conduit" },
     description: {
-      sq: "Kanale kabllore elektrike HDPE sipas EN 50086-2-4. Ndërtimi koritor siguron fleksibilitet dhe mbrojtje mekanike.",
+      sq: "Kanale kabllore elektrike HDPE sipas EN 50086-2-4. Ndërtimi i korruguar siguron fleksibilitet dhe mbrojtje mekanike.",
       en: "HDPE electric cable conduits manufactured to EN 50086-2-4 with corrugated construction for flexibility and mechanical protection.",
     },
   },
   "ferplast-pe100-water-pipe": {
-    name: { sq: "Tubë Furnizimi Uji PE-100 / PE-100 RC Ferplast", en: "Ferplast PE-100 / PE-100 RC Water Supply Pipe" },
+    name: { sq: "Tub Furnizimi Uji PE-100 / PE-100 RC Ferplast", en: "Ferplast PE-100 / PE-100 RC Water Supply Pipe" },
     shortName: { sq: "Ferplast PE-100", en: "Ferplast PE-100" },
     description: {
       sq: "Tuba furnizimi uji PE-100 dhe PE-100 RC sipas EN 12201-2 dhe ISO 4427 nga fabrika e Ferplast në Kosovë.",
@@ -719,7 +764,7 @@ export const productTranslations: Record<
     },
   },
   "ferplast-optic-cable-pipe": {
-    name: { sq: "Tubë Mbrojtëse Kabllo Optike PE Ferplast", en: "Ferplast PE Optic Cable Protection Pipe" },
+    name: { sq: "Tub Mbrojtës Kabllo Optike PE Ferplast", en: "Ferplast PE Optic Cable Protection Pipe" },
     shortName: { sq: "Kanal Optik", en: "Optic Cable Pipe" },
     description: {
       sq: "Tuba mbrojtëse kabllo optike PE sipas EN 12201, ISO 4427 dhe DIN 8074 nga Ferplast.",
@@ -767,7 +812,7 @@ export const productTranslations: Record<
     },
   },
   "palaplast-ldpe-pipe-6atm": {
-    name: { sq: "Tubë Ujitjeje LDPE 6 ATM Palaplast", en: "Palaplast LDPE Irrigation Pipe — 6 ATM" },
+    name: { sq: "Tub Ujitjeje LDPE 6 ATM Palaplast", en: "Palaplast LDPE Irrigation Pipe — 6 ATM" },
     shortName: { sq: "LDPE 6 ATM", en: "LDPE 6 ATM" },
     description: {
       sq: "Tuba ujitjeje LDPE 6 ATM si nën-anësore dhe linja dytësore kryesore në sisteme ujitjeje bujqësore.",
@@ -775,26 +820,26 @@ export const productTranslations: Record<
     },
   },
   "palaplast-hdpe-pipe-6atm": {
-    name: { sq: "Tubë Ujitjeje HDPE 6 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 6 ATM" },
+    name: { sq: "Tub Ujitjeje HDPE 6 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 6 ATM" },
     shortName: { sq: "HDPE 6 ATM", en: "HDPE 6 ATM" },
     description: {
-      sq: "Tubë kryesore ujitjeje HDPE 6 ATM. Diametra Ø 40–110 mm. Për shpërndarje me presion në rrjete bujqësore.",
+      sq: "Tub kryesor ujitjeje HDPE 6 ATM. Diametra Ø 40–110 mm. Për shpërndarje me presion në rrjete bujqësore.",
       en: "HDPE irrigation mainline pipe rated at 6 ATM. Sizes Ø 40–110 mm. For pressurised distribution in agricultural networks.",
     },
   },
   "palaplast-hdpe-pipe-10atm": {
-    name: { sq: "Tubë Ujitjeje HDPE 10 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 10 ATM" },
+    name: { sq: "Tub Ujitjeje HDPE 10 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 10 ATM" },
     shortName: { sq: "HDPE 10 ATM", en: "HDPE 10 ATM" },
     description: {
-      sq: "Tubë kryesore ujitjeje HDPE me presion të lartë 10 ATM. Për rrjete shpërndarjeje primare me presion pune më të lartë.",
+      sq: "Tub kryesor ujitjeje HDPE me presion të lartë 10 ATM. Për rrjete shpërndarjeje primare me presion pune më të lartë.",
       en: "High-pressure HDPE irrigation mainline pipe rated at 10 ATM for primary distribution networks requiring higher working pressure.",
     },
   },
   "palaplast-rekorder-10atm": {
-    name: { sq: "Raccordi Kompresioni Rekorder 10 ATM Palaplast", en: "Palaplast Compression Fittings (Rekorder) — 10 ATM" },
+    name: { sq: "Fitingje Kompresioni Rekorder 10 ATM Palaplast", en: "Palaplast Compression Fittings (Rekorder) — 10 ATM" },
     shortName: { sq: "Rekorder 10 ATM", en: "Rekorder 10 ATM" },
     description: {
-      sq: "Raccordi kompresioni 10 ATM (rekorder) nga polipropilen për lidhje pa vegla të tubave PE dhe HDPE.",
+      sq: "Fitingje kompresioni 10 ATM (rekorder) nga polipropilen për lidhje pa vegla të tubave PE dhe HDPE.",
       en: "10 ATM compression fittings (rekorder) from polypropylene for tool-free connection to PE and HDPE pipes.",
     },
   },
@@ -935,26 +980,26 @@ export const productTranslations: Record<
     },
   },
   "confort-ppht-pipes": {
-    name: { sq: "Tuba & Raccordi Kullimi PPHT Confort", en: "Confort PPHT Building Drainage Pipe & Fittings" },
-    shortName: { sq: "Tubë PPHT", en: "PPHT Pipe" },
+    name: { sq: "Tuba & Fitingje Kullimi PPHT Confort", en: "Confort PPHT Building Drainage Pipe & Fittings" },
+    shortName: { sq: "Tub PPHT", en: "PPHT Pipe" },
     description: {
-      sq: "Tuba dhe raccordi PPHT me dy shtresa sipas EN 1329-1 për kanalizim të brendshëm ndërtesash.",
+      sq: "Tuba dhe fitingje PPHT me dy shtresa sipas EN 1329-1 për kanalizim të brendshëm ndërtesash.",
       en: "Two-layer PPHT pipes and fittings to EN 1329-1 for internal building sewage and waste-water drainage.",
     },
   },
   "confort-pvc-fittings": {
-    name: { sq: "Raccordi Kanalizimi & Kullimi PVC Confort", en: "Confort PVC Sewage & Drainage Fittings" },
-    shortName: { sq: "Raccordi PVC", en: "PVC Fittings" },
+    name: { sq: "Fitingje Kanalizimi & Kullimi PVC Confort", en: "Confort PVC Sewage & Drainage Fittings" },
+    shortName: { sq: "Fitingje PVC", en: "PVC Fittings" },
     description: {
-      sq: "Raccordi PVC nga Confort për sisteme tubash me temperaturë të lartë e të ulët, kanalizim nëntokësor dhe kullim.",
+      sq: "Fitingje PVC nga Confort për sisteme tubash me temperaturë të lartë e të ulët, kanalizim nëntokësor dhe kullim.",
       en: "PVC fittings from Confort for high and low temperature piping, buried sewage, and drainage systems.",
     },
   },
   "confort-ppr-pipes": {
-    name: { sq: "Tuba & Raccordi PPR për Ujë të Nxehtë & Ftohtë Confort", en: "Confort PPR Hot & Cold Water Pipe & Fittings" },
-    shortName: { sq: "Tubë PPR", en: "PPR Pipe" },
+    name: { sq: "Tuba & Fitingje PPR për Ujë të Nxehtë & të Ftohtë Confort", en: "Confort PPR Hot & Cold Water Pipe & Fittings" },
+    shortName: { sq: "Tub PPR", en: "PPR Pipe" },
     description: {
-      sq: "Tuba dhe raccordi PPR për ujë të pijshëm të nxehtë e ftohtë, ngrohje qendrore dhe ngrohje nën dysheme.",
+      sq: "Tuba dhe fitingje PPR për ujë të pijshëm të nxehtë e të ftohtë, ngrohje qendrore dhe ngrohje nën dysheme.",
       en: "PPR pipes and fittings for hot and cold potable water, central heating, and underfloor heating systems.",
     },
   },
@@ -1023,26 +1068,26 @@ export const productTranslations: Record<
     },
   },
   "ferplast-corrugated-sn4": {
-    name: { sq: "Tubë Kanalizimi Koritore HDPE Ferplast — SN4", en: "Ferplast Corrugated HDPE Sewage Pipe — SN4" },
+    name: { sq: "Tub Kanalizimi i Korruguar HDPE Ferplast — SN4", en: "Ferplast Corrugated HDPE Sewage Pipe — SN4" },
     shortName: { sq: "Ferplast SN4", en: "Ferplast SN4" },
     description: {
-      sq: "Tubë kanalizimi koritore HDPE me klasë ngurtësie SN4 nga Ferplast.",
+      sq: "Tub kanalizimi i korruguar HDPE me klasë ngurtësie SN4 nga Ferplast.",
       en: "Double-wall corrugated HDPE sewage pipe in SN4 ring stiffness class from Ferplast.",
     },
   },
   "ferplast-corrugated-sn8": {
-    name: { sq: "Tubë Kanalizimi Koritore HDPE Ferplast — SN8", en: "Ferplast Corrugated HDPE Sewage Pipe — SN8" },
+    name: { sq: "Tub Kanalizimi i Korruguar HDPE Ferplast — SN8", en: "Ferplast Corrugated HDPE Sewage Pipe — SN8" },
     shortName: { sq: "Ferplast SN8", en: "Ferplast SN8" },
     description: {
-      sq: "Tubë kanalizimi koritore HDPE me klasë ngurtësie SN8 nga Ferplast për ngarkesa më të rënda trafiku.",
+      sq: "Tub kanalizimi i korruguar HDPE me klasë ngurtësie SN8 nga Ferplast për ngarkesa më të rënda trafiku.",
       en: "Double-wall corrugated HDPE sewage pipe in SN8 ring stiffness class from Ferplast for heavier traffic loads.",
     },
   },
   "ferplast-pph-pipe": {
-    name: { sq: "Tubë Kullimi PP-H Ferplast", en: "Ferplast PP-H Gravity Drainage Pipe" },
+    name: { sq: "Tub Kullimi PP-H Ferplast", en: "Ferplast PP-H Gravity Drainage Pipe" },
     shortName: { sq: "Ferplast PP-H", en: "Ferplast PP-H" },
     description: {
-      sq: "Tubë kullimi PP-H për ujëra të ndotura ndërtesash dhe sisteme kullimi gravitacional nga Ferplast.",
+      sq: "Tub kullimi PP-H për ujëra të ndotura ndërtesash dhe sisteme kullimi gravitacional nga Ferplast.",
       en: "Ferplast PP-H drainage pipe for building waste-water and gravity drainage systems.",
     },
   },
@@ -1050,7 +1095,7 @@ export const productTranslations: Record<
     name: { sq: "Bashkues Socket Konti Kan (HDPE)", en: "Konti Kan Socket Fitting (HDPE)" },
     shortName: { sq: "Bashkues Konti", en: "Konti Socket" },
     description: {
-      sq: "Bashkues socket HDPE për tuba kanalizimi koritore Konti Kan, në variante me injeksion dhe rrotullim.",
+      sq: "Bashkues socket HDPE për tuba kanalizimi të korruguar Konti Kan, në variante me injeksion dhe rrotullim.",
       en: "HDPE socket coupling for Konti Kan corrugated sewage pipes, in injection and rotomoulded variants.",
     },
   },

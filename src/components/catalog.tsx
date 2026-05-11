@@ -326,7 +326,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
             {tp(group.id, "name", group.name)}
           </h3>
           <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed">
-            {group.application}
+            {tp(group.id, "shortName", group.shortName)}
           </p>
 
           {/* Metrics */}

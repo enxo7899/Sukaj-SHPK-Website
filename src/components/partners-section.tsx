@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ExternalLink, MapPin, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { partners, partnerTypeLabels, type PartnerType } from "@/lib/data";
+import { partners, type PartnerType } from "@/lib/data";
 import { Marquee } from "@/components/ui/marquee";
 import { useTranslation } from "@/lib/i18n/context";
 
@@ -70,6 +70,13 @@ function PartnerCard({
   inView: boolean;
 }) {
   const { t } = useTranslation();
+  const typeLabel: Record<PartnerType, string> = {
+    manufacturer: t("partners.typeManufacturer"),
+    recycler: t("partners.typeRecycler"),
+    packaging: t("partners.typePackaging"),
+    hoses: t("partners.typeHoses"),
+    "local-albania": t("partners.typeLocalAlbania"),
+  };
   const accent = typeAccent[partner.partnerType];
   const isExternal = partner.website.startsWith("http");
   return (
@@ -127,7 +134,7 @@ function PartnerCard({
               border: `1px solid ${accent}20`,
             }}
           >
-            {partnerTypeLabels[partner.partnerType]}
+            {typeLabel[partner.partnerType]}
           </span>
         </div>
 
@@ -188,6 +195,13 @@ function PartnerCard({
 
 export function PartnersSection() {
   const { t } = useTranslation();
+  const typeLabel: Record<PartnerType, string> = {
+    manufacturer: t("partners.typeManufacturer"),
+    recycler: t("partners.typeRecycler"),
+    packaging: t("partners.typePackaging"),
+    hoses: t("partners.typeHoses"),
+    "local-albania": t("partners.typeLocalAlbania"),
+  };
   const [active, setActive] = useState<Filter>(ALL);
   const [isPaused, setIsPaused] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -195,7 +209,7 @@ export function PartnersSection() {
 
   const tabs: { id: Filter; label: string }[] = [
     { id: ALL, label: t("partners.allPartners") },
-    ...typeOrder.map((pt) => ({ id: pt, label: partnerTypeLabels[pt] })),
+    ...typeOrder.map((pt) => ({ id: pt, label: typeLabel[pt] })),
   ];
 
   const visible =
@@ -263,9 +277,9 @@ export function PartnersSection() {
             {/* Summary stats for desktop */}
             <div className="hidden lg:flex items-center gap-8 pb-1">
               {[
-                { value: "12", label: "Partners" },
-                { value: "7", label: "Countries" },
-                { value: "5", label: "Sectors" },
+                { value: "12", label: t("partners.statsPartners") },
+                { value: "7", label: t("partners.statsCountries") },
+                { value: "5", label: t("partners.statsSectors") },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="text-2xl font-black text-white">{stat.value}</div>
@@ -345,7 +359,7 @@ export function PartnersSection() {
                         style={{ backgroundColor: typeAccent[type] }}
                       />
                       <span className="font-mono text-[11px] tracking-[0.22em] text-slate-500 uppercase">
-                        {partnerTypeLabels[type]}
+                        {typeLabel[type]}
                       </span>
                       <div className="flex-1 h-px bg-white/[0.05]" />
                     </div>

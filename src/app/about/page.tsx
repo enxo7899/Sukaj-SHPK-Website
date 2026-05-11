@@ -19,18 +19,17 @@ import {
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n/context";
 
-const countryPartners: { flag: string; country: string; count: number }[] = [
-  { flag: "🇦🇱", country: "Albania", count: partners.filter((p) => p.country === "Albania").length },
-  { flag: "🇽🇰", country: "Kosovo", count: partners.filter((p) => p.country === "Kosovo").length },
-  { flag: "🇲🇰", country: "North Macedonia", count: partners.filter((p) => p.country === "North Macedonia").length },
-  { flag: "🇷🇸", country: "Serbia", count: partners.filter((p) => p.country === "Serbia").length },
-  { flag: "🇬🇷", country: "Greece", count: partners.filter((p) => p.country === "Greece").length },
-  { flag: "🇮🇹", country: "Italy", count: partners.filter((p) => p.country === "Italy").length },
-  { flag: "🇹🇷", country: "Turkey", count: partners.filter((p) => p.country === "Turkey").length },
-];
-
 export default function AboutPage() {
   const { t } = useTranslation();
+  const countryPartners: { flag: string; country: string; count: number }[] = [
+    { flag: "🇦🇱", country: t("about.countryAlbania"), count: partners.filter((p) => p.country === "Albania").length },
+    { flag: "🇽🇰", country: t("about.countryKosovo"), count: partners.filter((p) => p.country === "Kosovo").length },
+    { flag: "🇲🇰", country: t("about.countryNorthMacedonia"), count: partners.filter((p) => p.country === "North Macedonia").length },
+    { flag: "🇷🇸", country: t("about.countrySerbia"), count: partners.filter((p) => p.country === "Serbia").length },
+    { flag: "🇬🇷", country: t("about.countryGreece"), count: partners.filter((p) => p.country === "Greece").length },
+    { flag: "🇮🇹", country: t("about.countryItaly"), count: partners.filter((p) => p.country === "Italy").length },
+    { flag: "🇹🇷", country: t("about.countryTurkey"), count: partners.filter((p) => p.country === "Turkey").length },
+  ];
   return (
     <div className="min-h-screen bg-[#020617]">
 

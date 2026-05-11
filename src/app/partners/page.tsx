@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   partners,
-  partnerTypeLabels,
   type PartnerType,
 } from "@/lib/data";
 import {
@@ -29,6 +28,13 @@ const allTypes: (PartnerType | "all")[] = [
 export default function PartnersPage() {
   const { t } = useTranslation();
   const [activeType, setActiveType] = useState<PartnerType | "all">("all");
+  const typeLabel: Record<PartnerType, string> = {
+    manufacturer: t("partners.typeManufacturer"),
+    recycler: t("partners.typeRecycler"),
+    packaging: t("partners.typePackaging"),
+    hoses: t("partners.typeHoses"),
+    "local-albania": t("partners.typeLocalAlbania"),
+  };
 
   const filtered =
     activeType === "all"
@@ -58,7 +64,7 @@ export default function PartnersPage() {
         {/* Filter tabs */}
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {allTypes.map((type) => {
-            const label = type === "all" ? t("partners.allPartners") : partnerTypeLabels[type];
+            const label = type === "all" ? t("partners.allPartners") : typeLabel[type];
             const isActive = activeType === type;
             return (
               <button

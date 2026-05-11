@@ -19,6 +19,20 @@ export function LocationsSection() {
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   const active = locations.find((l) => l.id === activeLocation) ?? locations[1];
+  const localizedLocationMeta: Record<string, { label: string; description: string }> = {
+    "vore-tirana": {
+      label: t("locations.labelWarehouse"),
+      description: t("locations.voreDescription"),
+    },
+    shkoder: {
+      label: t("locations.labelHeadquarters"),
+      description: t("locations.shkoderDescription"),
+    },
+    lac: {
+      label: t("locations.labelRegionalDepot"),
+      description: t("locations.lacDescription"),
+    },
+  };
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden py-20 sm:py-24 lg:py-32 bg-[#020617]">
@@ -123,7 +137,7 @@ export function LocationsSection() {
                             : "bg-white/[0.05] text-slate-600 border border-white/[0.06]"
                         }`}
                       >
-                        {location.label}
+                        {localizedLocationMeta[location.id]?.label ?? location.label}
                       </span>
                     </div>
                     <p
@@ -131,7 +145,7 @@ export function LocationsSection() {
                         isActive ? "text-slate-400" : "text-slate-500"
                       }`}
                     >
-                      {location.description}
+                      {localizedLocationMeta[location.id]?.description ?? location.description}
                     </p>
 
                     {/* Directions link */}
