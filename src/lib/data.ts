@@ -57,7 +57,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: ["EN 13476", "EN 12201"],
     heroMetrics: ["Ø up to 2000 mm", "95 % export", "Est. 1975"],
-    logo: { dark: "/partners/konti-hidroplast/logo.svg" },
+    logo: { dark: "/partners/konti-hidroplast/logo.svg", light: "/partners/konti-hidroplast/logo-light.svg" },
     featuredPriority: 1,
     products: [
       { name: "Spiral Sewage Pipe", type: "PP Spiral", diameters: "300–2000 mm" },
@@ -79,7 +79,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: ["EN 13476", "SN4", "SN8"],
     heroMetrics: ["ID up to 2000 mm", "SN4 / SN8", "Est. 1996"],
-    logo: { dark: "/partners/ferplast-ks/logo.svg" },
+    logo: { dark: "/partners/ferplast-ks/logo.svg", light: "/partners/ferplast-ks/logo-light.svg" },
     featuredPriority: 2,
     products: [
       { name: "Corrugated HDPE SN4", type: "HDPE Corrugated", diameters: "100–2000 mm" },
@@ -101,7 +101,7 @@ export const partners: Partner[] = [
     partnerType: "local-albania",
     keyStandards: ["EN 13476-1:2018", "ISO 9001", "HDPE PE100"],
     heroMetrics: ["Ø 20–630 mm", "PN4–PN32", "12 m lengths"],
-    logo: { dark: "/partners/teqja/logo.svg" },
+    logo: { dark: "/partners/teqja/logo.svg", light: "/partners/teqja/logo-light.svg" },
     featuredPriority: 3,
     products: [
       { name: "HDPE 100 Pressure Pipe", type: "HDPE PE100", diameters: "20–630 mm" },
@@ -123,7 +123,7 @@ export const partners: Partner[] = [
     partnerType: "hoses",
     keyStandards: ["EN ISO 1307", "REACH"],
     heroMetrics: ["3 flagship lines", "Global distribution", "Made in Italy"],
-    logo: { dark: "/partners/fitt/logo.svg" },
+    logo: { dark: "/partners/fitt/logo.svg", light: "/partners/fitt/logo-light.svg" },
     featuredPriority: 4,
     products: [
       { name: "FITT Force", type: "Reinforced PVC Hose", diameters: "12–50 mm" },
@@ -145,7 +145,7 @@ export const partners: Partner[] = [
     partnerType: "recycler",
     keyStandards: ["ISO 14001"],
     heroMetrics: ["Recycled granulates", "Agri & construction foils"],
-    logo: { dark: "/partners/plastika-ks/logo.svg" },
+    logo: { dark: "/partners/plastika-ks/logo.svg", light: "/partners/plastika-ks/logo-light.svg" },
     featuredPriority: 5,
     products: [
       { name: "Recycled Granulates", type: "HDPE/LDPE Granulate", diameters: "N/A" },
@@ -166,7 +166,7 @@ export const partners: Partner[] = [
     partnerType: "packaging",
     keyStandards: ["EU Food Contact"],
     heroMetrics: ["Barrels & accessories", "Food-grade plastics"],
-    logo: { dark: "/partners/assos-viokon/logo.svg" },
+    logo: { dark: "/partners/assos-viokon/logo.svg", light: "/partners/assos-viokon/logo-light.svg" },
     featuredPriority: 8,
     products: [
       { name: "General Barrels", type: "Food-Grade Plastic", diameters: "N/A" },
@@ -187,7 +187,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: [],
     heroMetrics: ["Sprayers 1–16 L", "Animal troughs", "Farm tools"],
-    logo: { dark: "/partners/polins/logo.svg" },
+    logo: { dark: "/partners/polins/logo.svg", light: "/partners/polins/logo-light.svg" },
     featuredPriority: 9,
     products: [
       { name: "Manual Sprayer Pumps", type: "Pressurised PE", diameters: "1 / 1.5 / 2 / 2.5 / 5 / 10 / 12 / 16 L" },
@@ -210,7 +210,7 @@ export const partners: Partner[] = [
     partnerType: "recycler",
     keyStandards: [],
     heroMetrics: ["In-house recycling", "Solar-powered ops"],
-    logo: { dark: "/partners/plastika-nv/logo.svg" },
+    logo: { dark: "/partners/plastika-nv/logo.svg", light: "/partners/plastika-nv/logo-light.svg" },
     featuredPriority: 10,
     products: [
       { name: "Plastic Packaging", type: "PE/PP Packaging", diameters: "N/A" },
@@ -230,7 +230,7 @@ export const partners: Partner[] = [
     partnerType: "local-albania",
     keyStandards: [],
     heroMetrics: ["Local manufacturer"],
-    logo: { dark: "/partners/poly-plast-system/logo.svg" },
+    logo: { dark: "/partners/poly-plast-system/logo.svg", light: "/partners/poly-plast-system/logo-light.svg" },
     featuredPriority: 7,
     products: [
       { name: "PE Pipe Systems", type: "HDPE", diameters: "20–400 mm" },
@@ -250,7 +250,7 @@ export const partners: Partner[] = [
     partnerType: "hoses",
     keyStandards: ["ISO 9001"],
     heroMetrics: ["Est. 1957", "Rubber & PVC hoses"],
-    logo: { dark: "/partners/sel-polimer/logo.svg" },
+    logo: { dark: "/partners/sel-polimer/logo.svg", light: "/partners/sel-polimer/logo-light.svg" },
     featuredPriority: 6,
     products: [
       { name: "Industrial Rubber Hose", type: "Rubber", diameters: "6–150 mm" },
@@ -271,7 +271,7 @@ export const partners: Partner[] = [
     partnerType: "hoses",
     keyStandards: [],
     heroMetrics: ["PVC hoses", "PVC granulate"],
-    logo: { dark: "/partners/perplast/logo.svg" },
+    logo: { dark: "/partners/perplast/logo.svg", light: "/partners/perplast/logo-light.svg" },
     featuredPriority: 11,
     products: [
       { name: "PVC Hose", type: "PVC", diameters: "10–100 mm" },

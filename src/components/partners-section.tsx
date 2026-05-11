@@ -34,23 +34,33 @@ const logoPartners = partners.filter((p) => p.logo.dark);
 function LogoCard({ partner, onHoverChange }: { partner: (typeof partners)[0]; onHoverChange?: (isHovered: boolean) => void }) {
   return (
     <div
-      className="group flex h-[72px] w-52 shrink-0 items-center justify-center rounded-2xl px-5 mx-3 transition-all duration-300 hover:scale-[1.03]"
+      className="logo-card group flex h-[68px] w-52 shrink-0 items-center justify-center rounded-2xl px-5 mx-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md"
       style={{
-        background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
+        border: "1px solid var(--site-border)",
+        backgroundColor: "var(--site-surface-strong)",
       }}
       title={partner.name}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
     >
+      {/* Dark-mode variant (white text logos) */}
       <Image
         src={partner.logo.dark!}
         alt={partner.name}
         width={120}
-        height={40}
-        className="h-8 w-auto max-w-[120px] object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
+        height={36}
+        className="logo-dark-variant h-8 w-auto max-w-[120px] object-contain opacity-60 transition-opacity duration-300 group-hover:opacity-90"
       />
+      {/* Light-mode variant (dark text logos) */}
+      {partner.logo.light && (
+        <Image
+          src={partner.logo.light}
+          alt={partner.name}
+          width={120}
+          height={36}
+          className="logo-light-variant h-8 w-auto max-w-[120px] object-contain opacity-65 transition-opacity duration-300 group-hover:opacity-100"
+        />
+      )}
     </div>
   );
 }
@@ -96,18 +106,29 @@ function PartnerCard({
           <div
             className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden transition-all duration-300"
             style={{
-              background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              backgroundColor: `${accent}12`,
+              border: `1px solid ${accent}25`,
             }}
           >
             {partner.logo.dark ? (
-              <Image
-                src={partner.logo.dark}
-                alt={partner.name}
-                width={36}
-                height={36}
-                className="h-6 w-auto object-contain opacity-80 transition-all duration-300 group-hover:opacity-100"
-              />
+              <>
+                <Image
+                  src={partner.logo.dark}
+                  alt={partner.name}
+                  width={32}
+                  height={32}
+                  className="logo-dark-variant h-6 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100"
+                />
+                {partner.logo.light && (
+                  <Image
+                    src={partner.logo.light}
+                    alt={partner.name}
+                    width={32}
+                    height={32}
+                    className="logo-light-variant h-6 w-auto object-contain opacity-75 transition-opacity group-hover:opacity-100"
+                  />
+                )}
+              </>
             ) : (
               <span className="text-base font-black" style={{ color: accent }}>
                 {partner.name.charAt(0)}

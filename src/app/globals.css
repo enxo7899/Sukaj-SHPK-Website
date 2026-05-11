@@ -361,6 +361,15 @@
   color: #0e7490 !important;
 }
 
+/* ─── Logo carousel theme-switching ──────────────────────────────────────────
+ * Each logo comes in two variants: dark (white text, for dark bg) and
+ * light (dark text, for light bg). Show the correct one for the active theme.
+ * ──────────────────────────────────────────────────────────────────────────── */
+.logo-dark-variant  { display: block;  }
+.logo-light-variant { display: none;   }
+[data-theme="light"] .logo-dark-variant  { display: none;  }
+[data-theme="light"] .logo-light-variant { display: block; }
+
 @layer utilities {
   .glass {
     background: rgba(255, 255, 255, 0.05);

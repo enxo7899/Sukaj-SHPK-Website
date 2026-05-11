@@ -13,10 +13,10 @@ export default function Home() {
     <>
       <HeroUltimate />
       <StatsPremium />
-      <WhyUs />
-      <PartnersSection />
       <CategoriesPremium />
       <FeaturedProducts />
+      <WhyUs />
+      <PartnersSection />
       <LocationsSection />
       <TimelinePremium />
       <CTA />
