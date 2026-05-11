@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { Building2, Sprout, Factory, ArrowRight } from "lucide-react";
 import { categories } from "@/lib/data";
+import { productGroups } from "@/lib/products-data";
 import { useTranslation } from "@/lib/i18n/context";
 
 const iconMap: Record<string, React.FC<{ className?: string }>> = {
@@ -103,6 +104,9 @@ export function CategoriesPremium() {
               categoryTranslationKeys[
                 category.id as keyof typeof categoryTranslationKeys
               ];
+            const productCount = productGroups.filter(
+              (p) => p.category === category.id
+            ).length;
 
             return (
               <motion.div
@@ -119,24 +123,40 @@ export function CategoriesPremium() {
                   >
                     {/* Card */}
                     <div
-                      className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all overflow-hidden"
+                      className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 overflow-hidden"
                       style={{
-                        backgroundColor: "var(--site-surface)",
+                        backgroundColor: "var(--site-surface-strong)",
                         border: "1px solid var(--site-border)",
+                        boxShadow: "0 1px 3px rgba(15,23,42,0.04)",
                       }}
                     >
-                      {/* Top accent line */}
+                      {/* Top accent bar — always visible, grows on hover */}
                       <div
-                        className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${category.gradient} opacity-50 group-hover:opacity-100 transition-opacity`}
+                        className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${category.gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
+                      />
+
+                      {/* Subtle hover glow from top */}
+                      <div
+                        className="absolute top-0 inset-x-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        style={{
+                          background: `radial-gradient(ellipse at 50% 0%, ${category.glowColor}, transparent)`,
+                        }}
                       />
 
                       {/* Content */}
                       <div className="relative z-10">
-                        {/* Icon */}
-                        <div
-                          className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.iconBg} flex items-center justify-center mb-6 shadow-lg`}
-                        >
-                          <Icon className="w-7 h-7 text-white" />
+                        {/* Icon + product count row */}
+                        <div className="flex items-start justify-between mb-6">
+                          <div
+                            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.iconBg} flex items-center justify-center shadow-lg`}
+                          >
+                            <Icon className="w-7 h-7 text-white" />
+                          </div>
+                          <span
+                            className={`font-mono text-[10px] tracking-[0.12em] uppercase rounded-full px-2.5 py-1 bg-gradient-to-br ${category.gradient} text-white opacity-90`}
+                          >
+                            {productCount} SKU
+                          </span>
                         </div>
 
                         {/* Title */}
@@ -149,13 +169,17 @@ export function CategoriesPremium() {
                           {tk ? t(tk.desc) : category.description}
                         </p>
 
-                        {/* Product badges */}
+                        {/* Product type tags */}
                         <div className="flex flex-wrap gap-2 mb-6">
                           {category.products.slice(0, 3).map((product) => (
                             <span
                               key={product}
-                              className="px-3 py-1.5 rounded-lg text-xs font-medium"
-                            style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)", color: "var(--site-text-muted)" }}
+                              className="px-2.5 py-1 rounded-lg text-[11px] font-medium font-mono"
+                              style={{
+                                backgroundColor: "var(--site-bg)",
+                                border: "1px solid var(--site-border)",
+                                color: "var(--site-text-soft)",
+                              }}
                             >
                               {product}
                             </span>
@@ -163,7 +187,7 @@ export function CategoriesPremium() {
                         </div>
 
                         {/* CTA */}
-                        <div className="flex items-center gap-2 text-cyan-400 font-semibold group-hover:gap-3 transition-all">
+                        <div className="flex items-center gap-2 text-cyan-500 font-semibold group-hover:gap-3 transition-all">
                           <span>{t("categories.learnMore")}</span>
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>

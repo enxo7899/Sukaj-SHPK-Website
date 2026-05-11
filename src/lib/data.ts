@@ -292,7 +292,7 @@ export const partners: Partner[] = [
     partnerType: "local-albania",
     keyStandards: [],
     heroMetrics: ["Irrigation focus"],
-    logo: { dark: "/partners/albplast/logo.svg" },
+    logo: {},
     featuredPriority: 12,
     products: [
       { name: "Irrigation Pipe", type: "PE", diameters: "20–110 mm" },
@@ -312,7 +312,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: [],
     heroMetrics: ["6 / 10 ATM PE", "Compression fittings", "Drip irrigation"],
-    logo: { dark: "/partners/palaplast/logo.svg" },
+    logo: {},
     featuredPriority: 13,
     products: [
       { name: "PE Pipes 6 / 10 ATM", type: "LDPE / HDPE", diameters: "Ø20–110 mm" },
@@ -336,7 +336,7 @@ export const partners: Partner[] = [
     partnerType: "hoses",
     keyStandards: [],
     heroMetrics: ["½″–1″ sizes", "Single-line focus"],
-    logo: { dark: "/partners/pista-ekoplast/logo.svg" },
+    logo: {},
     featuredPriority: 14,
     products: [
       { name: "PVC Garden Hose", type: "PVC", diameters: "13 / 19 / 25 mm" },
@@ -356,7 +356,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: [],
     heroMetrics: ["Decorative pots", "Multiple styles", "S–XXL sizes"],
-    logo: { dark: "/partners/roto/logo.svg" },
+    logo: {},
     featuredPriority: 15,
     products: [
       { name: "Decorative Garden Planters", type: "Injection-moulded PE", diameters: "S / M / L / XL / XXL" },
@@ -378,7 +378,7 @@ export const partners: Partner[] = [
     partnerType: "local-albania",
     keyStandards: [],
     heroMetrics: ["PVC fittings", "Full range"],
-    logo: { dark: "/partners/confort-al/logo.svg" },
+    logo: {},
     featuredPriority: 16,
     products: [
       { name: "PVC Fittings", type: "PVC", diameters: "Various" },
@@ -398,7 +398,7 @@ export const partners: Partner[] = [
     partnerType: "manufacturer",
     keyStandards: [],
     heroMetrics: ["UPVC valves", "Compact design"],
-    logo: { dark: "/partners/xier-valve/logo.svg" },
+    logo: {},
     featuredPriority: 17,
     products: [
       { name: "UPVC Compact Ball Valve", type: "UPVC", diameters: "Threaded sizes" },

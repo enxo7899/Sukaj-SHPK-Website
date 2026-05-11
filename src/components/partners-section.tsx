@@ -32,31 +32,25 @@ type Filter = PartnerType | typeof ALL;
 const logoPartners = partners.filter((p) => p.logo.dark);
 
 function LogoCard({ partner, onHoverChange }: { partner: (typeof partners)[0]; onHoverChange?: (isHovered: boolean) => void }) {
-  const accent = typeAccent[partner.partnerType];
   return (
     <div
-      className="group flex h-16 w-40 shrink-0 items-center justify-center rounded-xl px-4 mx-2 transition-all duration-300"
-      style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
+      className="group flex h-[72px] w-52 shrink-0 items-center justify-center rounded-2xl px-5 mx-3 transition-all duration-300 hover:scale-[1.03]"
+      style={{
+        background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)",
+      }}
       title={partner.name}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
     >
-      {partner.logo.dark ? (
-        <Image
-          src={partner.logo.dark}
-          alt={partner.name}
-          width={100}
-          height={36}
-          className="h-7 w-auto object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-90 group-hover:grayscale-0"
-        />
-      ) : (
-        <span
-          className="font-mono text-xs font-bold tracking-wider"
-          style={{ color: `${accent}80` }}
-        >
-          {partner.name.slice(0, 8)}
-        </span>
-      )}
+      <Image
+        src={partner.logo.dark!}
+        alt={partner.name}
+        width={120}
+        height={40}
+        className="h-8 w-auto max-w-[120px] object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
+      />
     </div>
   );
 }
@@ -102,8 +96,8 @@ function PartnerCard({
           <div
             className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden transition-all duration-300"
             style={{
-              backgroundColor: `${accent}08`,
-              border: `1px solid ${accent}20`,
+              background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+              border: "1px solid rgba(255,255,255,0.12)",
             }}
           >
             {partner.logo.dark ? (
@@ -112,7 +106,7 @@ function PartnerCard({
                 alt={partner.name}
                 width={36}
                 height={36}
-                className="h-7 w-auto object-contain opacity-70 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                className="h-6 w-auto object-contain opacity-80 transition-all duration-300 group-hover:opacity-100"
               />
             ) : (
               <span className="text-base font-black" style={{ color: accent }}>
@@ -299,14 +293,15 @@ export function PartnersSection() {
 
         {/* ─── Marquee logo strip ─── */}
         <div className="relative mb-12 -mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 theme-marquee-fade-left" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 theme-marquee-fade-right" />
-          <Marquee duration={60} isPaused={isPaused} className="py-2.5">
+          {/* Fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 theme-marquee-fade-left" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 theme-marquee-fade-right" />
+          <Marquee duration={55} isPaused={isPaused} className="py-3">
             {logoPartners.map((p) => (
               <LogoCard key={p.id} partner={p} onHoverChange={setIsPaused} />
             ))}
           </Marquee>
-          <Marquee duration={70} reverse isPaused={isPaused} className="py-2.5">
+          <Marquee duration={65} reverse isPaused={isPaused} className="py-3">
             {[...logoPartners].reverse().map((p) => (
               <LogoCard key={p.id} partner={p} onHoverChange={setIsPaused} />
             ))}

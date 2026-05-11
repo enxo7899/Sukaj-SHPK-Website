@@ -109,6 +109,18 @@ export const translations = {
   },
 
   // ── CTA ────────────────────────────────────────────────────────────────
+  // ── Featured Products (homepage) ────────────────────────────────────────
+  featuredProducts: {
+    eyebrow: { sq: "Produkte të Zgjedhura", en: "Featured Products" },
+    title: { sq: "Zgjidhjet Tona Më të Kërkuara", en: "Our Most Requested Solutions" },
+    subtitle: {
+      sq: "Produkte të certifikuara sipas standardeve evropiane, të disponueshme nga partnerët tanë të verifikuar.",
+      en: "European-certified products, available from our verified manufacturing partners.",
+    },
+    viewAll: { sq: "Shiko Katalogun e Plotë", en: "Browse Full Catalog" },
+    viewDetails: { sq: "Shiko Detajet", en: "View Details" },
+  },
+
   cta: {
     eyebrow: { sq: "Filloni Projektin Tuaj", en: "Start Your Project" },
     title: { sq: "Gati për hapin e radhës të projektit tuaj?", en: "Ready for the next conversation?" },
