@@ -104,8 +104,8 @@ export function HeroUltimate() {
             {/* Headline */}
             <motion.h1
               variants={item}
-              className="font-black text-white leading-[1.05] tracking-tight mb-6"
-              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+              className="font-black leading-[1.05] tracking-tight mb-6"
+              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)", color: "var(--site-text)" }}
             >
               {t("hero.headline1")}
               <br />

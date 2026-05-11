@@ -104,8 +104,8 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 
   return (
     <div
-      className="relative flex flex-col rounded-2xl border bg-slate-900/60 overflow-hidden"
-      style={{ borderColor: `${supplier.color}25` }}
+      className="relative flex flex-col rounded-2xl overflow-hidden"
+      style={{ border: `1px solid ${supplier.color}25`, backgroundColor: "var(--site-surface-strong)", boxShadow: "0 1px 4px rgba(15,23,42,0.06)" }}
     >
       <div className="h-1 w-full" style={{ background: supplier.color }} />
 
@@ -120,11 +120,11 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
               >
                 {supplier.partnerName.charAt(0)}
               </div>
-              <h3 className="font-bold text-white text-sm leading-tight">
+              <h3 className="font-bold text-sm leading-tight" style={{ color: "var(--site-text)" }}>
                 {supplier.partnerName}
               </h3>
             </div>
-            <span className="flex items-center gap-1 text-[11px] text-slate-500 font-mono pl-8">
+            <span className="flex items-center gap-1 text-[11px] font-mono pl-8" style={{ color: "var(--site-text-soft)" }}>
               <MapPin className="w-3 h-3" />
               {supplier.country}
             </span>
@@ -141,13 +141,13 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 
         {/* Stock/order notes */}
         {supplier.stockNote && (
-          <div className="flex gap-2 text-xs text-green-300/80">
+          <div className="flex gap-2 text-xs" style={{ color: "var(--site-text-muted)" }}>
             <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" />
             <span>{supplier.stockNote}</span>
           </div>
         )}
         {supplier.orderNote && (
-          <div className="flex gap-2 text-xs text-orange-300/70">
+          <div className="flex gap-2 text-xs" style={{ color: "var(--site-text-muted)" }}>
             <Clock className="w-3.5 h-3.5 text-orange-400 shrink-0 mt-0.5" />
             <span>{supplier.orderNote}</span>
           </div>
@@ -155,8 +155,8 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 
         {/* Diameter range */}
         {(supplier.diameterMin > 0 || supplier.diameterMax > 0) && (
-          <div className="rounded-xl bg-white/[0.04] border border-white/[0.06] px-4 py-3">
-            <span className="block text-[9px] font-mono text-slate-500 tracking-widest mb-1">
+          <div className="rounded-xl px-4 py-3" style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}>
+            <span className="block text-[9px] font-mono tracking-widest mb-1" style={{ color: "var(--site-text-soft)" }}>
               {t("productDetail.diameterRange").toUpperCase()}
             </span>
             <span className="text-sm font-bold font-mono" style={{ color: supplier.color }}>
@@ -187,18 +187,19 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
         {/* Specific specs */}
         {supplier.specificSpecs &&
           Object.keys(supplier.specificSpecs).length > 0 && (
-            <div className="rounded-xl border border-white/[0.06] bg-slate-950/40 overflow-hidden">
+            <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--site-border)" }}>
               <table className="w-full text-xs">
                 <tbody>
                   {Object.entries(supplier.specificSpecs).map(([k, v]) => (
                     <tr
                       key={k}
-                      className="border-b border-white/[0.05] last:border-0"
+                      style={{ borderBottom: "1px solid var(--site-border)" }}
+                      className="last:border-0"
                     >
-                      <td className="px-3 py-2 font-mono text-[9px] text-slate-500 tracking-wider uppercase w-[45%]">
+                      <td className="px-3 py-2 font-mono text-[9px] tracking-wider uppercase w-[45%]" style={{ color: "var(--site-text-soft)" }}>
                         {k}
                       </td>
-                      <td className="px-3 py-2 text-slate-300">{v}</td>
+                      <td className="px-3 py-2" style={{ color: "var(--site-text-muted)" }}>{v}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -212,7 +213,8 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
             {supplier.standards.map((s) => (
               <span
                 key={s}
-                className="rounded border border-white/10 bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-slate-500"
+                className="rounded px-2 py-0.5 font-mono text-[10px]"
+                style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
               >
                 {s}
               </span>
@@ -223,8 +225,9 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
         {/* CTA */}
         <Link
           href={`/contact?partner=${supplier.partnerId}&product=inquiry`}
-          className="mt-auto flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-white transition-all hover:brightness-110"
+          className="mt-auto flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold transition-all hover:brightness-110"
           style={{
+            color: "var(--site-text)",
             background: `${supplier.color}20`,
             border: `1px solid ${supplier.color}35`,
           }}
@@ -401,16 +404,16 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
   const availCfg = availConfigBase[overallAvailability];
 
   return (
-    <main className="min-h-screen bg-slate-950">
+    <main className="min-h-screen bg-[var(--site-bg)]">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <div className="relative h-[52vh] min-h-[380px] overflow-hidden">
+      <div className="theme-product-hero relative h-[52vh] min-h-[380px] overflow-hidden">
         {!imageError && product.image ? (
           <Image
             src={product.image}
             alt={tp(product.id, "name", product.name)}
             fill
             priority
-            className="object-cover opacity-35"
+            className="theme-product-hero-image object-cover opacity-35"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -422,7 +425,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           />
         )}
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/65 to-transparent" />
+        <div className="theme-product-hero-overlay absolute inset-0" />
         <div
           className="absolute inset-0"
           style={{
@@ -434,7 +437,8 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         <div className="absolute bottom-0 left-0 right-0 site-shell pb-10 pt-28">
           <Link
             href="/catalog"
-            className="inline-flex items-center gap-1.5 text-slate-500 hover:text-white text-xs font-mono mb-5 transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-mono mb-5 transition-colors group"
+            style={{ color: "var(--site-text-soft)" }}
           >
             <ChevronRight className="w-3 h-3 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
             {t("productDetail.backToCatalog")}
@@ -470,24 +474,24 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           </div>
 
           <h1
-            className="font-black text-white leading-[1.05] tracking-tight mb-3"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+            className="font-black leading-[1.05] tracking-tight mb-3"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "var(--site-text)" }}
           >
             {tp(product.id, "name", product.name)}
           </h1>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="text-sm text-slate-400 font-mono">
+            <span className="text-sm font-mono" style={{ color: "var(--site-text-muted)" }}>
               {materialLabel}
             </span>
-            <span className="text-slate-700">·</span>
-            <span className="text-sm text-slate-400 font-mono">
+            <span style={{ color: "var(--site-text-soft)" }}>·</span>
+            <span className="text-sm font-mono" style={{ color: "var(--site-text-muted)" }}>
               {appLabel}
             </span>
             {product.standards.map((s) => (
               <span key={s} className="flex items-center gap-1.5">
-                <span className="text-slate-700">·</span>
-                <span className="text-sm text-slate-400 font-mono">{s}</span>
+                <span style={{ color: "var(--site-text-soft)" }}>·</span>
+                <span className="text-sm font-mono" style={{ color: "var(--site-text-muted)" }}>{s}</span>
               </span>
             ))}
           </div>
@@ -502,11 +506,11 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           <div className="lg:col-span-3">
             <div className="flex items-center gap-2 mb-3">
               <div className="h-px w-6 bg-cyan-500/50" />
-              <span className="font-mono text-[10px] tracking-widest text-cyan-400/80 uppercase">
+              <span className="font-mono text-[10px] tracking-widest text-cyan-500/80 uppercase">
                 {t("productDetail.overview")}
               </span>
             </div>
-            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+            <p className="leading-relaxed text-sm sm:text-base" style={{ color: "var(--site-text-muted)" }}>
               {tp(product.id, "description", product.description)}
             </p>
 
@@ -515,7 +519,8 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                 {product.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-xs text-slate-500 font-mono hover:text-slate-300 transition-colors"
+                    className="rounded px-2.5 py-1 text-xs font-mono transition-colors hover:text-cyan-500"
+                    style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
                   >
                     #{tag}
                   </span>
@@ -525,10 +530,10 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="rounded-2xl border border-white/[0.08] bg-slate-900/60 overflow-hidden">
-              <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/[0.08] bg-slate-950/40">
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
+              <div className="flex items-center gap-2 px-5 py-3.5" style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
                 <Shield className="w-4 h-4 text-cyan-400" />
-                <span className="text-[11px] font-mono text-slate-400 tracking-wider uppercase">
+                <span className="text-[11px] font-mono tracking-wider uppercase" style={{ color: "var(--site-text-soft)" }}>
                   {t("productDetail.keyProperties")}
                 </span>
               </div>
@@ -537,12 +542,13 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                   {Object.entries(product.keyProperties).map(([k, v]) => (
                     <tr
                       key={k}
-                      className="border-b border-white/[0.05] last:border-0"
+                      style={{ borderBottom: "1px solid var(--site-border)" }}
+                      className="last:border-0"
                     >
-                      <td className="px-5 py-3 font-mono text-[10px] text-slate-500 tracking-wider uppercase w-[42%] align-top">
+                      <td className="px-5 py-3 font-mono text-[10px] tracking-wider uppercase w-[42%] align-top" style={{ color: "var(--site-text-soft)" }}>
                         {k}
                       </td>
-                      <td className="px-5 py-3 text-slate-200 text-xs">
+                      <td className="px-5 py-3 text-xs" style={{ color: "var(--site-text-muted)" }}>
                         {v}
                       </td>
                     </tr>
@@ -556,16 +562,16 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         {/* ── Suppliers ── */}
         <div>
           <div className="flex items-center gap-4 mb-3">
-            <div className="h-px flex-1 bg-white/[0.06]" />
+            <div className="h-px flex-1" style={{ backgroundColor: "var(--site-border)" }} />
             <div className="flex items-center gap-2.5 shrink-0">
               <Globe className="w-4 h-4 text-cyan-400" />
-              <h2 className="text-lg font-bold text-white">{t("productDetail.suppliers")}</h2>
+              <h2 className="text-lg font-bold" style={{ color: "var(--site-text)" }}>{t("productDetail.suppliers")}</h2>
               <span className="rounded-full bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-0.5 text-xs font-bold text-cyan-400">
                 {product.suppliers.length}{" "}
                 {product.suppliers.length === 1 ? t("catalog.supplierOne") : t("catalog.suppliers")}
               </span>
             </div>
-            <div className="h-px flex-1 bg-white/[0.06]" />
+            <div className="h-px flex-1" style={{ backgroundColor: "var(--site-border)" }} />
           </div>
           <p className="text-center text-xs text-slate-600 font-mono mb-8">
             {t("productDetail.suppliersAvailable")}
@@ -630,17 +636,17 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <Ruler className="w-5 h-5 text-cyan-400 shrink-0" />
-              <h2 className="text-lg font-bold text-white">{t("productDetail.dimensions")}</h2>
+              <h2 className="text-lg font-bold" style={{ color: "var(--site-text)" }}>{t("productDetail.dimensions")}</h2>
               <div className="ml-auto flex flex-wrap items-center gap-x-5 gap-y-2">
-                <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                <span className="flex items-center gap-1.5 text-xs" style={{ color: "var(--site-text-muted)" }}>
                   <span className="h-2 w-2 rounded-full bg-green-500" />
                   {t("catalog.inStock")}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                <span className="flex items-center gap-1.5 text-xs" style={{ color: "var(--site-text-muted)" }}>
                   <span className="h-2 w-2 rounded-full bg-yellow-400" />
                   {t("catalog.partial")}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                <span className="flex items-center gap-1.5 text-xs" style={{ color: "var(--site-text-muted)" }}>
                   <span className="h-2 w-2 rounded-full bg-orange-500" />
                   {t("catalog.onOrder")}
                 </span>
@@ -654,7 +660,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         {relatedProducts.length > 0 && (
           <div>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">{t("productDetail.relatedProducts")}</h2>
+              <h2 className="text-lg font-bold" style={{ color: "var(--site-text)" }}>{t("productDetail.relatedProducts")}</h2>
               <Link
                 href={`/catalog?category=${product.category}`}
                 className="text-xs text-cyan-400 hover:text-cyan-300 font-mono flex items-center gap-1 transition-colors"
@@ -671,7 +677,8 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                   <Link
                     key={related.id}
                     href={`/catalog/${related.slug}`}
-                    className="group relative overflow-hidden rounded-xl border border-white/[0.08] bg-slate-900/60 p-5 hover:border-white/[0.18] hover:bg-slate-900/90 transition-all"
+                    className="group relative overflow-hidden rounded-xl p-5 transition-all"
+                    style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}
                   >
                     <div
                       className="absolute top-0 left-0 right-0 h-px"
@@ -690,18 +697,18 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                         />
                       </div>
                       <div className="min-w-0">
-                        <p className="font-bold text-sm text-white group-hover:text-cyan-300 transition-colors leading-snug">
+                        <p className="font-bold text-sm transition-colors leading-snug" style={{ color: "var(--site-text)" }}>
                           {tp(related.id, "shortName", related.shortName)}
                         </p>
-                        <p className="text-xs text-slate-500 mt-0.5 truncate">
+                        <p className="text-xs mt-0.5 truncate" style={{ color: "var(--site-text-soft)" }}>
                           {related.application}
                         </p>
-                        <p className="text-[11px] text-slate-600 mt-1">
+                        <p className="text-[11px] mt-1" style={{ color: "var(--site-text-soft)" }}>
                           {related.suppliers.length} {related.suppliers.length === 1 ? t("catalog.supplierOne") : t("catalog.suppliers")}
                         </p>
                       </div>
                     </div>
-                    <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-700 group-hover:text-cyan-400 transition-colors" />
+                    <ChevronRight className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors" style={{ color: "var(--site-text-soft)" }} />
                   </Link>
                 );
               })}
@@ -710,7 +717,10 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         )}
 
         {/* ── Quote CTA ── */}
-        <div className="relative overflow-hidden rounded-2xl border border-cyan-500/15 bg-slate-900/60 p-8 sm:p-12 text-center">
+        <div
+          className="relative overflow-hidden rounded-2xl p-8 sm:p-12 text-center"
+          style={{ border: "1px solid rgba(6,182,212,0.18)", backgroundColor: "var(--site-surface-strong)", boxShadow: "0 1px 3px rgba(15,23,42,0.06)" }}
+        >
           <div
             className="absolute inset-0 opacity-[0.04]"
             style={{
@@ -722,10 +732,10 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             <p className="font-mono text-[11px] tracking-[0.25em] text-cyan-400/70 uppercase mb-3">
               {t("cta.eyebrow")}
             </p>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: "var(--site-text)" }}>
               {t("cta.title")}
             </h2>
-            <p className="text-slate-400 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+            <p className="text-sm max-w-lg mx-auto mb-8 leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
               {t("cta.subtitle")}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -738,9 +748,10 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
               </Link>
               <Link
                 href="/catalog"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 text-sm text-white hover:bg-white/[0.08] transition-colors"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm transition-colors"
+                style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-muted)" }}
               >
-                <Layers className="w-4 h-4 text-slate-400" />
+                <Layers className="w-4 h-4" style={{ color: "var(--site-text-soft)" }} />
                 {t("catalog.pageTitle")}
               </Link>
             </div>
