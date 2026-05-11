@@ -49,7 +49,8 @@ export function FallingPipes() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[360px] w-full overflow-hidden rounded-2xl border border-white/[0.07] sm:h-[420px] lg:h-[500px] xl:h-[540px]"
+      className="relative h-[360px] w-full overflow-hidden rounded-2xl sm:h-[420px] lg:h-[500px] xl:h-[540px]"
+      style={{ border: "1px solid var(--site-border)" }}
       aria-hidden="true"
     >
       {/* Single soft top spotlight */}
@@ -61,17 +62,11 @@ export function FallingPipes() {
         }}
       />
 
-      {/* Single ground shadow pool */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[20%]"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.18) 55%, transparent 85%)",
-        }}
-      />
+      {/* Single ground shadow pool — adapts to theme */}
+      <div className="theme-section-ground-shadow pointer-events-none absolute inset-x-0 bottom-0 h-[20%]" />
 
       {/* Bottom fade into background */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#020617] to-transparent" />
+      <div className="theme-pipes-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 h-12" />
 
       {/* Pipes wrapper — faded in/out by the physics loop */}
       <div ref={wrapperRef} style={{ opacity: 1 }}>

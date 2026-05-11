@@ -8,7 +8,7 @@ import { useTranslation } from "@/lib/i18n/context";
 export function CTA() {
   const { t } = useTranslation();
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[var(--site-bg)]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(8,145,178,0.08),transparent)]" />
       <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       
@@ -27,11 +27,11 @@ export function CTA() {
             <div className="h-px w-8 bg-cyan-500/60" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6" style={{ color: "var(--site-text)" }}>
             {t("cta.title")}
           </h2>
 
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-12">
+          <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: "var(--site-text-muted)" }}>
             {t("cta.subtitle")}
           </p>
 
@@ -45,7 +45,8 @@ export function CTA() {
             </Link>
             <Link
               href="/catalog"
-              className="flex items-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl transition-all font-medium text-slate-300 hover:text-white"
+              className="flex items-center gap-3 px-8 py-4 rounded-xl transition-all font-medium"
+              style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)", color: "var(--site-text-muted)" }}
             >
               <span>{t("hero.ctaCatalog")}</span>
             </Link>
@@ -54,14 +55,16 @@ export function CTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm">
             <a
               href="tel:+355123456789"
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              className="flex items-center gap-2 transition-colors"
+              style={{ color: "var(--site-text-muted)" }}
             >
               <Phone className="w-4 h-4 text-cyan-500" />
               +355 123 456 789
             </a>
             <a
               href="mailto:projects@sukaj.al"
-              className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+              className="flex items-center gap-2 transition-colors"
+              style={{ color: "var(--site-text-muted)" }}
             >
               <Mail className="w-4 h-4 text-cyan-500" />
               projects@sukaj.al

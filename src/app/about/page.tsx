@@ -30,8 +30,9 @@ export default function AboutPage() {
     { flag: "🇮🇹", country: t("about.countryItaly"), count: partners.filter((p) => p.country === "Italy").length },
     { flag: "🇹🇷", country: t("about.countryTurkey"), count: partners.filter((p) => p.country === "Turkey").length },
   ];
+
   return (
-    <div className="min-h-screen bg-[#020617]">
+    <div className="min-h-screen bg-[var(--site-bg)]">
 
       {/* ── Hero header ── */}
       <section className="relative overflow-hidden pt-36 pb-20 sm:pt-40 sm:pb-24">
@@ -67,13 +68,13 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-8 bg-cyan-500/60" />
-              <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+              <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-500/80 uppercase">
                 {t("about.eyebrow")}
               </span>
             </div>
             <h1
-              className="font-black text-white leading-[1.05] tracking-tight mb-6"
-              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
+              className="font-black leading-[1.05] tracking-tight mb-6"
+              style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)", color: "var(--site-text)" }}
             >
               {t("about.headline1")}
               <br />
@@ -82,14 +83,13 @@ export default function AboutPage() {
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundImage:
-                    "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+                  backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
                 }}
               >
                 {t("about.headline2")}
               </span>
             </h1>
-            <p className="text-lg text-slate-400 leading-relaxed max-w-2xl">
+            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: "var(--site-text-muted)" }}>
               {t("about.leadParagraph")}
             </p>
           </motion.div>
@@ -99,7 +99,8 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.05]"
+            className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-px rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "var(--site-border)", border: "1px solid var(--site-border)" }}
           >
             {[
               { icon: Calendar, label: t("about.established"), value: String(company.established) },
@@ -109,13 +110,14 @@ export default function AboutPage() {
             ].map(({ icon: Icon, label, value }) => (
               <div
                 key={label}
-                className="flex flex-col gap-1.5 bg-[#020617] px-5 py-5"
+                className="flex flex-col gap-1.5 px-5 py-5"
+                style={{ backgroundColor: "var(--site-bg)" }}
               >
                 <Icon className="h-4 w-4 text-cyan-500/60 mb-1" />
-                <span className="font-mono text-[10px] tracking-widest text-slate-600 uppercase">
+                <span className="font-mono text-[10px] tracking-widest uppercase" style={{ color: "var(--site-text-soft)" }}>
                   {label}
                 </span>
-                <span className="text-sm font-semibold text-slate-200">
+                <span className="text-sm font-semibold" style={{ color: "var(--site-text)" }}>
                   {value}
                 </span>
               </div>
@@ -140,17 +142,17 @@ export default function AboutPage() {
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-cyan-500/60" />
-                <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+                <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-500/80 uppercase">
                   {t("about.ourBusiness")}
                 </span>
               </div>
               <h2
-                className="font-black text-white leading-tight tracking-tight mb-6"
-                style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+                className="font-black leading-tight tracking-tight mb-6"
+                style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--site-text)" }}
               >
                 {t("about.businessTitle")}
               </h2>
-              <div className="space-y-4 text-slate-400 text-base leading-relaxed">
+              <div className="space-y-4 text-base leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
                 <p>
                   {t("about.businessP1")
                     .replace("{year}", String(company.established))
@@ -177,12 +179,13 @@ export default function AboutPage() {
                 ].map(({ icon: Icon, label, detail }) => (
                   <div
                     key={label}
-                    className="flex gap-3 rounded-xl border border-white/[0.07] bg-white/[0.025] p-4"
+                    className="flex gap-3 rounded-xl p-4"
+                    style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
                   >
                     <Icon className="h-5 w-5 text-cyan-500/70 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-white">{label}</p>
-                      <p className="text-xs text-slate-500 mt-0.5">{detail}</p>
+                      <p className="text-sm font-semibold" style={{ color: "var(--site-text)" }}>{label}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "var(--site-text-soft)" }}>{detail}</p>
                     </div>
                   </div>
                 ))}
@@ -196,16 +199,19 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] overflow-hidden">
-                <div className="px-6 py-5 border-b border-white/[0.06]">
-                  <p className="font-mono text-[11px] tracking-[0.25em] text-slate-600 uppercase">
+              <div
+                className="rounded-2xl overflow-hidden"
+                style={{ border: "1px solid var(--site-border)" }}
+              >
+                <div className="px-6 py-5" style={{ borderBottom: "1px solid var(--site-border)" }}>
+                  <p className="font-mono text-[11px] tracking-[0.25em] uppercase" style={{ color: "var(--site-text-soft)" }}>
                     {t("about.partnerCountries")}
                   </p>
-                  <p className="text-lg font-bold text-white mt-1">
+                  <p className="text-lg font-bold mt-1" style={{ color: "var(--site-text)" }}>
                     {t("about.manufacturingNetwork")}
                   </p>
                 </div>
-                <div className="divide-y divide-white/[0.05]">
+                <div style={{ borderTop: "1px solid var(--site-border)" }}>
                   {countryPartners.map(({ flag, country, count }, i) => (
                     <motion.div
                       key={country}
@@ -214,9 +220,10 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.06, duration: 0.4 }}
                       className="flex items-center gap-4 px-6 py-4"
+                      style={{ borderBottom: i < countryPartners.length - 1 ? "1px solid var(--site-border)" : undefined }}
                     >
                       <span className="text-2xl leading-none">{flag}</span>
-                      <span className="flex-1 text-sm font-medium text-slate-300">
+                      <span className="flex-1 text-sm font-medium" style={{ color: "var(--site-text-muted)" }}>
                         {country}
                       </span>
                       <div className="flex items-center gap-3">
@@ -228,7 +235,7 @@ export default function AboutPage() {
                             />
                           ))}
                         </div>
-                        <span className="font-mono text-[11px] text-slate-600">
+                        <span className="font-mono text-[11px]" style={{ color: "var(--site-text-soft)" }}>
                           {count} {count > 1 ? t("about.partnerPlural") : t("about.partnerSingular")}
                         </span>
                       </div>
@@ -251,8 +258,7 @@ export default function AboutPage() {
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(34,197,94,0.05) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(34,197,94,0.05) 0%, transparent 70%)",
           }}
         />
         <div className="site-shell relative">
@@ -265,13 +271,13 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-8 bg-green-500/60" />
-              <span className="font-mono text-[11px] tracking-[0.28em] text-green-400/80 uppercase">
+              <span className="font-mono text-[11px] tracking-[0.28em] text-green-500/80 uppercase">
                 {t("about.sustainability")}
               </span>
             </div>
             <h2
-              className="font-black text-white leading-tight tracking-tight mb-4 max-w-xl"
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
+              className="font-black leading-tight tracking-tight mb-4 max-w-xl"
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", color: "var(--site-text)" }}
             >
               {t("about.sustainTitle1")}
               <br />
@@ -286,12 +292,15 @@ export default function AboutPage() {
                 {t("about.sustainTitle2")}
               </span>
             </h2>
-            <p className="text-slate-400 text-base max-w-xl leading-relaxed">
+            <p className="text-base max-w-xl leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
               {t("about.sustainSubtitle")}
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-3 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.05]">
+          <div
+            className="grid sm:grid-cols-3 gap-px rounded-2xl overflow-hidden"
+            style={{ backgroundColor: "var(--site-border)", border: "1px solid var(--site-border)" }}
+          >
             {[
               {
                 icon: Clock,
@@ -321,21 +330,19 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="flex flex-col gap-4 bg-[#020617] p-7 sm:p-8"
+                className="flex flex-col gap-4 p-7 sm:p-8"
+                style={{ backgroundColor: "var(--site-bg)" }}
               >
                 <Icon className="h-6 w-6" style={{ color: accent }} />
                 <div>
-                  <p
-                    className="text-4xl font-black mb-0.5"
-                    style={{ color: accent }}
-                  >
+                  <p className="text-4xl font-black mb-0.5" style={{ color: accent }}>
                     {stat}
                   </p>
-                  <p className="font-mono text-[10px] tracking-widest text-slate-600 uppercase">
+                  <p className="font-mono text-[10px] tracking-widest uppercase" style={{ color: "var(--site-text-soft)" }}>
                     {label}
                   </p>
                 </div>
-                <p className="text-sm text-slate-400 leading-relaxed">{detail}</p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--site-text-muted)" }}>{detail}</p>
               </motion.div>
             ))}
           </div>
@@ -343,20 +350,21 @@ export default function AboutPage() {
       </section>
 
       {/* ── Featured partners teaser ── */}
-      <section className="relative py-16 sm:py-20 border-t border-white/[0.05]">
+      <section className="relative py-16 sm:py-20" style={{ borderTop: "1px solid var(--site-border)" }}>
         <div className="site-shell">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.25em] text-cyan-400/80 uppercase mb-2">
+              <p className="font-mono text-[11px] tracking-[0.25em] text-cyan-500/80 uppercase mb-2">
                 {t("about.ourNetwork")}
               </p>
-              <h2 className="text-2xl font-black text-white">
+              <h2 className="text-2xl font-black" style={{ color: "var(--site-text)" }}>
                 {t("about.keyPartners")}
               </h2>
             </div>
             <a
               href="/partners"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-2.5 text-sm font-medium text-slate-300 transition-all hover:border-white/30 hover:text-white self-start sm:self-auto"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all hover:border-cyan-500/30 hover:text-cyan-500 self-start sm:self-auto"
+              style={{ border: "1px solid var(--site-border)", color: "var(--site-text-muted)" }}
             >
               {t("about.allProfiles")}
               <ExternalLink className="h-3.5 w-3.5" />
@@ -377,7 +385,8 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05, duration: 0.4 }}
-                  className="group flex flex-col items-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-center transition-all hover:border-white/15 hover:bg-white/[0.05]"
+                  className="group flex flex-col items-center gap-3 rounded-2xl p-4 text-center transition-all"
+                  style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
                 >
                   <div
                     className="flex h-12 w-12 items-center justify-center rounded-xl text-lg font-black"
@@ -390,10 +399,10 @@ export default function AboutPage() {
                     {p.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-white leading-snug">
+                    <p className="text-xs font-semibold leading-snug" style={{ color: "var(--site-text)" }}>
                       {p.name}
                     </p>
-                    <p className="text-[10px] font-mono text-slate-600 mt-0.5">
+                    <p className="text-[10px] font-mono mt-0.5" style={{ color: "var(--site-text-soft)" }}>
                       {p.country}
                     </p>
                   </div>

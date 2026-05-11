@@ -35,7 +35,8 @@ function LogoCard({ partner, onHoverChange }: { partner: (typeof partners)[0]; o
   const accent = typeAccent[partner.partnerType];
   return (
     <div
-      className="group flex h-16 w-40 shrink-0 items-center justify-center rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 mx-2 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]"
+      className="group flex h-16 w-40 shrink-0 items-center justify-center rounded-xl px-4 mx-2 transition-all duration-300"
+      style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
       title={partner.name}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
@@ -84,7 +85,8 @@ function PartnerCard({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
-      className="group relative flex flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
+      className="group relative flex flex-col rounded-2xl transition-all duration-300"
+      style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
     >
       {/* Top accent line on hover */}
       <div
@@ -119,10 +121,10 @@ function PartnerCard({
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="font-semibold text-white text-[13px] leading-snug">{partner.name}</p>
+            <p className="font-semibold text-[13px] leading-snug" style={{ color: "var(--site-text)" }}>{partner.name}</p>
             <div className="flex items-center gap-1.5 mt-1">
-              <MapPin className="h-3 w-3 text-slate-600 shrink-0" />
-              <span className="text-[11px] text-slate-500">{partner.country}</span>
+              <MapPin className="h-3 w-3 shrink-0" style={{ color: "var(--site-text-soft)" }} />
+              <span className="text-[11px]" style={{ color: "var(--site-text-soft)" }}>{partner.country}</span>
             </div>
           </div>
           {/* Type pill */}
@@ -139,14 +141,15 @@ function PartnerCard({
         </div>
 
         {/* Specialty */}
-        <p className="text-[12px] text-slate-400 leading-relaxed line-clamp-2">{partner.specialty}</p>
+        <p className="text-[12px] leading-relaxed line-clamp-2" style={{ color: "var(--site-text-muted)" }}>{partner.specialty}</p>
 
         {/* Metrics */}
         <div className="flex flex-wrap gap-1.5">
           {partner.heroMetrics.slice(0, 3).map((m) => (
             <span
               key={m}
-              className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-[3px] font-mono text-[9px] tracking-wide text-slate-500"
+              className="rounded-md px-2 py-[3px] font-mono text-[9px] tracking-wide"
+              style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
             >
               {m}
             </span>
@@ -168,10 +171,11 @@ function PartnerCard({
       </div>
 
       {/* Footer */}
-      <div className="mt-auto flex items-center justify-between border-t border-white/[0.05] px-5 py-3">
+      <div className="mt-auto flex items-center justify-between px-5 py-3" style={{ borderTop: "1px solid var(--site-border)" }}>
         <Link
           href={`/catalog?partner=${partner.id}`}
-          className="group/link inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 transition-colors hover:text-cyan-400"
+          className="group/link inline-flex items-center gap-1.5 text-[11px] font-medium transition-colors hover:text-cyan-400"
+          style={{ color: "var(--site-text-soft)" }}
         >
           {t("catalog.viewDetails")}
           <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200" />
@@ -181,7 +185,8 @@ function PartnerCard({
             href={partner.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-white/[0.08] bg-white/[0.03] p-1.5 text-slate-600 transition-colors hover:border-white/20 hover:text-slate-300"
+            className="rounded-lg p-1.5 transition-colors hover:text-cyan-400"
+            style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
             aria-label={`Visit ${partner.name}`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -235,7 +240,7 @@ export function PartnersSection() {
   let cardIndex = 0;
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 bg-[#020617]">
+    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 bg-[var(--site-bg)]">
       {/* Background glow */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -265,12 +270,12 @@ export function PartnersSection() {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <div>
               <h2
-                className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
-                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+                className="font-black leading-[1.05] tracking-tight mb-4 max-w-2xl"
+                style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
               >
                 {t("partners.title")}
               </h2>
-              <p className="text-slate-400 max-w-lg text-base leading-relaxed">
+              <p className="max-w-lg text-base leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
                 {t("partners.subtitle")}
               </p>
             </div>
@@ -282,8 +287,8 @@ export function PartnersSection() {
                 { value: "5", label: t("partners.statsSectors") },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="text-2xl font-black text-white">{stat.value}</div>
-                  <div className="font-mono text-[10px] tracking-widest text-slate-500 uppercase">
+                  <div className="text-2xl font-black" style={{ color: "var(--site-text)" }}>{stat.value}</div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase" style={{ color: "var(--site-text-soft)" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -294,8 +299,8 @@ export function PartnersSection() {
 
         {/* ─── Marquee logo strip ─── */}
         <div className="relative mb-12 -mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10" style={{ background: "linear-gradient(90deg, #020617, transparent)" }} />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10" style={{ background: "linear-gradient(270deg, #020617, transparent)" }} />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 theme-marquee-fade-left" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 theme-marquee-fade-right" />
           <Marquee duration={60} isPaused={isPaused} className="py-2.5">
             {logoPartners.map((p) => (
               <LogoCard key={p.id} partner={p} onHoverChange={setIsPaused} />
@@ -320,7 +325,7 @@ export function PartnersSection() {
                 onClick={() => setActive(tab.id)}
                 className="relative shrink-0 rounded-full px-4 py-2 text-[13px] font-medium transition-all duration-200"
                 style={{
-                  color: isActive ? "#fff" : "#64748b",
+                  color: isActive ? tabAccent : "var(--site-text-soft)",
                   backgroundColor: isActive ? `${tabAccent}15` : "transparent",
                   border: isActive
                     ? `1px solid ${tabAccent}35`
@@ -358,10 +363,10 @@ export function PartnersSection() {
                         className="h-2 w-2 rounded-full"
                         style={{ backgroundColor: typeAccent[type] }}
                       />
-                      <span className="font-mono text-[11px] tracking-[0.22em] text-slate-500 uppercase">
+                      <span className="font-mono text-[11px] tracking-[0.22em] uppercase" style={{ color: "var(--site-text-soft)" }}>
                         {typeLabel[type]}
                       </span>
-                      <div className="flex-1 h-px bg-white/[0.05]" />
+                      <div className="flex-1 h-px" style={{ backgroundColor: "var(--site-border)" }} />
                     </div>
                   )}
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -384,9 +389,9 @@ export function PartnersSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-14 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-white/[0.06] pt-10">
+        <div className="mt-14 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-10" style={{ borderTop: "1px solid var(--site-border)" }}>
           <div>
-            <p className="text-sm text-slate-400 mb-1">
+            <p className="text-sm mb-1" style={{ color: "var(--site-text-muted)" }}>
               {t("catalog.pageSubtitle")}
             </p>
           </div>

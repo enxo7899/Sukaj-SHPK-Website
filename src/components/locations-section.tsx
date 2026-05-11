@@ -35,7 +35,7 @@ export function LocationsSection() {
   };
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-20 sm:py-24 lg:py-32 bg-[#020617]">
+    <section ref={sectionRef} className="relative overflow-hidden py-20 sm:py-24 lg:py-32 bg-[var(--site-bg)]">
       {/* Background */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -68,12 +68,12 @@ export function LocationsSection() {
             </span>
           </div>
           <h2
-            className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="font-black leading-[1.05] tracking-tight mb-4 max-w-2xl"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
           >
             {t("locations.title")}
           </h2>
-          <p className="text-slate-400 max-w-xl text-base leading-relaxed">
+          <p className="max-w-xl text-base leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
             {t("locations.subtitle")}
           </p>
         </motion.div>
@@ -94,11 +94,11 @@ export function LocationsSection() {
                 <button
                   key={location.id}
                   onClick={() => setActiveLocation(location.id)}
-                  className={`group relative flex items-start gap-4 rounded-2xl border p-5 text-left transition-all duration-300 ${
-                    isActive
-                      ? "border-cyan-500/30 bg-cyan-500/[0.06]"
-                      : "border-white/[0.07] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.04]"
-                  }`}
+                  className="group relative flex items-start gap-4 rounded-2xl border p-5 text-left transition-all duration-300"
+                  style={isActive
+                    ? { borderColor: "rgba(6,182,212,0.3)", backgroundColor: "rgba(6,182,212,0.06)" }
+                    : { borderColor: "var(--site-border)", backgroundColor: "var(--site-surface)" }
+                  }
                 >
                   {/* Active indicator line */}
                   {isActive && (
@@ -111,11 +111,11 @@ export function LocationsSection() {
 
                   {/* Icon */}
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-300 ${
-                      isActive
-                        ? "bg-cyan-500/15 text-cyan-400"
-                        : "bg-white/[0.05] text-slate-500 group-hover:text-slate-400"
-                    }`}
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors duration-300"
+                    style={isActive
+                      ? { backgroundColor: "rgba(6,182,212,0.15)", color: "#22d3ee" }
+                      : { backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }
+                    }
                   >
                     <Icon className="h-5 w-5" />
                   </div>
@@ -124,26 +124,24 @@ export function LocationsSection() {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span
-                        className={`text-sm font-bold transition-colors duration-300 ${
-                          isActive ? "text-white" : "text-slate-300"
-                        }`}
+                        className="text-sm font-bold transition-colors duration-300"
+                        style={{ color: isActive ? "var(--site-text)" : "var(--site-text-muted)" }}
                       >
                         {location.name}
                       </span>
                       <span
-                        className={`rounded-full px-2 py-0.5 font-mono text-[9px] tracking-widest uppercase transition-colors duration-300 ${
-                          isActive
-                            ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/25"
-                            : "bg-white/[0.05] text-slate-600 border border-white/[0.06]"
-                        }`}
+                        className="rounded-full px-2 py-0.5 font-mono text-[9px] tracking-widest uppercase transition-colors duration-300"
+                        style={isActive
+                          ? { backgroundColor: "rgba(6,182,212,0.15)", color: "#22d3ee", border: "1px solid rgba(6,182,212,0.25)" }
+                          : { backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)", border: "1px solid var(--site-border)" }
+                        }
                       >
                         {localizedLocationMeta[location.id]?.label ?? location.label}
                       </span>
                     </div>
                     <p
-                      className={`text-xs leading-relaxed transition-colors duration-300 ${
-                        isActive ? "text-slate-400" : "text-slate-500"
-                      }`}
+                      className="text-xs leading-relaxed transition-colors duration-300"
+                      style={{ color: "var(--site-text-muted)" }}
                     >
                       {localizedLocationMeta[location.id]?.description ?? location.description}
                     </p>
@@ -153,11 +151,7 @@ export function LocationsSection() {
                       href={location.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`mt-2.5 inline-flex items-center gap-1.5 text-xs font-medium transition-colors duration-200 ${
-                        isActive
-                          ? "text-cyan-400 hover:text-cyan-300"
-                          : "text-slate-600 hover:text-slate-400"
-                      }`}
+                      className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-medium transition-colors duration-200 text-cyan-500 hover:text-cyan-400"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Navigation className="h-3 w-3" />
@@ -175,20 +169,24 @@ export function LocationsSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="relative min-h-[360px] sm:min-h-[420px] lg:min-h-0 rounded-2xl overflow-hidden border border-white/[0.07] bg-white/[0.02]"
+            className="relative min-h-[360px] sm:min-h-[420px] lg:min-h-0 rounded-2xl overflow-hidden"
+            style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
           >
             {/* Map header bar */}
-            <div className="absolute top-0 inset-x-0 z-10 flex items-center gap-3 px-5 py-3 bg-[#020617]/80 backdrop-blur-md border-b border-white/[0.07]">
-              <MapPin className="h-4 w-4 text-cyan-400" />
-              <span className="text-sm font-semibold text-white">{active.name}</span>
-              <span className="text-xs text-slate-500">{active.address}</span>
+            <div
+              className="absolute top-0 inset-x-0 z-10 flex items-center gap-3 px-5 py-3 backdrop-blur-md"
+              style={{ backgroundColor: "color-mix(in oklab, var(--site-bg) 80%, transparent)", borderBottom: "1px solid var(--site-border)" }}
+            >
+              <MapPin className="h-4 w-4 text-cyan-500" />
+              <span className="text-sm font-semibold" style={{ color: "var(--site-text)" }}>{active.name}</span>
+              <span className="text-xs" style={{ color: "var(--site-text-soft)" }}>{active.address}</span>
             </div>
 
             {/* Map embed */}
             <iframe
               key={active.id}
               src={`https://www.google.com/maps?q=${active.coordinates.lat},${active.coordinates.lng}&z=15&output=embed`}
-              className="h-full w-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px]"
+              className="theme-map-iframe h-full w-full min-h-[360px] sm:min-h-[420px] lg:min-h-[480px]"
               style={{ border: 0, filter: "invert(0.9) hue-rotate(180deg) saturate(0.3) brightness(0.8)" }}
               allowFullScreen
               loading="lazy"
@@ -197,15 +195,16 @@ export function LocationsSection() {
             />
 
             {/* Bottom overlay with coordinates */}
-            <div className="absolute bottom-0 inset-x-0 z-10 flex items-center justify-between px-5 py-3 bg-gradient-to-t from-[#020617] via-[#020617]/90 to-transparent">
-              <span className="font-mono text-[10px] tracking-wider text-slate-500">
+            <div className="theme-map-bottom-overlay absolute bottom-0 inset-x-0 z-10 flex items-center justify-between px-5 py-3">
+              <span className="font-mono text-[10px] tracking-wider" style={{ color: "var(--site-text-soft)" }}>
                 {active.coordinates.lat.toFixed(4)}°N, {active.coordinates.lng.toFixed(4)}°E
               </span>
               <a
                 href={active.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:border-cyan-500/30 hover:text-cyan-400"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors hover:text-cyan-400"
+                style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-muted)" }}
               >
                 {t("locations.openInGoogleMaps")}
                 <ExternalLink className="h-3 w-3" />

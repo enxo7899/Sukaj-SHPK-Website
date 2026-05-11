@@ -48,7 +48,7 @@ export function CategoriesPremium() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[var(--site-bg)]">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.06),transparent)]" />
@@ -73,8 +73,8 @@ export function CategoriesPremium() {
           </div>
 
           <h2
-            className="font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="font-black leading-[1.05] tracking-tight mb-4 sm:mb-6"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
           >
             {t("categories.title1")}
             <br />
@@ -90,7 +90,7 @@ export function CategoriesPremium() {
               {t("categories.title2")}
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
             {t("categories.subtitle")}
           </p>
         </motion.div>
@@ -118,7 +118,13 @@ export function CategoriesPremium() {
                     className="group relative h-full"
                   >
                     {/* Card */}
-                    <div className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.07] group-hover:border-white/[0.15] group-hover:bg-white/[0.05] transition-all overflow-hidden">
+                    <div
+                      className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all overflow-hidden"
+                      style={{
+                        backgroundColor: "var(--site-surface)",
+                        border: "1px solid var(--site-border)",
+                      }}
+                    >
                       {/* Top accent line */}
                       <div
                         className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${category.gradient} opacity-50 group-hover:opacity-100 transition-opacity`}
@@ -134,12 +140,12 @@ export function CategoriesPremium() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-100 transition-colors">
+                        <h3 className="text-2xl font-bold mb-3 transition-colors" style={{ color: "var(--site-text)" }}>
                           {tk ? t(tk.name) : category.name}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                        <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--site-text-muted)" }}>
                           {tk ? t(tk.desc) : category.description}
                         </p>
 
@@ -148,7 +154,8 @@ export function CategoriesPremium() {
                           {category.products.slice(0, 3).map((product) => (
                             <span
                               key={product}
-                              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-slate-300"
+                              className="px-3 py-1.5 rounded-lg text-xs font-medium"
+                            style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)", color: "var(--site-text-muted)" }}
                             >
                               {product}
                             </span>

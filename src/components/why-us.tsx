@@ -34,7 +34,7 @@ export function WhyUs() {
     },
   ];
   return (
-    <section className="relative py-24 sm:py-32 bg-[#020617] overflow-hidden">
+    <section className="relative py-24 sm:py-32 bg-[var(--site-bg)] overflow-hidden">
       {/* Subtle background */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -68,15 +68,18 @@ export function WhyUs() {
             </span>
           </div>
           <h2
-            className="font-black text-white leading-[1.05] tracking-tight max-w-2xl"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="font-black leading-[1.05] tracking-tight max-w-2xl"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
           >
             {t("whyUs.title")}
           </h2>
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.05]">
+        <div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden"
+          style={{ backgroundColor: "var(--site-border)", border: "1px solid var(--site-border)" }}
+        >
           {pillars.map((p, i) => {
             const Icon = p.icon;
             return (
@@ -86,7 +89,8 @@ export function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative flex flex-col gap-5 bg-[#020617] p-8 hover:bg-slate-900/60 transition-colors duration-300"
+                className="group relative flex flex-col gap-5 p-8 transition-colors duration-300"
+                style={{ backgroundColor: "var(--site-bg)" }}
               >
                 {/* Top accent line */}
                 <div
@@ -109,10 +113,10 @@ export function WhyUs() {
 
                 {/* Text */}
                 <div>
-                  <h3 className="text-base font-bold text-white mb-2">
+                  <h3 className="text-base font-bold mb-2" style={{ color: "var(--site-text)" }}>
                     {p.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
                     {p.description}
                   </p>
                 </div>

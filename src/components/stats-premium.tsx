@@ -54,7 +54,7 @@ export function StatsPremium() {
     },
   ];
   return (
-    <section className="relative bg-[#020617] border-y border-white/[0.06]">
+    <section className="relative bg-[var(--site-bg)]" style={{ borderTop: "1px solid var(--site-border)", borderBottom: "1px solid var(--site-border)" }}>
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -71,17 +71,17 @@ export function StatsPremium() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`flex flex-col items-center justify-center py-12 px-6 text-center ${
-                i < stats.length - 1 ? "border-r border-white/[0.06]" : ""
-              } ${
-                i < 2 ? "border-b border-white/[0.06] lg:border-b-0" : ""
-              }`}
+              className="flex flex-col items-center justify-center py-12 px-6 text-center"
+              style={{
+                borderRight: i < stats.length - 1 ? "1px solid var(--site-border)" : undefined,
+                borderBottom: i < 2 ? "1px solid var(--site-border)" : undefined,
+              }}
             >
-              <span className="text-4xl sm:text-5xl font-black mb-2 tabular-nums text-white">
+              <span className="text-4xl sm:text-5xl font-black mb-2 tabular-nums" style={{ color: "var(--site-text)" }}>
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </span>
-              <span className="text-sm font-semibold text-slate-300 mb-1">{stat.label}</span>
-              <span className="text-[10px] font-mono text-slate-600 tracking-[0.2em] uppercase">{stat.detail}</span>
+              <span className="text-sm font-semibold mb-1" style={{ color: "var(--site-text-muted)" }}>{stat.label}</span>
+              <span className="text-[10px] font-mono tracking-[0.2em] uppercase" style={{ color: "var(--site-text-soft)" }}>{stat.detail}</span>
             </motion.div>
           ))}
         </div>

@@ -44,7 +44,7 @@ export function HeroUltimate() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#020617]"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--site-bg)]"
     >
       {/* ─── Background ─── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -57,9 +57,9 @@ export function HeroUltimate() {
               "linear-gradient(90deg, transparent, rgba(34,211,238,0.4) 35%, rgba(8,145,178,0.6) 50%, rgba(34,211,238,0.4) 65%, transparent)",
           }}
         />
-        {/* Vignette */}
+        {/* Vignette — dark only; hidden in light mode via opacity */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 dark-only-vignette"
           style={{
             background:
               "radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(2,6,23,0.7) 100%)",
@@ -125,14 +125,15 @@ export function HeroUltimate() {
             {/* Description */}
             <motion.p
               variants={item}
-              className="text-base sm:text-lg text-slate-400 leading-relaxed mb-12"
+              className="text-base sm:text-lg leading-relaxed mb-12"
+              style={{ color: "var(--site-text-muted)" }}
             >
               {t("hero.description")}&nbsp;
-              <span className="text-slate-200 font-medium">
+              <span className="font-medium" style={{ color: "var(--site-text)" }}>
                 {company.stats.partnersCount} {t("hero.descriptionPartners")}
               </span>{" "}
               {t("hero.descriptionAcross")}&nbsp;
-              <span className="text-slate-200 font-medium">
+              <span className="font-medium" style={{ color: "var(--site-text)" }}>
                 {company.stats.countriesServed} {t("hero.descriptionCountries")}
               </span>
               .
@@ -152,7 +153,8 @@ export function HeroUltimate() {
             </Link>
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 rounded-xl border border-white/15 px-8 py-4 text-sm font-medium text-slate-300 transition-all duration-200 hover:border-white/30 hover:text-white hover:-translate-y-px"
+              className="group inline-flex items-center gap-2 rounded-xl px-8 py-4 text-sm font-medium transition-all duration-200 hover:-translate-y-px"
+              style={{ border: "1px solid var(--site-border)", color: "var(--site-text-muted)" }}
             >
               {t("hero.ctaQuote")}
               <ArrowUpRight className="h-4 w-4 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-px group-hover:-translate-y-px" />
@@ -170,7 +172,7 @@ export function HeroUltimate() {
               />
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 {["EN 13476","EN 12201","ISO 9001","PE100","HDPE","PP","PVC","SN4 / SN8"].map((s) => (
-                  <span key={s} className="font-mono text-[10px] tracking-[0.18em] text-slate-600 uppercase">
+                  <span key={s} className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--site-text-soft)" }}>
                     {s}
                   </span>
                 ))}
@@ -195,14 +197,15 @@ export function HeroUltimate() {
         <motion.div
           animate={reduceMotion ? {} : { y: [0, 5, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-8 w-5 items-start justify-center rounded-full border border-white/15 pt-1.5"
+          className="flex h-8 w-5 items-start justify-center rounded-full pt-1.5"
+          style={{ border: "1px solid var(--site-border)" }}
         >
           <div className="h-1.5 w-1 rounded-full bg-cyan-400/50" />
         </motion.div>
       </motion.div>
 
       {/* ─── Bottom fade ─── */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#020617] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 theme-hero-bottom-fade" />
     </section>
   );
 }

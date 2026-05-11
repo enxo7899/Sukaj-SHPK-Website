@@ -16,7 +16,7 @@ export function TimelinePremium() {
     { title: t("timeline.m4Title"), description: t("timeline.m4Desc") },
   ];
   return (
-    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[var(--site-bg)]">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_-10%,rgba(8,145,178,0.06),transparent)]" />
@@ -40,8 +40,8 @@ export function TimelinePremium() {
           </div>
 
           <h2
-            className="font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="font-black leading-[1.05] tracking-tight mb-4 sm:mb-6"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
           >
             {t("timeline.title")}
           </h2>
@@ -76,14 +76,17 @@ export function TimelinePremium() {
                   <div className="absolute left-1/2 top-6 -translate-x-1/2 hidden lg:block">
                     <div className="relative">
                       <div className="absolute inset-0 bg-cyan-500 rounded-full blur-md opacity-40" />
-                      <div className="relative w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-4 border-slate-950" />
+                      <div className="relative w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 border-4" style={{ borderColor: "var(--site-bg)" }} />
                     </div>
                   </div>
 
                   {/* Content card */}
                   <div className="group relative">
                     <div className="absolute -inset-px bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="relative p-5 sm:p-7 rounded-2xl bg-white/[0.04] border border-white/[0.08] group-hover:border-cyan-500/25 transition-all">
+                    <div
+                      className="relative p-5 sm:p-7 rounded-2xl transition-all group-hover:border-cyan-500/25"
+                      style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}
+                    >
                       {/* Year + icon row */}
                       <div className="flex items-center gap-3 mb-4">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/20">
@@ -94,8 +97,8 @@ export function TimelinePremium() {
                         </span>
                       </div>
 
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{text.title}</h3>
-                      <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: "var(--site-text)" }}>{text.title}</h3>
+                      <p className="text-sm sm:text-base leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
                         {text.description}
                       </p>
                     </div>
