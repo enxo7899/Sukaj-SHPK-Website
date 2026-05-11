@@ -233,7 +233,8 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
     >
       <Link
         href={`/catalog/${group.slug}`}
-        className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-slate-900/60 hover:border-white/[0.18] hover:bg-slate-900/90 transition-all duration-200 h-full"
+        className="group relative flex flex-col overflow-hidden rounded-2xl transition-all duration-200 h-full"
+        style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}
       >
         {/* Top accent line */}
         <div
@@ -244,7 +245,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
         />
 
         {/* Image */}
-        <div className="relative h-44 w-full overflow-hidden bg-slate-950/60 shrink-0">
+        <div className="relative h-44 w-full overflow-hidden shrink-0" style={{ backgroundColor: "var(--site-surface)" }}>
           {!imgError && group.image ? (
             <>
               {!imgLoaded && (
@@ -276,7 +277,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               Icon={CatIcon}
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/15 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
           {/* Category badge */}
           <div
@@ -292,7 +293,10 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
           </div>
 
           {/* Material */}
-          <div className="absolute right-3 top-3 rounded-md border border-white/10 bg-slate-950/70 px-2 py-1 text-[10px] font-mono text-slate-300 backdrop-blur-sm">
+          <div
+            className="absolute right-3 top-3 rounded-md px-2 py-1 text-[10px] font-mono backdrop-blur-sm"
+            style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)", color: "var(--site-text-muted)" }}
+          >
             {group.material.split(" ")[0]}
           </div>
         </div>
@@ -305,15 +309,15 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               {group.suppliers.slice(0, 5).map((s) => (
                 <div
                   key={s.partnerId}
-                  className="h-4 w-4 rounded-full border-2 border-slate-900 flex items-center justify-center text-[8px] font-black -ml-1 first:ml-0"
-                  style={{ background: s.color, color: "#fff" }}
+                  className="h-4 w-4 rounded-full border-2 flex items-center justify-center text-[8px] font-black -ml-1 first:ml-0"
+                  style={{ background: s.color, color: "#fff", borderColor: "var(--site-surface-strong)" }}
                   title={s.partnerName}
                 >
                   {s.partnerName.charAt(0)}
                 </div>
               ))}
             </div>
-            <span className="text-[11px] text-slate-500 font-mono">
+            <span className="text-[11px] font-mono" style={{ color: "var(--site-text-soft)" }}>
               {group.suppliers.length}{" "}
               {group.suppliers.length === 1
                 ? t("catalog.supplierOne")
@@ -322,39 +326,39 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
           </div>
 
           {/* Name */}
-          <h3 className="text-base font-bold text-white leading-snug mb-1 group-hover:text-cyan-200 transition-colors">
+          <h3 className="text-base font-bold leading-snug mb-1 group-hover:text-cyan-500 transition-colors" style={{ color: "var(--site-text)" }}>
             {tp(group.id, "name", group.name)}
           </h3>
-          <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed">
+          <p className="text-xs mb-4 line-clamp-2 leading-relaxed" style={{ color: "var(--site-text-soft)" }}>
             {tp(group.id, "shortName", group.shortName)}
           </p>
 
           {/* Metrics */}
           <div className="grid grid-cols-2 gap-2 mb-3 mt-auto">
             {dMax > 0 ? (
-              <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
-                <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
+              <div className="rounded-lg p-2.5" style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}>
+                <span className="text-[9px] font-mono block tracking-widest mb-0.5" style={{ color: "var(--site-text-soft)" }}>
                   {t("catalog.diameterLabel")}
                 </span>
-                <span className="text-xs font-bold text-white leading-none font-mono">
+                <span className="text-xs font-bold leading-none font-mono" style={{ color: "var(--site-text)" }}>
                   Ø {dMin}–{dMax} mm
                 </span>
               </div>
             ) : (
-              <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
-                <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
+              <div className="rounded-lg p-2.5" style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}>
+                <span className="text-[9px] font-mono block tracking-widest mb-0.5" style={{ color: "var(--site-text-soft)" }}>
                   {t("catalog.categoryLabel")}
                 </span>
-                <span className="text-xs font-bold text-white leading-none capitalize">
+                <span className="text-xs font-bold leading-none capitalize" style={{ color: "var(--site-text)" }}>
                   {categoryLabel}
                 </span>
               </div>
             )}
-            <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
-              <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
+            <div className="rounded-lg p-2.5" style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}>
+              <span className="text-[9px] font-mono block tracking-widest mb-0.5" style={{ color: "var(--site-text-soft)" }}>
                 {t("catalog.standardsLabel")}
               </span>
-              <span className="text-xs font-bold text-white leading-none">
+              <span className="text-xs font-bold leading-none" style={{ color: "var(--site-text)" }}>
                 {group.standards.length > 0
                   ? group.standards[0]
                   : t("catalog.proprietary")}
@@ -363,7 +367,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
           </div>
 
           {/* Availability */}
-          <div className="flex items-center justify-between border-t border-white/[0.07] pt-3 mt-1">
+          <div className="flex items-center justify-between pt-3 mt-1" style={{ borderTop: "1px solid var(--site-border)" }}>
             <div
               className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold"
               style={{
@@ -375,7 +379,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               <AvailIcon className="w-3 h-3" />
               {availLabel}
             </div>
-            <span className="flex items-center gap-1 text-xs text-slate-500 group-hover:text-cyan-400 transition-colors font-mono">
+            <span className="flex items-center gap-1 text-xs font-mono group-hover:text-cyan-500 transition-colors" style={{ color: "var(--site-text-soft)" }}>
               {t("catalog.viewDetails")}
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </span>
@@ -403,15 +407,15 @@ function FallbackArtwork({
     <div
       className="relative flex h-full w-full items-center justify-center overflow-hidden"
       style={{
-        background: `radial-gradient(120% 80% at 50% 20%, ${color}24 0%, ${color}08 45%, rgba(2,6,23,1) 100%)`,
+        background: `radial-gradient(120% 80% at 50% 20%, ${color}22 0%, ${color}08 50%, transparent 100%)`,
       }}
     >
       {/* Subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.18]"
+        className="absolute inset-0 opacity-20"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(var(--site-border) 1px, transparent 1px), linear-gradient(90deg, var(--site-border) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
@@ -436,7 +440,7 @@ function FallbackArtwork({
         >
           {label}
         </span>
-        <span className="text-[10px] font-medium text-slate-400/70">
+        <span className="text-[10px] font-medium" style={{ color: "var(--site-text-soft)" }}>
           {category === "civil"
             ? "Pipe & Infrastructure"
             : category === "agri"
@@ -483,12 +487,9 @@ function CategoryTabs({
             <motion.button
               key={cat.id ?? "all"}
               onClick={() => onSelect(cat.id)}
-              className={`relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-cyan-400 ${
-                isActive
-                  ? "text-white"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
-              }`}
+              className="relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
               style={{
+                color: isActive ? color : "var(--site-text-soft)",
                 backgroundColor: isActive ? `${color}20` : undefined,
               }}
               whileHover={{ scale: 1.02 }}
@@ -533,14 +534,14 @@ function FilterSection({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03]">
+    <div className="rounded-xl" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex w-full items-center justify-between px-4 py-3 text-left"
       >
         <span className="flex items-center gap-2">
-          <span className="text-[11px] font-bold tracking-widest text-slate-300 uppercase">
+          <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "var(--site-text-muted)" }}>
             {title}
           </span>
           {count && count > 0 ? (
@@ -565,15 +566,14 @@ function FilterSection({
                   onClear();
                 }
               }}
-              className="text-[10px] uppercase tracking-wider text-slate-500 hover:text-cyan-300 transition-colors"
+              className="text-[10px] uppercase tracking-wider hover:text-cyan-500 transition-colors" style={{ color: "var(--site-text-soft)" }}
             >
               {clearLabel}
             </span>
           ) : null}
           <ChevronDown
-            className={`h-4 w-4 text-slate-500 transition-transform ${
-              open ? "" : "-rotate-90"
-            }`}
+            className={`h-4 w-4 transition-transform ${open ? "" : "-rotate-90"}`}
+            style={{ color: "var(--site-text-soft)" }}
           />
         </span>
       </button>
@@ -789,10 +789,11 @@ export function Catalog({
               <button
                 key={chip.label}
                 onClick={chip.onRemove}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300 hover:bg-white/10 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs transition-colors"
+                style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)", color: "var(--site-text-muted)" }}
               >
                 {chip.label}
-                <X className="h-3 w-3 text-slate-500" />
+                <X className="h-3 w-3" style={{ color: "var(--site-text-soft)" }} />
               </button>
             ))}
             <button
@@ -810,7 +811,7 @@ export function Catalog({
             <div className="lg:sticky lg:top-28 space-y-4">
               {/* Search */}
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: "var(--site-text-soft)" }} />
                 <input
                   type="text"
                   placeholder={t("catalog.searchPlaceholder")}
@@ -821,16 +822,18 @@ export function Catalog({
                       search: e.target.value,
                     }))
                   }
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors text-sm"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500/40 transition-colors"
+                  style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)", color: "var(--site-text)" }}
                 />
               </div>
 
               {/* Mobile collapse toggle */}
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className="lg:hidden w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10"
+                className="lg:hidden w-full flex items-center justify-between px-4 py-3 rounded-xl"
+                style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)" }}
               >
-                <span className="flex items-center gap-2 text-white">
+                <span className="flex items-center gap-2" style={{ color: "var(--site-text)" }}>
                   <SlidersHorizontal className="w-5 h-5" />
                   {t("catalog.filters")}
                   {hasActiveFilters(filters) && (
@@ -838,9 +841,8 @@ export function Catalog({
                   )}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 transition-transform text-slate-400 ${
-                    showFilters ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 transition-transform ${showFilters ? "rotate-180" : ""}`}
+                  style={{ color: "var(--site-text-soft)" }}
                 />
               </button>
 
@@ -865,11 +867,11 @@ export function Catalog({
                         <button
                           key={qf.id}
                           onClick={() => toggleArrayFilter("quick", qf.id)}
-                          className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors border ${
-                            active
-                              ? "bg-cyan-500/15 text-cyan-200 border-cyan-400/40"
-                              : "bg-white/5 text-slate-400 border-white/10 hover:text-white hover:bg-white/10"
-                          }`}
+                          className="px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors"
+                          style={active
+                            ? { backgroundColor: "rgba(6,182,212,0.12)", color: "#06b6d4", border: "1px solid rgba(6,182,212,0.35)" }
+                            : { backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)", border: "1px solid var(--site-border)" }
+                          }
                         >
                           {tk ? t(tk) : qf.label}
                         </button>
@@ -901,19 +903,18 @@ export function Catalog({
                             onClick={() =>
                               toggleArrayFilter("materialFamilies", fam.id)
                             }
-                            className={`w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
-                              active
-                                ? "bg-cyan-500/15 text-cyan-100"
-                                : "text-slate-300 hover:bg-white/5"
-                            }`}
+                            className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left"
+                            style={active
+                              ? { backgroundColor: "rgba(6,182,212,0.1)", color: "#06b6d4" }
+                              : { color: "var(--site-text-muted)" }
+                            }
                           >
                             <span className="truncate font-medium">
                               {tk ? t(tk) : fam.label}
                             </span>
                             <span
-                              className={`text-[10px] font-mono ${
-                                active ? "text-cyan-300" : "text-slate-500"
-                              }`}
+                              className="text-[10px] font-mono"
+                              style={{ color: active ? "#06b6d4" : "var(--site-text-soft)" }}
                             >
                               {count}
                             </span>
@@ -947,19 +948,18 @@ export function Catalog({
                             onClick={() =>
                               toggleArrayFilter("applicationFamilies", fam.id)
                             }
-                            className={`w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
-                              active
-                                ? "bg-cyan-500/15 text-cyan-100"
-                                : "text-slate-300 hover:bg-white/5"
-                            }`}
+                            className="w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left"
+                            style={active
+                              ? { backgroundColor: "rgba(6,182,212,0.1)", color: "#06b6d4" }
+                              : { color: "var(--site-text-muted)" }
+                            }
                           >
                             <span className="truncate font-medium">
                               {tk ? t(tk) : fam.label}
                             </span>
                             <span
-                              className={`text-[10px] font-mono ${
-                                active ? "text-cyan-300" : "text-slate-500"
-                              }`}
+                              className="text-[10px] font-mono"
+                              style={{ color: active ? "#06b6d4" : "var(--site-text-soft)" }}
                             >
                               {count}
                             </span>
@@ -1031,15 +1031,15 @@ export function Catalog({
                               partnerId: prev.partnerId === p.id ? null : p.id,
                             }))
                           }
-                          className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
-                            active
-                              ? "bg-cyan-500/15 text-cyan-100"
-                              : "text-slate-300 hover:bg-white/5"
-                          }`}
+                          className="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left"
+                          style={active
+                            ? { backgroundColor: "rgba(6,182,212,0.1)", color: "#06b6d4" }
+                            : { color: "var(--site-text-muted)" }
+                          }
                         >
                           <span
-                            className="h-3 w-3 rounded-sm shrink-0 ring-1 ring-white/10"
-                            style={{ background: p.color }}
+                            className="h-3 w-3 rounded-sm shrink-0"
+                            style={{ background: p.color, boxShadow: "0 0 0 1px rgba(0,0,0,0.15)" }}
                           />
                           <span className="truncate">{p.name}</span>
                         </button>
@@ -1051,7 +1051,8 @@ export function Catalog({
                 {hasActiveFilters(filters) && (
                   <button
                     onClick={clearAll}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-white transition-colors"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm transition-colors hover:text-cyan-500"
+                    style={{ color: "var(--site-text-soft)" }}
                   >
                     <X className="w-4 h-4" />
                     {t("catalog.clearAllFilters")}
@@ -1064,19 +1065,19 @@ export function Catalog({
           {/* Main content */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-6 gap-4">
-              <p className="text-sm text-slate-400">
+              <p className="text-sm" style={{ color: "var(--site-text-muted)" }}>
                 {t("catalog.showing")}{" "}
-                <span className="font-bold text-white">
+                <span className="font-bold" style={{ color: "var(--site-text)" }}>
                   {filteredGroups.length}
                 </span>{" "}
                 {filteredGroups.length === 1
                   ? t("catalog.productFamily")
                   : t("catalog.productFamilies")}
                 {filteredGroups.length > 0 && (
-                  <span className="text-slate-600">
+                  <span style={{ color: "var(--site-text-soft)" }}>
                     {" "}
                     {t("catalog.across")}{" "}
-                    <span className="text-slate-300">
+                    <span style={{ color: "var(--site-text-muted)" }}>
                       {totalSupplierOffers}
                     </span>{" "}
                     {totalSupplierOffers === 1
@@ -1090,23 +1091,16 @@ export function Catalog({
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value as SortKey)}
-                  className="appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-8 pr-4 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50"
+                  className="appearance-none rounded-lg py-2 pl-8 pr-4 text-xs focus:outline-none focus:ring-1 focus:ring-cyan-500/40"
+                  style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)", color: "var(--site-text-muted)" }}
                   aria-label={t("catalog.sortBy")}
                 >
-                  <option value="relevant" className="bg-slate-900">
-                    {t("catalog.sortRecommended")}
-                  </option>
-                  <option value="suppliers-desc" className="bg-slate-900">
-                    {t("catalog.sortMostSuppliers")}
-                  </option>
-                  <option value="dia-asc" className="bg-slate-900">
-                    {t("catalog.sortDiaAsc")}
-                  </option>
-                  <option value="dia-desc" className="bg-slate-900">
-                    {t("catalog.sortDiaDesc")}
-                  </option>
+                  <option value="relevant">{t("catalog.sortRecommended")}</option>
+                  <option value="suppliers-desc">{t("catalog.sortMostSuppliers")}</option>
+                  <option value="dia-asc">{t("catalog.sortDiaAsc")}</option>
+                  <option value="dia-desc">{t("catalog.sortDiaDesc")}</option>
                 </select>
-                <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500 pointer-events-none" />
+                <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 pointer-events-none" style={{ color: "var(--site-text-soft)" }} />
               </div>
             </div>
 
@@ -1122,13 +1116,16 @@ export function Catalog({
 
             {filteredGroups.length === 0 && (
               <div className="flex flex-col items-center py-20 text-center">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                  <AlertCircle className="h-8 w-8 text-slate-500" />
+                <div
+                  className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl"
+                  style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}
+                >
+                  <AlertCircle className="h-8 w-8" style={{ color: "var(--site-text-soft)" }} />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-lg font-bold mb-2" style={{ color: "var(--site-text)" }}>
                   {t("catalog.noResultsTitle")}
                 </h3>
-                <p className="text-sm text-slate-400 mb-6 max-w-md">
+                <p className="text-sm mb-6 max-w-md" style={{ color: "var(--site-text-muted)" }}>
                   {t("catalog.noResultsSubtitle")}
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -1140,7 +1137,8 @@ export function Catalog({
                   </button>
                   <Link
                     href="/contact"
-                    className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors"
+                    className="rounded-xl px-5 py-2.5 text-sm font-medium transition-colors"
+                    style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)", color: "var(--site-text-muted)" }}
                   >
                     {t("catalog.contactUs")}
                   </Link>
@@ -1152,52 +1150,21 @@ export function Catalog({
 
         {/* Bottom stat bar */}
         {filteredGroups.length > 0 && (
-          <div className="mt-16 pt-10 border-t border-white/[0.06] flex flex-wrap items-center justify-center gap-8 text-center">
-            <div>
-              <p className="text-2xl font-black text-white">
-                {productGroups.length}
-              </p>
-              <p className="text-xs font-mono text-slate-500 mt-0.5">
-                {t("catalog.productTypesLabel")}
-              </p>
-            </div>
-            <div className="h-8 w-px bg-white/[0.08]" />
-            <div>
-              <p className="text-2xl font-black text-white">
-                {
-                  new Set(
-                    productGroups.flatMap((g) =>
-                      g.suppliers.map((s) => s.partnerId)
-                    )
-                  ).size
-                }
-              </p>
-              <p className="text-xs font-mono text-slate-500 mt-0.5">
-                {t("catalog.supplierPartnersLabel")}
-              </p>
-            </div>
-            <div className="h-8 w-px bg-white/[0.08]" />
-            <div>
-              <p className="text-2xl font-black text-white">
-                {productGroups.reduce((a, g) => a + g.suppliers.length, 0)}
-              </p>
-              <p className="text-xs font-mono text-slate-500 mt-0.5">
-                {t("catalog.totalSupplyOffers")}
-              </p>
-            </div>
-            <div className="h-8 w-px bg-white/[0.08]" />
-            <div>
-              <p className="text-2xl font-black" style={{ color: "#22c55e" }}>
-                {
-                  productGroups.filter(
-                    (g) => groupAvailability(g) === "in-stock"
-                  ).length
-                }
-              </p>
-              <p className="text-xs font-mono text-slate-500 mt-0.5">
-                {t("catalog.fullyInStock")}
-              </p>
-            </div>
+          <div className="mt-16 pt-10 flex flex-wrap items-center justify-center gap-8 text-center" style={{ borderTop: "1px solid var(--site-border)" }}>
+            {[
+              { value: productGroups.length, label: t("catalog.productTypesLabel"), color: "var(--site-text)" },
+              { value: new Set(productGroups.flatMap((g) => g.suppliers.map((s) => s.partnerId))).size, label: t("catalog.supplierPartnersLabel"), color: "var(--site-text)" },
+              { value: productGroups.reduce((a, g) => a + g.suppliers.length, 0), label: t("catalog.totalSupplyOffers"), color: "var(--site-text)" },
+              { value: productGroups.filter((g) => groupAvailability(g) === "in-stock").length, label: t("catalog.fullyInStock"), color: "#22c55e" },
+            ].map((stat, i, arr) => (
+              <div key={stat.label} className="flex items-center gap-8">
+                <div>
+                  <p className="text-2xl font-black" style={{ color: stat.color }}>{stat.value}</p>
+                  <p className="text-xs font-mono mt-0.5" style={{ color: "var(--site-text-soft)" }}>{stat.label}</p>
+                </div>
+                {i < arr.length - 1 && <div className="h-8 w-px" style={{ backgroundColor: "var(--site-border)" }} />}
+              </div>
+            ))}
           </div>
         )}
       </div>

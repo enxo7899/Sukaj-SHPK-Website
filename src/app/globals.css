@@ -300,6 +300,14 @@
 [data-theme="light"] .text-cyan-400\/80 {
   color: rgba(8, 145, 178, 0.85) !important;
 }
+[data-theme="light"] .text-cyan-400\/70 {
+  color: rgba(8, 145, 178, 0.75) !important;
+}
+/* text-cyan-400 and text-cyan-500 are fine (#06b6d4 / #22d3ee contrast ok on light) */
+/* but boost them slightly for smaller text */
+[data-theme="light"] .text-cyan-400 {
+  color: #0891b2 !important;
+}
 
 /* Scroll-hint border in hero */
 [data-theme="light"] .border-white\/15 {

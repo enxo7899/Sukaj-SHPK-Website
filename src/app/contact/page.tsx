@@ -22,101 +22,112 @@ export default function ContactPage() {
     setIsSubmitted(true);
   };
 
+  const inputClass =
+    "w-full px-4 py-3 rounded-lg text-sm transition-colors focus:outline-none focus:ring-1 focus:ring-cyan-500/40";
+  const inputStyle = {
+    backgroundColor: "var(--site-surface)",
+    border: "1px solid var(--site-border)",
+    color: "var(--site-text)",
+  };
+
   return (
-    <div className="min-h-screen pt-32 pb-16">
+    <div className="min-h-screen pt-28 sm:pt-32 pb-16 bg-[var(--site-bg)]">
       <div className="site-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-400 tracking-wider mb-6">
+          <span
+            className="inline-block px-4 py-2 rounded-full text-xs font-mono tracking-wider mb-6"
+            style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)", color: "var(--site-text-soft)" }}
+          >
             {t("contact.eyebrow")}
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4"
+            style={{ color: "var(--site-text)" }}
+          >
             {t("contact.headline")}
           </h1>
-          <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="mt-2 text-lg max-w-2xl mx-auto" style={{ color: "var(--site-text-muted)" }}>
             {t("contact.subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Left column — info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-5"
           >
-            <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-              <h3 className="text-lg font-bold text-white mb-6">
+            {/* Contact details card */}
+            <div
+              className="p-6 rounded-xl"
+              style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)" }}
+            >
+              <h3 className="text-lg font-bold mb-6" style={{ color: "var(--site-text)" }}>
                 {t("nav.contact")}
               </h3>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-cyan-400" />
+              <div className="space-y-5">
+                {[
+                  { Icon: MapPin, label: t("contact.addressLabel"), value: company.location, href: undefined },
+                  { Icon: Phone, label: t("contact.phoneLabel"), value: "+355 123 456 789", href: "tel:+355123456789" },
+                  { Icon: Mail, label: t("contact.emailLabel"), value: "info@sukaj.al", href: "mailto:info@sukaj.al" },
+                  { Icon: Clock, label: t("contact.hoursLabel"), value: t("contact.hoursValue"), href: undefined },
+                ].map(({ Icon, label, value, href }) => (
+                  <div key={label} className="flex items-start gap-4">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}
+                    >
+                      <Icon className="w-5 h-5 text-cyan-500" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--site-text)" }}>{label}</p>
+                      {href ? (
+                        <a
+                          href={href}
+                          className="text-sm transition-colors hover:text-cyan-500"
+                          style={{ color: "var(--site-text-muted)" }}
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-sm" style={{ color: "var(--site-text-muted)" }}>{value}</p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium text-white">{t("contact.addressLabel")}</p>
-                    <p className="text-sm text-slate-400">{company.location}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-white">{t("contact.phoneLabel")}</p>
-                    <a href="tel:+355123456789" className="text-sm text-slate-400 hover:text-white transition-colors">
-                      +355 123 456 789
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-white">{t("contact.emailLabel")}</p>
-                    <a href="mailto:info@sukaj.al" className="text-sm text-slate-400 hover:text-white transition-colors">
-                      info@sukaj.al
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-white">{t("contact.hoursLabel")}</p>
-                    <p className="text-sm text-slate-400">{t("contact.hoursValue")}</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-gradient-to-br from-cyan-500/10 to-cyan-700/10 border border-white/10">
-              <h3 className="text-lg font-bold text-white mb-2">
+            {/* Technical support card */}
+            <div
+              className="p-6 rounded-xl"
+              style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)" }}
+            >
+              <h3 className="text-lg font-bold mb-2" style={{ color: "var(--site-text)" }}>
                 {t("contact.technicalSupport")}
               </h3>
-              <p className="text-sm text-slate-400 mb-4">
+              <p className="text-sm mb-4" style={{ color: "var(--site-text-muted)" }}>
                 {t("contact.technicalSupportDesc")}
               </p>
               <a
                 href="mailto:engineering@sukaj.al"
-                className="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
               >
+                <Mail className="w-4 h-4" />
                 engineering@sukaj.al
               </a>
             </div>
           </motion.div>
 
+          {/* Right column — form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -127,33 +138,38 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col items-center justify-center p-12 rounded-xl bg-white/5 border border-white/10 text-center"
+                className="h-full flex flex-col items-center justify-center p-12 rounded-xl text-center"
+                style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)" }}
               >
-                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-green-500/15 flex items-center justify-center mb-6">
                   <CheckCircle className="w-8 h-8 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--site-text)" }}>
                   {t("contact.formSuccess")}
                 </h3>
-                <p className="text-slate-400 mb-6">
+                <p className="mb-6" style={{ color: "var(--site-text-muted)" }}>
                   {t("contact.subtitle")}
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="text-sm text-cyan-500 hover:text-cyan-400 transition-colors font-semibold"
                 >
                   {t("contact.formSubmit")}
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-8 rounded-xl bg-white/5 border border-white/10">
-                <h3 className="text-lg font-bold text-white mb-6">
+              <form
+                onSubmit={handleSubmit}
+                className="p-6 sm:p-8 rounded-xl"
+                style={{ backgroundColor: "var(--site-surface-strong)", border: "1px solid var(--site-border)" }}
+              >
+                <h3 className="text-lg font-bold mb-6" style={{ color: "var(--site-text)" }}>
                   {t("contact.formSubmit")}
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid md:grid-cols-2 gap-5 mb-5">
                   <div>
-                    <label className="block text-sm font-medium text-slate-400 mb-2">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--site-text-muted)" }}>
                       {t("contact.formName")}
                     </label>
                     <input
@@ -161,11 +177,12 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                      className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-400 mb-2">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--site-text-muted)" }}>
                       {t("contact.formEmail")}
                     </label>
                     <input
@@ -173,43 +190,46 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                      className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid md:grid-cols-2 gap-5 mb-5">
                   <div>
-                    <label className="block text-sm font-medium text-slate-400 mb-2">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--site-text-muted)" }}>
                       {t("contact.formCompany")}
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                      className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-400 mb-2">
+                    <label className="block text-sm font-medium mb-2" style={{ color: "var(--site-text-muted)" }}>
                       {t("contact.formProject")}
                     </label>
                     <select
                       value={formData.project}
                       onChange={(e) => setFormData({ ...formData, project: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-500/50 transition-colors"
+                      className={inputClass}
+                      style={inputStyle}
                     >
-                      <option value="" className="bg-slate-900">—</option>
-                      <option value="civil" className="bg-slate-900">{t("categories.civilName")}</option>
-                      <option value="agri" className="bg-slate-900">{t("categories.agriName")}</option>
-                      <option value="industrial" className="bg-slate-900">{t("categories.industrialName")}</option>
-                      <option value="other" className="bg-slate-900">{t("catalog.matOther")}</option>
+                      <option value="">—</option>
+                      <option value="civil">{t("categories.civilName")}</option>
+                      <option value="agri">{t("categories.agriName")}</option>
+                      <option value="industrial">{t("categories.industrialName")}</option>
+                      <option value="other">{t("catalog.matOther")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-slate-400 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: "var(--site-text-muted)" }}>
                     {t("contact.formMessage")}
                   </label>
                   <textarea
@@ -217,13 +237,14 @@ export default function ContactPage() {
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500/50 transition-colors resize-none"
+                    className={`${inputClass} resize-none`}
+                    style={inputStyle}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-cyan-700/30"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-cyan-700/20"
                 >
                   <Send className="w-5 h-5" />
                   {t("contact.formSubmit")}

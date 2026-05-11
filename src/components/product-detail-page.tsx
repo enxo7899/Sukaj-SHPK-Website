@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -50,18 +50,18 @@ const availConfigBase = {
 
 const rowAvailConfigBase = {
   stock: {
-    row: "",
-    text: "text-white",
+    rowStyle: {} as React.CSSProperties,
+    textColor: "var(--site-text)",
     dot: "bg-green-500",
   },
   partial: {
-    row: "bg-cyan-500/[0.02]",
-    text: "text-cyan-200",
+    rowStyle: { backgroundColor: "var(--site-surface)" } as React.CSSProperties,
+    textColor: "var(--site-text-muted)",
     dot: "bg-yellow-400",
   },
   order: {
-    row: "bg-orange-500/[0.015]",
-    text: "text-slate-400",
+    rowStyle: {} as React.CSSProperties,
+    textColor: "var(--site-text-muted)",
     dot: "bg-orange-500",
   },
 } as const;
@@ -159,7 +159,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
             <span className="block text-[9px] font-mono tracking-widest mb-1" style={{ color: "var(--site-text-soft)" }}>
               {t("productDetail.diameterRange").toUpperCase()}
             </span>
-            <span className="text-sm font-bold font-mono" style={{ color: supplier.color }}>
+            <span className="text-sm font-bold font-mono" style={{ color: "var(--site-text)" }}>
               Ø {supplier.diameterMin}–{supplier.diameterMax} mm
             </span>
           </div>
@@ -173,8 +173,8 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
                 key={pc}
                 className="rounded border px-2 py-0.5 font-mono text-[10px] tracking-wider"
                 style={{
-                  borderColor: `${supplier.color}30`,
-                  color: supplier.color,
+                  borderColor: `${supplier.color}35`,
+                  color: "var(--site-text-muted)",
                   background: `${supplier.color}10`,
                 }}
               >
@@ -252,113 +252,85 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
   const hasWeight = rows.some((r) => r.weightPerMeter !== undefined);
   const hasLengths = rows.some((r) => r.lengths !== undefined);
 
+  const thStyle: React.CSSProperties = { color: "var(--site-text-soft)" };
+  const thClass = "px-4 py-3 font-mono text-[10px] tracking-widest uppercase whitespace-nowrap";
+
   return (
-    <div className="overflow-x-auto rounded-xl border border-white/[0.08] bg-slate-900/50">
+    <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
       <table className="w-full text-sm border-collapse">
         <thead>
-          <tr className="border-b border-white/[0.08] bg-slate-950/70">
-            <th className="px-4 py-3 text-left font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-              DN (mm)
-            </th>
-            {hasOD && (
-              <th className="px-4 py-3 text-left font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-                OD (mm)
-              </th>
-            )}
-            {hasWall &&
-              wallClasses.map((wc) => (
-                <th
-                  key={wc}
-                  className="px-4 py-3 text-right font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap"
-                >
-                  e {wc} (mm)
-                </th>
-              ))}
+          <tr style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
+            <th className={`${thClass} text-left`} style={thStyle}>DN (mm)</th>
+            {hasOD && <th className={`${thClass} text-left`} style={thStyle}>OD (mm)</th>}
+            {hasWall && wallClasses.map((wc) => (
+              <th key={wc} className={`${thClass} text-right`} style={thStyle}>e {wc} (mm)</th>
+            ))}
             {hasSN && (
               <>
-                <th className="px-4 py-3 text-center font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-                  SN4
-                </th>
-                <th className="px-4 py-3 text-center font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-                  SN8
-                </th>
+                <th className={`${thClass} text-center`} style={thStyle}>SN4</th>
+                <th className={`${thClass} text-center`} style={thStyle}>SN8</th>
               </>
             )}
-            {hasWeight && (
-              <th className="px-4 py-3 text-right font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-                kg/m
-              </th>
-            )}
-            {hasLengths && (
-              <th className="px-4 py-3 text-left font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-                Lengths
-              </th>
-            )}
-            <th className="px-4 py-3 text-center font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-              {labels.status}
-            </th>
+            {hasWeight && <th className={`${thClass} text-right`} style={thStyle}>kg/m</th>}
+            {hasLengths && <th className={`${thClass} text-left`} style={thStyle}>Lengths</th>}
+            <th className={`${thClass} text-center`} style={thStyle}>{labels.status}</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => {
             const base = rowAvailConfigBase[row.available];
-            const cfg = { ...base, label: row.available === "stock" ? labels.inStock : row.available === "partial" ? labels.partial : labels.onOrder };
+            const label = row.available === "stock" ? labels.inStock : row.available === "partial" ? labels.partial : labels.onOrder;
             return (
               <tr
                 key={row.dn}
-                className={`border-b border-white/[0.05] last:border-0 transition-colors hover:bg-white/[0.02] ${cfg.row}`}
+                className="transition-colors last:border-0"
+                style={{ borderBottom: "1px solid var(--site-border)", ...base.rowStyle }}
               >
-                <td className={`px-4 py-2.5 font-mono font-bold ${cfg.text}`}>
+                <td className="px-4 py-2.5 font-mono font-bold" style={{ color: base.textColor }}>
                   {row.dn}
                 </td>
                 {hasOD && (
-                  <td className={`px-4 py-2.5 font-mono ${cfg.text}`}>
+                  <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
                     {row.od ?? "—"}
                   </td>
                 )}
-                {hasWall &&
-                  wallClasses.map((wc) => (
-                    <td
-                      key={wc}
-                      className={`px-4 py-2.5 font-mono text-right ${cfg.text}`}
-                    >
-                      {row.wallByClass?.[wc] ?? "—"}
-                    </td>
-                  ))}
+                {hasWall && wallClasses.map((wc) => (
+                  <td key={wc} className="px-4 py-2.5 font-mono text-right" style={{ color: base.textColor }}>
+                    {row.wallByClass?.[wc] ?? "—"}
+                  </td>
+                ))}
                 {hasSN && (
                   <>
                     <td className="px-4 py-2.5 text-center">
                       {row.sn?.sn4 ? (
-                        <span className="text-green-400 font-bold">✓</span>
+                        <span className="text-green-500 font-bold">✓</span>
                       ) : (
-                        <span className="text-slate-700">—</span>
+                        <span style={{ color: "var(--site-text-soft)" }}>—</span>
                       )}
                     </td>
                     <td className="px-4 py-2.5 text-center">
                       {row.sn?.sn8 ? (
-                        <span className="text-green-400 font-bold">✓</span>
+                        <span className="text-green-500 font-bold">✓</span>
                       ) : (
-                        <span className="text-slate-700">—</span>
+                        <span style={{ color: "var(--site-text-soft)" }}>—</span>
                       )}
                     </td>
                   </>
                 )}
                 {hasWeight && (
-                  <td className={`px-4 py-2.5 font-mono text-right ${cfg.text}`}>
+                  <td className="px-4 py-2.5 font-mono text-right" style={{ color: base.textColor }}>
                     {row.weightPerMeter ?? "—"}
                   </td>
                 )}
                 {hasLengths && (
-                  <td className={`px-4 py-2.5 font-mono text-xs ${cfg.text}`}>
+                  <td className="px-4 py-2.5 font-mono text-xs" style={{ color: base.textColor }}>
                     {row.lengths ?? "—"}
                   </td>
                 )}
                 <td className="px-4 py-2.5 text-center">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-400">
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full ${cfg.dot}`}
-                    />
-                    {cfg.label}
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-bold" style={{ color: "var(--site-text-muted)" }}>
+                    <span className={`h-1.5 w-1.5 rounded-full ${base.dot}`} />
+                    {label}
                   </span>
                 </td>
               </tr>
@@ -406,7 +378,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
   return (
     <main className="min-h-screen bg-[var(--site-bg)]">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <div className="theme-product-hero relative h-[52vh] min-h-[380px] overflow-hidden">
+      <div className="theme-product-hero relative h-[45vh] min-h-[320px] sm:h-[52vh] sm:min-h-[380px] overflow-hidden">
         {!imageError && product.image ? (
           <Image
             src={product.image}
@@ -434,7 +406,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         />
 
         {/* Hero content */}
-        <div className="absolute bottom-0 left-0 right-0 site-shell pb-10 pt-28">
+        <div className="absolute bottom-0 left-0 right-0 site-shell pb-8 pt-20 sm:pt-28">
           <Link
             href="/catalog"
             className="inline-flex items-center gap-1.5 text-xs font-mono mb-5 transition-colors group"
@@ -499,7 +471,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
       </div>
 
       {/* ── Body ─────────────────────────────────────────────────────────── */}
-      <div className="site-shell py-12 space-y-16">
+      <div className="site-shell py-10 sm:py-14 space-y-10 sm:space-y-16">
 
         {/* Description + key specs */}
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
@@ -573,7 +545,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             </div>
             <div className="h-px flex-1" style={{ backgroundColor: "var(--site-border)" }} />
           </div>
-          <p className="text-center text-xs text-slate-600 font-mono mb-8">
+          <p className="text-center text-xs font-mono mb-8" style={{ color: "var(--site-text-soft)" }}>
             {t("productDetail.suppliersAvailable")}
           </p>
 
@@ -598,29 +570,27 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
               .filter((p): p is NonNullable<typeof p> => Boolean(p));
             if (alsoPartners.length === 0) return null;
             return (
-              <div className="mt-6 rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/[0.06] to-transparent p-5">
+              <div className="mt-6 rounded-xl p-5" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
                 <div className="flex items-start gap-4">
-                  <div className="shrink-0 rounded-lg bg-cyan-500/15 p-2.5 border border-cyan-500/25">
-                    <Layers className="w-5 h-5 text-cyan-400" />
+                  <div className="shrink-0 rounded-lg p-2.5" style={{ backgroundColor: "var(--site-surface)", border: "1px solid var(--site-border)" }}>
+                    <Layers className="w-5 h-5 text-cyan-500" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs uppercase tracking-wider text-cyan-300/80 font-mono mb-1">
+                    <p className="text-xs uppercase tracking-wider font-mono mb-3" style={{ color: "var(--site-text-soft)" }}>
                       {t("productDetail.alsoAvailableFrom")}
-                    </p>
-                    <p className="text-sm text-slate-200 mb-3">
-                      {t("productDetail.alsoAvailableFrom")}:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {alsoPartners.map((p) => (
                         <Link
                           key={p.id}
                           href={`/catalog?partner=${p.id}`}
-                          className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-3 py-1.5 text-sm font-semibold text-cyan-200 hover:border-cyan-400/60 hover:bg-cyan-500/20 transition-colors"
+                          className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-semibold transition-all hover:shadow-sm"
+                          style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-muted)" }}
                         >
-                          <Globe className="w-3.5 h-3.5" />
+                          <Globe className="w-3.5 h-3.5 text-cyan-500" />
                           {p.name}
-                          <span className="text-xs text-cyan-300/60 font-mono">· {p.country}</span>
-                          <ArrowRight className="w-3 h-3" />
+                          <span className="text-xs font-mono" style={{ color: "var(--site-text-soft)" }}>· {p.country}</span>
+                          <ArrowRight className="w-3 h-3" style={{ color: "var(--site-text-soft)" }} />
                         </Link>
                       ))}
                     </div>

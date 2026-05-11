@@ -14,10 +14,10 @@ function CatalogLoading() {
     <div className="min-h-screen pt-32 pb-16">
       <div className="site-shell">
         <div className="animate-pulse">
-          <div className="h-12 w-64 bg-white/5 rounded-lg mb-8" />
+          <div className="h-12 w-64 rounded-lg mb-8 bg-[var(--site-surface-strong)]" />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-64 bg-white/5 rounded-xl" />
+              <div key={i} className="h-64 rounded-xl bg-[var(--site-surface-strong)]" />
             ))}
           </div>
         </div>
