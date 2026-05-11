@@ -46,8 +46,8 @@ export function Navigation() {
       >
         <div className="site-shell">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative h-12 w-48 sm:w-56">
+            <Link href="/" className="flex items-center gap-2 group shrink-0">
+              <div className="relative h-9 w-24 sm:h-11 sm:w-36 md:h-12 md:w-44">
                 <Image
                   src="/media/hero/logo.png"
                   alt="Sukaj SHPK"
@@ -78,7 +78,7 @@ export function Navigation() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3">
               <ThemeSwitcher />
               <LanguageSwitcher />
               <Link

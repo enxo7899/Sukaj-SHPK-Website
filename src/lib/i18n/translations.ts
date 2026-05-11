@@ -356,6 +356,7 @@ export const translations = {
     viewProducts: { sq: "Shiko Produktet", en: "View Products" },
     noPartners: { sq: "Asnjë partner në këtë kategori.", en: "No partners in this category." },
     showAll: { sq: "Shfaq të gjithë partnerët", en: "Show all partners" },
+    showLess: { sq: "Shfaq më pak", en: "Show fewer partners" },
     specialty: { sq: "SPECIALITETI", en: "SPECIALTY" },
     visitWebsite: { sq: "Vizitoni faqen", en: "Visit website" },
     keyProducts: { sq: "Produkte Kryesore", en: "Key Products" },

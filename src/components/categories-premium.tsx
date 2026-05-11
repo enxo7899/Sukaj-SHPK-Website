@@ -2,194 +2,197 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { Building2, Sprout, Factory, ArrowRight } from "lucide-react";
+import { Building2, Sprout, Factory, ArrowUpRight } from "lucide-react";
 import { categories } from "@/lib/data";
 import { productGroups } from "@/lib/products-data";
 import { useTranslation } from "@/lib/i18n/context";
 
-const iconMap: Record<string, React.FC<{ className?: string }>> = {
+const iconMap: Record<string, React.FC<{ className?: string; style?: React.CSSProperties }>> = {
   Building2,
   Sprout,
   Factory,
 };
 
 const categoryTranslationKeys = {
-  civil: { name: "categories.civilName", desc: "categories.civilDescription" },
-  agri: { name: "categories.agriName", desc: "categories.agriDescription" },
-  industrial: {
-    name: "categories.industrialName",
-    desc: "categories.industrialDescription",
-  },
+  civil:      { name: "categories.civilName",      desc: "categories.civilDescription" },
+  agri:       { name: "categories.agriName",       desc: "categories.agriDescription" },
+  industrial: { name: "categories.industrialName", desc: "categories.industrialDescription" },
 } as const;
+
+const categoryConfig = {
+  civil:      { color: "#0891b2", num: "01", tag: "Infrastructure" },
+  agri:       { color: "#16a34a", num: "02", tag: "Agriculture" },
+  industrial: { color: "#0ea5e9", num: "03", tag: "Industry" },
+} as const;
+
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
 
 export function CategoriesPremium() {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
 
-  // Single restrained accent palette — differentiates by category, not by rainbow
-  const categoryData = [
-    {
-      ...categories[0],
-      gradient: "from-cyan-500 to-cyan-700",
-      glowColor: "rgba(6,182,212,0.28)",
-      iconBg: "from-cyan-500 to-cyan-700",
-    },
-    {
-      ...categories[1],
-      gradient: "from-emerald-500 to-emerald-700",
-      glowColor: "rgba(16,185,129,0.24)",
-      iconBg: "from-emerald-500 to-emerald-700",
-    },
-    {
-      ...categories[2],
-      gradient: "from-sky-500 to-sky-700",
-      glowColor: "rgba(56,189,248,0.24)",
-      iconBg: "from-sky-500 to-sky-700",
-    },
-  ];
-
   return (
     <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[var(--site-bg)]">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(6,182,212,0.06),transparent)]" />
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-      </div>
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(ellipse 80% 55% at 50% -5%, rgba(8,145,178,0.05) 0%, transparent 65%)" }}
+      />
 
       <div className="site-shell relative">
-        {/* Header */}
+        {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="mb-14 sm:mb-20"
         >
-          <div className="flex items-center justify-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
               {t("categories.eyebrow")}
             </span>
-            <div className="h-px w-8 bg-cyan-500/60" />
           </div>
-
-          <h2
-            className="font-black leading-[1.05] tracking-tight mb-4 sm:mb-6"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
-          >
-            {t("categories.title1")}
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage:
-                  "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-              }}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2
+              className="font-black leading-[1.05] tracking-tight"
+              style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", color: "var(--site-text)" }}
             >
-              {t("categories.title2")}
-            </span>
-          </h2>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--site-text-muted)" }}>
-            {t("categories.subtitle")}
-          </p>
+              {t("categories.title1")}
+              <br />
+              <span
+                style={{
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
+                }}
+              >
+                {t("categories.title2")}
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base max-w-sm leading-relaxed" style={{ color: "var(--site-text-soft)" }}>
+              {t("categories.subtitle")}
+            </p>
+          </div>
         </motion.div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-          {categoryData.map((category, index) => {
+        {/* ── Cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+          {categories.map((category, index) => {
             const Icon = iconMap[category.icon] || Building2;
-            const tk =
-              categoryTranslationKeys[
-                category.id as keyof typeof categoryTranslationKeys
-              ];
-            const productCount = productGroups.filter(
-              (p) => p.category === category.id
-            ).length;
+            const tk = categoryTranslationKeys[category.id as keyof typeof categoryTranslationKeys];
+            const cfg = categoryConfig[category.id as keyof typeof categoryConfig];
+            const productCount = productGroups.filter((p) => p.category === category.id).length;
 
             return (
               <motion.div
                 key={category.id}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: index * 0.08, ease: EASE_EXPO }}
               >
-                <Link href={`/catalog?category=${category.id}`}>
+                <Link href={`/catalog?category=${category.id}`} className="block h-full group">
                   <motion.div
-                    whileHover={reduceMotion ? {} : { y: -4 }}
-                    className="group relative h-full"
+                    whileHover={reduceMotion ? {} : { y: -5 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="relative h-full overflow-hidden rounded-2xl transition-shadow duration-300 group-hover:shadow-xl"
+                    style={{
+                      backgroundColor: "var(--site-surface-strong)",
+                      border: "1px solid var(--site-border)",
+                    }}
                   >
-                    {/* Card */}
+                    {/* Left accent bar */}
                     <div
-                      className="relative h-full p-6 sm:p-8 rounded-2xl sm:rounded-3xl transition-all duration-300 overflow-hidden"
-                      style={{
-                        backgroundColor: "var(--site-surface-strong)",
-                        border: "1px solid var(--site-border)",
-                        boxShadow: "0 1px 3px rgba(15,23,42,0.04)",
-                      }}
+                      className="absolute left-0 top-0 bottom-0 w-[3px] opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(180deg, ${cfg.color}, ${cfg.color}55)` }}
+                    />
+
+                    {/* Hover top glow */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ background: `radial-gradient(ellipse 80% 35% at 50% 0%, ${cfg.color}10, transparent)` }}
+                    />
+
+                    {/* Ghost number — decorative */}
+                    <div
+                      className="pointer-events-none absolute -right-2 -bottom-3 font-black select-none leading-none"
+                      style={{ fontSize: "clamp(6rem, 10vw, 8rem)", color: `${cfg.color}08`, lineHeight: 1 }}
                     >
-                      {/* Top accent bar — always visible, grows on hover */}
-                      <div
-                        className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${category.gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
-                      />
+                      {cfg.num}
+                    </div>
 
-                      {/* Subtle hover glow from top */}
-                      <div
-                        className="absolute top-0 inset-x-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                        style={{
-                          background: `radial-gradient(ellipse at 50% 0%, ${category.glowColor}, transparent)`,
-                        }}
-                      />
-
-                      {/* Content */}
-                      <div className="relative z-10">
-                        {/* Icon + product count row */}
-                        <div className="flex items-start justify-between mb-6">
-                          <div
-                            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.iconBg} flex items-center justify-center shadow-lg`}
-                          >
-                            <Icon className="w-7 h-7 text-white" />
-                          </div>
+                    {/* Card body */}
+                    <div className="relative pl-7 pr-6 pt-8 pb-8 flex flex-col h-full">
+                      {/* Top row: icon + meta */}
+                      <div className="flex items-start justify-between mb-7">
+                        <div
+                          className="flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+                          style={{ backgroundColor: `${cfg.color}12`, border: `1px solid ${cfg.color}25` }}
+                        >
+                          <Icon className="w-5 h-5" style={{ color: cfg.color }} />
+                        </div>
+                        <div className="flex flex-col items-end gap-1.5">
                           <span
-                            className={`font-mono text-[10px] tracking-[0.12em] uppercase rounded-full px-2.5 py-1 bg-gradient-to-br ${category.gradient} text-white opacity-90`}
+                            className="font-mono text-[9px] tracking-[0.22em] uppercase font-bold"
+                            style={{ color: cfg.color }}
                           >
-                            {productCount} SKU
+                            {cfg.tag}
+                          </span>
+                          <span className="font-mono text-[9px] tracking-wider" style={{ color: "var(--site-text-soft)" }}>
+                            {productCount} products
                           </span>
                         </div>
+                      </div>
 
-                        {/* Title */}
-                        <h3 className="text-2xl font-bold mb-3 transition-colors" style={{ color: "var(--site-text)" }}>
-                          {tk ? t(tk.name) : category.name}
-                        </h3>
+                      {/* Title */}
+                      <h3
+                        className="text-xl sm:text-2xl font-black mb-3 leading-snug tracking-tight"
+                        style={{ color: "var(--site-text)" }}
+                      >
+                        {tk ? t(tk.name) : category.name}
+                      </h3>
 
-                        {/* Description */}
-                        <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--site-text-muted)" }}>
-                          {tk ? t(tk.desc) : category.description}
-                        </p>
+                      {/* Description */}
+                      <p className="text-sm leading-relaxed mb-7 flex-1" style={{ color: "var(--site-text-muted)" }}>
+                        {tk ? t(tk.desc) : category.description}
+                      </p>
 
-                        {/* Product type tags */}
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {category.products.slice(0, 3).map((product) => (
-                            <span
-                              key={product}
-                              className="px-2.5 py-1 rounded-lg text-[11px] font-medium font-mono"
-                              style={{
-                                backgroundColor: "var(--site-bg)",
-                                border: "1px solid var(--site-border)",
-                                color: "var(--site-text-soft)",
-                              }}
-                            >
-                              {product}
-                            </span>
-                          ))}
-                        </div>
+                      {/* Product tags */}
+                      <div className="flex flex-wrap gap-1.5 mb-7">
+                        {category.products.slice(0, 3).map((product) => (
+                          <span
+                            key={product}
+                            className="px-2.5 py-1 rounded-md text-[10px] font-mono font-medium"
+                            style={{
+                              backgroundColor: "var(--site-surface)",
+                              border: "1px solid var(--site-border)",
+                              color: "var(--site-text-soft)",
+                            }}
+                          >
+                            {product}
+                          </span>
+                        ))}
+                      </div>
 
-                        {/* CTA */}
-                        <div className="flex items-center gap-2 text-cyan-500 font-semibold group-hover:gap-3 transition-all">
-                          <span>{t("categories.learnMore")}</span>
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      {/* CTA row */}
+                      <div
+                        className="flex items-center justify-between pt-5"
+                        style={{ borderTop: "1px solid var(--site-border)" }}
+                      >
+                        <span className="text-sm font-semibold" style={{ color: cfg.color }}>
+                          {t("categories.learnMore")}
+                        </span>
+                        <div
+                          className="flex h-8 w-8 items-center justify-center rounded-lg transition-all duration-300 group-hover:scale-110"
+                          style={{ backgroundColor: `${cfg.color}12`, border: `1px solid ${cfg.color}25` }}
+                        >
+                          <ArrowUpRight
+                            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            style={{ color: cfg.color }}
+                          />
                         </div>
                       </div>
                     </div>

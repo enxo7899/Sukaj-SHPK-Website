@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   partners,
   type PartnerType,
 } from "@/lib/data";
+import { ChevronDown } from "lucide-react";
 import {
   MapPin,
   ArrowUpRight,
@@ -25,9 +26,13 @@ const allTypes: (PartnerType | "all")[] = [
   "local-albania",
 ];
 
+const INITIAL_VISIBLE = 4;
+
 export default function PartnersPage() {
   const { t } = useTranslation();
   const [activeType, setActiveType] = useState<PartnerType | "all">("all");
+  const [showAll, setShowAll] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
   const typeLabel: Record<PartnerType, string> = {
     manufacturer: t("partners.typeManufacturer"),
     recycler: t("partners.typeRecycler"),
@@ -40,6 +45,9 @@ export default function PartnersPage() {
     activeType === "all"
       ? partners
       : partners.filter((p) => p.partnerType === activeType);
+
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_VISIBLE);
+  const hiddenCount = filtered.length - INITIAL_VISIBLE;
 
   return (
     <div className="min-h-screen pt-28 sm:pt-32 pb-16 bg-[var(--site-bg)]">
@@ -75,7 +83,7 @@ export default function PartnersPage() {
             return (
               <button
                 key={type}
-                onClick={() => setActiveType(type)}
+                onClick={() => { setActiveType(type); setShowAll(false); }}
                 className="rounded-lg px-4 py-2 text-xs font-semibold tracking-wider transition-all focus-visible:ring-2 focus-visible:ring-cyan-400"
                 style={isActive
                   ? { backgroundColor: "#0891b2", color: "#fff", border: "1px solid transparent" }
@@ -89,8 +97,8 @@ export default function PartnersPage() {
         </div>
 
         <AnimatePresence mode="popLayout">
-          <div className="space-y-5">
-            {filtered.map((partner, index) => (
+          <div className="space-y-5" ref={listRef}>
+            {visible.map((partner, index) => (
               <motion.div
                 key={partner.id}
                 id={partner.id}
@@ -250,6 +258,44 @@ export default function PartnersPage() {
             ))}
           </div>
         </AnimatePresence>
+
+        {/* Show more / show less */}
+        {filtered.length > INITIAL_VISIBLE && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-6 flex justify-center"
+          >
+            <button
+              onClick={() => {
+                if (showAll) {
+                  // Scroll back to top of list when collapsing
+                  listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => setShowAll(false), 300);
+                } else {
+                  setShowAll(true);
+                }
+              }}
+              className="group inline-flex items-center gap-2.5 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)", color: "var(--site-text-muted)" }}
+            >
+              {showAll ? (
+                <>
+                  {t("partners.showLess")}
+                  <ChevronDown className="w-4 h-4 rotate-180 transition-transform" />
+                </>
+              ) : (
+                <>
+                  {t("partners.showAll")}
+                  <span className="font-mono text-[11px] px-1.5 py-0.5 rounded" style={{ backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}>
+                    +{hiddenCount}
+                  </span>
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                </>
+              )}
+            </button>
+          </motion.div>
+        )}
 
         {filtered.length === 0 && (
           <div className="py-16 text-center">
