@@ -910,7 +910,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water · Slurry · Chemical Transfer",
     description:
       "Flexible PVC suction and delivery hose with rigid PVC spiral helix for shape retention under vacuum. Used for water, slurry, and light-chemical transfer in agriculture, construction, and industry. Handles up to −0.9 bar vacuum and positive delivery pressure.",
-    image: "/products/catalog/pvc-suction.jpg",
+    image: "",
     standards: ["ISO 9001"],
     keyProperties: {
       "Material": "PVC with rigid PVC helix",
@@ -1282,7 +1282,7 @@ export const productGroups: ProductGroup[] = [
     application: "Landscaping & Outdoor Décor",
     description:
       "A full catalogue of designer plastic planters and outdoor vases by Roto (North Macedonia). Styles include Edelweis, Stoniness, Teak, Modern, Samba, Balcone, Tulip, Margerita, Vase, Jazz, Rumba, Barrel and Nusa series — supplied in S / M / L / XL / XXL sizes with matching wall-mounted units and watering cans.",
-    image: "/products/catalog/roto-edelweis.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "UV-stabilised injection-moulded PE",
@@ -1323,7 +1323,7 @@ export const productGroups: ProductGroup[] = [
     application: "Spraying & Plant Treatment",
     description:
       "Polins doo, established in 1996 in Odžaci, Serbia, produces this manual pump-action garden sprayer for hobby and small-scale professional use in applying water-soluble plant-care agents — herbicides, insecticides, fungicides, and liquid fertilisers. Each unit includes a piston pump with a safety pressure-relief valve, a carrying strap, a spray hose with trigger handle, and an extension lance. Available in 5 L, 8 L, and 10 L tank capacities to match plot size.",
-    image: "/products/catalog/polins-manual.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Manufacturer": "Polins doo, Odžaci, Serbia (est. 1996)",
@@ -2125,7 +2125,7 @@ export const productGroups: ProductGroup[] = [
     application: "Plant Treatment & Spraying",
     description:
       "Polins doo manufactures a complete range of manual pump-action garden sprayers (Pompe Sperkatje). All models feature an HDPE tank, a manual piston pump with safety pressure-relief valve, carry strap, spray hose, trigger handle, and lance extension. The Clear variant (2 L) has a transparent tank for easy liquid level monitoring. All models are suitable for water-soluble herbicides, insecticides, fungicides, and liquid plant nutrition products.",
-    image: "/products/catalog/polins-manual.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Manufacturer": "Polins doo, Odžaci, Serbia (est. 1996)",
@@ -2262,7 +2262,7 @@ export const productGroups: ProductGroup[] = [
     application: "Milk · Honey · Food Liquid Storage",
     description:
       "Polins doo food-grade HDPE canisters (Bidon Mjalt + Qumesht) for safe storage of milk, honey, and food liquids on small farms and in dairy operations. Available in 5 L, 10 L, 15 L, and 20 L capacities with sealing lid.",
-    image: "/products/catalog/polins-milk-can.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Food-grade HDPE",
@@ -2304,7 +2304,7 @@ export const productGroups: ProductGroup[] = [
     application: "Drinking Water Storage & Transport",
     description:
       "HDPE water storage canisters (Bidon Uji) for drinking water and general purpose liquid storage. Available in 10 L and 20 L capacities. Stackable design with sealing cap.",
-    image: "/products/catalog/polins-water-canister.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "HDPE — food-grade",
@@ -2593,7 +2593,7 @@ export const productGroups: ProductGroup[] = [
     application: "Irrigation Inline Shut-Off",
     description:
       "Plastic inline stopcock valves (Saracineska) for PE and LDPE irrigation pipes. Types include standard SARACINESKA KALLAM, A&K (blue), Pipet 3158, Plote 3162, and Komplete with full pipe-fittings package. Sizes 16, 20, and 25 mm.",
-    image: "/products/catalog/palaplast-stopcock-valve.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Polypropylene (PP)",
@@ -2641,7 +2641,7 @@ export const productGroups: ProductGroup[] = [
     application: "Outdoor Décor & Landscaping",
     description:
       "Roto's Edelweis is a rectangular decorative planter with a natural stone-texture finish, available in Small, Large, and XL. The Edelweis Ovale is an oval variant, while Edelweis Round S/M offer round-body sizes. Made from UV-stabilised rotomoulded polypropylene for long outdoor use. A wall-mount Murale variant is also available.",
-    image: "/products/catalog/roto-edelweis.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "UV-stabilised rotomoulded PP",
@@ -2686,7 +2686,7 @@ export const productGroups: ProductGroup[] = [
     application: "Outdoor Décor & Landscaping",
     description:
       "Round textured stone-effect garden planter. The Stoniness range comes in four sizes — S, M, L, and XL — for use on terraces, balconies, and around landscaped beds. UV-stabilised rotomoulded polypropylene.",
-    image: "/products/catalog/roto-stoniness.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "UV-stabilised rotomoulded PP",
@@ -2727,7 +2727,7 @@ export const productGroups: ProductGroup[] = [
     application: "Indoor & Outdoor Décor",
     description:
       "Round Jazz garden planter in three sizes. Sleek design suitable for indoor and outdoor placement. Dimensions: S Ø 300 × 270 mm · M Ø 490 × 350 mm · L Ø 500 × 430 mm.",
-    image: "/products/catalog/roto-stoniness.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Rotomoulded PP",
@@ -2847,7 +2847,7 @@ export const productGroups: ProductGroup[] = [
     application: "Outdoor Décor & Landscaping",
     description:
       "Rectangular ribbed Nusa planter and round Nusa variant. The Squareds S, S, XL and Round versions cover small balcony to large terrace use.",
-    image: "/products/catalog/roto-nusa.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Rotomoulded PP",
@@ -2887,7 +2887,7 @@ export const productGroups: ProductGroup[] = [
     application: "Outdoor Décor & Garden Ornaments",
     description:
       "A broad range of Roto novelty decorative planters and garden ornaments — Tulip (S/L/XL), Shoe (Kepuce S/L), Elephant, Sack (Thes), Vase (S/M/L), Margerita (S/M/L), Bell (S/M/L), Amphora, Herb, Shell (Guacke), Snail (Kermill S/L), Swan (Mjelme S/L), Donkey (Gomari), Carriage (Karroce), and Sea Girl (Vajze Deti). For statement landscaping and decorative garden displays.",
-    image: "/products/catalog/roto-tulip.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Rotomoulded PP",
@@ -3027,7 +3027,7 @@ export const productGroups: ProductGroup[] = [
     application: "Vertical Water Storage",
     description:
       "Vertical oval HDPE water storage tank (Cisterna TCW / Barrel TCW). Capacities from 70 L to 750 L. The TCW 750 L variant is supplied in black for UV protection. Vertical form factor suits narrow installation spaces.",
-    image: "/products/catalog/roto-tcw-tank.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Rotomoulded HDPE",
@@ -3071,7 +3071,7 @@ export const productGroups: ProductGroup[] = [
     application: "Large-Volume Water Storage",
     description:
       "Large-capacity HDPE storage tanks for water. Sizes 2500 L, 3500 L, and 5000 L. Connector kits (Bashkuese) are available for the 5000 L tank in 400×200 and 600×200 configurations to chain multiple tanks for higher total capacity.",
-    image: "/products/catalog/roto-plastik-large.jpg",
+    image: "",
     standards: [],
     keyProperties: {
       "Material": "Rotomoulded HDPE",
@@ -3453,7 +3453,7 @@ export const productGroups: ProductGroup[] = [
     application: "Rainwater Drainage",
     description:
       "PVC rectangular gutters and downpipes for rainwater drainage. Full system including brackets, connectors, and corner pieces. Made in Albania at Confort's Durrës facility.",
-    image: "/products/catalog/confort-gutter.jpg",
+    image: "",
     standards: ["ISO 9001:2015"],
     keyProperties: {
       "Material": "PVC",
@@ -3490,7 +3490,7 @@ export const productGroups: ProductGroup[] = [
     application: "Underground Sewage Inspection",
     description:
       "Polypropylene manholes and inspection sumps for underground sewage systems. Made in Albania at Confort's Durrës facility. All products in stock.",
-    image: "/products/catalog/confort-pp-manhole.jpeg",
+    image: "",
     standards: ["ISO 9001:2015"],
     keyProperties: {
       "Material": "PP (polypropylene)",

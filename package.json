@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:images": "node scripts/audit-product-images.mjs",
+    "download:product-images": "node scripts/download-product-images.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

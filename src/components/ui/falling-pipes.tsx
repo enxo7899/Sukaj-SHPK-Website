@@ -49,46 +49,24 @@ export function FallingPipes() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[360px] w-full overflow-hidden rounded-2xl border border-white/[0.06] sm:h-[420px] lg:h-[500px] xl:h-[540px]"
-      style={{
-        boxShadow:
-          "inset 0 0 20px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.4)",
-      }}
+      className="relative h-[360px] w-full overflow-hidden rounded-2xl border border-white/[0.07] sm:h-[420px] lg:h-[500px] xl:h-[540px]"
       aria-hidden="true"
     >
-      {/* Stage spotlight from above — dramatic top-down lighting */}
+      {/* Single soft top spotlight */}
       <div
         className="pointer-events-none absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse 80% 40% at 50% -5%, rgba(148,163,184,0.07) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Warm accent glow where pipes accumulate */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: "radial-gradient(ellipse 70% 50% at 50% 85%, rgba(14,165,233,0.06) 0%, transparent 60%)",
-        }}
-      />
-
-      {/* Ground accumulation shadow — darker pool where pipes rest */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[18%]"
         style={{
           background:
-            "radial-gradient(ellipse 65% 100% at 50% 100%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, transparent 80%)",
+            "radial-gradient(ellipse 70% 35% at 50% 0%, rgba(148,163,184,0.05) 0%, transparent 75%)",
         }}
       />
 
-      {/* Ground reflection — subtle lit surface */}
+      {/* Single ground shadow pool */}
       <div
-        className="pointer-events-none absolute inset-x-[8%] rounded-full"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[20%]"
         style={{
-          bottom: "18px",
-          height: "24px",
-          background: "radial-gradient(ellipse at center, rgba(148,163,184,0.06) 0%, transparent 70%)",
-          filter: "blur(12px)",
+          background:
+            "radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.18) 55%, transparent 85%)",
         }}
       />
 

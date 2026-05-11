@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MapPin, Navigation, ExternalLink, Building2, Warehouse, Package } from "lucide-react";
 import { locations } from "@/lib/data";
+import { useTranslation } from "@/lib/i18n/context";
 
 const locationIcons: Record<string, typeof Building2> = {
   "shkoder": Building2,
@@ -12,6 +13,7 @@ const locationIcons: Record<string, typeof Building2> = {
 };
 
 export function LocationsSection() {
+  const { t } = useTranslation();
   const [activeLocation, setActiveLocation] = useState(locations[1].id); // Default to HQ
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -48,29 +50,17 @@ export function LocationsSection() {
           <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Our Presence
+              {t("locations.eyebrow")}
             </span>
           </div>
           <h2
             className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            Three Locations
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-              }}
-            >
-              across Albania.
-            </span>
+            {t("locations.title")}
           </h2>
           <p className="text-slate-400 max-w-xl text-base leading-relaxed">
-            Strategically positioned for fast delivery — from Shkodër in the north
-            to Tirana in the center, with regional coverage in between.
+            {t("locations.subtitle")}
           </p>
         </motion.div>
 
@@ -157,7 +147,7 @@ export function LocationsSection() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Navigation className="h-3 w-3" />
-                      Get directions
+                      {t("locations.getDirections")}
                       <ExternalLink className="h-2.5 w-2.5 opacity-60" />
                     </a>
                   </div>
@@ -203,7 +193,7 @@ export function LocationsSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:border-cyan-500/30 hover:text-cyan-400"
               >
-                Open in Google Maps
+                {t("locations.openInGoogleMaps")}
                 <ExternalLink className="h-3 w-3" />
               </a>
             </div>

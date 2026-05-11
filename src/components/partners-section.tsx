@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { partners, partnerTypeLabels, type PartnerType } from "@/lib/data";
 import { Marquee } from "@/components/ui/marquee";
+import { useTranslation } from "@/lib/i18n/context";
 
 const typeOrder: PartnerType[] = [
   "manufacturer",
@@ -68,6 +69,7 @@ function PartnerCard({
   index: number;
   inView: boolean;
 }) {
+  const { t } = useTranslation();
   const accent = typeAccent[partner.partnerType];
   const isExternal = partner.website.startsWith("http");
   return (
@@ -164,7 +166,7 @@ function PartnerCard({
           href={`/catalog?partner=${partner.id}`}
           className="group/link inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 transition-colors hover:text-cyan-400"
         >
-          View products
+          {t("catalog.viewDetails")}
           <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200" />
         </Link>
         {isExternal && (
@@ -185,14 +187,15 @@ function PartnerCard({
 }
 
 export function PartnersSection() {
+  const { t } = useTranslation();
   const [active, setActive] = useState<Filter>(ALL);
   const [isPaused, setIsPaused] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const inView = useInView(gridRef, { once: true, margin: "-80px" });
 
   const tabs: { id: Filter; label: string }[] = [
-    { id: ALL, label: "All Partners" },
-    ...typeOrder.map((t) => ({ id: t, label: partnerTypeLabels[t] })),
+    { id: ALL, label: t("partners.allPartners") },
+    ...typeOrder.map((pt) => ({ id: pt, label: partnerTypeLabels[pt] })),
   ];
 
   const visible =
@@ -242,7 +245,7 @@ export function PartnersSection() {
           <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Partner Network
+              {t("partners.eyebrow")}
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
@@ -251,21 +254,10 @@ export function PartnersSection() {
                 className="font-black text-white leading-[1.05] tracking-tight mb-4 max-w-2xl"
                 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
               >
-                Strategic Partners{" "}
-                <span
-                  style={{
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-                  }}
-                >
-                  across 7 countries.
-                </span>
+                {t("partners.title")}
               </h2>
               <p className="text-slate-400 max-w-lg text-base leading-relaxed">
-                12 manufacturing and processing partners — from Italy to Turkey —
-                covering every pipe, hose, film, and packaging need.
+                {t("partners.subtitle")}
               </p>
             </div>
             {/* Summary stats for desktop */}
@@ -381,17 +373,14 @@ export function PartnersSection() {
         <div className="mt-14 sm:mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-t border-white/[0.06] pt-10">
           <div>
             <p className="text-sm text-slate-400 mb-1">
-              Explore our complete product range from all partners.
-            </p>
-            <p className="text-xs text-slate-600">
-              Filter by material, application, or partner.
+              {t("catalog.pageSubtitle")}
             </p>
           </div>
           <Link
             href="/catalog"
             className="group inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-cyan-500 hover:-translate-y-px hover:shadow-lg hover:shadow-cyan-600/20"
           >
-            Browse Full Catalog
+            {t("hero.ctaCatalog")}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>

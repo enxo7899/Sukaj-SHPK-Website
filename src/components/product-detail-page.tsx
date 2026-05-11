@@ -22,26 +22,24 @@ import {
 import type { ProductGroup, SupplierOffer, DimensionRow } from "@/lib/products-data";
 import { productGroups } from "@/lib/products-data";
 import { partners } from "@/lib/data";
+import { useTranslation } from "@/lib/i18n/context";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const availConfig = {
+const availConfigBase = {
   "in-stock": {
-    label: "In Stock",
     color: "#22c55e",
     bg: "rgba(34,197,94,0.12)",
     border: "rgba(34,197,94,0.3)",
     Icon: CheckCircle2,
   },
   partial: {
-    label: "Partial Stock",
     color: "#facc15",
     bg: "rgba(250,204,21,0.12)",
     border: "rgba(250,204,21,0.3)",
     Icon: Clock,
   },
   "on-order": {
-    label: "On Order",
     color: "#f97316",
     bg: "rgba(249,115,22,0.12)",
     border: "rgba(249,115,22,0.3)",
@@ -49,38 +47,37 @@ const availConfig = {
   },
 } as const;
 
-const rowAvailConfig = {
+const rowAvailConfigBase = {
   stock: {
     row: "",
     text: "text-white",
     dot: "bg-green-500",
-    label: "In Stock",
   },
   partial: {
     row: "bg-cyan-500/[0.02]",
     text: "text-cyan-200",
     dot: "bg-yellow-400",
-    label: "Partial",
   },
   order: {
     row: "bg-orange-500/[0.015]",
     text: "text-slate-400",
     dot: "bg-orange-500",
-    label: "On Order",
   },
 } as const;
 
-const categoryMeta = {
-  civil: { Icon: Building2, color: "#0891b2", label: "Civil Infrastructure" },
-  agri: { Icon: Sprout, color: "#22c55e", label: "Agriculture" },
-  industrial: { Icon: Factory, color: "#22d3ee", label: "Industrial" },
+const categoryMetaBase = {
+  civil: { Icon: Building2, color: "#0891b2" },
+  agri: { Icon: Sprout, color: "#22c55e" },
+  industrial: { Icon: Factory, color: "#22d3ee" },
 } as const;
 
 // ─── Supplier Card ─────────────────────────────────────────────────────────────
 
 function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
-  const cfg = availConfig[supplier.availability];
-  const { Icon } = cfg;
+  const { t } = useTranslation();
+  const base = availConfigBase[supplier.availability];
+  const { Icon } = base;
+  const cfg = { ...base, label: supplier.availability === "in-stock" ? t("catalog.inStock") : supplier.availability === "partial" ? t("catalog.partial") : t("catalog.onOrder") };
 
   return (
     <div
@@ -137,7 +134,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
         {(supplier.diameterMin > 0 || supplier.diameterMax > 0) && (
           <div className="rounded-xl bg-white/[0.04] border border-white/[0.06] px-4 py-3">
             <span className="block text-[9px] font-mono text-slate-500 tracking-widest mb-1">
-              DIAMETER RANGE
+              {t("productDetail.diameterRange").toUpperCase()}
             </span>
             <span className="text-sm font-bold font-mono" style={{ color: supplier.color }}>
               Ø {supplier.diameterMin}–{supplier.diameterMax} mm
@@ -210,7 +207,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
           }}
         >
           <Send className="w-3.5 h-3.5" />
-          Request Quote
+          {t("productDetail.requestQuote")}
         </Link>
       </div>
     </div>
@@ -219,7 +216,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 
 // ─── Dimension Table ───────────────────────────────────────────────────────────
 
-function DimensionTable({ rows }: { rows: DimensionRow[] }) {
+function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inStock: string; partial: string; onOrder: string; status: string } }) {
   const wallClasses = Array.from(
     new Set(rows.flatMap((r) => Object.keys(r.wallByClass ?? {})))
   );
@@ -272,13 +269,14 @@ function DimensionTable({ rows }: { rows: DimensionRow[] }) {
               </th>
             )}
             <th className="px-4 py-3 text-center font-mono text-[10px] tracking-widest text-slate-500 uppercase whitespace-nowrap">
-              Status
+              {labels.status}
             </th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => {
-            const cfg = rowAvailConfig[row.available];
+            const base = rowAvailConfigBase[row.available];
+            const cfg = { ...base, label: row.available === "stock" ? labels.inStock : row.available === "partial" ? labels.partial : labels.onOrder };
             return (
               <tr
                 key={row.dn}
@@ -350,14 +348,16 @@ function DimensionTable({ rows }: { rows: DimensionRow[] }) {
 
 export function ProductDetailPage({ product }: { product: ProductGroup }) {
   const [imageError, setImageError] = useState(false);
-  const catMeta = categoryMeta[product.category];
-  const CatIcon = catMeta.Icon;
+  const { t, tp } = useTranslation();
+  const catBase = categoryMetaBase[product.category];
+  const CatIcon = catBase.Icon;
+  const catMeta = { ...catBase, label: product.category === "civil" ? t("categories.civilName") : product.category === "agri" ? t("categories.agriName") : t("categories.industrialName") };
 
   const relatedProducts = productGroups
     .filter((g) => g.id !== product.id && g.category === product.category)
     .slice(0, 3);
 
-  const overallAvailability: keyof typeof availConfig = (() => {
+  const overallAvailability: keyof typeof availConfigBase = (() => {
     if (product.suppliers.every((s) => s.availability === "in-stock"))
       return "in-stock";
     if (
@@ -369,16 +369,16 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
     return "on-order";
   })();
 
-  const availCfg = availConfig[overallAvailability];
+  const availCfg = availConfigBase[overallAvailability];
 
   return (
     <main className="min-h-screen bg-slate-950">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <div className="relative h-[52vh] min-h-[380px] overflow-hidden">
-        {!imageError ? (
+        {!imageError && product.image ? (
           <Image
             src={product.image}
-            alt={product.name}
+            alt={tp(product.id, "name", product.name)}
             fill
             priority
             className="object-cover opacity-35"
@@ -408,7 +408,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             className="inline-flex items-center gap-1.5 text-slate-500 hover:text-white text-xs font-mono mb-5 transition-colors group"
           >
             <ChevronRight className="w-3 h-3 rotate-180 group-hover:-translate-x-0.5 transition-transform" />
-            Back to Catalog
+            {t("productDetail.backToCatalog")}
           </Link>
 
           <div className="flex flex-wrap items-center gap-2.5 mb-3">
@@ -436,8 +436,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                 className="w-1.5 h-1.5 rounded-full"
                 style={{ background: availCfg.color }}
               />
-              {product.suppliers.length} supplier
-              {product.suppliers.length !== 1 ? "s" : ""}
+              {product.suppliers.length} {product.suppliers.length === 1 ? t("catalog.supplierOne") : t("catalog.suppliers")}
             </span>
           </div>
 
@@ -445,7 +444,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             className="font-black text-white leading-[1.05] tracking-tight mb-3"
             style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
           >
-            {product.name}
+            {tp(product.id, "name", product.name)}
           </h1>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -475,11 +474,11 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             <div className="flex items-center gap-2 mb-3">
               <div className="h-px w-6 bg-cyan-500/50" />
               <span className="font-mono text-[10px] tracking-widest text-cyan-400/80 uppercase">
-                Product Overview
+                {t("productDetail.overview")}
               </span>
             </div>
             <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
-              {product.description}
+              {tp(product.id, "description", product.description)}
             </p>
 
             {product.tags && product.tags.length > 0 && (
@@ -501,7 +500,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
               <div className="flex items-center gap-2 px-5 py-3.5 border-b border-white/[0.08] bg-slate-950/40">
                 <Shield className="w-4 h-4 text-cyan-400" />
                 <span className="text-[11px] font-mono text-slate-400 tracking-wider uppercase">
-                  Technical Specifications
+                  {t("productDetail.keyProperties")}
                 </span>
               </div>
               <table className="w-full">
@@ -531,16 +530,16 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             <div className="h-px flex-1 bg-white/[0.06]" />
             <div className="flex items-center gap-2.5 shrink-0">
               <Globe className="w-4 h-4 text-cyan-400" />
-              <h2 className="text-lg font-bold text-white">Available From</h2>
+              <h2 className="text-lg font-bold text-white">{t("productDetail.suppliers")}</h2>
               <span className="rounded-full bg-cyan-500/10 border border-cyan-500/25 px-2.5 py-0.5 text-xs font-bold text-cyan-400">
                 {product.suppliers.length}{" "}
-                {product.suppliers.length === 1 ? "supplier" : "suppliers"}
+                {product.suppliers.length === 1 ? t("catalog.supplierOne") : t("catalog.suppliers")}
               </span>
             </div>
             <div className="h-px flex-1 bg-white/[0.06]" />
           </div>
           <p className="text-center text-xs text-slate-600 font-mono mb-8">
-            All suppliers ship across Albania · Kosovo · North Macedonia · Balkans
+            {t("productDetail.suppliersAvailable")}
           </p>
 
           <div
@@ -571,11 +570,10 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs uppercase tracking-wider text-cyan-300/80 font-mono mb-1">
-                      Cross-Supplier Equivalent
+                      {t("productDetail.alsoAvailableFrom")}
                     </p>
                     <p className="text-sm text-slate-200 mb-3">
-                      An equivalent product is also available from{" "}
-                      {alsoPartners.length > 1 ? "these partners" : "this partner"}:
+                      {t("productDetail.alsoAvailableFrom")}:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {alsoPartners.map((p) => (
@@ -603,23 +601,23 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <Ruler className="w-5 h-5 text-cyan-400 shrink-0" />
-              <h2 className="text-lg font-bold text-white">Dimension Table</h2>
+              <h2 className="text-lg font-bold text-white">{t("productDetail.dimensions")}</h2>
               <div className="ml-auto flex flex-wrap items-center gap-x-5 gap-y-2">
                 <span className="flex items-center gap-1.5 text-xs text-slate-400">
                   <span className="h-2 w-2 rounded-full bg-green-500" />
-                  In Stock
+                  {t("catalog.inStock")}
                 </span>
                 <span className="flex items-center gap-1.5 text-xs text-slate-400">
                   <span className="h-2 w-2 rounded-full bg-yellow-400" />
-                  Partial
+                  {t("catalog.partial")}
                 </span>
                 <span className="flex items-center gap-1.5 text-xs text-slate-400">
                   <span className="h-2 w-2 rounded-full bg-orange-500" />
-                  On Order
+                  {t("catalog.onOrder")}
                 </span>
               </div>
             </div>
-            <DimensionTable rows={product.dimensions} />
+            <DimensionTable rows={product.dimensions} labels={{ inStock: t("catalog.inStock"), partial: t("catalog.partial"), onOrder: t("catalog.onOrder"), status: "Status" }} />
           </div>
         )}
 
@@ -627,7 +625,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
         {relatedProducts.length > 0 && (
           <div>
             <div className="flex items-center justify-between mb-5">
-              <h2 className="text-lg font-bold text-white">Related Products</h2>
+              <h2 className="text-lg font-bold text-white">{t("productDetail.relatedProducts")}</h2>
               <Link
                 href={`/catalog?category=${product.category}`}
                 className="text-xs text-cyan-400 hover:text-cyan-300 font-mono flex items-center gap-1 transition-colors"
@@ -638,7 +636,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {relatedProducts.map((related) => {
-                const relCat = categoryMeta[related.category];
+                const relCat = categoryMetaBase[related.category];
                 const RelIcon = relCat.Icon;
                 return (
                   <Link
@@ -664,14 +662,13 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                       </div>
                       <div className="min-w-0">
                         <p className="font-bold text-sm text-white group-hover:text-cyan-300 transition-colors leading-snug">
-                          {related.shortName}
+                          {tp(related.id, "shortName", related.shortName)}
                         </p>
                         <p className="text-xs text-slate-500 mt-0.5 truncate">
                           {related.application}
                         </p>
                         <p className="text-[11px] text-slate-600 mt-1">
-                          {related.suppliers.length} supplier
-                          {related.suppliers.length !== 1 ? "s" : ""}
+                          {related.suppliers.length} {related.suppliers.length === 1 ? t("catalog.supplierOne") : t("catalog.suppliers")}
                         </p>
                       </div>
                     </div>
@@ -694,15 +691,13 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           />
           <div className="relative">
             <p className="font-mono text-[11px] tracking-[0.25em] text-cyan-400/70 uppercase mb-3">
-              Ready to order?
+              {t("cta.eyebrow")}
             </p>
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
-              Get exact pricing &amp; lead times
+              {t("cta.title")}
             </h2>
             <p className="text-slate-400 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
-              Tell us your dimensions and quantity — we&apos;ll come back with
-              confirmed availability and pricing from all relevant suppliers,
-              usually within 24 hours.
+              {t("cta.subtitle")}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
@@ -710,14 +705,14 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                 className="inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white hover:bg-cyan-500 transition-colors"
               >
                 <Send className="w-4 h-4" />
-                Request Quote
+                {t("productDetail.requestQuote")}
               </Link>
               <Link
                 href="/catalog"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 text-sm text-white hover:bg-white/[0.08] transition-colors"
               >
                 <Layers className="w-4 h-4 text-slate-400" />
-                Browse Catalog
+                {t("catalog.pageTitle")}
               </Link>
             </div>
           </div>

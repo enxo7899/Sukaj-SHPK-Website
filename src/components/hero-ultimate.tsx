@@ -8,8 +8,10 @@ import Image from "next/image";
 import { company } from "@/lib/data";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import { FallingPipes } from "@/components/ui/falling-pipes";
+import { useTranslation } from "@/lib/i18n/context";
 
 export function HeroUltimate() {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -80,9 +82,9 @@ export function HeroUltimate() {
           >
             {/* Eyebrow */}
             <motion.div variants={item} className="flex items-center gap-3 mb-8">
-              <div className="h-px w-6 bg-cyan-500/60" />
+              <div className="h-px w-8 bg-cyan-500/60" />
               <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-                Shkodër, Albania — Est. {company.established}
+                {t("hero.eyebrow")} {company.established}
               </span>
             </motion.div>
 
@@ -105,7 +107,7 @@ export function HeroUltimate() {
               className="font-black text-white leading-[1.05] tracking-tight mb-6"
               style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}
             >
-              Premium Pipe Solutions
+              {t("hero.headline1")}
               <br />
               <span
                 style={{
@@ -116,7 +118,7 @@ export function HeroUltimate() {
                     "linear-gradient(90deg, #22d3ee 0%, #0891b2 50%, #38bdf8 100%)",
                 }}
               >
-                Built for the Balkans.
+                {t("hero.headline2")}
               </span>
             </motion.h1>
 
@@ -125,15 +127,13 @@ export function HeroUltimate() {
               variants={item}
               className="text-base sm:text-lg text-slate-400 leading-relaxed mb-12"
             >
-              Leading importer and wholesaler of HDPE, PP, and PVC pipe systems.
-              From sewage to irrigation, we deliver European-grade infrastructure
-              solutions partnering with&nbsp;
+              {t("hero.description")}&nbsp;
               <span className="text-slate-200 font-medium">
-                {company.stats.partnersCount} manufacturers
+                {company.stats.partnersCount} {t("hero.descriptionPartners")}
               </span>{" "}
-              across&nbsp;
+              {t("hero.descriptionAcross")}&nbsp;
               <span className="text-slate-200 font-medium">
-                {company.stats.countriesServed} countries
+                {company.stats.countriesServed} {t("hero.descriptionCountries")}
               </span>
               .
             </motion.p>
@@ -147,14 +147,14 @@ export function HeroUltimate() {
               href="/catalog"
               className="group inline-flex items-center gap-2 rounded-xl bg-cyan-600 px-8 py-4 text-sm font-bold text-white transition-all duration-200 hover:bg-cyan-500 hover:-translate-y-px hover:shadow-xl hover:shadow-cyan-700/30"
             >
-              Explore Catalog
+              {t("hero.ctaCatalog")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 rounded-xl border border-white/15 px-8 py-4 text-sm font-medium text-slate-300 transition-all duration-200 hover:border-white/30 hover:text-white hover:-translate-y-px"
             >
-              Request a Quote
+              {t("hero.ctaQuote")}
               <ArrowUpRight className="h-4 w-4 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-px group-hover:-translate-y-px" />
             </Link>
           </motion.div>

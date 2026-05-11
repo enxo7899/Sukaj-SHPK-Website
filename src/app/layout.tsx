@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { I18nProvider } from "@/lib/i18n/context";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -125,7 +126,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="sq" className="scroll-smooth">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-slate-950 text-slate-50 overflow-x-hidden`}
       >
@@ -134,16 +135,18 @@ export default function RootLayout({
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <a href="#main-content" className="skip-to-content">
-          Skip to main content
-        </a>
-        <div className="relative min-h-screen">
-          <Navigation />
-          <main id="main-content" role="main" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <I18nProvider>
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
+          <div className="relative min-h-screen">
+            <Navigation />
+            <main id="main-content" role="main" tabIndex={-1}>
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </I18nProvider>
       </body>
     </html>
   );

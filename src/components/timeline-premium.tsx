@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import { Calendar, Award, TrendingUp, Globe } from "lucide-react";
 import { timeline } from "@/lib/data";
+import { useTranslation } from "@/lib/i18n/context";
 
 const milestoneIcons = [Calendar, Award, TrendingUp, Globe];
 
 export function TimelinePremium() {
+  const { t } = useTranslation();
   return (
     <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-[#020617]">
       {/* Background */}
@@ -26,7 +28,7 @@ export function TimelinePremium() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Our Journey
+              {t("timeline.eyebrow")}
             </span>
             <div className="h-px w-8 bg-cyan-500/60" />
           </div>
@@ -35,18 +37,7 @@ export function TimelinePremium() {
             className="font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-6"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            Three Decades of
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage: "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-              }}
-            >
-              Excellence.
-            </span>
+            {t("timeline.title")}
           </h2>
         </motion.div>
 

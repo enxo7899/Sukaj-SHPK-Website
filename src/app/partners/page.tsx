@@ -15,6 +15,7 @@ import {
   Shield,
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "@/lib/i18n/context";
 
 const allTypes: (PartnerType | "all")[] = [
   "all",
@@ -26,6 +27,7 @@ const allTypes: (PartnerType | "all")[] = [
 ];
 
 export default function PartnersPage() {
+  const { t } = useTranslation();
   const [activeType, setActiveType] = useState<PartnerType | "all">("all");
 
   const filtered =
@@ -43,28 +45,28 @@ export default function PartnersPage() {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-400 tracking-wider mb-6">
-            PARTNER DIRECTORY
+            {t("partners.pageEyebrow")}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
-            REGIONAL EXCELLENCE.
+            {t("partners.pageTitle")}
           </h1>
           <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-            12 manufacturing and supply partners across Albania, Kosovo, North Macedonia, Serbia, Greece, Italy, and Turkey.
+            {t("partners.pageSubtitle")}
           </p>
         </motion.div>
 
         {/* Filter tabs */}
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {allTypes.map((type) => {
-            const label = type === "all" ? "All Partners" : partnerTypeLabels[type];
+            const label = type === "all" ? t("partners.allPartners") : partnerTypeLabels[type];
             const isActive = activeType === type;
             return (
               <button
                 key={type}
                 onClick={() => setActiveType(type)}
-                className={`rounded-lg px-4 py-2 text-xs font-semibold tracking-wider transition-colors focus-visible:ring-2 focus-visible:ring-orange-400 ${
+                className={`rounded-lg px-4 py-2 text-xs font-semibold tracking-wider transition-colors focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                   isActive
-                    ? "bg-orange-500 text-slate-950"
+                    ? "bg-cyan-600 text-white"
                     : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/10"
                 }`}
               >
@@ -118,7 +120,7 @@ export default function PartnersPage() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300"
                             >
-                              Website <ExternalLink className="w-3 h-3" />
+                              {t("partners.website")} <ExternalLink className="w-3 h-3" />
                             </a>
                           )}
                         </div>
@@ -175,7 +177,7 @@ export default function PartnersPage() {
                     <div className="space-y-3">
                       <div className="p-4 rounded-xl bg-white/5">
                         <span className="text-[10px] font-mono text-slate-500 block mb-1 tracking-wider">
-                          SPECIALTY
+                          {t("partners.specialty")}
                         </span>
                         <span className="text-sm text-white">{partner.specialty}</span>
                       </div>
@@ -183,7 +185,7 @@ export default function PartnersPage() {
                       {partner.maxDiameter && (
                         <div className="p-4 rounded-xl bg-white/5">
                           <span className="text-[10px] font-mono text-slate-500 block mb-1 tracking-wider">
-                            MAX DIAMETER
+                            {t("partners.maxDiameter")}
                           </span>
                           <span className="text-xl font-bold text-white">
                             {partner.maxDiameter}
@@ -194,7 +196,7 @@ export default function PartnersPage() {
                       {partner.keyStandards.length > 0 && (
                         <div className="p-4 rounded-xl bg-white/5">
                           <span className="text-[10px] font-mono text-slate-500 block mb-2 tracking-wider">
-                            KEY STANDARDS
+                            {t("partners.keyStandards")}
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {partner.keyStandards.map((s) => (
@@ -213,9 +215,9 @@ export default function PartnersPage() {
 
                     <Link
                       href={`/catalog?partner=${partner.id}`}
-                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-orange-500/10 border border-orange-500/20 hover:bg-orange-500/20 transition-all text-sm font-semibold text-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/20 transition-all text-sm font-semibold text-cyan-400 focus-visible:ring-2 focus-visible:ring-cyan-400"
                     >
-                      View Products
+                      {t("partners.viewProducts")}
                       <ArrowUpRight className="w-4 h-4" />
                     </Link>
                   </div>
@@ -227,12 +229,12 @@ export default function PartnersPage() {
 
         {filtered.length === 0 && (
           <div className="py-16 text-center">
-            <p className="text-slate-400">No partners in this category.</p>
+            <p className="text-slate-400">{t("partners.noPartners")}</p>
             <button
               onClick={() => setActiveType("all")}
-              className="mt-3 text-sm text-orange-400 hover:text-orange-300"
+              className="mt-3 text-sm text-cyan-400 hover:text-cyan-300"
             >
-              Show all partners
+              {t("partners.showAll")}
             </button>
           </div>
         )}

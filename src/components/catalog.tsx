@@ -17,23 +17,22 @@ import {
   Clock,
   Package,
   ArrowRight,
-  Globe,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { productGroups, type ProductGroup } from "@/lib/products-data";
 import { partners, categories } from "@/lib/data";
 import { Slider } from "@/components/ui/slider";
-
-// ─── Derived filter options ───────────────────────────────────────────────────
-
-const materials = Array.from(
-  new Set(productGroups.map((p) => p.material))
-).sort();
-
-const applications = Array.from(
-  new Set(productGroups.map((p) => p.application))
-).sort();
+import {
+  materialFamilies,
+  applicationFamilies,
+  quickFilters,
+  getMaterialFamily,
+  getApplicationFamily,
+  matchesMaterialFamily,
+  matchesApplicationFamily,
+} from "@/lib/catalog-filters";
+import { useTranslation } from "@/lib/i18n/context";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -53,6 +52,45 @@ const categoryLabels: Record<string, string> = {
   civil: "Civil",
   agri: "Agriculture",
   industrial: "Industrial",
+};
+
+// Mapping of filter family IDs to translation keys (kept here to avoid
+// re-exporting from the data-only catalog-filters lib).
+const materialFamilyTranslationKeys: Record<string, string> = {
+  "pe-hdpe": "catalog.matPeHdpe",
+  pp: "catalog.matPp",
+  pvc: "catalog.matPvc",
+  rubber: "catalog.matRubber",
+  other: "catalog.matOther",
+};
+
+const applicationFamilyTranslationKeys: Record<string, string> = {
+  "water-pressure": "catalog.appWaterPressure",
+  "sewage-drainage": "catalog.appSewageDrainage",
+  irrigation: "catalog.appIrrigation",
+  "cable-telecom": "catalog.appCableTelecom",
+  "storage-tanks": "catalog.appStorageTanks",
+  "industrial-transfer": "catalog.appIndustrialTransfer",
+  "packaging-construction": "catalog.appPackagingConstruction",
+  "outdoor-decor": "catalog.appOutdoorDecor",
+  gas: "catalog.appGas",
+  fittings: "catalog.appFittings",
+  "other-app": "catalog.appOther",
+};
+
+const quickFilterTranslationKeys: Record<string, string> = {
+  "in-stock": "catalog.qfInStock",
+  civil: "catalog.qfCivil",
+  agriculture: "catalog.qfAgriculture",
+  industrial: "catalog.qfIndustrial",
+  "large-diameter": "catalog.qfLargeDiameter",
+  pressure: "catalog.qfPressureSystems",
+};
+
+const categoryTranslationKeys: Record<string, string> = {
+  civil: "catalog.qfCivil",
+  agri: "catalog.qfAgriculture",
+  industrial: "catalog.qfIndustrial",
 };
 
 const availBadge = {
@@ -83,8 +121,12 @@ type SortKey = "relevant" | "suppliers-desc" | "dia-asc" | "dia-desc";
 
 interface FilterState {
   search: string;
-  materials: string[];
-  applications: string[];
+  /** Material family IDs (e.g. "pe-hdpe") */
+  materialFamilies: string[];
+  /** Application family IDs */
+  applicationFamilies: string[];
+  /** Quick filter IDs */
+  quick: string[];
   diameterRange: [number, number];
   category: string | null;
   partnerId: string | null;
@@ -92,8 +134,9 @@ interface FilterState {
 
 const defaultFilters: FilterState = {
   search: "",
-  materials: [],
-  applications: [],
+  materialFamilies: [],
+  applicationFamilies: [],
+  quick: [],
   diameterRange: [0, 2000],
   category: null,
   partnerId: null,
@@ -102,8 +145,9 @@ const defaultFilters: FilterState = {
 function hasActiveFilters(f: FilterState) {
   return (
     f.search !== "" ||
-    f.materials.length > 0 ||
-    f.applications.length > 0 ||
+    f.materialFamilies.length > 0 ||
+    f.applicationFamilies.length > 0 ||
+    f.quick.length > 0 ||
     f.category !== null ||
     f.partnerId !== null ||
     f.diameterRange[0] !== 0 ||
@@ -127,9 +171,30 @@ function groupAvailability(
   return "on-order";
 }
 
+// ─── Counts per family (for sidebar badges) ─────────────────────────────────
+
+function countByMaterialFamily() {
+  const counts: Record<string, number> = {};
+  for (const p of productGroups) {
+    const id = getMaterialFamily(p.material).id;
+    counts[id] = (counts[id] ?? 0) + 1;
+  }
+  return counts;
+}
+
+function countByApplicationFamily() {
+  const counts: Record<string, number> = {};
+  for (const p of productGroups) {
+    const id = getApplicationFamily(p.application).id;
+    counts[id] = (counts[id] ?? 0) + 1;
+  }
+  return counts;
+}
+
 // ─── Product Group Card ───────────────────────────────────────────────────────
 
 function ProductGroupCard({ group }: { group: ProductGroup }) {
+  const { t, tp } = useTranslation();
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
   const catColor = categoryColors[group.category] ?? "#0891b2";
@@ -137,11 +202,20 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
   const avail = groupAvailability(group);
   const cfg = availBadge[avail];
   const { Icon: AvailIcon } = cfg;
+  const availLabel = t(
+    avail === "in-stock"
+      ? "catalog.inStock"
+      : avail === "partial"
+        ? "catalog.partial"
+        : "catalog.onOrder",
+  );
+  const categoryTransKey = categoryTranslationKeys[group.category];
+  const categoryLabel = categoryTransKey
+    ? t(categoryTransKey)
+    : (categoryLabels[group.category] ?? group.category);
 
   // diameter range across all suppliers
-  const supplierDiams = group.suppliers.filter(
-    (s) => s.diameterMax > 0
-  );
+  const supplierDiams = group.suppliers.filter((s) => s.diameterMax > 0);
   const dMin = supplierDiams.length
     ? Math.min(...supplierDiams.map((s) => s.diameterMin))
     : 0;
@@ -195,19 +269,12 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               />
             </>
           ) : (
-            <div
-              className="flex h-full w-full items-center justify-center"
-              style={{
-                background: `linear-gradient(135deg, ${catColor}12, ${catColor}04)`,
-              }}
-            >
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-full border-2"
-                style={{ borderColor: `${catColor}35` }}
-              >
-                <Layers className="h-7 w-7" style={{ color: catColor }} />
-              </div>
-            </div>
+            <FallbackArtwork
+              category={group.category}
+              label={categoryLabel}
+              color={catColor}
+              Icon={CatIcon}
+            />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/15 to-transparent" />
 
@@ -221,7 +288,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
             }}
           >
             <CatIcon className="h-3 w-3" />
-            {categoryLabels[group.category] ?? group.category}
+            {categoryLabel}
           </div>
 
           {/* Material */}
@@ -247,14 +314,16 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               ))}
             </div>
             <span className="text-[11px] text-slate-500 font-mono">
-              {group.suppliers.length} supplier
-              {group.suppliers.length !== 1 ? "s" : ""}
+              {group.suppliers.length}{" "}
+              {group.suppliers.length === 1
+                ? t("catalog.supplierOne")
+                : t("catalog.suppliers")}
             </span>
           </div>
 
           {/* Name */}
           <h3 className="text-base font-bold text-white leading-snug mb-1 group-hover:text-cyan-200 transition-colors">
-            {group.name}
+            {tp(group.id, "name", group.name)}
           </h3>
           <p className="text-xs text-slate-500 mb-4 line-clamp-2 leading-relaxed">
             {group.application}
@@ -265,7 +334,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
             {dMax > 0 ? (
               <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
                 <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
-                  DIAMETER
+                  {t("catalog.diameterLabel")}
                 </span>
                 <span className="text-xs font-bold text-white leading-none font-mono">
                   Ø {dMin}–{dMax} mm
@@ -274,21 +343,21 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
             ) : (
               <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
                 <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
-                  CATEGORY
+                  {t("catalog.categoryLabel")}
                 </span>
                 <span className="text-xs font-bold text-white leading-none capitalize">
-                  {group.category}
+                  {categoryLabel}
                 </span>
               </div>
             )}
             <div className="rounded-lg bg-white/[0.04] border border-white/[0.06] p-2.5">
               <span className="text-[9px] font-mono text-slate-500 block tracking-widest mb-0.5">
-                STANDARDS
+                {t("catalog.standardsLabel")}
               </span>
               <span className="text-xs font-bold text-white leading-none">
                 {group.standards.length > 0
                   ? group.standards[0]
-                  : "Proprietary"}
+                  : t("catalog.proprietary")}
               </span>
             </div>
           </div>
@@ -304,16 +373,78 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
               }}
             >
               <AvailIcon className="w-3 h-3" />
-              {cfg.label}
+              {availLabel}
             </div>
             <span className="flex items-center gap-1 text-xs text-slate-500 group-hover:text-cyan-400 transition-colors font-mono">
-              View details
+              {t("catalog.viewDetails")}
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </span>
           </div>
         </div>
       </Link>
     </motion.div>
+  );
+}
+
+// ─── Premium fallback artwork ─────────────────────────────────────────────────
+
+function FallbackArtwork({
+  category,
+  label,
+  color,
+  Icon,
+}: {
+  category: string;
+  label: string;
+  color: string;
+  Icon: React.FC<{ className?: string }>;
+}) {
+  return (
+    <div
+      className="relative flex h-full w-full items-center justify-center overflow-hidden"
+      style={{
+        background: `radial-gradient(120% 80% at 50% 20%, ${color}24 0%, ${color}08 45%, rgba(2,6,23,1) 100%)`,
+      }}
+    >
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Glow blob */}
+      <div
+        className="absolute -top-10 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full blur-3xl opacity-50"
+        style={{ background: color }}
+      />
+      <div className="relative flex flex-col items-center gap-2.5 text-center px-4">
+        <div
+          className="flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-md"
+          style={{
+            borderColor: `${color}55`,
+            background: `${color}18`,
+          }}
+        >
+          <Icon className="h-6 w-6" />
+        </div>
+        <span
+          className="font-mono text-[10px] tracking-[0.32em] uppercase"
+          style={{ color }}
+        >
+          {label}
+        </span>
+        <span className="text-[10px] font-medium text-slate-400/70">
+          {category === "civil"
+            ? "Pipe & Infrastructure"
+            : category === "agri"
+              ? "Agriculture System"
+              : "Industrial Component"}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -326,11 +457,14 @@ function CategoryTabs({
   activeCategory: string | null;
   onSelect: (cat: string | null) => void;
 }) {
+  const { t } = useTranslation();
   const allCategories = [
-    { id: null, name: "All Products", icon: Layers },
+    { id: null, name: t("catalog.allProducts"), icon: Layers },
     ...categories.map((c) => ({
       id: c.id,
-      name: c.name,
+      name: categoryTranslationKeys[c.id]
+        ? t(categoryTranslationKeys[c.id])
+        : c.name,
       icon: categoryIcons[c.id] ?? Layers,
     })),
   ];
@@ -341,7 +475,9 @@ function CategoryTabs({
         {allCategories.map((cat) => {
           const Icon = cat.icon;
           const isActive = activeCategory === cat.id;
-          const color = cat.id ? (categoryColors[cat.id] ?? "#94a3b8") : "#94a3b8";
+          const color = cat.id
+            ? (categoryColors[cat.id] ?? "#94a3b8")
+            : "#94a3b8";
 
           return (
             <motion.button
@@ -378,6 +514,74 @@ function CategoryTabs({
   );
 }
 
+// ─── Collapsible filter section ──────────────────────────────────────────────
+
+function FilterSection({
+  title,
+  count,
+  defaultOpen = true,
+  onClear,
+  clearLabel = "Clear",
+  children,
+}: {
+  title: string;
+  count?: number;
+  defaultOpen?: boolean;
+  onClear?: () => void;
+  clearLabel?: string;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.03]">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between px-4 py-3 text-left"
+      >
+        <span className="flex items-center gap-2">
+          <span className="text-[11px] font-bold tracking-widest text-slate-300 uppercase">
+            {title}
+          </span>
+          {count && count > 0 ? (
+            <span className="rounded-full bg-cyan-500/15 px-1.5 py-0.5 text-[10px] font-bold text-cyan-300">
+              {count}
+            </span>
+          ) : null}
+        </span>
+        <span className="flex items-center gap-2">
+          {count && count > 0 && onClear ? (
+            <span
+              role="button"
+              tabIndex={0}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClear();
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onClear();
+                }
+              }}
+              className="text-[10px] uppercase tracking-wider text-slate-500 hover:text-cyan-300 transition-colors"
+            >
+              {clearLabel}
+            </span>
+          ) : null}
+          <ChevronDown
+            className={`h-4 w-4 text-slate-500 transition-transform ${
+              open ? "" : "-rotate-90"
+            }`}
+          />
+        </span>
+      </button>
+      {open ? <div className="px-4 pb-4">{children}</div> : null}
+    </div>
+  );
+}
+
 // ─── Main Catalog ─────────────────────────────────────────────────────────────
 
 export function Catalog({
@@ -387,6 +591,7 @@ export function Catalog({
   initialCategory?: string;
   initialPartner?: string;
 }) {
+  const { t } = useTranslation();
   const [filters, setFilters] = useState<FilterState>({
     ...defaultFilters,
     category: initialCategory ?? null,
@@ -394,6 +599,9 @@ export function Catalog({
   });
   const [showFilters, setShowFilters] = useState(false);
   const [sort, setSort] = useState<SortKey>("relevant");
+
+  const matCounts = useMemo(() => countByMaterialFamily(), []);
+  const appCounts = useMemo(() => countByApplicationFamily(), []);
 
   const filteredGroups = useMemo(() => {
     let result = productGroups.filter((pg) => {
@@ -404,26 +612,16 @@ export function Catalog({
           !pg.shortName.toLowerCase().includes(q) &&
           !pg.application.toLowerCase().includes(q) &&
           !pg.material.toLowerCase().includes(q) &&
+          !pg.description.toLowerCase().includes(q) &&
           !pg.suppliers.some((s) => s.partnerName.toLowerCase().includes(q))
         ) {
           return false;
         }
       }
-      if (
-        filters.materials.length > 0 &&
-        !filters.materials.includes(pg.material)
-      ) {
+      if (!matchesMaterialFamily(pg, filters.materialFamilies)) return false;
+      if (!matchesApplicationFamily(pg, filters.applicationFamilies))
         return false;
-      }
-      if (
-        filters.applications.length > 0 &&
-        !filters.applications.includes(pg.application)
-      ) {
-        return false;
-      }
-      if (filters.category && pg.category !== filters.category) {
-        return false;
-      }
+      if (filters.category && pg.category !== filters.category) return false;
       if (
         filters.partnerId &&
         !pg.suppliers.some((s) => s.partnerId === filters.partnerId)
@@ -441,6 +639,11 @@ export function Catalog({
           return false;
         }
       }
+      // quick filters (AND)
+      for (const qid of filters.quick) {
+        const qf = quickFilters.find((q) => q.id === qid);
+        if (qf && !qf.match(pg)) return false;
+      }
       return true;
     });
 
@@ -453,11 +656,15 @@ export function Catalog({
       case "dia-asc": {
         result = [...result].sort((a, b) => {
           const aMin = Math.min(
-            ...a.suppliers.filter((s) => s.diameterMin > 0).map((s) => s.diameterMin),
+            ...a.suppliers
+              .filter((s) => s.diameterMin > 0)
+              .map((s) => s.diameterMin),
             9999
           );
           const bMin = Math.min(
-            ...b.suppliers.filter((s) => s.diameterMin > 0).map((s) => s.diameterMin),
+            ...b.suppliers
+              .filter((s) => s.diameterMin > 0)
+              .map((s) => s.diameterMin),
             9999
           );
           return aMin - bMin;
@@ -467,11 +674,15 @@ export function Catalog({
       case "dia-desc": {
         result = [...result].sort((a, b) => {
           const aMax = Math.max(
-            ...a.suppliers.filter((s) => s.diameterMax > 0).map((s) => s.diameterMax),
+            ...a.suppliers
+              .filter((s) => s.diameterMax > 0)
+              .map((s) => s.diameterMax),
             0
           );
           const bMax = Math.max(
-            ...b.suppliers.filter((s) => s.diameterMax > 0).map((s) => s.diameterMax),
+            ...b.suppliers
+              .filter((s) => s.diameterMax > 0)
+              .map((s) => s.diameterMax),
             0
           );
           return bMax - aMax;
@@ -483,46 +694,75 @@ export function Catalog({
     return result;
   }, [filters, sort]);
 
-  const toggleFilter = (type: "materials" | "applications", value: string) => {
+  const totalSupplierOffers = useMemo(
+    () => filteredGroups.reduce((acc, g) => acc + g.suppliers.length, 0),
+    [filteredGroups]
+  );
+
+  const toggleArrayFilter = <K extends "materialFamilies" | "applicationFamilies" | "quick">(
+    key: K,
+    value: string
+  ) => {
     setFilters((prev) => ({
       ...prev,
-      [type]: prev[type].includes(value)
-        ? prev[type].filter((v) => v !== value)
-        : [...prev[type], value],
+      [key]: prev[key].includes(value)
+        ? prev[key].filter((v) => v !== value)
+        : [...prev[key], value],
     }));
   };
 
   const clearAll = () => setFilters({ ...defaultFilters });
 
+  // ─── Active chips (human-friendly) ─────────────────────────────────────────
   const chips: { label: string; onRemove: () => void }[] = [];
   if (filters.search)
     chips.push({
-      label: `"${filters.search}"`,
+      label: `“${filters.search}”`,
       onRemove: () => setFilters((p) => ({ ...p, search: "" })),
     });
-  if (filters.category)
+  if (filters.category) {
+    const catKey = categoryTranslationKeys[filters.category];
+    const catLabel = catKey
+      ? t(catKey)
+      : (categoryLabels[filters.category] ?? filters.category);
     chips.push({
-      label: `Category: ${filters.category}`,
+      label: `${t("catalog.categoryLabel")}: ${catLabel}`,
       onRemove: () => setFilters((p) => ({ ...p, category: null })),
     });
+  }
   if (filters.partnerId) {
     const pName =
       partners.find((p) => p.id === filters.partnerId)?.name ??
       filters.partnerId;
     chips.push({
-      label: `Supplier: ${pName}`,
+      label: `${t("catalog.supplier")}: ${pName}`,
       onRemove: () => setFilters((p) => ({ ...p, partnerId: null })),
     });
   }
-  filters.materials.forEach((m) =>
-    chips.push({ label: m, onRemove: () => toggleFilter("materials", m) })
-  );
-  filters.applications.forEach((a) =>
+  filters.materialFamilies.forEach((id) => {
+    const fam = materialFamilies.find((f) => f.id === id);
+    const tk = materialFamilyTranslationKeys[id];
     chips.push({
-      label: a,
-      onRemove: () => toggleFilter("applications", a),
-    })
-  );
+      label: `${t("catalog.material")}: ${tk ? t(tk) : (fam?.label ?? id)}`,
+      onRemove: () => toggleArrayFilter("materialFamilies", id),
+    });
+  });
+  filters.applicationFamilies.forEach((id) => {
+    const fam = applicationFamilies.find((f) => f.id === id);
+    const tk = applicationFamilyTranslationKeys[id];
+    chips.push({
+      label: `${t("catalog.application")}: ${tk ? t(tk) : (fam?.label ?? id)}`,
+      onRemove: () => toggleArrayFilter("applicationFamilies", id),
+    });
+  });
+  filters.quick.forEach((id) => {
+    const qf = quickFilters.find((q) => q.id === id);
+    const tk = quickFilterTranslationKeys[id];
+    chips.push({
+      label: tk ? t(tk) : (qf?.label ?? id),
+      onRemove: () => toggleArrayFilter("quick", id),
+    });
+  });
   if (filters.diameterRange[0] !== 0 || filters.diameterRange[1] !== 2000)
     chips.push({
       label: `Ø ${filters.diameterRange[0]}–${filters.diameterRange[1]} mm`,
@@ -559,7 +799,7 @@ export function Catalog({
               onClick={clearAll}
               className="text-xs text-cyan-400 hover:text-cyan-300 ml-1"
             >
-              Clear all
+              {t("catalog.clearAll")}
             </button>
           </div>
         )}
@@ -567,12 +807,13 @@ export function Catalog({
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <aside className="lg:w-72 shrink-0">
-            <div className="lg:sticky lg:top-28 space-y-6">
+            <div className="lg:sticky lg:top-28 space-y-4">
+              {/* Search */}
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder={t("catalog.searchPlaceholder")}
                   value={filters.search}
                   onChange={(e) =>
                     setFilters((prev) => ({
@@ -580,17 +821,18 @@ export function Catalog({
                       search: e.target.value,
                     }))
                   }
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors text-sm"
                 />
               </div>
 
+              {/* Mobile collapse toggle */}
               <button
                 onClick={() => setShowFilters(!showFilters)}
                 className="lg:hidden w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white/5 border border-white/10"
               >
                 <span className="flex items-center gap-2 text-white">
                   <SlidersHorizontal className="w-5 h-5" />
-                  Filters
+                  {t("catalog.filters")}
                   {hasActiveFilters(filters) && (
                     <span className="h-2 w-2 rounded-full bg-cyan-500" />
                   )}
@@ -603,57 +845,146 @@ export function Catalog({
               </button>
 
               <div
-                className={`space-y-6 ${
+                className={`space-y-3 ${
                   showFilters ? "block" : "hidden lg:block"
                 }`}
               >
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                  <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">
-                    Material
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {materials.map((material) => (
-                      <button
-                        key={material}
-                        onClick={() => toggleFilter("materials", material)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                          filters.materials.includes(material)
-                            ? "bg-cyan-600 text-white"
-                            : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        {material}
-                      </button>
-                    ))}
+                {/* Quick filters */}
+                <FilterSection
+                  title={t("catalog.quickFilters")}
+                  count={filters.quick.length}
+                  defaultOpen
+                  onClear={() => setFilters((p) => ({ ...p, quick: [] }))}
+                  clearLabel={t("catalog.clear")}
+                >
+                  <div className="flex flex-wrap gap-1.5">
+                    {quickFilters.map((qf) => {
+                      const active = filters.quick.includes(qf.id);
+                      const tk = quickFilterTranslationKeys[qf.id];
+                      return (
+                        <button
+                          key={qf.id}
+                          onClick={() => toggleArrayFilter("quick", qf.id)}
+                          className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors border ${
+                            active
+                              ? "bg-cyan-500/15 text-cyan-200 border-cyan-400/40"
+                              : "bg-white/5 text-slate-400 border-white/10 hover:text-white hover:bg-white/10"
+                          }`}
+                        >
+                          {tk ? t(tk) : qf.label}
+                        </button>
+                      );
+                    })}
                   </div>
-                </div>
+                </FilterSection>
 
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                  <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">
-                    Application
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {applications.map((app) => (
-                      <button
-                        key={app}
-                        onClick={() => toggleFilter("applications", app)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                          filters.applications.includes(app)
-                            ? "bg-cyan-500 text-slate-950"
-                            : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
-                        }`}
-                      >
-                        {app}
-                      </button>
-                    ))}
+                {/* Material family */}
+                <FilterSection
+                  title={t("catalog.material")}
+                  count={filters.materialFamilies.length}
+                  defaultOpen
+                  onClear={() =>
+                    setFilters((p) => ({ ...p, materialFamilies: [] }))
+                  }
+                  clearLabel={t("catalog.clear")}
+                >
+                  <div className="space-y-1">
+                    {materialFamilies
+                      .filter((f) => (matCounts[f.id] ?? 0) > 0)
+                      .map((fam) => {
+                        const active = filters.materialFamilies.includes(fam.id);
+                        const count = matCounts[fam.id] ?? 0;
+                        const tk = materialFamilyTranslationKeys[fam.id];
+                        return (
+                          <button
+                            key={fam.id}
+                            onClick={() =>
+                              toggleArrayFilter("materialFamilies", fam.id)
+                            }
+                            className={`w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
+                              active
+                                ? "bg-cyan-500/15 text-cyan-100"
+                                : "text-slate-300 hover:bg-white/5"
+                            }`}
+                          >
+                            <span className="truncate font-medium">
+                              {tk ? t(tk) : fam.label}
+                            </span>
+                            <span
+                              className={`text-[10px] font-mono ${
+                                active ? "text-cyan-300" : "text-slate-500"
+                              }`}
+                            >
+                              {count}
+                            </span>
+                          </button>
+                        );
+                      })}
                   </div>
-                </div>
+                </FilterSection>
 
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                  <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">
-                    Diameter (mm)
-                  </h4>
-                  <div className="px-2">
+                {/* Application family */}
+                <FilterSection
+                  title={t("catalog.application")}
+                  count={filters.applicationFamilies.length}
+                  defaultOpen
+                  onClear={() =>
+                    setFilters((p) => ({ ...p, applicationFamilies: [] }))
+                  }
+                  clearLabel={t("catalog.clear")}
+                >
+                  <div className="space-y-1">
+                    {applicationFamilies
+                      .filter((f) => (appCounts[f.id] ?? 0) > 0)
+                      .map((fam) => {
+                        const active =
+                          filters.applicationFamilies.includes(fam.id);
+                        const count = appCounts[fam.id] ?? 0;
+                        const tk = applicationFamilyTranslationKeys[fam.id];
+                        return (
+                          <button
+                            key={fam.id}
+                            onClick={() =>
+                              toggleArrayFilter("applicationFamilies", fam.id)
+                            }
+                            className={`w-full flex items-center justify-between gap-2 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
+                              active
+                                ? "bg-cyan-500/15 text-cyan-100"
+                                : "text-slate-300 hover:bg-white/5"
+                            }`}
+                          >
+                            <span className="truncate font-medium">
+                              {tk ? t(tk) : fam.label}
+                            </span>
+                            <span
+                              className={`text-[10px] font-mono ${
+                                active ? "text-cyan-300" : "text-slate-500"
+                              }`}
+                            >
+                              {count}
+                            </span>
+                          </button>
+                        );
+                      })}
+                  </div>
+                </FilterSection>
+
+                {/* Diameter */}
+                <FilterSection
+                  title={t("catalog.diameter")}
+                  count={
+                    filters.diameterRange[0] !== 0 ||
+                    filters.diameterRange[1] !== 2000
+                      ? 1
+                      : 0
+                  }
+                  defaultOpen={false}
+                  onClear={() =>
+                    setFilters((p) => ({ ...p, diameterRange: [0, 2000] }))
+                  }
+                  clearLabel={t("catalog.clear")}
+                >
+                  <div className="px-1 pt-1">
                     <Slider
                       defaultValue={[0, 2000]}
                       max={2000}
@@ -668,47 +999,54 @@ export function Catalog({
                       className="w-full"
                     />
                     <div className="flex justify-between mt-2">
-                      <span className="text-xs font-mono text-slate-500">
+                      <span className="text-xs font-mono text-slate-400">
                         {filters.diameterRange[0]} mm
                       </span>
-                      <span className="text-xs font-mono text-slate-500">
+                      <span className="text-xs font-mono text-slate-400">
                         {filters.diameterRange[1]} mm
                       </span>
                     </div>
                   </div>
-                </div>
+                </FilterSection>
 
-                {/* Supplier filter */}
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                  <h4 className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">
-                    Supplier
-                  </h4>
-                  <div className="space-y-1.5">
-                    {partners.slice(0, 8).map((p) => (
-                      <button
-                        key={p.id}
-                        onClick={() =>
-                          setFilters((prev) => ({
-                            ...prev,
-                            partnerId:
-                              prev.partnerId === p.id ? null : p.id,
-                          }))
-                        }
-                        className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-colors text-left ${
-                          filters.partnerId === p.id
-                            ? "bg-white/10 text-white"
-                            : "text-slate-400 hover:bg-white/5 hover:text-white"
-                        }`}
-                      >
-                        <div
-                          className="h-4 w-4 rounded shrink-0"
-                          style={{ background: p.color }}
-                        />
-                        {p.name}
-                      </button>
-                    ))}
+                {/* Supplier */}
+                <FilterSection
+                  title={t("catalog.supplier")}
+                  count={filters.partnerId ? 1 : 0}
+                  defaultOpen={false}
+                  onClear={() =>
+                    setFilters((p) => ({ ...p, partnerId: null }))
+                  }
+                  clearLabel={t("catalog.clear")}
+                >
+                  <div className="max-h-64 overflow-y-auto pr-1 space-y-1 scrollbar-thin">
+                    {partners.map((p) => {
+                      const active = filters.partnerId === p.id;
+                      return (
+                        <button
+                          key={p.id}
+                          onClick={() =>
+                            setFilters((prev) => ({
+                              ...prev,
+                              partnerId: prev.partnerId === p.id ? null : p.id,
+                            }))
+                          }
+                          className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-xs transition-colors text-left ${
+                            active
+                              ? "bg-cyan-500/15 text-cyan-100"
+                              : "text-slate-300 hover:bg-white/5"
+                          }`}
+                        >
+                          <span
+                            className="h-3 w-3 rounded-sm shrink-0 ring-1 ring-white/10"
+                            style={{ background: p.color }}
+                          />
+                          <span className="truncate">{p.name}</span>
+                        </button>
+                      );
+                    })}
                   </div>
-                </div>
+                </FilterSection>
 
                 {hasActiveFilters(filters) && (
                   <button
@@ -716,7 +1054,7 @@ export function Catalog({
                     className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     <X className="w-4 h-4" />
-                    Clear all filters
+                    {t("catalog.clearAllFilters")}
                   </button>
                 )}
               </div>
@@ -727,18 +1065,23 @@ export function Catalog({
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-6 gap-4">
               <p className="text-sm text-slate-400">
+                {t("catalog.showing")}{" "}
                 <span className="font-bold text-white">
                   {filteredGroups.length}
                 </span>{" "}
-                product type{filteredGroups.length !== 1 ? "s" : ""} found
+                {filteredGroups.length === 1
+                  ? t("catalog.productFamily")
+                  : t("catalog.productFamilies")}
                 {filteredGroups.length > 0 && (
                   <span className="text-slate-600">
-                    {" "}·{" "}
-                    {filteredGroups.reduce(
-                      (acc, g) => acc + g.suppliers.length,
-                      0
-                    )}{" "}
-                    supplier offers
+                    {" "}
+                    {t("catalog.across")}{" "}
+                    <span className="text-slate-300">
+                      {totalSupplierOffers}
+                    </span>{" "}
+                    {totalSupplierOffers === 1
+                      ? t("catalog.supplierOffer")
+                      : t("catalog.supplierOffers")}
                   </span>
                 )}
               </p>
@@ -748,18 +1091,19 @@ export function Catalog({
                   value={sort}
                   onChange={(e) => setSort(e.target.value as SortKey)}
                   className="appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-8 pr-4 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50"
+                  aria-label={t("catalog.sortBy")}
                 >
                   <option value="relevant" className="bg-slate-900">
-                    Most relevant
+                    {t("catalog.sortRecommended")}
                   </option>
                   <option value="suppliers-desc" className="bg-slate-900">
-                    Most suppliers
+                    {t("catalog.sortMostSuppliers")}
                   </option>
                   <option value="dia-asc" className="bg-slate-900">
-                    Diameter ↑
+                    {t("catalog.sortDiaAsc")}
                   </option>
                   <option value="dia-desc" className="bg-slate-900">
-                    Diameter ↓
+                    {t("catalog.sortDiaDesc")}
                   </option>
                 </select>
                 <ArrowUpDown className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500 pointer-events-none" />
@@ -782,23 +1126,23 @@ export function Catalog({
                   <AlertCircle className="h-8 w-8 text-slate-500" />
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">
-                  No products match your filters
+                  {t("catalog.noResultsTitle")}
                 </h3>
                 <p className="text-sm text-slate-400 mb-6 max-w-md">
-                  Try broadening your search criteria or removing some filters.
+                  {t("catalog.noResultsSubtitle")}
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={clearAll}
                     className="rounded-xl bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-500 transition-colors"
                   >
-                    Clear All Filters
+                    {t("catalog.clearAllFilters")}
                   </button>
                   <Link
                     href="/contact"
                     className="rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors"
                   >
-                    Contact Us
+                    {t("catalog.contactUs")}
                   </Link>
                 </div>
               </div>
@@ -814,20 +1158,22 @@ export function Catalog({
                 {productGroups.length}
               </p>
               <p className="text-xs font-mono text-slate-500 mt-0.5">
-                Product Types
+                {t("catalog.productTypesLabel")}
               </p>
             </div>
             <div className="h-8 w-px bg-white/[0.08]" />
             <div>
               <p className="text-2xl font-black text-white">
-                {new Set(
-                  productGroups.flatMap((g) =>
-                    g.suppliers.map((s) => s.partnerId)
-                  )
-                ).size}
+                {
+                  new Set(
+                    productGroups.flatMap((g) =>
+                      g.suppliers.map((s) => s.partnerId)
+                    )
+                  ).size
+                }
               </p>
               <p className="text-xs font-mono text-slate-500 mt-0.5">
-                Supplier Partners
+                {t("catalog.supplierPartnersLabel")}
               </p>
             </div>
             <div className="h-8 w-px bg-white/[0.08]" />
@@ -836,7 +1182,7 @@ export function Catalog({
                 {productGroups.reduce((a, g) => a + g.suppliers.length, 0)}
               </p>
               <p className="text-xs font-mono text-slate-500 mt-0.5">
-                Total Supply Offers
+                {t("catalog.totalSupplyOffers")}
               </p>
             </div>
             <div className="h-8 w-px bg-white/[0.08]" />
@@ -849,7 +1195,7 @@ export function Catalog({
                 }
               </p>
               <p className="text-xs font-mono text-slate-500 mt-0.5">
-                Fully In Stock
+                {t("catalog.fullyInStock")}
               </p>
             </div>
           </div>

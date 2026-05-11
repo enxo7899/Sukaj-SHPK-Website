@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { company } from "@/lib/data";
+import { useTranslation } from "@/lib/i18n/context";
 
 function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -24,14 +25,34 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
   return <span ref={ref}>0{suffix}</span>;
 }
 
-const stats = [
-  { value: company.stats.yearsExperience, suffix: "+", label: "Years in Business", detail: "Est. 1995" },
-  { value: company.stats.countriesServed, suffix: "", label: "Countries Served", detail: "Across the Balkans" },
-  { value: company.stats.partnersCount, suffix: "", label: "European Partners", detail: "7 countries" },
-  { value: company.stats.projectsCompleted, suffix: "+", label: "Projects Completed", detail: "Infrastructure" },
-];
-
 export function StatsPremium() {
+  const { t } = useTranslation();
+  const stats = [
+    {
+      value: company.stats.yearsExperience,
+      suffix: "+",
+      label: t("stats.yearsLabel"),
+      detail: `Est. ${company.established}`,
+    },
+    {
+      value: company.stats.countriesServed,
+      suffix: "",
+      label: t("stats.countriesLabel"),
+      detail: t("stats.eyebrow"),
+    },
+    {
+      value: company.stats.partnersCount,
+      suffix: "",
+      label: t("stats.partnersLabel"),
+      detail: "EU + Balkan",
+    },
+    {
+      value: company.stats.projectsCompleted,
+      suffix: "+",
+      label: t("stats.projectsLabel"),
+      detail: "Infrastructure",
+    },
+  ];
   return (
     <section className="relative bg-[#020617] border-y border-white/[0.06]">
       <div
@@ -56,7 +77,7 @@ export function StatsPremium() {
                 i < 2 ? "border-b border-white/[0.06] lg:border-b-0" : ""
               }`}
             >
-              <span className="text-4xl sm:text-5xl font-black mb-2 tabular-nums text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-400">
+              <span className="text-4xl sm:text-5xl font-black mb-2 tabular-nums text-white">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </span>
               <span className="text-sm font-semibold text-slate-300 mb-1">{stat.label}</span>

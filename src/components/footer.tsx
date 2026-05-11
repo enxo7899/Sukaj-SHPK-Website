@@ -1,17 +1,43 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import { company, partners } from "@/lib/data";
+import { useTranslation } from "@/lib/i18n/context";
 
 export function Footer() {
+  const { t } = useTranslation();
+
   const topPartners = partners
     .filter((p) => p.featured)
     .sort((a, b) => a.featuredPriority - b.featuredPriority)
     .slice(0, 6);
 
+  const solutionsLinks = [
+    { key: "civilEngineering", href: "/catalog?category=civil" },
+    { key: "agriculture", href: "/catalog?category=agri" },
+    { key: "industrial", href: "/catalog?category=industrial" },
+    { key: "fullCatalog", href: "/catalog" },
+  ];
+
+  const companyLinks = [
+    { key: "aboutUs", href: "/about" },
+    { key: "ourHistory", href: "/about#timeline" },
+    { key: "partnersHeading", href: "/partners" },
+    { key: "contact", href: "/contact" },
+  ];
+
   return (
     <footer className="relative bg-[#020617] border-t border-white/[0.06]">
-      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(148,163,184,0.15) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
       <div className="site-shell relative py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -25,11 +51,10 @@ export function Footer() {
               />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              Import-export of plastic materials &amp; wholesale trading of
-              industrial pipe systems across the Balkans since 1995.
+              {t("footer.description")}
             </p>
             <p className="text-xs text-slate-500 font-mono mb-6">
-              Administrator: {company.administrator}
+              {t("footer.administrator")}: {company.administrator}
             </p>
             <div className="space-y-3">
               <a
@@ -59,22 +84,20 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold tracking-wider text-white mb-6">
-              SOLUTIONS
-            </h3>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="h-px w-6 bg-cyan-500/60" />
+              <h3 className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+                {t("footer.solutionsHeading")}
+              </h3>
+            </div>
             <ul className="space-y-3">
-              {[
-                { name: "Civil Engineering", href: "/catalog?category=civil" },
-                { name: "Agriculture", href: "/catalog?category=agri" },
-                { name: "Industrial", href: "/catalog?category=industrial" },
-                { name: "Full Catalog", href: "/catalog" },
-              ].map((item) => (
-                <li key={item.name}>
+              {solutionsLinks.map((item) => (
+                <li key={item.key}>
                   <Link
                     href={item.href}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
-                    {item.name}
+                    {t(`footer.${item.key}`)}
                   </Link>
                 </li>
               ))}
@@ -82,9 +105,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold tracking-wider text-white mb-6">
-              PARTNERS
-            </h3>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="h-px w-6 bg-cyan-500/60" />
+              <h3 className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+                {t("footer.partnersHeading")}
+              </h3>
+            </div>
             <ul className="space-y-3">
               {topPartners.map((partner) => (
                 <li key={partner.id}>
@@ -102,29 +128,27 @@ export function Footer() {
                   href="/partners"
                   className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  View all partners →
+                  {t("footer.viewAllPartners")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-bold tracking-wider text-white mb-6">
-              COMPANY
-            </h3>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="h-px w-6 bg-cyan-500/60" />
+              <h3 className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
+                {t("footer.companyHeading")}
+              </h3>
+            </div>
             <ul className="space-y-3">
-              {[
-                { name: "About Us", href: "/about" },
-                { name: "Our History", href: "/about#timeline" },
-                { name: "Partners", href: "/partners" },
-                { name: "Contact", href: "/contact" },
-              ].map((item) => (
-                <li key={item.name}>
+              {companyLinks.map((item) => (
+                <li key={item.key}>
                   <Link
                     href={item.href}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
-                    {item.name}
+                    {t(`footer.${item.key}`)}
                   </Link>
                 </li>
               ))}
@@ -133,23 +157,22 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10">
-          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" style={{ top: 'calc(100% - 4.5rem)' }} />
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-slate-500 font-mono">
-              © {new Date().getFullYear()} SUKAJ SHPK. ALL RIGHTS RESERVED.
+              © {new Date().getFullYear()} SUKAJ SHPK. {t("footer.rightsReserved")}
             </p>
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy"
                 className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
               >
-                Privacy Policy
+                {t("footer.privacy")}
               </Link>
               <Link
                 href="/terms"
                 className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
               >
-                Terms of Service
+                {t("footer.terms")}
               </Link>
             </div>
           </div>

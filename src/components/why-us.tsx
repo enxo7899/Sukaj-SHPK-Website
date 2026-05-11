@@ -2,39 +2,37 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, Globe2, Truck, Handshake } from "lucide-react";
-
-const pillars = [
-  {
-    icon: ShieldCheck,
-    title: "European Standards",
-    description:
-      "Every product we supply meets EN and ISO certification requirements — PE100, EN 13476, EN 12201, and more. No compromises.",
-    accent: "#0891b2",
-  },
-  {
-    icon: Globe2,
-    title: "Regional Coverage",
-    description:
-      "Twelve countries, one supplier. We handle cross-border logistics, customs documentation, and delivery across the Balkans.",
-    accent: "#0ea5e9",
-  },
-  {
-    icon: Handshake,
-    title: "12 Manufacturing Partners",
-    description:
-      "A curated network spanning Italy, Greece, Turkey, Kosovo, North Macedonia and Albania — we source the right product for every project.",
-    accent: "#06b6d4",
-  },
-  {
-    icon: Truck,
-    title: "Direct from Warehouse",
-    description:
-      "Our Shkodër warehouse keeps core lines in stock for rapid dispatch. Reduce lead times and keep your project on schedule.",
-    accent: "#22d3ee",
-  },
-];
+import { useTranslation } from "@/lib/i18n/context";
 
 export function WhyUs() {
+  const { t } = useTranslation();
+
+  const pillars = [
+    {
+      icon: ShieldCheck,
+      title: t("whyUs.p2Title"),
+      description: t("whyUs.p2Desc"),
+      accent: "#0891b2",
+    },
+    {
+      icon: Globe2,
+      title: t("whyUs.p3Title"),
+      description: t("whyUs.p3Desc"),
+      accent: "#0ea5e9",
+    },
+    {
+      icon: Handshake,
+      title: t("whyUs.p1Title"),
+      description: t("whyUs.p1Desc"),
+      accent: "#06b6d4",
+    },
+    {
+      icon: Truck,
+      title: t("whyUs.p4Title"),
+      description: t("whyUs.p4Desc"),
+      accent: "#22d3ee",
+    },
+  ];
   return (
     <section className="relative py-24 sm:py-32 bg-[#020617] overflow-hidden">
       {/* Subtle background */}
@@ -66,26 +64,14 @@ export function WhyUs() {
           <div className="flex items-center gap-3 mb-5">
             <div className="h-px w-8 bg-cyan-500/60" />
             <span className="font-mono text-[11px] tracking-[0.28em] text-cyan-400/80 uppercase">
-              Why Sukaj
+              {t("whyUs.eyebrow")}
             </span>
           </div>
           <h2
             className="font-black text-white leading-[1.05] tracking-tight max-w-2xl"
             style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
           >
-            The Balkan partner
-            <br />
-            <span
-              style={{
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundImage:
-                  "linear-gradient(90deg, #22d3ee 0%, #0891b2 60%)",
-              }}
-            >
-              built for infrastructure.
-            </span>
+            {t("whyUs.title")}
           </h2>
         </motion.div>
 

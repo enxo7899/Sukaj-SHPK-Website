@@ -5,17 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Building2, Sprout, Factory, Users, Phone, Handshake } from "lucide-react";
-
-const navItems = [
-  { name: "CIVIL", href: "/catalog?category=civil", icon: Building2 },
-  { name: "AGRI", href: "/catalog?category=agri", icon: Sprout },
-  { name: "INDUSTRIAL", href: "/catalog?category=industrial", icon: Factory },
-  { name: "PARTNERS", href: "/partners", icon: Handshake },
-  { name: "ABOUT", href: "/about", icon: Users },
-  { name: "CONTACT", href: "/contact", icon: Phone },
-];
+import { useTranslation } from "@/lib/i18n/context";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export function Navigation() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -26,6 +20,15 @@ export function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navItems = [
+    { key: "civil", href: "/catalog?category=civil", icon: Building2 },
+    { key: "agri", href: "/catalog?category=agri", icon: Sprout },
+    { key: "industrial", href: "/catalog?category=industrial", icon: Factory },
+    { key: "partners", href: "/partners", icon: Handshake },
+    { key: "about", href: "/about", icon: Users },
+    { key: "contact", href: "/contact", icon: Phone },
+  ];
 
   return (
     <>
@@ -56,12 +59,12 @@ export function Navigation() {
             <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   className="group relative px-4 py-2"
                 >
                   <span className="relative z-10 text-sm font-medium tracking-wider text-slate-300 group-hover:text-white transition-colors">
-                    {item.name}
+                    {t(`nav.${item.key}`)}
                   </span>
                   <motion.div
                     className="absolute inset-0 rounded-lg bg-white/5 opacity-0 group-hover:opacity-100"
@@ -72,17 +75,19 @@ export function Navigation() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <LanguageSwitcher />
               <Link
                 href="/catalog"
-                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-white font-semibold text-sm rounded-xl transition-all hover:shadow-lg hover:shadow-cyan-500/25 ring-1 ring-cyan-400/20"
+                className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm rounded-xl transition-all hover:shadow-lg hover:shadow-cyan-700/30"
               >
-                <span>EXPLORE CATALOG</span>
+                <span>{t("nav.exploreCatalog")}</span>
               </Link>
 
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="lg:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -119,10 +124,10 @@ export function Navigation() {
                   const Icon = item.icon;
                   return (
                     <motion.div
-                      key={item.name}
+                      key={item.key}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.06 }}
                     >
                       <Link
                         href={item.href}
@@ -131,7 +136,7 @@ export function Navigation() {
                       >
                         <Icon className="w-5 h-5 text-cyan-400" />
                         <span className="text-lg font-medium tracking-wider">
-                          {item.name}
+                          {t(`nav.${item.key}`)}
                         </span>
                       </Link>
                     </motion.div>
@@ -141,7 +146,7 @@ export function Navigation() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.4 }}
                 className="mt-8"
               >
                 <Link
@@ -149,7 +154,7 @@ export function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-lg rounded-xl transition-colors"
                 >
-                  EXPLORE CATALOG
+                  {t("nav.exploreCatalog")}
                 </Link>
               </motion.div>
             </motion.nav>
