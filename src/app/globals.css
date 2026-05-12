@@ -489,7 +489,33 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
   }
-  
+
+  /* Hero animated gradient headline */
+  .hero-gradient-text {
+    background-image: linear-gradient(90deg, #22d3ee 0%, #0891b2 40%, #38bdf8 70%, #22d3ee 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% center; }
+    50%  { background-position: 100% center; }
+    100% { background-position: 0% center; }
+  }
+
+  /* Hero CTA button idle glow pulse */
+  .animate-cta-glow {
+    animation: ctaGlow 3.5s ease-in-out infinite;
+  }
+
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0); }
+    50%       { box-shadow: 0 0 22px 5px rgba(8, 145, 178, 0.38); }
+  }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
