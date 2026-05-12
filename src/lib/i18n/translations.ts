@@ -501,11 +501,11 @@ export const productTranslations: Record<
     },
   },
   "electric-optic-conduit": {
-    name: { sq: "Tub Mbrojtës për Kabllo Elektrike & Optike", en: "Electric & Optical Conduit" },
-    shortName: { sq: "Kanal HDPE", en: "HDPE Conduit" },
+    name: { sq: "Monotub Optik HDPE", en: "HDPE Optic Monotube" },
+    shortName: { sq: "Monotub", en: "Monotube" },
     description: {
-      sq: "Tub kanali HDPE për mbrojtjen nëntokësore të kabllove elektrike, linjave me fibër optike dhe infrastrukturës së telekomunikacionit.",
-      en: "HDPE conduit pipe for underground protection of electrical cables, fibre-optic lines, and telecommunications infrastructure.",
+      sq: "Monotub HDPE sipas standardit PTT për mbrojtjen nëntokësore të kabllove elektrike dhe fibër optike. Në stok: Ø40 × 1.2 mm (8 ATM) dhe Ø40 × 2.4 mm (10 ATM); konfigurimet e tjera me porosi.",
+      en: "PTT-spec HDPE monotube conduit for underground protection of electrical and fibre-optic cables. Stocked in Ø40 × 1.2 mm (8 ATM) and Ø40 × 2.4 mm (10 ATM); other configurations available on order.",
     },
   },
   "pph-drainage-pipe": {
