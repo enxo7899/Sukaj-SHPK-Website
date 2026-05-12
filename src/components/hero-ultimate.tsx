@@ -104,21 +104,23 @@ export function HeroUltimate() {
   };
 
   // ── Data ─────────────────────────────────────────────────────────────────
+  // These three stats are purposely different from the full stats strip
+  // rendered further down the page (years / partners / countries).
   const stats = [
     {
-      to: company.stats.yearsExperience,
+      to: company.stats.projectsCompleted,
       suffix: "+",
-      label: t("stats.yearsLabel"),
+      label: t("hero.statProjects"),
     },
     {
-      to: company.stats.partnersCount,
-      suffix: "",
-      label: t("stats.partnersLabel"),
+      to: 2000,
+      suffix: "mm",
+      label: t("hero.statMaxDiameter"),
     },
     {
-      to: company.stats.countriesServed,
+      to: 3,
       suffix: "",
-      label: t("stats.countriesLabel"),
+      label: t("hero.statWarehouses"),
     },
   ];
 
@@ -206,6 +208,16 @@ export function HeroUltimate() {
           }}
         />
       </div>
+
+      {/* ─── Mobile background: pipes as a subtle decorative layer ──────── */}
+      {mounted && isMobile && !reduceMotion && (
+        <div
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+          style={{ opacity: 0.09, zIndex: 2 }}
+        >
+          <FallingPipes />
+        </div>
+      )}
 
       {/* ─── Content ──────────────────────────────────────────────────────── */}
       <motion.div

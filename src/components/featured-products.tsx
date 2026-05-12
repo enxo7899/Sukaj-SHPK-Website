@@ -15,6 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { productGroups } from "@/lib/products-data";
+import { getApplicationFamily } from "@/lib/catalog-filters";
 import { useTranslation } from "@/lib/i18n/context";
 
 // ─── Config ───────────────────────────────────────────────────────────────────
@@ -91,7 +92,7 @@ function HeroCard({ product, color }: { product: (typeof productGroups)[0]; colo
           {tp(product.id, "name", product.name)}
         </h3>
         <p className="text-sm leading-relaxed line-clamp-3 flex-1" style={{ color: "var(--site-text-muted)" }}>
-          {product.description}
+          {tp(product.id, "description", product.description)}
         </p>
 
         {/* Key specs strip */}
@@ -130,11 +131,27 @@ function HeroCard({ product, color }: { product: (typeof productGroups)[0]; colo
 
 // ─── Small Card ────────────────────────────────────────────────────────────────
 
+const appTranslationKeys: Record<string, string> = {
+  "water-pressure": "catalog.appWaterPressure",
+  "sewage-drainage": "catalog.appSewageDrainage",
+  irrigation: "catalog.appIrrigation",
+  "cable-telecom": "catalog.appCableTelecom",
+  "storage-tanks": "catalog.appStorageTanks",
+  "industrial-transfer": "catalog.appIndustrialTransfer",
+  "packaging-construction": "catalog.appPackagingConstruction",
+  "outdoor-decor": "catalog.appOutdoorDecor",
+  gas: "catalog.appGas",
+  fittings: "catalog.appFittings",
+  "other-app": "catalog.appOther",
+};
+
 function SmallCard({ product, color }: { product: (typeof productGroups)[0]; color: string }) {
   const { t, tp } = useTranslation();
   const [imgErr, setImgErr] = useState(false);
   const avail = availConfig[getOverallAvail(product)];
   const AvailIcon = avail.Icon;
+  const appFamily = getApplicationFamily(product.application);
+  const appLabel = appTranslationKeys[appFamily.id] ? t(appTranslationKeys[appFamily.id] as never) : appFamily.label;
 
   return (
     <Link
@@ -170,7 +187,7 @@ function SmallCard({ product, color }: { product: (typeof productGroups)[0]; col
           {tp(product.id, "shortName", product.shortName)}
         </p>
         <p className="text-[11px] leading-snug line-clamp-1 mb-2" style={{ color: "var(--site-text-muted)" }}>
-          {product.application}
+          {appLabel}
         </p>
         <span
           className="inline-flex items-center gap-1 text-[10px] font-bold rounded-full px-2 py-0.5"

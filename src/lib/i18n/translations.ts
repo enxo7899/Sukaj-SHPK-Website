@@ -44,6 +44,10 @@ export const translations = {
     descriptionCountries: { sq: "vende", en: "countries" },
     ctaCatalog: { sq: "Eksploro Katalogun", en: "Explore Catalog" },
     ctaQuote: { sq: "Kërko Ofertë", en: "Request a Quote" },
+    // Hero inline stats (different from the full stats section below)
+    statProjects: { sq: "Projekte të Realizuara", en: "Projects Completed" },
+    statMaxDiameter: { sq: "Diametri Maks. (Ø)", en: "Max Pipe Diameter" },
+    statWarehouses: { sq: "Depo Logjistike", en: "Logistics Depots" },
   },
 
   // ── Categories section (homepage) ──────────────────────────────────────
