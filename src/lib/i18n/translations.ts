@@ -468,6 +468,7 @@ export const productTranslations: Record<
   string,
   { name: { sq: string; en: string }; shortName: { sq: string; en: string }; description: { sq: string; en: string } }
 > = {
+  // ── CIVIL ──────────────────────────────────────────────────────────────────
   "pe100-pressure-pipe": {
     name: { sq: "Tub Presioni PE100", en: "PE100 Pressure Pipe" },
     shortName: { sq: "PE100", en: "PE100" },
@@ -480,8 +481,8 @@ export const productTranslations: Record<
     name: { sq: "Tub Kanalizimi i Korruguar HDPE", en: "Corrugated HDPE Sewage Pipe" },
     shortName: { sq: "HDPE i Korruguar", en: "Corrugated HDPE" },
     description: {
-      sq: "Tub i korruguar me mur të dyfishtë HDPE me sipërfaqe të brendshme të lëmuar, projektuar për kanalizim gravitacional, ujëra atmosferike dhe kullim nëntokësor.",
-      en: "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater, and sub-surface drainage.",
+      sq: "Tub i korruguar me mur të dyfishtë HDPE me sipërfaqe të brendshme të lëmuar, projektuar për kanalizim gravitacional, ujëra atmosferike dhe kullim nëntokësor. Disponueshëm në klasa ngurtësie SN4 dhe SN8.",
+      en: "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater, and sub-surface drainage. Available in SN4 and SN8 ring-stiffness classes.",
     },
   },
   "spiral-pp-sewage-pipe": {
@@ -492,52 +493,12 @@ export const productTranslations: Record<
       en: "Spiral-wound polypropylene structured-wall pipe for large-diameter trunk sewers and industrial wastewater.",
     },
   },
-  "pe-gas-pipe": {
-    name: { sq: "Tub Shpërndarjeje Gazi PE", en: "PE Gas Distribution Pipe" },
-    shortName: { sq: "PE Gaz", en: "PE Gas" },
-    description: {
-      sq: "Tub shpërndarjeje gazi PE100-RC me vijë të verdhë karakteristike për identifikim të sigurt në rrjetet e gazit natyror dhe GLN.",
-      en: "PE100-RC gas distribution pipe with characteristic yellow stripe for identification in natural gas and LPG networks.",
-    },
-  },
-  "electric-optic-conduit": {
-    name: { sq: "Monotub Optik HDPE", en: "HDPE Optic Monotube" },
-    shortName: { sq: "Monotub", en: "Monotube" },
-    description: {
-      sq: "Monotub HDPE sipas standardit PTT për mbrojtjen nëntokësore të kabllove elektrike dhe fibër optike. Në stok: Ø40 × 1.2 mm (8 ATM) dhe Ø40 × 2.4 mm (10 ATM); konfigurimet e tjera me porosi.",
-      en: "PTT-spec HDPE monotube conduit for underground protection of electrical and fibre-optic cables. Stocked in Ø40 × 1.2 mm (8 ATM) and Ø40 × 2.4 mm (10 ATM); other configurations available on order.",
-    },
-  },
   "pph-drainage-pipe": {
     name: { sq: "Tub Kullimi Gravitacional PP-H", en: "PP-H Gravity Drainage Pipe" },
     shortName: { sq: "PP-H Kullim", en: "PP-H Drainage" },
     description: {
       sq: "Tub kullimi gravitacional PP-H me veshje të bardhë të brendshme për kullim ndërtesash, kolona sanitare dhe ventilim.",
       en: "PP-H gravity drainage pipe with distinctive white lining for building drainage, soil stacks, and ventilation.",
-    },
-  },
-  "hdpe-inspection-chamber": {
-    name: { sq: "Pusëtë Inspektimi HDPE", en: "HDPE Inspection Chamber" },
-    shortName: { sq: "Pusëtë Inspektimi", en: "Inspection Chamber" },
-    description: {
-      sq: "Pusëtë inspektimi e parafabrikuar HDPE për rrjete kanalizimi gravitacional dhe stuhi uji. Montim i shpejtë në kantier.",
-      en: "Prefabricated HDPE inspection chamber for gravity sewage and stormwater networks. Fast on-site assembly.",
-    },
-  },
-  "water-storage-tank": {
-    name: { sq: "Depozitë Uji Plastike", en: "Plastic Water Storage Tank" },
-    shortName: { sq: "Depozitë Uji", en: "Water Tank" },
-    description: {
-      sq: "Depozita uji HDPE të formuara me rrotullim për furnizim rezidencial, bujqësor dhe industrial të lehtë. Certifikuar për kontakt me ushqime.",
-      en: "Rotationally moulded HDPE water storage tanks for residential, agricultural, and light industrial water supply.",
-    },
-  },
-  "construction-damp-proof-membrane": {
-    name: { sq: "Membranë Hidroizoluese për Ndërtim", en: "Construction Damp-Proof Membrane" },
-    shortName: { sq: "Membranë", en: "DPM" },
-    description: {
-      sq: "Membranë hidroizoluese polietileni e rëndë për nën-pllaka dhe themele. Prodhuar nga granulat PE të ricikluara.",
-      en: "Heavy-duty polyethylene damp-proof membrane for under-slab and foundation waterproofing.",
     },
   },
   "fitt-mint": {
@@ -556,102 +517,6 @@ export const productTranslations: Record<
       en: "FITT Mimosa is a three-layer PVC hose for semi-professional use in agricultural environments and intensive garden irrigation.",
     },
   },
-  "pvc-garden-hose": {
-    name: { sq: "Zorrë Kopshti & Ujitjeje PVC", en: "PVC Garden & Irrigation Hose" },
-    shortName: { sq: "Zorrë PVC", en: "PVC Hose" },
-    description: {
-      sq: "Zorrë fleksibël PVC me përforcim fije tekstili për rezistencë më të mirë ndaj shpërthimit dhe përdredhjes.",
-      en: "Flexible PVC garden hose with textile yarn reinforcement for improved burst pressure and kink resistance.",
-    },
-  },
-  "drip-irrigation-pipe": {
-    name: { sq: "Tub Ujitjeje me Pika", en: "Drip Irrigation Lateral Pipe" },
-    shortName: { sq: "Ujitje me Pika", en: "Drip Lateral" },
-    description: {
-      sq: "Tub anësor LDPE me mur të hollë për ujitje me pika, me emetues të integruar ose të futshëm në distanca 20, 30 ose 50 cm.",
-      en: "Thin-wall LDPE drip irrigation lateral with integrated or insertable emitters at 20, 30, or 50 cm spacing.",
-    },
-  },
-  "pe-irrigation-mainline": {
-    name: { sq: "Tub Kryesor Ujitjeje PE100", en: "PE100 Irrigation Mainline" },
-    shortName: { sq: "Linjë Kryesore", en: "Irrigation Main" },
-    description: {
-      sq: "Tub kryesor PE100 me mur solid për rrjete ujitjeje me presion. Klasat PN10 dhe PN16 për shpërndarje të besueshme uji.",
-      en: "PE100 solid-wall mainline pipe for pressurised sprinkler and drip irrigation networks.",
-    },
-  },
-  "agricultural-film": {
-    name: { sq: "Film Bujqësor Polietileni", en: "Agricultural Polyethylene Film" },
-    shortName: { sq: "Film Bujqësor", en: "Agri Film" },
-    description: {
-      sq: "Film PE i stabilizuar ndaj UV për mbulesë serrash, mulçim toke dhe silazhë. I disponueshëm në të zezë/transparente.",
-      en: "UV-stabilised PE film for greenhouse cover, ground mulching, and silage.",
-    },
-  },
-  "industrial-rubber-hose": {
-    name: { sq: "Zorrë Industriale Gome", en: "Industrial Rubber Hose" },
-    shortName: { sq: "Zorrë Gome", en: "Rubber Hose" },
-    description: {
-      sq: "Zorrë gome e rëndë për ajër të kompresuar, ujë, vaj dhe transfer kimik në mjedise industriale, ndërtimi dhe minierat.",
-      en: "Heavy-duty rubber hoses for compressed air, water, oil, and chemical transfer in industrial, construction, and mining environments.",
-    },
-  },
-  "pvc-suction-hose": {
-    name: { sq: "Zorrë Thithëse & Shpërndarëse PVC", en: "PVC Suction & Delivery Hose" },
-    shortName: { sq: "Thithëse PVC", en: "PVC Suction" },
-    description: {
-      sq: "Zorrë fleksibël thithëse PVC me spirale të ngurtë PVC për ruajtjen e formës nën vakum. Për ujë, llum dhe transferim të lehtë kimik.",
-      en: "Flexible PVC suction and delivery hose with rigid PVC spiral helix for shape retention under vacuum.",
-    },
-  },
-  "spiral-transparent-hose": {
-    name: { sq: "Zorrë Transparente me Spirale", en: "Spiral Transparent Hose" },
-    shortName: { sq: "Zorrë Spirale", en: "Spiral Hose" },
-    description: {
-      sq: "Zorrë PVC transparente ose me ngjyrë karameli me përforcim spirale të ngurtë për thithje dhe shpërndarje uji dhe lëngjesh të lehta.",
-      en: "Clear or caramel-tinted PVC spiral hose with rigid helix reinforcement for suction and delivery of water and light liquids.",
-    },
-  },
-  "recycled-pe-granulates": {
-    name: { sq: "Granulat PE të Ricikluara", en: "Recycled PE Granulates" },
-    shortName: { sq: "Granulat PE", en: "PE Granulates" },
-    description: {
-      sq: "Granulat polietileni post-industriale dhe post-konsumuese si lëndë bazë për prodhimin e filmave, tubave dhe produkteve plastike.",
-      en: "Post-industrial and post-consumer polyethylene granulates for use as base material in film extrusion, pipe production, and injection moulding.",
-    },
-  },
-  "industrial-packaging-film": {
-    name: { sq: "Film Paketimi Industrial PE", en: "Industrial PE Packaging Film" },
-    shortName: { sq: "Film Paketimi", en: "Packaging Film" },
-    description: {
-      sq: "Filma PE për mbështjellje paletash, grupim produktesh dhe paketim mbrojtës industrial.",
-      en: "Stretch and shrink PE films for pallet wrapping, product bundling, and protective industrial packaging.",
-    },
-  },
-  "pe-water-storage-tank": {
-    name: { sq: "Depozitë Uji Polietileni", en: "Polyethylene Water Storage Tank" },
-    shortName: { sq: "Depozitë PE", en: "PE Water Tank" },
-    description: {
-      sq: "Depozita HDPE njëpjesëshe të formuara me rrotullim për magazinim uji rezidencial, bujqësor dhe komunal. Të stabilizuara ndaj UV.",
-      en: "Rotationally moulded one-piece HDPE tanks for residential, agricultural, and municipal water storage.",
-    },
-  },
-  "pvc-underground-drainage": {
-    name: { sq: "Tub Kullimi Nëntokësor PVC", en: "PVC Underground Drainage Pipe" },
-    shortName: { sq: "Kullim PVC", en: "PVC Drainage" },
-    description: {
-      sq: "Tub PVC-U për kullim gravitacional, kanalizim komunal dhe mbrojtje kabllosh nëntokësore.",
-      en: "PVC-U pipe for gravity drainage, municipal sewerage, and underground cable protection.",
-    },
-  },
-  "food-grade-barrel": {
-    name: { sq: "Fuçi Plastike për Ushqime", en: "Food-Grade Plastic Barrel" },
-    shortName: { sq: "Fuçi Ushqimore", en: "Food Barrel" },
-    description: {
-      sq: "Fuçi HDPE të certifikuara për kontakt me ushqime për magazinim dhe transport lëngjesh, gjysmë-lëngjesh dhe ushqimeve të ngurta.",
-      en: "EU food-contact certified HDPE barrels for storage and transport of liquids, semi-liquids, and solid foodstuffs.",
-    },
-  },
   "hdpe-socket-coupling": {
     name: { sq: "Bashkues Socket HDPE", en: "HDPE Socket Coupling" },
     shortName: { sq: "Bashkues Socket", en: "Socket Coupler" },
@@ -661,51 +526,27 @@ export const productTranslations: Record<
     },
   },
   "decorative-plastic-planters": {
-    name: { sq: "Vazo Dekorative Plastike", en: "Decorative Plastic Planters" },
-    shortName: { sq: "Vazo Dekorative", en: "Planters" },
+    name: { sq: "Vazo Dekorative Plastike Roto", en: "Roto Decorative Plastic Planters" },
+    shortName: { sq: "Vazo Dekorative", en: "Roto Planters" },
     description: {
-      sq: "Katalog i plotë vazosh dhe mbajtësesh lulesh plastike dekorative nga Roto (Maqedonia e Veriut). Modele të ndryshme për ambiente të brendshme dhe të jashtme.",
-      en: "A full catalogue of designer plastic planters and outdoor vases by Roto (North Macedonia).",
-    },
-  },
-  "manual-sprayer-pump": {
-    name: { sq: "Spërkatës Manual Kopshti", en: "Manual Garden Sprayer" },
-    shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer" },
-    description: {
-      sq: "Spërkatës manual me pompë për kopësht dhe bujqësi në shkallë të vogël. Prodhuar nga Polins doo, Serbi.",
-      en: "Manual pump-action garden sprayer for hobby and small-scale agriculture. Produced by Polins doo, Serbia.",
-    },
-  },
-  "polins-electra-lux-16": {
-    name: { sq: "Spërkatës me Bateri Polins Electra Lux 16", en: "Polins Electra Lux 16 Battery Sprayer" },
-    shortName: { sq: "Electra Lux 16", en: "Electra Lux 16" },
-    description: {
-      sq: "Spërkatës shpine me bateri 16 litra për përdorim gjysmë-profesional në sipërfaqe bujqësore dhe pemëtore.",
-      en: "16-litre battery-powered back sprayer for semi-professional use across larger agricultural areas and orchards.",
+      sq: "Koleksion i plotë vazosh dekorative plastike nga Roto (Maqedonia e Veriut): Edelweis (teksturë guri, drejtkëndëshe S/L/XL), Stoniness (rrumbullakët efekt guri S/M/L/XL), Jazz (elegante S/M/L), Rumba (grykë e gjerë S/M/L), Barrel (formë fuçie S/M/L), Nusa (me brinjë, drejtkëndëshe dhe rrumbullakët) dhe gamë fantazi Tulip, Shoe, Elephant e të tjera.",
+      en: "Full collection of decorative plastic planters by Roto (North Macedonia): Edelweis (stone-texture rectangular S/L/XL), Stoniness (round stone-effect S/M/L/XL), Jazz (sleek S/M/L), Rumba (wide-mouth S/M/L), Barrel (barrel-shaped S/M/L), Nusa (ribbed rectangular and round), plus the novelty Tulip, Shoe, Elephant and more.",
     },
   },
   "palaplast-hdpe100-irrigation": {
-    name: { sq: "Tub Ujitjeje HDPE 100 Palaplast", en: "Palaplast HDPE 100 Irrigation Pipe" },
-    shortName: { sq: "Palaplast HDPE100", en: "Palaplast HDPE100" },
+    name: { sq: "Tuba Ujitjeje Palaplast — LDPE, HDPE & PE100", en: "Palaplast Irrigation Pipes — LDPE, HDPE & PE100" },
+    shortName: { sq: "Palaplast Ujitje", en: "Palaplast Irrigation" },
     description: {
-      sq: "Tub ujitjeje HDPE 100 i prodhuar sipas EN 12201-2 për rrjete ujitjeje me presion, furnizim uji dhe aplikime industriale.",
-      en: "Palaplast's HDPE 100 irrigation pipe manufactured to EN 12201-2 for pressurised irrigation, water supply, and industrial applications.",
+      sq: "Gamë e plotë tubash ujitjeje nga Palaplast: LDPE 6 ATM (Ø20–32 mm), HDPE 6 ATM (Ø40–110 mm), HDPE 10 ATM (Ø20–75 mm) dhe PE100 PN4–PN16 (Ø16–160 mm) sipas EN 12201-2.",
+      en: "Full Palaplast irrigation pipe range: LDPE 6 ATM (Ø20–32 mm), HDPE 6 ATM (Ø40–110 mm), HDPE 10 ATM (Ø20–75 mm), and PE100 PN4–PN16 (Ø16–160 mm) to EN 12201-2.",
     },
   },
   "palaplast-compression-fittings": {
     name: { sq: "Fitingje Kompresioni Palaplast", en: "Palaplast Compression Fittings" },
     shortName: { sq: "Fitingje PE", en: "PE Compression Fittings" },
     description: {
-      sq: "Fitingje kompresioni PN10 ATM nga polipropilen i cilësisë së lartë për lidhje pa vegla të tubave PE dhe HDPE.",
-      en: "PN10 ATM compression fittings manufactured from high-quality polypropylene for reliable tool-free connections.",
-    },
-  },
-  "palaplast-paladrip": {
-    name: { sq: "Linjë Pikuese Palaplast Paladrip", en: "Palaplast Paladrip Dripline" },
-    shortName: { sq: "Paladrip", en: "Paladrip" },
-    description: {
-      sq: "Linjë ujitjeje me pika me emetues të integruar në distanca uniforme për shpërndarje të njëtrajtshme uji në kultura bujqësore.",
-      en: "In-line drip irrigation line with flat turbulent-flow emitters integrated at uniform spacing for even water distribution.",
+      sq: "Fitingje kompresioni PN10 ATM nga polipropilen i cilësisë së lartë për lidhje pa vegla të tubave PE dhe HDPE. Gama Rekorder 10 ATM për presione më të larta.",
+      en: "PN10 ATM compression fittings from high-quality polypropylene for tool-free connections to PE and HDPE pipes. Rekorder 10 ATM range for higher-pressure applications.",
     },
   },
   "palaplast-irrigation-filter": {
@@ -716,76 +557,12 @@ export const productTranslations: Record<
       en: "Plastic irrigation filters for protecting drip emitters, micro-sprinklers, and valves from sand and sediment.",
     },
   },
-  "konti-pe100-water-pipe": {
-    name: { sq: "Tub Furnizimi Uji PE-100 Konti", en: "Konti PE-100 Water Supply Pipe" },
-    shortName: { sq: "PE-100 Ujësjellës", en: "PE-100 Water Pipe" },
-    description: {
-      sq: "Tuba furnizimi uji PE-100 nga Konti Hidroplast, të prodhuara nga polietileni me densitet të lartë i gjeneratës së tretë.",
-      en: "Konti Hidroplast's PE-100 water supply pipes manufactured from third-generation high-density polyethylene.",
-    },
-  },
-  "konti-pe100rc-water-pipe": {
-    name: { sq: "Tub Furnizimi Uji PE-100 RC Konti", en: "Konti PE-100 RC Water Supply Pipe" },
-    shortName: { sq: "PE-100 RC", en: "PE-100 RC Pipe" },
-    description: {
-      sq: "PE-100 RC (Rezistencë ndaj Çarjes) — variant i specializuar i PE-100 me rezistencë të jashtëzakonshme ndaj rritjes së ngadaltë të çarjeve.",
-      en: "PE-100 RC (Resistance to Crack) is a specialist variant of PE-100 engineered for exceptional resistance to slow crack growth.",
-    },
-  },
-  "konti-kan-corrugated-sn4": {
-    name: { sq: "Tub Kanalizimi i Korruguar HDPE Konti Kan — SN4", en: "Konti Kan HDPE Corrugated Sewage Pipe — SN4" },
-    shortName: { sq: "Konti Kan SN4", en: "Konti Kan SN4" },
-    description: {
-      sq: "Tuba kanalizimi të korruguar HDPE (klasa SN4) të prodhuar sipas EN 13476-3 dhe ISO 9969 me mur të dyfishtë.",
-      en: "HDPE corrugated sewage pipes (SN4 stiffness class) manufactured to EN 13476-3 and ISO 9969.",
-    },
-  },
-  "konti-kan-cable-duct": {
-    name: { sq: "Kanal Mbrojtës Kabllosh Konti Kan", en: "Konti Kan Duct — Cable Protection Pipe" },
-    shortName: { sq: "Kanal Kabllosh", en: "Cable Duct" },
-    description: {
-      sq: "Tuba mbrojtëse kabllosh me sipërfaqe të jashtme të lëmuar dhe brendësi me brinjë gjatësore, në spirale për instalim fleksibël.",
-      en: "Cable protection pipes with smooth exterior and longitudinally ribbed interior surface, produced in coils for flexible installation.",
-    },
-  },
-  "konti-kan-optic-cable-protection": {
-    name: { sq: "Tub Mbrojtës Kabllo Optike Konti Kan", en: "Konti Kan Optic Cable Protection Pipe" },
-    shortName: { sq: "Kanal Optik", en: "Optic Cable Duct" },
-    description: {
-      sq: "Tuba HDPE me mur të dyfishtë me sipërfaqe të jashtme të korruguar dhe të brendshme të lëmuar për mbrojtje fibër optike.",
-      en: "Double-wall HDPE pipes with corrugated outer surface and smooth inner surface for fibre-optic cable protection.",
-    },
-  },
   "ferplast-drainage-pipe": {
-    name: { sq: "Tub Kullimi HDPE Ferplast", en: "Ferplast HDPE Drainage Pipe" },
-    shortName: { sq: "Kullim HDPE", en: "HDPE Drainage" },
+    name: { sq: "Tub Kullimi Nëntokësor i Perforuar HDPE", en: "HDPE Perforated Sub-Surface Drainage Pipe" },
+    shortName: { sq: "Kullim i Perforuar", en: "Perforated Drainage" },
     description: {
-      sq: "Tuba kullimi HDPE sipas EN 13476-3 dhe ISO 9969 për kullim nëntokësor të tokës bujqësore dhe rrugore.",
-      en: "HDPE drainage pipes manufactured to EN 13476-3 and ISO 9969 for sub-surface drainage of agricultural and road land.",
-    },
-  },
-  "ferplast-electric-conduit": {
-    name: { sq: "Kanal Kabllor Elektrik HDPE Ferplast", en: "Ferplast HDPE Electric Cable Conduit" },
-    shortName: { sq: "Kanal Elektrik", en: "Electric Conduit" },
-    description: {
-      sq: "Kanale kabllore elektrike HDPE sipas EN 50086-2-4. Ndërtimi i korruguar siguron fleksibilitet dhe mbrojtje mekanike.",
-      en: "HDPE electric cable conduits manufactured to EN 50086-2-4 with corrugated construction for flexibility and mechanical protection.",
-    },
-  },
-  "ferplast-pe100-water-pipe": {
-    name: { sq: "Tub Furnizimi Uji PE-100 / PE-100 RC Ferplast", en: "Ferplast PE-100 / PE-100 RC Water Supply Pipe" },
-    shortName: { sq: "Ferplast PE-100", en: "Ferplast PE-100" },
-    description: {
-      sq: "Tuba furnizimi uji PE-100 dhe PE-100 RC sipas EN 12201-2 dhe ISO 4427 nga fabrika e Ferplast në Kosovë.",
-      en: "PE-100 and PE-100 RC water supply pipes to EN 12201-2 and ISO 4427 from Ferplast's Kosovo production facility.",
-    },
-  },
-  "ferplast-optic-cable-pipe": {
-    name: { sq: "Tub Mbrojtës Kabllo Optike PE Ferplast", en: "Ferplast PE Optic Cable Protection Pipe" },
-    shortName: { sq: "Kanal Optik", en: "Optic Cable Pipe" },
-    description: {
-      sq: "Tuba mbrojtëse kabllo optike PE sipas EN 12201, ISO 4427 dhe DIN 8074 nga Ferplast.",
-      en: "PE optic cable protection pipes to EN 12201, ISO 4427, and DIN 8074 from Ferplast.",
+      sq: "Tuba kullimi HDPE të perforuar sipas EN 13476-3 dhe ISO 9969 për kullim nëntokësor të tokës bujqësore dhe rrugore.",
+      en: "Perforated HDPE sub-surface drainage pipes to EN 13476-3 and ISO 9969 for agricultural land and road drainage.",
     },
   },
   "polins-manual-sprayer": {
@@ -828,38 +605,6 @@ export const productTranslations: Record<
       en: "HDPE water storage canisters for drinking water and general purpose liquid storage. Available in 10 L and 20 L.",
     },
   },
-  "palaplast-ldpe-pipe-6atm": {
-    name: { sq: "Tub Ujitjeje LDPE 6 ATM Palaplast", en: "Palaplast LDPE Irrigation Pipe — 6 ATM" },
-    shortName: { sq: "LDPE 6 ATM", en: "LDPE 6 ATM" },
-    description: {
-      sq: "Tuba ujitjeje LDPE 6 ATM si nën-anësore dhe linja dytësore kryesore në sisteme ujitjeje bujqësore.",
-      en: "LDPE irrigation pipes rated at 6 ATM for sub-laterals and secondary mainlines in agricultural irrigation systems.",
-    },
-  },
-  "palaplast-hdpe-pipe-6atm": {
-    name: { sq: "Tub Ujitjeje HDPE 6 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 6 ATM" },
-    shortName: { sq: "HDPE 6 ATM", en: "HDPE 6 ATM" },
-    description: {
-      sq: "Tub kryesor ujitjeje HDPE 6 ATM. Diametra Ø 40–110 mm. Për shpërndarje me presion në rrjete bujqësore.",
-      en: "HDPE irrigation mainline pipe rated at 6 ATM. Sizes Ø 40–110 mm. For pressurised distribution in agricultural networks.",
-    },
-  },
-  "palaplast-hdpe-pipe-10atm": {
-    name: { sq: "Tub Ujitjeje HDPE 10 ATM Palaplast", en: "Palaplast HDPE Irrigation Pipe — 10 ATM" },
-    shortName: { sq: "HDPE 10 ATM", en: "HDPE 10 ATM" },
-    description: {
-      sq: "Tub kryesor ujitjeje HDPE me presion të lartë 10 ATM. Për rrjete shpërndarjeje primare me presion pune më të lartë.",
-      en: "High-pressure HDPE irrigation mainline pipe rated at 10 ATM for primary distribution networks requiring higher working pressure.",
-    },
-  },
-  "palaplast-rekorder-10atm": {
-    name: { sq: "Fitingje Kompresioni Rekorder 10 ATM Palaplast", en: "Palaplast Compression Fittings (Rekorder) — 10 ATM" },
-    shortName: { sq: "Rekorder 10 ATM", en: "Rekorder 10 ATM" },
-    description: {
-      sq: "Fitingje kompresioni 10 ATM (rekorder) nga polipropilen për lidhje pa vegla të tubave PE dhe HDPE.",
-      en: "10 ATM compression fittings (rekorder) from polypropylene for tool-free connection to PE and HDPE pipes.",
-    },
-  },
   "palaplast-end-caps-joiners": {
     name: { sq: "Tapa, Bashkuese & Emetues Pikash Palaplast", en: "Palaplast End Caps, Pipe Joiners & Drip Emitters" },
     shortName: { sq: "Tapa · Bashkuese · Emetues", en: "Caps · Joiners · Emitters" },
@@ -876,124 +621,12 @@ export const productTranslations: Record<
       en: "Plastic inline stopcock valves for PE and LDPE irrigation pipes. Standard and compact models for network management.",
     },
   },
-  "roto-edelweis-planter": {
-    name: { sq: "Vazo Dekorative Roto Edelweis", en: "Roto Edelweis Decorative Planter" },
-    shortName: { sq: "Edelweis", en: "Edelweis" },
-    description: {
-      sq: "Vazo dekorative drejtkëndëshe me mbarim teksture guri natyral nga Roto. Në madhësi S, L dhe XL.",
-      en: "Rectangular decorative planter with natural stone-texture finish from Roto. Available in S, L, and XL.",
-    },
-  },
-  "roto-stoniness-planter": {
-    name: { sq: "Vazo Dekorative Roto Stoniness", en: "Roto Stoniness Decorative Planter" },
-    shortName: { sq: "Stoniness", en: "Stoniness" },
-    description: {
-      sq: "Vazo rrumbullakët me efekt guri tekstural. Gama Stoniness në katër madhësi — S, M, L dhe XL.",
-      en: "Round textured stone-effect garden planter. The Stoniness range in four sizes — S, M, L, and XL.",
-    },
-  },
-  "roto-jazz-planter": {
-    name: { sq: "Vazo Kopshti Roto Jazz", en: "Roto Jazz Garden Planter" },
-    shortName: { sq: "Jazz", en: "Jazz" },
-    description: {
-      sq: "Vazo rrumbullakët Jazz në tre madhësi. Dizajn elegant për vendosje në ambiente të brendshme dhe të jashtme.",
-      en: "Round Jazz garden planter in three sizes. Sleek design for indoor and outdoor placement.",
-    },
-  },
-  "roto-rumba-planter": {
-    name: { sq: "Vazo Kopshti Roto Rumba", en: "Roto Rumba Garden Planter" },
-    shortName: { sq: "Rumba", en: "Rumba" },
-    description: {
-      sq: "Vazo rrumbullakët Rumba me grykë të gjerë në madhësi S, M dhe L. Ideale për shkurre dhe bimë voluminoze.",
-      en: "Wide-mouth round Rumba garden planter in S, M, and L sizes. Ideal for shrubs and bushy plantings.",
-    },
-  },
-  "roto-barrel-planter": {
-    name: { sq: "Vazo Dekorative Roto Barrel", en: "Roto Barrel Decorative Planter" },
-    shortName: { sq: "Barrel", en: "Barrel" },
-    description: {
-      sq: "Vazo dekorative në formë fuçie për kopësht. E disponueshme si model tekë dhe në madhësi S / M / L.",
-      en: "Barrel-shaped decorative planter for gardens. Available as single model and in S / M / L sizes.",
-    },
-  },
-  "roto-nusa-planter": {
-    name: { sq: "Vazo Dekorative Roto Nusa", en: "Roto Nusa Decorative Planter" },
-    shortName: { sq: "Nusa", en: "Nusa" },
-    description: {
-      sq: "Vazo drejtkëndëshe Nusa me brinjë dhe varianti rrumbullakët. Nga ballkoni i vogël deri në tarracë të madhe.",
-      en: "Rectangular ribbed Nusa planter and round Nusa variant. From small balcony to large terrace.",
-    },
-  },
-  "roto-novelty-planters": {
-    name: { sq: "Vazo Dekorative Roto Tulip & Fantazi", en: "Roto Tulip & Novelty Decorative Planters" },
-    shortName: { sq: "Gamë Fantazi", en: "Novelty Range" },
-    description: {
-      sq: "Gamë e gjerë vazosh dekorative fantazi nga Roto — Tulip, Shoe (Këpucë), Elephant, Sailing, dhe të tjera.",
-      en: "Broad range of Roto novelty decorative planters — Tulip, Shoe, Elephant, Sailing, and more.",
-    },
-  },
-  "roto-water-tank-otw": {
-    name: { sq: "Depozitë Uji Katrore Roto OTW", en: "Roto OTW Square Water Storage Tank" },
-    shortName: { sq: "OTW Barrel", en: "OTW Barrel" },
-    description: {
-      sq: "Depozitë uji HDPE me trup katror (Barrel OTW). Kapacitete: 60 L, 100 L, 150 L, 200 L dhe 300 L. Të grumbullueshme.",
-      en: "Rotomoulded HDPE square-body water storage tank (Barrel OTW). Capacities: 60–300 L. Stackable.",
-    },
-  },
-  "roto-cisterna-otw": {
-    name: { sq: "Cisternë Uji Roto OTW", en: "Roto OTW Water Storage Cistern" },
-    shortName: { sq: "Cisternë OTW", en: "OTW Cisterna" },
-    description: {
-      sq: "Cisterna të mëdha uji HDPE. Kapacitete 500 L, 1000 L dhe 1500 L. Për furnizim rezidencial dhe bujqësor.",
-      en: "Large HDPE water cisterns. Capacities 500 L, 1000 L, and 1500 L. For residential and agricultural supply.",
-    },
-  },
-  "roto-water-tank-tcw": {
-    name: { sq: "Depozitë Uji Roto TCW Vezake", en: "Roto TCW Vezake Water Storage Tank" },
-    shortName: { sq: "TCW Vezake", en: "TCW Vezake" },
-    description: {
-      sq: "Depozitë uji HDPE vertikale ovale (Cisternë TCW). Kapacitete nga 70 L deri 750 L.",
-      en: "Vertical oval HDPE water storage tank (Cisterna TCW). Capacities from 70 L to 750 L.",
-    },
-  },
-  "roto-plastik-tank-large": {
-    name: { sq: "Depozitë Roto Plastik — Kapacitet i Madh", en: "Roto Plastik Tank — Large Capacity" },
-    shortName: { sq: "Depozitë Plastik", en: "Plastik Tank" },
-    description: {
-      sq: "Depozita HDPE me kapacitet të madh për ujë. Madhësi 2500 L, 3500 L dhe 5000 L.",
-      en: "Large-capacity HDPE storage tanks for water. Sizes 2500 L, 3500 L, and 5000 L.",
-    },
-  },
   "perplast-pvc-hose": {
-    name: { sq: "Zorrë Kopshti PVC Perplast Classic", en: "Perplast Classic PVC Garden Hose" },
-    shortName: { sq: "Perplast Classic", en: "Perplast Classic" },
+    name: { sq: "Zorrë PVC Perplast — Classic & Flexoper-3", en: "Perplast PVC Hose — Classic & Flexoper-3" },
+    shortName: { sq: "Perplast PVC", en: "Perplast PVC" },
     description: {
-      sq: "Zorrë kopshti PVC me shumë shtresa nga Perplast Kompani për ujitje të përgjithshme kopshti dhe bujqësore.",
-      en: "Perplast's Classic PVC garden hose with multi-layer construction for general garden and agricultural watering.",
-    },
-  },
-  "perplast-flexoper-3": {
-    name: { sq: "Zorrë PVC e Përforcuar Perplast Flexoper-3", en: "Perplast Flexoper-3 Reinforced PVC Hose" },
-    shortName: { sq: "Flexoper-3", en: "Flexoper-3" },
-    description: {
-      sq: "Zorrë PVC me tre shtresa e përforcuar Flexoper-3 me rezistencë më të lartë presioni se modeli Classic.",
-      en: "Three-layer reinforced PVC hose Flexoper-3 with improved pressure resistance over the Classic model.",
-    },
-  },
-  "sel-troy-green-spiral-hose": {
-    name: { sq: "Zorrë Thithëse PVC Spirale SEL-Troy Green", en: "SEL-Troy Green PVC Spiral Suction Hose" },
-    shortName: { sq: "SEL-Troy Green", en: "SEL-Troy Green" },
-    description: {
-      sq: "Zorrë e fortë PVC thithëse dhe shpërndarëse me spirale nga SEL-Polimer për aplikime profesionale.",
-      en: "Robust PVC suction and delivery spiral hose from SEL-Polimer for professional applications.",
-    },
-  },
-  "sel-caramel-garden-hose": {
-    name: { sq: "Zorrë Kopshti PVC SEL Caramel", en: "SEL Caramel PVC Garden Hose" },
-    shortName: { sq: "SEL Caramel", en: "SEL Caramel" },
-    description: {
-      sq: "Zorrë kopshti PVC me ngjyrë karameli nga SEL-Polimer. Në stok në ½″, ¾″ dhe 1″.",
-      en: "Caramel-orange PVC garden hose from SEL-Polimer. In stock in ½″, ¾″, and 1″ sizes.",
+      sq: "Gama e zorrave PVC nga Perplast Kompani: Classic me shumë shtresa për ujitje të përgjithshme kopshti dhe Flexoper-3 me tre shtresa e përforcuar me rezistencë më të lartë presioni.",
+      en: "Perplast's PVC hose range: Classic multi-layer for general garden and agricultural watering, and Flexoper-3 reinforced three-layer with improved burst pressure resistance.",
     },
   },
   "confort-ppht-pipes": {
@@ -1044,92 +677,58 @@ export const productTranslations: Record<
       en: "Full-bore UPVC compact ball valve for water supply, irrigation, and industrial applications.",
     },
   },
-  "plastika-nv-agri-film-2yr-50kg": {
-    name: { sq: "Film Bujqësor PE 2-Vjeçar Plastika NV — 4×100 m (50 kg)", en: "Plastika NV 2-Year Agricultural PE Film — 4×100 m (50 kg)" },
-    shortName: { sq: "Film 50 kg", en: "Agri Film 50 kg" },
-    description: {
-      sq: "Film bujqësor PE i stabilizuar ndaj UV 2 vjeçar. Gjerësi 4 m, gjatësi 100 m, peshë 50 kg për rul.",
-      en: "2-year UV-stabilised agricultural PE film. Width 4 m, length 100 m, weight 50 kg per roll.",
-    },
-  },
-  "plastika-nv-agri-film-2yr-60kg": {
-    name: { sq: "Film Bujqësor PE 2-Vjeçar Plastika NV — 4×100 m (60 kg)", en: "Plastika NV 2-Year Agricultural PE Film — 4×100 m (60 kg)" },
-    shortName: { sq: "Film 60 kg", en: "Agri Film 60 kg" },
-    description: {
-      sq: "Film PE 2-vjeçar më i rëndë. Gjerësi 4 m, gjatësi 100 m, peshë 60 kg për rul. Për serra që kërkojnë trashësi më të madhe.",
-      en: "Heavier 2-year UV-stabilised PE film roll. Width 4 m, length 100 m, weight 60 kg per roll.",
-    },
-  },
-  "plastika-nv-agri-film-2yr-6m": {
-    name: { sq: "Film Bujqësor PE 2-Vjeçar Plastika NV — 6.3×100 m (60 kg)", en: "Plastika NV 2-Year Agricultural PE Film — 6.3×100 m (60 kg)" },
-    shortName: { sq: "Film 6.3 m", en: "Agri Film 6.3 m" },
-    description: {
-      sq: "Film PE bujqësor ekstra i gjerë 2-vjeçar. Gjerësi 6.3 m, gjatësi 100 m. Për serra me hapësirë të gjerë.",
-      en: "Extra-wide 2-year UV-stabilised agricultural PE film. Width 6.3 m, length 100 m.",
-    },
-  },
-  "plastika-nv-white-film": {
-    name: { sq: "Film PE i Bardhë Bujqësor Plastika NV", en: "Plastika NV White PE Agricultural Film" },
-    shortName: { sq: "Film i Bardhë", en: "White PE Film" },
-    description: {
-      sq: "Film polietileni i bardhë për serra ose mbulim bujqësor. Gjerësi 4 m, gjatësi 100 m.",
-      en: "White PE film for greenhouse or agricultural covering. Width 4 m, length 100 m.",
-    },
-  },
-  "ferplast-water-reservoir": {
-    name: { sq: "Depozitë Uji HDPE Ferplast", en: "Ferplast HDPE Water Storage Tank" },
-    shortName: { sq: "Depozitë Ferplast", en: "HDPE Water Tank" },
-    description: {
-      sq: "Depozita uji HDPE të formuara me rrotullim nga Ferplast, nga 500 deri 5000 litra.",
-      en: "Rotationally moulded HDPE water storage tanks from Ferplast, from 500 to 5000 litres.",
-    },
-  },
-  "ferplast-corrugated-sn4": {
-    name: { sq: "Tub Kanalizimi i Korruguar HDPE Ferplast — SN4", en: "Ferplast Corrugated HDPE Sewage Pipe — SN4" },
-    shortName: { sq: "Ferplast SN4", en: "Ferplast SN4" },
-    description: {
-      sq: "Tub kanalizimi i korruguar HDPE me klasë ngurtësie SN4 nga Ferplast.",
-      en: "Double-wall corrugated HDPE sewage pipe in SN4 ring stiffness class from Ferplast.",
-    },
-  },
-  "ferplast-corrugated-sn8": {
-    name: { sq: "Tub Kanalizimi i Korruguar HDPE Ferplast — SN8", en: "Ferplast Corrugated HDPE Sewage Pipe — SN8" },
-    shortName: { sq: "Ferplast SN8", en: "Ferplast SN8" },
-    description: {
-      sq: "Tub kanalizimi i korruguar HDPE me klasë ngurtësie SN8 nga Ferplast për ngarkesa më të rënda trafiku.",
-      en: "Double-wall corrugated HDPE sewage pipe in SN8 ring stiffness class from Ferplast for heavier traffic loads.",
-    },
-  },
-  "ferplast-pph-pipe": {
-    name: { sq: "Tub Kullimi PP-H Ferplast", en: "Ferplast PP-H Gravity Drainage Pipe" },
-    shortName: { sq: "Ferplast PP-H", en: "Ferplast PP-H" },
-    description: {
-      sq: "Tub kullimi PP-H për ujëra të ndotura ndërtesash dhe sisteme kullimi gravitacional nga Ferplast.",
-      en: "Ferplast PP-H drainage pipe for building waste-water and gravity drainage systems.",
-    },
-  },
-  "konti-kan-socket-fitting": {
-    name: { sq: "Bashkues Socket Konti Kan (HDPE)", en: "Konti Kan Socket Fitting (HDPE)" },
-    shortName: { sq: "Bashkues Konti", en: "Konti Socket" },
-    description: {
-      sq: "Bashkues socket HDPE për tuba kanalizimi të korruguar Konti Kan, në variante me injeksion dhe rrotullim.",
-      en: "HDPE socket coupling for Konti Kan corrugated sewage pipes, in injection and rotomoulded variants.",
-    },
-  },
-  "palaplast-irrigation-filters": {
-    name: { sq: "Filtra Ujitjeje Palaplast", en: "Palaplast Irrigation Filters" },
-    shortName: { sq: "Filtër Palaplast", en: "Palaplast Filter" },
-    description: {
-      sq: "Filtra plastikë ujitjeje (rrjetë/disk/hidrocionikë) për mbrojtjen e linjave pikuese nga sedimenti.",
-      en: "Plastic irrigation filters (screen/disc/hydrocyclonic variants) for protecting driplines from sediment.",
-    },
-  },
   "polins-battery-sprayer-electra-lux": {
     name: { sq: "Spërkatës me Bateri Polins Electra Lux", en: "Polins Battery Sprayer Electra Lux" },
     shortName: { sq: "Electra Lux", en: "Electra Lux" },
     description: {
-      sq: "Spërkatës shpine me bateri nga gama Electra Lux për pemëtore, vreshta dhe sipërfaqe të gjera bujqësore.",
-      en: "Battery backpack sprayer in the Electra Lux range for orchards, vineyards, and broad-acre application.",
+      sq: "Spërkatës shpine me bateri nga gama Electra Lux për pemëtore, vreshta dhe sipërfaqe të gjera bujqësore. Disponueshëm në 12 L dhe 16 L.",
+      en: "Battery backpack sprayer in the Electra Lux range for orchards, vineyards, and broad-acre application. Available in 12 L and 16 L.",
+    },
+  },
+
+  // ── AGRI (new consolidated entries) ────────────────────────────────────────
+  "plastika-nv-agri-film": {
+    name: { sq: "Film Bujqësor PE Plastika NV", en: "Plastika NV Agricultural PE Film" },
+    shortName: { sq: "Film Bujqësor", en: "Agri Film" },
+    description: {
+      sq: "Film polietileni i stabilizuar ndaj UV nga Plastika NV për mbulesë serrash dhe bujqësi. Disponueshëm: 2-vjeçar (4 m × 100 m në 50 kg ose 60 kg), 2-vjeçar ekstra i gjerë (6.3 m × 100 m) dhe film i bardhë (4 m × 100 m).",
+      en: "UV-stabilised polyethylene film from Plastika NV for greenhouse and agricultural use. Available as: 2-year (4 m × 100 m in 50 kg or 60 kg rolls), 2-year extra-wide (6.3 m × 100 m), and white PE film (4 m × 100 m).",
+    },
+  },
+
+  // ── CIVIL (new consolidated entries) ───────────────────────────────────────
+  "pe100rc-water-pipe": {
+    name: { sq: "Tub Furnizimi Uji PE-100 RC", en: "PE-100 RC Water Supply Pipe" },
+    shortName: { sq: "PE-100 RC", en: "PE-100 RC" },
+    description: {
+      sq: "PE-100 RC (Rezistencë ndaj Çarjes) — variant i specializuar i PE-100 me rezistencë të jashtëzakonshme ndaj rritjes së ngadaltë të çarjeve. Ideal për instalim pa hendek dhe zona me ngarkesë të lartë.",
+      en: "PE-100 RC (Resistance to Crack) — a specialist variant of PE-100 with exceptional resistance to slow crack growth. Ideal for trenchless installation and high-stress environments.",
+    },
+  },
+  "hdpe-cable-conduit": {
+    name: { sq: "Kanal Mbrojtës Kabllosh HDPE", en: "HDPE Cable & Optic Conduit" },
+    shortName: { sq: "Kanal Kabllosh", en: "Cable Conduit" },
+    description: {
+      sq: "Kanale mbrojtëse HDPE për kabllo elektrike dhe fibër optike nëntokësore. Disponueshëm në variante: kanal i brendshëm me brinjë (spirale), monotub optik PTT dhe tub me mur të dyfishtë (i korruguar jashtë, i lëmuar brenda).",
+      en: "HDPE protective conduit for underground electrical cables and fibre optics. Available as ribbed inner duct (coil), PTT optic monotube, and double-wall pipe (corrugated outer / smooth inner).",
+    },
+  },
+  "roto-water-tanks": {
+    name: { sq: "Depozitë Uji HDPE Roto", en: "Roto HDPE Water Storage Tanks" },
+    shortName: { sq: "Depozitë Roto", en: "Roto Water Tanks" },
+    description: {
+      sq: "Gamë e plotë depozitash uji HDPE të formuara me rrotullim nga Roto (Maqedonia e Veriut). Kapacitete nga 60 L deri 5000 L — modelet Barrel OTW (katrore), Cisternë OTW (të mëdha), TCW Vezake (ovale vertikale) dhe tanke me kapacitet të madh.",
+      en: "Complete range of rotationally moulded HDPE water storage tanks by Roto (North Macedonia). Capacities from 60 L to 5000 L — Barrel OTW (square), OTW Cisterna (large), TCW Vezake (vertical oval), and large-capacity tanks.",
+    },
+  },
+
+  // ── INDUSTRIAL ─────────────────────────────────────────────────────────────
+  "sel-polimer-pvc-hoses": {
+    name: { sq: "Zorrë PVC & Spirale SEL-Polimer", en: "SEL-Polimer PVC & Spiral Hoses" },
+    shortName: { sq: "SEL-Polimer", en: "SEL-Polimer" },
+    description: {
+      sq: "Gamë e plotë zorrave PVC nga SEL-Polimer: Troy ST transparente me spirale PVC (Ø13–120 mm, thithëse & shpërndarëse), Troy Green spirale me ngjyrë (Ø19–120 mm) dhe Caramel zorrë kopshti (½″–1″) për ujitje dhe lidhje të përgjithshme.",
+      en: "Full PVC hose range from SEL-Polimer: Troy ST clear spiral hose (Ø13–120 mm, suction & delivery), Troy Green coloured spiral (Ø19–120 mm), and Caramel garden hose (½″–1″) for irrigation and general connection.",
     },
   },
 };
