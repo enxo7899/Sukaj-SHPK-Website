@@ -122,7 +122,7 @@ export const productGroups: ProductGroup[] = [
     application: "Water Supply & Pressure Systems",
     description:
       "High-density polyethylene PE100 pressure pipe for potable water distribution, irrigation mains, and pressurised industrial networks. Engineered for 50+ year service life with full fusion-weld compatibility. Available in solid-wall SDR series from PN6 to PN32 across four regional suppliers covering the full Balkan supply chain.",
-    image: "/products/civil/konti-pe100-water-pipe.jpg?v=3",
+    image: "/products/civil/konti-pe100-water-pipe.jpg",
     standards: ["EN 12201", "EN 12201-2", "ISO 4427", "DIN 8074", "ISO 9001"],
     keyProperties: {
       "Material": "PE100 (HDPE)",
@@ -563,7 +563,7 @@ export const productGroups: ProductGroup[] = [
     application: "Cable & Telecom Protection",
     description:
       "HDPE conduit pipes for underground protection of electrical, fibre-optic, and telecommunication cables. Available in smooth monotube (single / twin / quad), corrugated flexible, and double-wall corrugated optic configurations. Stock sizes from Ø40 mm. Used for buried cable routes, road crossings, and bridge crossings. Konti Hidroplast (North Macedonia) and Ferplast (Kosovo) supply complementary ranges.",
-    image: "/products/industrial/konti-optic-monotube.jpg?v=2",
+    image: "/products/industrial/konti-optic-monotube.jpg",
     standards: ["EN 61386", "EN 50086", "EN 50086-2-4", "EN 12201-2", "PTT Standard"],
     keyProperties: {
       "Material": "HDPE",
