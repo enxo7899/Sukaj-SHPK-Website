@@ -999,15 +999,15 @@ export const productGroups: ProductGroup[] = [
     material: "PVC",
     application: "Garden & Agricultural Watering",
     description:
-      "Pista Ekoplast watering hose is a durable PVC garden hose designed for reliable watering in residential and agricultural applications. Manufactured in Kosovo by Pista Ekoplast, this hose features reinforced construction for long-lasting performance in outdoor conditions. Available in multiple diameters to suit different flow requirements, with standard 50-meter roll lengths for convenient coverage of large areas. Suitable for garden irrigation, agricultural watering, and general outdoor water distribution.",
+      "Pista Ekoplast watering hose is a durable three-layer PVC garden hose designed for reliable watering in residential and agricultural applications. Manufactured in Kosovo by Pista Ekoplast, this hose features reinforced three-layer construction for long-lasting performance in outdoor conditions. The multi-layer design provides superior strength and flexibility. Available in multiple diameters to suit different flow requirements, with standard 50-meter roll lengths for convenient coverage of large areas. Suitable for garden irrigation, agricultural watering, and general outdoor water distribution.",
     image: "/products/agri/pista-ekoplast-hose-cover.jpg",
     additionalImage: "/products/agri/pista-ekoplast-hose-product.jpg",
     standards: [],
     keyProperties: {
-      "Material": "PVC — reinforced construction",
+      "Material": "PVC — 3-layer construction",
       "Inner Diameter": "12.5 / 19 / 25 mm",
       "Roll Lengths": "50 m standard",
-      "Construction": "Multi-layer reinforced PVC",
+      "Construction": "3-layer reinforced PVC",
       "Application": "Garden watering & agricultural irrigation",
       "Temperature Range": "−5 °C to +50 °C",
       "Pressure Rating": "Standard garden hose pressure",
@@ -1033,7 +1033,7 @@ export const productGroups: ProductGroup[] = [
         diameterMax: 25,
         standards: [],
         specificSpecs: {
-          "Construction": "Multi-layer reinforced PVC",
+          "Construction": "3-layer reinforced PVC",
           "Flexibility": "Good flexibility for easy handling",
           "Durability": "UV-resistant outer layer",
           "Connection": "Standard garden hose fittings",

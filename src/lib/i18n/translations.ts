@@ -465,9 +465,11 @@ export const translations = {
       "Usage": { sq: "Përdorimi", en: "Usage" },
       "Roll Length": { sq: "Gjatësia e Bobinës", en: "Roll Length" },
       "PVC — reinforced construction": { sq: "PVC — ndërtim i përforcuar", en: "PVC — reinforced construction" },
+      "PVC — 3-layer construction": { sq: "PVC — ndërtim 3-shtresor", en: "PVC — 3-layer construction" },
       "12.5 / 19 / 25 mm": { sq: "12.5 / 19 / 25 mm", en: "12.5 / 19 / 25 mm" },
       "50 m standard": { sq: "50 m standarde", en: "50 m standard" },
       "Multi-layer reinforced PVC": { sq: "PVC shumë-shtresor i përforcuar", en: "Multi-layer reinforced PVC" },
+      "3-layer reinforced PVC": { sq: "PVC 3-shtresor i përforcuar", en: "3-layer reinforced PVC" },
       "Garden watering & agricultural irrigation": { sq: "Ujitje kopshti & vaditje bujqësore", en: "Garden watering & agricultural irrigation" },
       "−5 °C to +50 °C": { sq: "−5 °C deri +50 °C", en: "−5 °C to +50 °C" },
       "Standard garden hose pressure": { sq: "Presion standard zorre kopshti", en: "Standard garden hose pressure" },
@@ -600,8 +602,8 @@ export const productTranslations: Record<
     name: { sq: "Zorrë Për Vaditje Pista Ekoplast", en: "Pista Ekoplast Watering Hose" },
     shortName: { sq: "Pista Ekoplast", en: "Pista Ekoplast" },
     description: {
-      sq: "Zorrë PVC e qëndrueshme për vaditje kopshti dhe bujqësore. Ndërtim i përforcuar shumë-shtresor për performancë afatgjatë. Prodhuar në Kosovë nga Pista Ekoplast. Diametra të shumtë për nevoja të ndryshme. Gjatësi standarde 50m. E përshtatshme për ujitje kopshti, vaditje bujqësore dhe shpërndarje uji.",
-      en: "Durable PVC hose for garden and agricultural watering. Multi-layer reinforced construction for long-lasting performance. Made in Kosovo by Pista Ekoplast. Multiple diameters for different needs. Standard 50m length. Suitable for garden irrigation, agricultural watering, and water distribution.",
+      sq: "Zorrë PVC me tre shtresa e qëndrueshme për vaditje kopshti dhe bujqësore. Ndërtim i përforcuar tre-shtresor për performancë afatgjatë. Dizajni shumë-shtresor ofron forcë dhe fleksibilitet superior. Prodhuar në Kosovë nga Pista Ekoplast. Diametra të shumtë për nevoja të ndryshme. Gjatësi standarde 50m. E përshtatshme për ujitje kopshti, vaditje bujqësore dhe shpërndarje uji.",
+      en: "Durable three-layer PVC hose for garden and agricultural watering. Reinforced 3-layer construction for long-lasting performance. Multi-layer design provides superior strength and flexibility. Made in Kosovo by Pista Ekoplast. Multiple diameters for different needs. Standard 50m length. Suitable for garden irrigation, agricultural watering, and water distribution.",
     },
   },
   "hdpe-socket-coupling": {
