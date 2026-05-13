@@ -24,6 +24,7 @@ import { productGroups } from "@/lib/products-data";
 import { partners } from "@/lib/data";
 import { getApplicationFamily, getMaterialFamily } from "@/lib/catalog-filters";
 import { useTranslation } from "@/lib/i18n/context";
+import { translations } from "@/lib/i18n/translations";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -271,6 +272,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
   const hasWall = wallClasses.length > 0;
   const hasWeight = rows.some((r) => r.weightPerMeter !== undefined);
   const hasLengths = rows.some((r) => r.lengths !== undefined);
+  const hasSize = rows.some((r) => r.size !== undefined);
 
   const thStyle: React.CSSProperties = { color: "var(--site-text-soft)" };
   const thClass = "px-4 py-3 font-mono text-[10px] tracking-widest uppercase whitespace-nowrap";
@@ -280,7 +282,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
       <table className="w-full text-sm border-collapse">
         <thead>
           <tr style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
-            <th className={`${thClass} text-left`} style={thStyle}>DN (mm)</th>
+            <th className={`${thClass} text-left`} style={thStyle}>{hasSize ? "Size" : "DN (mm)"}</th>
             {hasOD && <th className={`${thClass} text-left`} style={thStyle}>OD (mm)</th>}
             {hasWall && wallClasses.map((wc) => (
               <th key={wc} className={`${thClass} text-right`} style={thStyle}>e {wc} (mm)</th>
@@ -307,7 +309,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
                 style={{ borderBottom: "1px solid var(--site-border)", ...base.rowStyle }}
               >
                 <td className="px-4 py-2.5 font-mono font-bold" style={{ color: base.textColor }}>
-                  {row.dn}
+                  {row.size ?? row.dn}
                 </td>
                 {hasOD && (
                   <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
@@ -528,7 +530,7 @@ function FittingsSection({ fittings }: { fittings: ProductFitting[] }) {
 
 export function ProductDetailPage({ product }: { product: ProductGroup }) {
   const [imageError, setImageError] = useState(false);
-  const { t, tp } = useTranslation();
+  const { t, tp, locale } = useTranslation();
   const materialFamily = getMaterialFamily(product.material);
   const materialKey = materialTranslationKeys[materialFamily.id];
   const materialLabel = materialKey ? t(materialKey as never) : materialFamily.label;
@@ -706,20 +708,24 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
             </div>
             <table className="w-full flex-1">
               <tbody>
-                {Object.entries(product.keyProperties).map(([k, v]) => (
-                  <tr
-                    key={k}
-                    style={{ borderBottom: "1px solid var(--site-border)" }}
-                    className="last:border-0"
-                  >
-                    <td className="px-5 py-3 font-mono text-[10px] tracking-wider uppercase w-[42%] align-top" style={{ color: "var(--site-text-soft)" }}>
-                      {k}
-                    </td>
-                    <td className="px-5 py-3 text-xs" style={{ color: "var(--site-text-muted)" }}>
-                      {v}
-                    </td>
-                  </tr>
-                ))}
+                {Object.entries(product.keyProperties).map(([k, v]) => {
+                  const translatedKey = (translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[k]?.[locale] || k;
+                  const translatedValue = (translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[v]?.[locale] || v;
+                  return (
+                    <tr
+                      key={k}
+                      style={{ borderBottom: "1px solid var(--site-border)" }}
+                      className="last:border-0"
+                    >
+                      <td className="px-5 py-3 font-mono text-[10px] tracking-wider uppercase w-[42%] align-top" style={{ color: "var(--site-text-soft)" }}>
+                        {translatedKey}
+                      </td>
+                      <td className="px-5 py-3 text-xs" style={{ color: "var(--site-text-muted)" }}>
+                        {translatedValue}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

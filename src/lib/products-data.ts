@@ -27,6 +27,8 @@ export interface DimensionRow {
   dn: number;
   /** Outer diameter in mm */
   od?: number;
+  /** Size designation (e.g., "1/2\"", "5/8\"") */
+  size?: string;
   /** Wall thickness by SDR / PN class (key = "SDR17/PN10", value = mm) */
   wallByClass?: Record<string, number>;
   /** Stiffness class availability */
@@ -824,6 +826,168 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "fitt-mint",
+    slug: "fitt-mint",
+    name: "FITT Mint",
+    shortName: "FITT Mint",
+    category: "agri",
+    material: "PVC",
+    application: "Garden & Agricultural Watering",
+    description:
+      "FITT Mint is a four-layer PVC hose designed for garden and agricultural watering and irrigation. Its black inner layer actively prevents algae formation, while the outer cover is UV-stabilised for long service life in outdoor conditions. The hose performs reliably between −10 °C and +40 °C and carries a 10-year manufacturer guarantee.",
+    image: "/products/agri/fitt-mint-hose.jpg",
+    additionalImage: "/products/agri/fitt-mint-product.avif",
+    standards: ["EN ISO 1307"],
+    keyProperties: {
+      "Material": "PVC — 4-layer construction",
+      "Reinforcement": "Polyester braided mesh",
+      "Inner Diameter": "12.5 / 15 / 19 / 25 mm",
+      "Roll Lengths": "½″: 15/20/25/30/50 m · ⅝″/¾″/1″: 50 m",
+      "Bursting Pressure": "21–24 bar",
+      "Temperature Range": "−10 °C to +40 °C",
+      "Inner Layer": "Anti-algae black",
+      "Origin": "Made in Italy",
+      "Guarantee": "10 years",
+    },
+    dimensions: [
+      { dn: 13, size: "1/2\"", lengths: "15 / 20 / 25 / 30 / 50 m", available: "stock" },
+      { dn: 15, size: "5/8\"", lengths: "50 m", available: "stock" },
+      { dn: 19, size: "3/4\"", lengths: "50 m", available: "stock" },
+      { dn: 25, size: "1\"", lengths: "50 m", available: "stock" },
+    ],
+    featured: true,
+    tags: ["hose", "garden", "FITT", "Mint", "PVC"],
+    suppliers: [
+      {
+        partnerId: "fitt",
+        partnerName: "FITT",
+        country: "Italy",
+        color: "#06b6d4",
+        availability: "in-stock",
+        stockNote: "½″ / ⅝″ / ¾″ × 24 Bar × 25–50 m in stock",
+        diameterMin: 12,
+        diameterMax: 25,
+        standards: ["EN ISO 1307"],
+        specificSpecs: {
+          "Construction": "4-layer braided mesh PVC",
+          "Inner Layer": "Anti-algae black",
+          "Source": "fitt.com/product/fitt_mint",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "fitt-mimosa",
+    slug: "fitt-mimosa",
+    name: "FITT Mimosa",
+    shortName: "FITT Mimosa",
+    category: "agri",
+    material: "PVC",
+    application: "Semi-Professional Agricultural Hose",
+    description:
+      "FITT Mimosa is a three-layer PVC hose engineered for semi-professional use in agricultural environments and intensive garden applications. High-tenacity polyester braided mesh delivers superior pressure resistance compared to standard hobby hoses, with bursting pressure up to 40 bar on smaller diameters. The opaque yellow anti-UV outer jacket with twin green stripes provides immediate brand recognition and UV protection, while the anti-algae black inner layer keeps the waterway clean.",
+    image: "/products/agri/fitt-mimosa-hose.jpg",
+    additionalImage: "/products/agri/fitt-mimosa-product.avif",
+    standards: ["EN ISO 1307"],
+    keyProperties: {
+      "Material": "PVC — 3-layer semi-professional",
+      "Reinforcement": "High-tenacity polyester braid",
+      "Inner Diameter": "12.5 / 15 / 19 / 25 mm",
+      "Roll Lengths": "½″: 15/20/25/30/50 m · ⅝″/¾″/1″: 50 m",
+      "Bursting Pressure": "21–40 bar (diameter-dependent)",
+      "Temperature Range": "−10 °C to +40 °C",
+      "Outer Colour": "Opaque yellow with twin green stripes",
+      "Inner Layer": "Anti-algae black",
+      "Origin": "Made in Italy",
+      "Guarantee": "10 years",
+    },
+    dimensions: [
+      { dn: 13, size: "1/2\"", lengths: "15 / 20 / 25 / 30 / 50 m", available: "stock" },
+      { dn: 15, size: "5/8\"", lengths: "50 m", available: "stock" },
+      { dn: 19, size: "3/4\"", lengths: "50 m", available: "stock" },
+      { dn: 25, size: "1\"", lengths: "50 m", available: "stock" },
+    ],
+    featured: true,
+    tags: ["hose", "agriculture", "FITT", "Mimosa", "PVC", "semi-professional"],
+    suppliers: [
+      {
+        partnerId: "fitt",
+        partnerName: "FITT",
+        country: "Italy",
+        color: "#06b6d4",
+        availability: "in-stock",
+        stockNote: "½″ × 40 Bar × 25/50 m · ⅝″/¾″/1″ available by metre",
+        diameterMin: 12,
+        diameterMax: 30,
+        standards: ["EN ISO 1307"],
+        specificSpecs: {
+          "Construction": "3-layer high-tenacity braid",
+          "Burst Pressure": "Up to 40 bar (½″)",
+          "Source": "fitt.com/product/fitt_mimosa",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "fitt-force",
+    slug: "fitt-force",
+    name: "FITT Force",
+    shortName: "FITT Force",
+    category: "agri",
+    material: "PVC-free TPE",
+    application: "Garden & Agricultural Watering",
+    description:
+      "FITT Force is an eco-design garden hose developed according to FITT's sustainability guidelines: performance, circularity, and reduction. This PVC-free hose is 2× lighter and 3× more compact than traditional hoses, with 43% lower CO₂ emissions. Features a compact ergonomic nozzle designed in collaboration with MOMODESIGN, easily replaceable fittings, and 100% drip-proof construction. Carbon emissions from production are 100% offset by certified carbon credits. Carries a 30-year manufacturer guarantee.",
+    image: "/products/agri/fitt-force-cover.jpg",
+    additionalImage: "/products/agri/fitt-force-product.jpg",
+    standards: ["ISO 14067"],
+    keyProperties: {
+      "Material": "PVC-free TPE (Thermoplastic Elastomer)",
+      "Construction": "Eco-design — 2× lighter, 3× more compact",
+      "Inner Diameter": "12.5 mm",
+      "Roll Lengths": "1/2\": 30 m (without nozzle)",
+      "Nozzle": "Compact ergonomic MOMODESIGN — adjustable jet/cone",
+      "Fittings": "Easily replaceable premium thermoplastic",
+      "Environmental Impact": "−43% CO₂e vs. standard hose · 100% carbon offset",
+      "Temperature Range": "−10 °C to +40 °C",
+      "Repairable": "Yes — replaceable fittings and nozzle",
+      "Origin": "Made in Italy",
+      "Guarantee": "30 years",
+    },
+    dimensions: [
+      { dn: 13, size: "1/2\"", lengths: "30 m (without nozzle)", available: "stock" },
+    ],
+    featured: true,
+    tags: ["hose", "garden", "agriculture", "FITT", "Force", "eco-design", "PVC-free", "sustainable"],
+    suppliers: [
+      {
+        partnerId: "fitt",
+        partnerName: "FITT",
+        country: "Italy",
+        color: "#06b6d4",
+        availability: "in-stock",
+        stockNote: "½\" × 30 m (without nozzle) in stock",
+        diameterMin: 12,
+        diameterMax: 13,
+        standards: ["ISO 14067"],
+        specificSpecs: {
+          "Eco-Design": "Low impact product — PVC-free TPE construction",
+          "Weight": "2× lighter than traditional hoses",
+          "Compactness": "3× more compact for easy storage",
+          "Carbon Footprint": "−43% CO₂e emissions (ISO 14067 verified by TÜV Italia)",
+          "Carbon Offset": "100% production emissions offset by certified credits",
+          "Nozzle Design": "MOMODESIGN collaboration — ergonomic, adjustable",
+          "Fittings": "Premium thermoplastic with soft rubber grip",
+          "Drip-Proof": "100% drip-proof construction",
+          "Source": "fitt.com/product/fitt_force",
+        },
+      },
+    ],
+  },
+
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting
   {
     id: "hdpe-socket-coupling",
@@ -1194,109 +1358,6 @@ export const productGroups: ProductGroup[] = [
   },
 
   // ── AGRICULTURAL ──────────────────────────────────────────────────────────
-
-  {
-    id: "fitt-mint",
-    slug: "fitt-mint",
-    name: "FITT Mint",
-    shortName: "FITT Mint",
-    category: "agri",
-    material: "PVC",
-    application: "Garden Watering & Hobby Irrigation",
-    description:
-      "FITT Mint is a four-layer PVC garden hose designed for regular hobby use in garden watering and irrigation. Its black inner layer actively prevents algae formation, while the outer cover is UV-stabilised for long service life in outdoor conditions. The hose performs reliably between −10 °C and +40 °C and carries a 10-year manufacturer guarantee.",
-    image: "/products/agri/fitt-mint-hose.jpg",
-    standards: ["EN ISO 1307"],
-    keyProperties: {
-      "Material": "PVC — 4-layer construction",
-      "Reinforcement": "Polyester braided mesh",
-      "Inner Diameter": "12.5 / 15 / 19 / 25 mm",
-      "Roll Lengths": "15 / 25 / 30 / 50 m",
-      "Bursting Pressure": "21–24 bar",
-      "Temperature Range": "−10 °C to +40 °C",
-      "Inner Layer": "Anti-algae black",
-      "Origin": "Made in Italy",
-      "Guarantee": "10 years",
-    },
-    dimensions: [
-      { dn: 13, lengths: "15 / 25 / 30 / 50 m", available: "stock" },
-      { dn: 15, lengths: "15 / 25 / 30 / 50 m", available: "stock" },
-      { dn: 19, lengths: "15 / 25 / 30 / 50 m", available: "stock" },
-      { dn: 25, lengths: "25 / 50 m",            available: "stock" },
-    ],
-    featured: true,
-    tags: ["hose", "garden", "FITT", "Mint", "PVC"],
-    suppliers: [
-      {
-        partnerId: "fitt",
-        partnerName: "FITT",
-        country: "Italy",
-        color: "#06b6d4",
-        availability: "in-stock",
-        stockNote: "½″ / ⅝″ / ¾″ × 24 Bar × 25–50 m in stock",
-        diameterMin: 12,
-        diameterMax: 25,
-        standards: ["EN ISO 1307"],
-        specificSpecs: {
-          "Construction": "4-layer braided mesh PVC",
-          "Inner Layer": "Anti-algae black",
-          "Source": "fitt.com/product/fitt_mint",
-        },
-      },
-    ],
-  },
-
-  {
-    id: "fitt-mimosa",
-    slug: "fitt-mimosa",
-    name: "FITT Mimosa",
-    shortName: "FITT Mimosa",
-    category: "agri",
-    material: "PVC",
-    application: "Semi-Professional Agricultural Hose",
-    description:
-      "FITT Mimosa is a three-layer PVC hose engineered for semi-professional use in agricultural environments and intensive garden applications. High-tenacity polyester braided mesh delivers superior pressure resistance compared to standard hobby hoses, with bursting pressure up to 40 bar on smaller diameters. The opaque yellow anti-UV outer jacket with twin green stripes provides immediate brand recognition and UV protection, while the anti-algae black inner layer keeps the waterway clean.",
-    image: "/products/agri/fitt-mimosa-hose.jpg",
-    standards: ["EN ISO 1307"],
-    keyProperties: {
-      "Material": "PVC — 3-layer semi-professional",
-      "Reinforcement": "High-tenacity polyester braid",
-      "Inner Diameter": "12.5 / 15 / 19 / 25 / 30 mm",
-      "Roll Lengths": "10 / 15 / 20 / 25 / 50 m",
-      "Bursting Pressure": "21–40 bar (diameter-dependent)",
-      "Temperature Range": "−10 °C to +40 °C",
-      "Outer Colour": "Opaque yellow with twin green stripes",
-      "Inner Layer": "Anti-algae black",
-      "Origin": "Made in Italy",
-      "Guarantee": "10 years",
-    },
-    dimensions: [
-      { dn: 13, lengths: "25 / 50 m", available: "stock" },
-      { dn: 15, lengths: "metres",    available: "stock" },
-      { dn: 19, lengths: "metres",    available: "stock" },
-      { dn: 25, lengths: "metres",    available: "stock" },
-    ],
-    featured: true,
-    tags: ["hose", "agriculture", "FITT", "Mimosa", "PVC", "semi-professional"],
-    suppliers: [
-      {
-        partnerId: "fitt",
-        partnerName: "FITT",
-        country: "Italy",
-        color: "#06b6d4",
-        availability: "in-stock",
-        stockNote: "½″ × 40 Bar × 25/50 m · ⅝″/¾″/1″ available by metre",
-        diameterMin: 12,
-        diameterMax: 30,
-        standards: ["EN ISO 1307"],
-        specificSpecs: {
-          "Construction": "3-layer high-tenacity braid",
-          "Burst Pressure": "Up to 40 bar (½″)",
-          "Source": "fitt.com/product/fitt_mimosa",
-        },
-      },
-    ],
-  },
 
   // Consolidated from: pvc-garden-hose + perplast-pvc-hose + perplast-flexoper-3
   {
