@@ -590,12 +590,13 @@ export const productGroups: ProductGroup[] = [
     material: "HDPE",
     application: "Electrical Cable Protection",
     description:
-      "Tubat e kabllove elektrike prodhohen prej materialit HDPE, në bazë të standartit EN 50086-2-4. Disponohen në dy gama madhësish: Ø16-32mm (me fije plastike, ngjyra të ndryshme) dhe Ø40-160mm (me fije plastike). Të gjitha tubat kanë forcë të aplikuar 450-750 N dhe janë të përshtatshëm për instalime elektrike nëntokësore dhe mbi tokë.",
+      "Tubat elektrik HDPE me dy shtresa (double wall) dhe me fije plastike, të prodhuara sipas standartit EN 50086-2-4. Konstruksioni me dy shtresa siguron rezistencë të lartë dhe fleksibilitet optimal. Disponohen në dy gama: Ø16-32mm (me fije plastike, ngjyra: e zezë, blu, e kuqe) dhe Ø40-160mm (me fije plastike). Forca e aplikuar 450-750 N. Ideale për mbrojtje kabllosh elektrikë në instalime nëntokësore dhe mbi tokë.",
     image: "/products/civil/electric-conduit-cover.jpg",
     additionalImage: "/products/civil/electric-conduit-installation.jpg",
     standards: ["EN 50086-2-4"],
     keyProperties: {
-      "Materiali": "HDPE — tub elektrik me fije plastike",
+      "Materiali": "HDPE — dy shtresa (double wall)",
+      "Tipi": "Me fije plastike (corrugated)",
       "Standardi": "EN 50086-2-4",
       "Gama e vogël": "Ø16–32 mm (ngjyra: e zezë, blu, e kuqe)",
       "Gama e madhe": "Ø40–160 mm",

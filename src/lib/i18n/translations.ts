@@ -563,8 +563,8 @@ export const productTranslations: Record<
     name: { sq: "Tuba për Kabllo Elektrik", en: "Electrical Cable Conduit" },
     shortName: { sq: "Tuba Elektrik", en: "Electric Conduit" },
     description: {
-      sq: "Tubat e kabllove elektrike HDPE sipas EN 50086-2-4 për mbrojtje kabllosh elektrikë. Disponohen në dy gama: Ø16-32mm (ngjyra të ndryshme) dhe Ø40-160mm.",
-      en: "HDPE electrical cable conduits to EN 50086-2-4 for cable protection. Available in two ranges: Ø16-32mm (various colors) and Ø40-160mm.",
+      sq: "Tubat elektrik HDPE me dy shtresa (double wall) dhe me fije plastike sipas EN 50086-2-4. Konstruksioni me dy shtresa siguron rezistencë të lartë. Disponohen në dy gama: Ø16-32mm (ngjyra të ndryshme) dhe Ø40-160mm.",
+      en: "HDPE double-wall electrical conduits with plastic thread to EN 50086-2-4. Double-layer construction ensures high strength. Available in two ranges: Ø16-32mm (various colors) and Ø40-160mm.",
     },
   },
   "polins-manual-sprayer": {
