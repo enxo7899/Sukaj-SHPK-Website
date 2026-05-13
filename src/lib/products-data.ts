@@ -37,6 +37,8 @@ export interface DimensionRow {
   weightPerMeter?: number;
   /** Length options available */
   lengths?: string;
+  /** Bursting pressure in bar (for hoses) */
+  burstingPressure?: number;
   available: "stock" | "partial" | "order";
 }
 
@@ -904,10 +906,10 @@ export const productGroups: ProductGroup[] = [
       "Guarantee": "10 years",
     },
     dimensions: [
-      { dn: 13, size: "1/2\"", lengths: "15 / 20 / 25 / 30 / 50 m", available: "stock" },
-      { dn: 15, size: "5/8\"", lengths: "50 m", available: "stock" },
-      { dn: 19, size: "3/4\"", lengths: "50 m", available: "stock" },
-      { dn: 25, size: "1\"", lengths: "50 m", available: "stock" },
+      { dn: 13, size: "1/2\"", lengths: "15 / 20 / 25 / 30 / 50 m", burstingPressure: 40, available: "stock" },
+      { dn: 15, size: "5/8\"", lengths: "50 m", burstingPressure: 36, available: "stock" },
+      { dn: 19, size: "3/4\"", lengths: "50 m", burstingPressure: 30, available: "stock" },
+      { dn: 25, size: "1\"", lengths: "50 m", burstingPressure: 27, available: "stock" },
     ],
     featured: true,
     tags: ["hose", "agriculture", "FITT", "Mimosa", "PVC", "semi-professional"],

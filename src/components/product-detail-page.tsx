@@ -278,6 +278,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
   const hasWeight = rows.some((r) => r.weightPerMeter !== undefined);
   const hasLengths = rows.some((r) => r.lengths !== undefined);
   const hasSize = rows.some((r) => r.size !== undefined);
+  const hasBurstingPressure = rows.some((r) => r.burstingPressure !== undefined);
 
   const thStyle: React.CSSProperties = { color: "var(--site-text-soft)" };
   const thClass = "px-4 py-3 font-mono text-[10px] tracking-widest uppercase whitespace-nowrap";
@@ -299,6 +300,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
               </>
             )}
             {hasWeight && <th className={`${thClass} text-right`} style={thStyle}>kg/m</th>}
+            {hasBurstingPressure && <th className={`${thClass} text-right`} style={thStyle}>Bar</th>}
             {hasLengths && <th className={`${thClass} text-left`} style={thStyle}>Lengths</th>}
             <th className={`${thClass} text-center`} style={thStyle}>{labels.status}</th>
           </tr>
@@ -347,6 +349,11 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
                 {hasWeight && (
                   <td className="px-4 py-2.5 font-mono text-right" style={{ color: base.textColor }}>
                     {row.weightPerMeter ?? "—"}
+                  </td>
+                )}
+                {hasBurstingPressure && (
+                  <td className="px-4 py-2.5 font-mono text-right font-bold" style={{ color: base.textColor }}>
+                    {row.burstingPressure ?? "—"}
                   </td>
                 )}
                 {hasLengths && (
