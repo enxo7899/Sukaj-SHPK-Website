@@ -98,7 +98,7 @@ const applicationTranslationKeys: Record<string, string> = {
 // ─── Supplier Card ─────────────────────────────────────────────────────────────
 
 function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const base = availConfigBase[supplier.availability];
   const { Icon } = base;
   const cfg = { ...base, label: supplier.availability === "in-stock" ? t("catalog.inStock") : supplier.availability === "partial" ? t("catalog.partial") : t("catalog.onOrder") };
@@ -155,7 +155,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
         {supplier.stockNote && (
           <div className="flex gap-2 text-xs" style={{ color: "var(--site-text-muted)" }}>
             <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" />
-            <span>{supplier.stockNote}</span>
+            <span>{(translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[supplier.stockNote]?.[locale] || supplier.stockNote}</span>
           </div>
         )}
         {supplier.orderNote && (
@@ -202,18 +202,22 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
             <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--site-border)" }}>
               <table className="w-full text-xs">
                 <tbody>
-                  {Object.entries(supplier.specificSpecs).map(([k, v]) => (
-                    <tr
-                      key={k}
-                      style={{ borderBottom: "1px solid var(--site-border)" }}
-                      className="last:border-0"
-                    >
-                      <td className="px-3 py-2 font-mono text-[9px] tracking-wider uppercase w-[45%]" style={{ color: "var(--site-text-soft)" }}>
-                        {k}
-                      </td>
-                      <td className="px-3 py-2" style={{ color: "var(--site-text-muted)" }}>{v}</td>
-                    </tr>
-                  ))}
+                  {Object.entries(supplier.specificSpecs).map(([k, v]) => {
+                    const translatedKey = (translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[k]?.[locale] || k;
+                    const translatedValue = (translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[v]?.[locale] || v;
+                    return (
+                      <tr
+                        key={k}
+                        style={{ borderBottom: "1px solid var(--site-border)" }}
+                        className="last:border-0"
+                      >
+                        <td className="px-3 py-2 font-mono text-[9px] tracking-wider uppercase w-[45%]" style={{ color: "var(--site-text-soft)" }}>
+                          {translatedKey}
+                        </td>
+                        <td className="px-3 py-2" style={{ color: "var(--site-text-muted)" }}>{translatedValue}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -255,6 +259,7 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 // ─── Dimension Table ───────────────────────────────────────────────────────────
 
 function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inStock: string; partial: string; onOrder: string; status: string } }) {
+  const { locale } = useTranslation();
   const wallClasses = Array.from(new Set(rows.flatMap((r) => Object.keys(r.wallByClass ?? {})))).sort((a, b) => {
     const order = ["PN6", "PN10", "PN16"];
     const aPn = a.match(/PN\d+/)?.[0];
@@ -346,7 +351,7 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
                 )}
                 {hasLengths && (
                   <td className="px-4 py-2.5 font-mono text-xs" style={{ color: base.textColor }}>
-                    {row.lengths ?? "—"}
+                    {row.lengths ? ((translations.productDetail.propertyLabels as Record<string, { sq: string; en: string }>)[row.lengths]?.[locale] || row.lengths) : "—"}
                   </td>
                 )}
                 <td className="px-4 py-2.5 text-center">
