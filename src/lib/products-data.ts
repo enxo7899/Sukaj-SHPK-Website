@@ -39,8 +39,8 @@ export interface DimensionRow {
 }
 
 export interface TechnicalTableRow {
-  od?: number;
-  id?: number;
+  od?: number | string;
+  id?: number | string;
   wallThickness?: number;
   weight?: number | string;
   length?: string;
@@ -668,6 +668,83 @@ export const productGroups: ProductGroup[] = [
       },
     ],
     sourceUrl: "https://www.ferplast-ks.com/wp-content/uploads/2025/08/ELEKTRIK.pdf",
+  },
+
+  {
+    id: "optical-monotube-hdpe",
+    slug: "optical-monotube-hdpe",
+    name: "Tub Optik Monotub Mbrojtës Kabllosh HDPE",
+    shortName: "Monotub Optik",
+    category: "civil",
+    material: "HDPE",
+    application: "Optical & Telecommunication Cable Protection",
+    description:
+      "Tuba HDPE me dy shtresa (double wall) për mbrojtje kabllosh optikë dhe telekomunikacioni. Sipërfaqja e brendshme e lëmuar dhe e jashtme e valëzuar siguron rezistencë mekanike të lartë. Ideale për kalime rrugore dhe urash, instalime nëntokësore në ambiente urbane, rurale dhe industriale. Rezistencë e shkëlqyer ndaj konsumit, korrozionit dhe degradimit mjedisor. Prodhohen në ngjyra të zezë, të kuqe dhe të verdhë. Jetëgjatësi 50+ vjet.",
+    image: "/products/civil/optical-monotube-cover.jpg",
+    additionalImage: "/products/civil/optical-monotube-product.jpg",
+    standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+    keyProperties: {
+      "Materiali": "HDPE — dy shtresa (double wall)",
+      "Sipërfaqja": "E brendshme e lëmuar · E jashtme e valëzuar",
+      "Diametri nominal": "Ø75–200 mm (diametri i jashtëm)",
+      "Ngjyrat": "E zezë · E kuqe · E verdhë",
+      "Forma e furnizimit": "Shufra 6-12 m · Bobina 50 m",
+      "Temperatura": "-40°C deri +60°C",
+      "Jetëgjatësia": "50+ vjet",
+      "Standarde": "EN 50086 · EN 61386 · EN 13476-3",
+    },
+    technicalTables: [
+      {
+        title: "HDPE PTT Monotube — Specifikime Teknike",
+        columns: ["Diametri", "SDR", "Presioni", "Trashësia", "Disponueshmëria"],
+        rows: [
+          { od: "40x1", id: "SDR 21", weight: "PN6", force: "2.0 mm", available: "stock" },
+          { od: "40x1", id: "SDR 17", weight: "PN10", force: "2.4 mm", available: "stock" },
+          { od: "50x1", id: "SDR 21", weight: "PN6", force: "2.4 mm", available: "order" },
+          { od: "50x1", id: "SDR 17", weight: "PN10", force: "3.0 mm", available: "order" },
+          { od: "63x1", id: "SDR 21", weight: "PN6", force: "3.0 mm", available: "order" },
+          { od: "63x1", id: "SDR 17", weight: "PN10", force: "3.8 mm", available: "order" },
+          { od: "75x1", id: "SDR 21", weight: "PN6", force: "3.6 mm", available: "order" },
+          { od: "75x1", id: "SDR 17", weight: "PN10", force: "4.5 mm", available: "order" },
+          { od: "90x1", id: "SDR 21", weight: "PN6", force: "4.3 mm", available: "order" },
+          { od: "90x1", id: "SDR 17", weight: "PN10", force: "5.4 mm", available: "order" },
+          { od: "110x1", id: "SDR 21", weight: "PN6", force: "5.3 mm", available: "order" },
+          { od: "110x1", id: "SDR 17", weight: "PN10", force: "6.6 mm", available: "order" },
+          { od: "125x1", id: "SDR 21", weight: "PN6", force: "6.0 mm", available: "order" },
+          { od: "125x1", id: "SDR 17", weight: "PN10", force: "7.4 mm", available: "order" },
+          { od: "140x1", id: "SDR 21", weight: "PN6", force: "6.7 mm", available: "order" },
+          { od: "140x1", id: "SDR 17", weight: "PN10", force: "8.3 mm", available: "order" },
+          { od: "160x1", id: "SDR 21", weight: "PN6", force: "7.7 mm", available: "order" },
+          { od: "160x1", id: "SDR 17", weight: "PN10", force: "9.5 mm", available: "order" },
+          { od: "180x1", id: "SDR 21", weight: "PN6", force: "8.6 mm", available: "order" },
+          { od: "180x1", id: "SDR 17", weight: "PN10", force: "10.7 mm", available: "order" },
+          { od: "200x1", id: "SDR 21", weight: "PN6", force: "9.6 mm", available: "order" },
+          { od: "200x1", id: "SDR 17", weight: "PN10", force: "11.9 mm", available: "order" },
+        ],
+      },
+    ],
+    tags: ["optical", "monotube", "HDPE", "cable-protection", "telecommunication"],
+    suppliers: [
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        image: "/products/suppliers/konti-hidroplast.jpg",
+        availability: "partial",
+        stockNote: "Ø40mm (SDR 21 & SDR 17) në stok",
+        orderNote: "Ø50-200mm me porosi · Koha e dorëzimit: 2-3 javë",
+        diameterMin: 40,
+        diameterMax: 200,
+        standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+        specificSpecs: {
+          "Ngjyrat": "E zezë · E kuqe · E verdhë",
+          "Forma": "Shufra 6-12 m · Bobina 50 m",
+          "Rezistenca UV": "E disponueshme për instalime të jashtme",
+          "Rezistenca kimike": "Inert ndaj acideve dhe bazave",
+        },
+      },
+    ],
   },
 
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting

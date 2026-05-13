@@ -567,6 +567,14 @@ export const productTranslations: Record<
       en: "HDPE double-wall electrical conduits with plastic thread to EN 50086-2-4. Double-layer construction ensures high strength. Available in two ranges: Ø16-32mm (various colors) and Ø40-160mm.",
     },
   },
+  "optical-monotube-hdpe": {
+    name: { sq: "Tub Optik Monotub Mbrojtës Kabllosh HDPE", en: "HDPE Optical Monotube Cable Protection" },
+    shortName: { sq: "Monotub Optik", en: "Optical Monotube" },
+    description: {
+      sq: "Tuba HDPE me dy shtresa për mbrojtje kabllosh optikë dhe telekomunikacioni. Sipërfaqja e brendshme e lëmuar dhe e jashtme e valëzuar. Ideale për kalime rrugore, instalime nëntokësore. Jetëgjatësi 50+ vjet.",
+      en: "HDPE double-wall pipes for optical and telecommunication cable protection. Smooth interior and corrugated exterior surface. Ideal for road crossings and underground installations. 50+ years service life.",
+    },
+  },
   "polins-manual-sprayer": {
     name: { sq: "Spërkatës Manual Kopshti Polins", en: "Polins Manual Garden Sprayer" },
     shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer Range" },
