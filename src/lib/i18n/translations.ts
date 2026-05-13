@@ -723,14 +723,6 @@ export const productTranslations: Record<
       en: "PE-100 RC (Resistance to Crack) — a specialist variant of PE-100 with exceptional resistance to slow crack growth. Ideal for trenchless installation and high-stress environments.",
     },
   },
-  "hdpe-cable-conduit": {
-    name: { sq: "Kanal Mbrojtës Kabllosh HDPE", en: "HDPE Cable & Optic Conduit" },
-    shortName: { sq: "Kanal Kabllosh", en: "Cable Conduit" },
-    description: {
-      sq: "Kanale mbrojtëse HDPE për kabllo elektrike dhe fibër optike nëntokësore. Disponueshëm në variante: kanal i brendshëm me brinjë (spirale), monotub optik PTT dhe tub me mur të dyfishtë (i korruguar jashtë, i lëmuar brenda).",
-      en: "HDPE protective conduit for underground electrical cables and fibre optics. Available as ribbed inner duct (coil), PTT optic monotube, and double-wall pipe (corrugated outer / smooth inner).",
-    },
-  },
   "roto-water-tanks": {
     name: { sq: "Depozitë Uji HDPE Roto", en: "Roto HDPE Water Storage Tanks" },
     shortName: { sq: "Depozitë Roto", en: "Roto Water Tanks" },
