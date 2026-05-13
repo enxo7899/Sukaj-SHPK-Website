@@ -452,6 +452,10 @@ export const translations = {
       "100% drip-proof construction": { sq: "Ndërtim 100% pa pikime", en: "100% drip-proof construction" },
       "30 m (without nozzle)": { sq: "30 m (pa pistë)", en: "30 m (without nozzle)" },
       "½\" × 30 m (without nozzle) in stock": { sq: "½\" × 30 m (pa pistë) në stok", en: "½\" × 30 m (without nozzle) in stock" },
+      // Mixed content values
+      "1/2\": 30 m (without nozzle)": { sq: "1/2\": 30 m (pa pistë)", en: "1/2\": 30 m (without nozzle)" },
+      "−10 °C to +40 °C": { sq: "−10 °C deri +40 °C", en: "−10 °C to +40 °C" },
+      "12.5 mm": { sq: "12.5 mm", en: "12.5 mm" },
     },
   },
 
