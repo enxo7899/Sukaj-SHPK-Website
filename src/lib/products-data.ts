@@ -988,6 +988,60 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "pista-ekoplast-watering-hose",
+    slug: "pista-ekoplast-watering-hose",
+    name: "Pista Ekoplast Watering Hose",
+    shortName: "Pista Ekoplast Hose",
+    category: "agri",
+    material: "PVC",
+    application: "Garden & Agricultural Watering",
+    description:
+      "Pista Ekoplast watering hose is a durable PVC garden hose designed for reliable watering in residential and agricultural applications. Manufactured in Kosovo by Pista Ekoplast, this hose features reinforced construction for long-lasting performance in outdoor conditions. Available in multiple diameters to suit different flow requirements, with standard 50-meter roll lengths for convenient coverage of large areas. Suitable for garden irrigation, agricultural watering, and general outdoor water distribution.",
+    image: "/products/agri/pista-ekoplast-hose-cover.jpg",
+    additionalImage: "/products/agri/pista-ekoplast-hose-product.jpg",
+    standards: [],
+    keyProperties: {
+      "Material": "PVC — reinforced construction",
+      "Inner Diameter": "12.5 / 19 / 25 mm",
+      "Roll Lengths": "50 m standard",
+      "Construction": "Multi-layer reinforced PVC",
+      "Application": "Garden watering & agricultural irrigation",
+      "Temperature Range": "−5 °C to +50 °C",
+      "Pressure Rating": "Standard garden hose pressure",
+      "Origin": "Made in Kosovo",
+      "Manufacturer": "Pista Ekoplast",
+    },
+    dimensions: [
+      { dn: 13, size: "1/2\"", lengths: "50 m", available: "stock" },
+      { dn: 19, size: "3/4\"", lengths: "50 m", available: "stock" },
+      { dn: 25, size: "1\"", lengths: "50 m", available: "stock" },
+    ],
+    featured: true,
+    tags: ["hose", "garden", "agriculture", "watering", "PVC", "Pista Ekoplast", "Kosovo"],
+    suppliers: [
+      {
+        partnerId: "pista-ekoplast",
+        partnerName: "Pista Ekoplast",
+        country: "Kosovo",
+        color: "#10b981",
+        availability: "in-stock",
+        stockNote: "½\" / ¾\" / 1\" × 50 m në stok",
+        diameterMin: 12,
+        diameterMax: 25,
+        standards: [],
+        specificSpecs: {
+          "Construction": "Multi-layer reinforced PVC",
+          "Flexibility": "Good flexibility for easy handling",
+          "Durability": "UV-resistant outer layer",
+          "Connection": "Standard garden hose fittings",
+          "Usage": "Residential & agricultural watering",
+          "Roll Length": "50 m standard",
+        },
+      },
+    ],
+  },
+
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting
   {
     id: "hdpe-socket-coupling",
