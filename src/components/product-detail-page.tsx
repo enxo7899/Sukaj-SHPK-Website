@@ -104,23 +104,23 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 
   return (
     <div
-      className="relative flex flex-col rounded-2xl overflow-hidden"
-      style={{ border: `1px solid ${supplier.color}25`, backgroundColor: "var(--site-surface-strong)", boxShadow: "0 1px 4px rgba(15,23,42,0.06)" }}
+      className="relative flex flex-col rounded-2xl overflow-hidden transition-all hover:scale-[1.01]"
+      style={{ border: `1px solid ${supplier.color}25`, backgroundColor: "var(--site-surface-strong)", boxShadow: "0 2px 8px rgba(15,23,42,0.08)" }}
     >
-      <div className="h-1 w-full" style={{ background: supplier.color }} />
+      <div className="h-1.5 w-full" style={{ background: supplier.color }} />
       {supplier.image && (
-        <div className="relative h-40 w-full" style={{ borderBottom: "1px solid var(--site-border)" }}>
+        <div className="relative h-48 w-full" style={{ borderBottom: "1px solid var(--site-border)" }}>
           <Image
             src={supplier.image}
             alt={supplier.partnerName}
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       )}
 
-      <div className="p-5 flex flex-col flex-1 gap-4">
+      <div className="p-6 flex flex-col flex-1 gap-4">
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -730,11 +730,11 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           </p>
 
           <div
-            className={`grid gap-5 ${
+            className={`grid gap-6 ${
               product.suppliers.length === 1
                 ? "max-w-2xl mx-auto"
                 : product.suppliers.length === 2
-                ? "sm:grid-cols-2 max-w-2xl mx-auto"
+                ? "sm:grid-cols-2 max-w-5xl mx-auto"
                 : "sm:grid-cols-2 lg:grid-cols-3"
             }`}
           >
