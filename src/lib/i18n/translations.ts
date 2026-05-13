@@ -559,6 +559,14 @@ export const productTranslations: Record<
       en: "Perforated HDPE sub-surface drainage pipes to EN 13476-3 and ISO 9969 for agricultural land and road drainage.",
     },
   },
+  "electric-conduit-hdpe": {
+    name: { sq: "Tuba për Kabllo Elektrik", en: "Electrical Cable Conduit" },
+    shortName: { sq: "Tuba Elektrik", en: "Electric Conduit" },
+    description: {
+      sq: "Tubat e kabllove elektrike HDPE sipas EN 50086-2-4 për mbrojtje kabllosh elektrikë. Disponohen në dy gama: Ø16-32mm (ngjyra të ndryshme) dhe Ø40-160mm.",
+      en: "HDPE electrical cable conduits to EN 50086-2-4 for cable protection. Available in two ranges: Ø16-32mm (various colors) and Ø40-160mm.",
+    },
+  },
   "polins-manual-sprayer": {
     name: { sq: "Spërkatës Manual Kopshti Polins", en: "Polins Manual Garden Sprayer" },
     shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer Range" },

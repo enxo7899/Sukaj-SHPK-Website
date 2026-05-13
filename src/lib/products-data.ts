@@ -42,7 +42,7 @@ export interface TechnicalTableRow {
   od?: number;
   id?: number;
   wallThickness?: number;
-  weight?: number;
+  weight?: number | string;
   length?: string;
   force?: string;
   tolerance?: string;
@@ -53,6 +53,7 @@ export interface TechnicalTable {
   title: string;
   columns: string[];
   rows: TechnicalTableRow[];
+  intermediateImage?: string;
 }
 
 export interface ProductFitting {
@@ -578,6 +579,94 @@ export const productGroups: ProductGroup[] = [
         },
       },
     ],
+  },
+
+  {
+    id: "electric-conduit-hdpe",
+    slug: "electric-conduit-hdpe",
+    name: "Tuba për Kabllo Elektrik",
+    shortName: "Tuba Elektrik",
+    category: "civil",
+    material: "HDPE",
+    application: "Electrical Cable Protection",
+    description:
+      "Tubat e kabllove elektrike prodhohen prej materialit HDPE, në bazë të standartit EN 50086-2-4. Disponohen në dy gama madhësish: Ø16-32mm (me fije plastike, ngjyra të ndryshme) dhe Ø40-160mm (me fije plastike). Të gjitha tubat kanë forcë të aplikuar 450-750 N dhe janë të përshtatshëm për instalime elektrike nëntokësore dhe mbi tokë.",
+    image: "/products/civil/electric-conduit-cover.jpg",
+    additionalImage: "/products/civil/electric-conduit-installation.jpg",
+    standards: ["EN 50086-2-4"],
+    keyProperties: {
+      "Materiali": "HDPE — tub elektrik me fije plastike",
+      "Standardi": "EN 50086-2-4",
+      "Gama e vogël": "Ø16–32 mm (ngjyra: e zezë, blu, e kuqe)",
+      "Gama e madhe": "Ø40–160 mm",
+      "Forca e aplikuar": "450–750 N",
+      "Gjatësia": "50–100 m bobina",
+      "Aplikimi": "Mbrojtje kabllosh elektrikë nëntokësor dhe mbi tokë",
+    },
+    technicalTables: [
+      {
+        title: "Tubat elektrik Ø40-160mm me fije Plastike sipas Standartit EN 50086-2-4",
+        columns: ["DN (OD)", "DN (ID)", "Pesha/metër", "Forca", "Gjatësia"],
+        rows: [
+          { od: 40, id: 31.95, weight: "113 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 50, id: 39.20, weight: "139 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 63, id: 50.20, weight: "200 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 75, id: 60.60, weight: "256 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 90, id: 75.00, weight: "350 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 110, id: 94.00, weight: "520 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 125, id: 108.00, weight: "650 g/m", force: "450 N", length: "50 m", available: "stock" },
+          { od: 160, id: 138.00, weight: "1000 g/m", force: "450 N", length: "50 m", available: "stock" },
+        ],
+        intermediateImage: "/products/civil/electric-conduit-small.jpg",
+      },
+      {
+        title: "Tubat elektrik Ø16-32mm (Ngjyra: E zezë, Blu, E kuqe)",
+        columns: ["DN (OD)", "DN (ID)", "Pesha/metër", "Forca", "Gjatësia"],
+        rows: [
+          { od: 16, id: 11.1, weight: "46 g/m", force: "750 N", length: "50-100 m", available: "stock" },
+          { od: 20, id: 13.9, weight: "56 g/m", force: "750 N", length: "50-100 m", available: "stock" },
+          { od: 22, id: 15.8, weight: "68 g/m", force: "750 N", length: "50-100 m", available: "stock" },
+          { od: 25, id: 18.2, weight: "80 g/m", force: "750 N", length: "50-100 m", available: "stock" },
+          { od: 32, id: 24.0, weight: "115 g/m", force: "750 N", length: "50-100 m", available: "stock" },
+        ],
+      },
+    ],
+    tags: ["electrical", "conduit", "HDPE", "cable-protection"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        availability: "in-stock",
+        stockNote: "Të gjitha madhësitë në stok · Ø16-160 mm",
+        diameterMin: 16,
+        diameterMax: 160,
+        standards: ["EN 50086-2-4"],
+        specificSpecs: {
+          "Ngjyrat (Ø16-32)": "E zezë · Blu · E kuqe",
+          "Forca Ø16-32": "750 N",
+          "Forca Ø40-160": "450 N",
+          "Gjatësia": "50-100 m bobina",
+        },
+      },
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        availability: "on-order",
+        orderNote: "Të gjitha madhësitë me porosi · Ø16-160 mm",
+        diameterMin: 16,
+        diameterMax: 160,
+        standards: ["EN 50086-2-4"],
+        specificSpecs: {
+          "Koha e dorëzimit": "2-3 javë",
+          "Sasia minimale": "Sipas kërkesës",
+        },
+      },
+    ],
+    sourceUrl: "https://www.ferplast-ks.com/wp-content/uploads/2025/08/ELEKTRIK.pdf",
   },
 
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting

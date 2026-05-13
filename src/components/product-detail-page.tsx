@@ -457,6 +457,20 @@ function TechnicalTables({ tables, labels }: { tables: TechnicalTable[]; labels:
               </tbody>
             </table>
           </div>
+          
+          {/* Intermediate Image - shown after table if present */}
+          {table.intermediateImage && (
+            <div className="mt-6 rounded-xl overflow-hidden" style={{ border: "1px solid var(--site-border)" }}>
+              <Image
+                src={table.intermediateImage}
+                alt={`${table.title} - Product Image`}
+                width={1200}
+                height={400}
+                className="w-full h-auto object-cover"
+                sizes="100vw"
+              />
+            </div>
+          )}
         </div>
       ))}
     </div>
