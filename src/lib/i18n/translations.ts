@@ -552,8 +552,8 @@ export const productTranslations: Record<
     },
   },
   "ferplast-drainage-pipe": {
-    name: { sq: "Tub Kullimi Nëntokësor i Perforuar HDPE", en: "HDPE Perforated Sub-Surface Drainage Pipe" },
-    shortName: { sq: "Kullim i Perforuar", en: "Perforated Drainage" },
+    name: { sq: "Tub Dranazhimi HDPE-LDPE", en: "HDPE Perforated Sub-Surface Drainage Pipe" },
+    shortName: { sq: "HDPE-LDPE Drenazh", en: "Perforated Drainage" },
     description: {
       sq: "Tuba kullimi HDPE të perforuar sipas EN 13476-3 dhe ISO 9969 për kullim nëntokësor të tokës bujqësore dhe rrugore.",
       en: "Perforated HDPE sub-surface drainage pipes to EN 13476-3 and ISO 9969 for agricultural land and road drainage.",
