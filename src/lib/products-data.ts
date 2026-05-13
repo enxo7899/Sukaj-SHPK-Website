@@ -232,8 +232,8 @@ export const productGroups: ProductGroup[] = [
     application: "Trenchless Installation & Water Supply",
     description:
       "PE100-RC (Resistance to Crack) is a specialist variant of PE100 engineered for exceptional resistance to slow crack growth and environmental stress cracking. Available as single-layer full-wall, double-layer coextruded, and triple-layer coextruded types (Types 1, 2, 3 to PAS 1075), these pipes are the preferred choice for trenchless installation methods such as directional drilling, pipe bursting, and sliplining. In stock Ø25–110 mm at PN10 and PN16; full size range Ø25–630 mm on order. Service life rated 100+ years.",
-    image: "/products/civil/pe100rc-water-pipe-cover.jpg?v=2",
-    additionalImage: "/products/civil/pe100rc-installation.jpg?v=2",
+    image: "/products/civil/pe100rc-water-pipe-cover.jpg",
+    additionalImage: "/products/civil/pe100rc-installation.jpg",
     standards: ["EN 12201-2", "PAS 1075"],
     keyProperties: {
       "Materiali": "HDPE PE-100 RC",
@@ -269,7 +269,7 @@ export const productGroups: ProductGroup[] = [
       {
         partnerId: "konti-hidroplast",
         partnerName: "Konti Hidroplast",
-        image: "/products/civil/pe100rc-water-pipe-cover.jpg?v=2",
+        image: "/products/civil/pe100rc-water-pipe-cover.jpg",
         country: "North Macedonia",
         color: "#0891b2",
         availability: "partial",
@@ -300,7 +300,7 @@ export const productGroups: ProductGroup[] = [
     description:
       "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater drainage and subsurface cable protection. SN4 class features a distinctive blue interior lining; SN8 features yellow lining for easy site identification. Available in diameters up to Ø2000 mm across three Balkan-region suppliers.",
     image: "/products/civil/corrugated-hdpe-cover.jpg",
-    additionalImage: "/products/civil/corrugated-installation.jpg?v=2",
+    additionalImage: "/products/civil/corrugated-installation.jpg",
     standards: ["EN 13476-3", "ISO 9969"],
     keyProperties: {
       "Lloji i murit": "Mur i dyfishtë i brinjëzuar (i brendshëm i lëmuar)",

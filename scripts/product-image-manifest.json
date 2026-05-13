@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pe-gas-pipe",
+    "url": "https://nmtester.com/kontihidroplast/wp-content/uploads/2024/08/PE80-2-min.jpg",
+    "localPath": "/products/civil/konti-pe-gas-pipe.jpg",
+    "note": "Konti Hidroplast PE100 gas pipe (yellow stripe) — manufacturer image"
+  },
+  {
+    "id": "fitt-mint",
+    "url": "https://fitt-cdn.thron.com/delivery/public/image/fitt/5ba2b06e-31a2-4aa9-a0d6-3ea34c8c1eef/pf4brg/std/1000x0/FITT%20Mint%20render.jpg",
+    "localPath": "/products/agri/fitt-mint-hose.jpg",
+    "note": "FITT Mint render — manufacturer image"
+  },
+  {
+    "id": "fitt-mimosa",
+    "url": "https://fitt-cdn.thron.com/delivery/public/image/fitt/74893973-8195-44e7-a2f8-f28772d4cbaa/pf4brg/std/1000x0/FITT%20Mimosa%20render.jpg",
+    "localPath": "/products/agri/fitt-mimosa-hose.jpg",
+    "note": "FITT Mimosa render — manufacturer image"
+  },
+  {
+    "id": "agricultural-film",
+    "url": "https://plastika-ks.com/wp-content/uploads/2018/01/greenhouse_2.jpg",
+    "localPath": "/products/industrial/plastika-greenhouse-film.jpg",
+    "note": "Plastika KS greenhouse film — manufacturer image"
+  },
+  {
+    "id": "spiral-transparent-hose",
+    "url": "https://cdn.shopify.com/s/files/1/0565/8991/0105/products/01.2422.0012.0000_1.jpg?v=1679143405",
+    "localPath": "/products/industrial/spiral-transparent-hose.jpg",
+    "note": "Spiral suction & delivery hose — distributor image"
+  },
+  {
+    "id": "construction-damp-proof-membrane",
+    "url": "https://images.pexels.com/photos/7728082/pexels-photo-7728082.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "localPath": "/products/industrial/damp-proof-membrane.jpg",
+    "note": "Construction damp-proof membrane — Pexels CC0 fallback"
+  },
+  {
+    "id": "recycled-pe-granulates",
+    "url": "https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "localPath": "/products/industrial/recycled-pe-granulates.jpg",
+    "note": "Recycled PE granulates — Pexels CC0 fallback"
+  },
+  {
+    "id": "food-grade-barrel",
+    "url": "https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg?auto=compress&cs=tinysrgb&w=1000",
+    "localPath": "/products/agri/food-grade-barrel.jpg",
+    "note": "Food-grade plastic barrel — Pexels CC0 fallback"
+  }
+]

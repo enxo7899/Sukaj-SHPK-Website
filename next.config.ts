@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     localPatterns: [
-      { pathname: '/products/**', search: '' },
-      { pathname: '/media/**', search: '' },
+      { pathname: '/products/**' },
+      { pathname: '/media/**' },
     ],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' },
