@@ -575,6 +575,14 @@ export const productTranslations: Record<
       en: "HDPE double-wall pipes for optical and telecommunication cable protection. Smooth interior and corrugated exterior surface. Ideal for road crossings and underground installations. 50+ years service life.",
     },
   },
+  "optical-bitube-hdpe": {
+    name: { sq: "Tub Optik Bitub Mbrojtës Kabllosh HDPE", en: "HDPE Optical Bitube Cable Protection" },
+    shortName: { sq: "Bitub Optik", en: "Optical Bitube" },
+    description: {
+      sq: "Tuba HDPE bitub (dy tuba) me dy shtresa për mbrojtje kabllosh optikë. Sistemi me dy tuba optimizon hapësirën dhe instalimin. Sipërfaqja e brendshme e lëmuar dhe e jashtme e valëzuar. Jetëgjatësi 50+ vjet.",
+      en: "HDPE bitube (dual tube) double-wall pipes for optical cable protection. Dual-tube system optimizes space and installation. Smooth interior and corrugated exterior surface. 50+ years service life.",
+    },
+  },
   "polins-manual-sprayer": {
     name: { sq: "Spërkatës Manual Kopshti Polins", en: "Polins Manual Garden Sprayer" },
     shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer Range" },

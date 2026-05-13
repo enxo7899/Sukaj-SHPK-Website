@@ -747,6 +747,83 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "optical-bitube-hdpe",
+    slug: "optical-bitube-hdpe",
+    name: "Tub Optik Bitub Mbrojtës Kabllosh HDPE",
+    shortName: "Bitub Optik",
+    category: "civil",
+    material: "HDPE",
+    application: "Optical & Telecommunication Cable Protection - Dual Tube",
+    description:
+      "Tuba HDPE bitub (dy tuba) me dy shtresa për mbrojtje kabllosh optikë dhe telekomunikacioni. Sistemi me dy tuba lejon kalimin e dy kabllove të pavarura në një tub të vetëm, duke optimizuar hapësirën dhe instalimin. Sipërfaqja e brendshme e lëmuar dhe e jashtme e valëzuar siguron rezistencë mekanike të lartë. Ideale për kalime rrugore dhe urash, instalime nëntokësore në ambiente urbane, rurale dhe industriale. Rezistencë e shkëlqyer ndaj konsumit, korrozionit dhe degradimit mjedisor. Jetëgjatësi 50+ vjet.",
+    image: "/products/civil/optical-bitube-cover.jpg",
+    additionalImage: "/products/civil/optical-bitube-cover.jpg",
+    standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+    keyProperties: {
+      "Materiali": "HDPE — dy shtresa (double wall)",
+      "Tipi": "Bitub — dy tuba të brendshëm",
+      "Sipërfaqja": "E brendshme e lëmuar · E jashtme e valëzuar",
+      "Diametri nominal": "Ø40–63 mm (diametri i jashtëm)",
+      "Ngjyrat": "E zezë · E kuqe · E verdhë",
+      "Forma e furnizimit": "Shufra 6-12 m · Bobina 50 m",
+      "Temperatura": "-40°C deri +60°C",
+      "Jetëgjatësia": "50+ vjet",
+      "Standarde": "EN 50086 · EN 61386 · EN 13476-3",
+    },
+    technicalTables: [
+      {
+        title: "HDPE PTT Bitube — Specifikime Teknike",
+        columns: ["Diametri", "SDR", "Presioni", "Trashësia", "Disponueshmëria"],
+        rows: [
+          { od: "40x2", id: "SDR 17", weight: "10 ATM", force: "2.4 mm", available: "stock" },
+          { od: "50x2", id: "SDR 17", weight: "10 ATM", force: "3.0 mm", available: "order" },
+          { od: "63x2", id: "SDR 17", weight: "10 ATM", force: "3.8 mm", available: "order" },
+        ],
+      },
+    ],
+    tags: ["optical", "bitube", "HDPE", "cable-protection", "telecommunication", "dual-tube"],
+    suppliers: [
+      {
+        partnerId: "ferplast-ks",
+        partnerName: "Ferplast",
+        country: "Kosovo",
+        color: "#a855f7",
+        image: "/products/suppliers/ferplast.jpg",
+        availability: "partial",
+        stockNote: "Ø40x2 SDR 17 në stok",
+        orderNote: "Madhësi të tjera me porosi nga Konti Hidroplast",
+        diameterMin: 40,
+        diameterMax: 63,
+        standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+        specificSpecs: {
+          "Në stok": "Ø40x2 SDR 17 (10 ATM, 2.4mm)",
+          "Ngjyrat": "E zezë · E kuqe · E verdhë",
+          "Forma": "Shufra 6-12 m · Bobina 50 m",
+        },
+      },
+      {
+        partnerId: "konti-hidroplast",
+        partnerName: "Konti Hidroplast",
+        country: "North Macedonia",
+        color: "#0891b2",
+        image: "/products/suppliers/konti-hidroplast.jpg",
+        availability: "on-order",
+        orderNote: "Ø50-63mm me porosi · Koha e dorëzimit: 2-3 javë",
+        diameterMin: 50,
+        diameterMax: 63,
+        standards: ["EN 50086", "EN 61386", "EN 13476-3"],
+        specificSpecs: {
+          "Me porosi": "Ø50x2, Ø63x2 SDR 17",
+          "Ngjyrat": "E zezë · E kuqe · E verdhë",
+          "Forma": "Shufra 6-12 m · Bobina 50 m",
+          "Rezistenca UV": "E disponueshme për instalime të jashtme",
+          "Rezistenca kimike": "Inert ndaj acideve dhe bazave",
+        },
+      },
+    ],
+  },
+
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting
   {
     id: "hdpe-socket-coupling",
