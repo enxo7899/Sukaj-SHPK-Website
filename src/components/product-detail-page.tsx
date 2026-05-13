@@ -457,22 +457,22 @@ function TechnicalTables({ tables, labels }: { tables: TechnicalTable[]; labels:
               </tbody>
             </table>
           </div>
-          
-          {/* Intermediate Image - shown after table if present */}
-          {table.intermediateImage && (
-            <div className="mt-6 rounded-xl overflow-hidden" style={{ border: "1px solid var(--site-border)" }}>
-              <Image
-                src={table.intermediateImage}
-                alt={`${table.title} - Product Image`}
-                width={1200}
-                height={400}
-                className="w-full h-auto object-cover"
-                sizes="100vw"
-              />
-            </div>
-          )}
         </div>
       ))}
+      
+      {/* Intermediate Image - shown after all tables if present in first table */}
+      {tables[0]?.intermediateImage && (
+        <div className="rounded-xl overflow-hidden max-h-64" style={{ border: "1px solid var(--site-border)" }}>
+          <Image
+            src={tables[0].intermediateImage}
+            alt="Product Variants"
+            width={1200}
+            height={256}
+            className="w-full h-full object-cover max-h-64"
+            sizes="100vw"
+          />
+        </div>
+      )}
     </div>
   );
 }
