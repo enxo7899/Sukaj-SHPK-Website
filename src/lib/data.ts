@@ -111,6 +111,28 @@ export const partners: Partner[] = [
     color: "#22d3ee",
   },
   {
+    id: "frutibest",
+    name: "FrutiBest SHPK",
+    country: "Albania",
+    specialty: "Corrugated HDPE Pipe Systems",
+    tagline: "Albanian supplier of corrugated drainage solutions",
+    maxDiameter: "ID 2000 mm",
+    description:
+      "FrutiBest SHPK supplies corrugated HDPE pipe systems for drainage and sewage applications. Specializing in SN4 and SN8 corrugated pipes, as well as large-diameter KRAH pipe systems for municipal infrastructure projects.",
+    website: "",
+    partnerType: "local-albania",
+    keyStandards: ["EN 13476-3", "ISO 9969"],
+    heroMetrics: ["SN4 / SN8", "KRAH systems", "ID up to 2000 mm"],
+    logo: {},
+    featuredPriority: 15,
+    products: [
+      { name: "Corrugated HDPE SN4/SN8", type: "HDPE Corrugated", diameters: "110–1000 mm" },
+      { name: "KRAH Pipe System", type: "HDPE KRAH", diameters: "800–2000 mm" },
+    ],
+    featured: false,
+    color: "#10b981",
+  },
+  {
     id: "fitt",
     name: "FITT",
     country: "Italy",

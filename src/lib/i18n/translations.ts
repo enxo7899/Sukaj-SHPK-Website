@@ -395,6 +395,8 @@ export const translations = {
     pressureClasses: { sq: "Klasat e presionit", en: "Pressure classes" },
     standards: { sq: "Standardet", en: "Standards" },
     dimensions: { sq: "Dimensionet", en: "Dimensions" },
+    fittings: { sq: "Aksesorët", en: "Fittings" },
+    technicalSpecs: { sq: "Specifikimet Teknike", en: "Technical Specifications" },
     alsoAvailableFrom: { sq: "Po ashtu i disponueshëm nga", en: "Also available from" },
     relatedProducts: { sq: "Produkte të Lidhura", en: "Related Products" },
     requestQuote: { sq: "Kërko Ofertë për Këtë Produkt", en: "Request Quote for This Product" },
@@ -470,7 +472,7 @@ export const productTranslations: Record<
 > = {
   // ── CIVIL ──────────────────────────────────────────────────────────────────
   "pe100-pressure-pipe": {
-    name: { sq: "Tub Presioni PE100", en: "PE100 Pressure Pipe" },
+    name: { sq: "Tub Ujësjellësi PE100", en: "PE100 Pressure Pipe" },
     shortName: { sq: "PE100", en: "PE100" },
     description: {
       sq: "Tub presioni PE100 me densitet të lartë për shpërndarje uji të pijshëm, linja kryesore ujitjeje dhe aplikime industriale me presion. Certifikuar sipas EN 12201 dhe ISO 4427 për siguri maksimale.",
@@ -478,24 +480,16 @@ export const productTranslations: Record<
     },
   },
   "corrugated-hdpe-sewage": {
-    name: { sq: "Tub Kanalizimi i Korruguar HDPE", en: "Corrugated HDPE Sewage Pipe" },
+    name: { sq: "Tub Kanalizimi i Brinjëzuar (Korregate) HDPE", en: "Corrugated HDPE Sewage Pipe" },
     shortName: { sq: "HDPE i Korruguar", en: "Corrugated HDPE" },
     description: {
       sq: "Tub i korruguar me mur të dyfishtë HDPE me sipërfaqe të brendshme të lëmuar, projektuar për kanalizim gravitacional, ujëra atmosferike dhe kullim nëntokësor. Disponueshëm në klasa ngurtësie SN4 dhe SN8.",
       en: "Double-wall corrugated HDPE pipe with smooth inner bore and structured outer wall, designed for gravity sewage, stormwater, and sub-surface drainage. Available in SN4 and SN8 ring-stiffness classes.",
     },
   },
-  "spiral-pp-sewage-pipe": {
-    name: { sq: "Tub Kanalizimi PP Spiral", en: "Spiral PP Sewage Pipe" },
-    shortName: { sq: "PP Spirale", en: "Spiral PP" },
-    description: {
-      sq: "Tub polipropileni me mur të strukturuar spiral për kanalizime kryesore me diametër të madh dhe ujëra të ndotura industriale.",
-      en: "Spiral-wound polypropylene structured-wall pipe for large-diameter trunk sewers and industrial wastewater.",
-    },
-  },
   "pph-drainage-pipe": {
-    name: { sq: "Tub Kullimi Gravitacional PP-H", en: "PP-H Gravity Drainage Pipe" },
-    shortName: { sq: "PP-H Kullim", en: "PP-H Drainage" },
+    name: { sq: "Tub Shkarkimi PP-H", en: "PP-H Gravity Drainage Pipe" },
+    shortName: { sq: "PP-H Shkarkim", en: "PP-H Drainage" },
     description: {
       sq: "Tub kullimi gravitacional PP-H me veshje të bardhë të brendshme për kullim ndërtesash, kolona sanitare dhe ventilim.",
       en: "PP-H gravity drainage pipe with distinctive white lining for building drainage, soil stacks, and ventilation.",
@@ -698,7 +692,7 @@ export const productTranslations: Record<
 
   // ── CIVIL (new consolidated entries) ───────────────────────────────────────
   "pe100rc-water-pipe": {
-    name: { sq: "Tub Furnizimi Uji PE-100 RC", en: "PE-100 RC Water Supply Pipe" },
+    name: { sq: "Tub Ujësjellësi PE-100 RC", en: "PE-100 RC Water Supply Pipe" },
     shortName: { sq: "PE-100 RC", en: "PE-100 RC" },
     description: {
       sq: "PE-100 RC (Rezistencë ndaj Çarjes) — variant i specializuar i PE-100 me rezistencë të jashtëzakonshme ndaj rritjes së ngadaltë të çarjeve. Ideal për instalim pa hendek dhe zona me ngarkesë të lartë.",

@@ -19,7 +19,7 @@ import {
   MapPin,
   Ruler,
 } from "lucide-react";
-import type { ProductGroup, SupplierOffer, DimensionRow } from "@/lib/products-data";
+import type { ProductGroup, SupplierOffer, DimensionRow, TechnicalTable, TechnicalTableRow, ProductFitting } from "@/lib/products-data";
 import { productGroups } from "@/lib/products-data";
 import { partners } from "@/lib/data";
 import { getApplicationFamily, getMaterialFamily } from "@/lib/catalog-filters";
@@ -108,6 +108,17 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
       style={{ border: `1px solid ${supplier.color}25`, backgroundColor: "var(--site-surface-strong)", boxShadow: "0 1px 4px rgba(15,23,42,0.06)" }}
     >
       <div className="h-1 w-full" style={{ background: supplier.color }} />
+      {supplier.image && (
+        <div className="relative h-40 w-full" style={{ borderBottom: "1px solid var(--site-border)" }}>
+          <Image
+            src={supplier.image}
+            alt={supplier.partnerName}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+      )}
 
       <div className="p-5 flex flex-col flex-1 gap-4">
         {/* Header */}
@@ -243,9 +254,18 @@ function SupplierCard({ supplier }: { supplier: SupplierOffer }) {
 // ─── Dimension Table ───────────────────────────────────────────────────────────
 
 function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inStock: string; partial: string; onOrder: string; status: string } }) {
-  const wallClasses = Array.from(
-    new Set(rows.flatMap((r) => Object.keys(r.wallByClass ?? {})))
-  );
+  const wallClasses = Array.from(new Set(rows.flatMap((r) => Object.keys(r.wallByClass ?? {})))).sort((a, b) => {
+    const order = ["PN6", "PN10", "PN16"];
+    const aPn = a.match(/PN\d+/)?.[0];
+    const bPn = b.match(/PN\d+/)?.[0];
+    const aIdx = aPn ? order.indexOf(aPn) : -1;
+    const bIdx = bPn ? order.indexOf(bPn) : -1;
+
+    if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+    if (aIdx !== -1) return -1;
+    if (bIdx !== -1) return 1;
+    return a.localeCompare(b);
+  });
   const hasSN = rows.some((r) => r.sn);
   const hasOD = rows.some((r) => r.od !== undefined);
   const hasWall = wallClasses.length > 0;
@@ -338,6 +358,154 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
           })}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+// ─── Technical Tables ──────────────────────────────────────────────────────────
+
+function TechnicalTables({ tables, labels }: { tables: TechnicalTable[]; labels: { inStock: string; onOrder: string } }) {
+  const rowAvailConfigBase = {
+    stock: {
+      dot: "bg-green-500",
+      textColor: "var(--site-text)",
+      rowStyle: {},
+    },
+    order: {
+      dot: "bg-orange-500",
+      textColor: "var(--site-text-muted)",
+      rowStyle: { opacity: 0.85 },
+    },
+  };
+
+  return (
+    <div className="space-y-8">
+      {tables.map((table, tableIndex) => (
+        <div key={tableIndex}>
+          <h3 className="text-base font-bold mb-4" style={{ color: "var(--site-text)" }}>
+            {table.title}
+          </h3>
+          <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
+                  {table.columns.map((col, colIndex) => (
+                    <th
+                      key={colIndex}
+                      className="px-4 py-3 font-mono text-[10px] tracking-widest uppercase whitespace-nowrap text-left"
+                      style={{ color: "var(--site-text-soft)" }}
+                    >
+                      {col}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {table.rows.map((row, rowIndex) => {
+                  const base = rowAvailConfigBase[row.available];
+                  const label = row.available === "stock" ? labels.inStock : labels.onOrder;
+                  return (
+                    <tr
+                      key={rowIndex}
+                      className="transition-colors last:border-0"
+                      style={{ borderBottom: "1px solid var(--site-border)", ...base.rowStyle }}
+                    >
+                      {row.od !== undefined && (
+                        <td className="px-4 py-2.5 font-mono font-bold" style={{ color: base.textColor }}>
+                          {row.od}
+                        </td>
+                      )}
+                      {row.id !== undefined && (
+                        <td className="px-4 py-2.5 font-mono font-bold" style={{ color: base.textColor }}>
+                          {row.id}
+                        </td>
+                      )}
+                      {row.wallThickness !== undefined && (
+                        <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
+                          {row.wallThickness}
+                        </td>
+                      )}
+                      {row.weight !== undefined && (
+                        <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
+                          {row.weight}
+                        </td>
+                      )}
+                      {row.length !== undefined && (
+                        <td className="px-4 py-2.5 font-mono text-xs" style={{ color: base.textColor }}>
+                          {row.length}
+                        </td>
+                      )}
+                      {row.force !== undefined && (
+                        <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
+                          {row.force}
+                        </td>
+                      )}
+                      {row.tolerance !== undefined && (
+                        <td className="px-4 py-2.5 font-mono" style={{ color: base.textColor }}>
+                          {row.tolerance}
+                        </td>
+                      )}
+                      <td className="px-4 py-2.5 text-center">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold" style={{ color: "var(--site-text-muted)" }}>
+                          <span className={`h-1.5 w-1.5 rounded-full ${base.dot}`} />
+                          {label}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Fittings Section ──────────────────────────────────────────────────────────
+
+function FittingsSection({ fittings }: { fittings: ProductFitting[] }) {
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {fittings.map((fitting) => (
+        <div
+          key={fitting.id}
+          className="rounded-xl overflow-hidden transition-all hover:scale-[1.02]"
+          style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}
+        >
+          {/* Fitting Image */}
+          <div className="relative aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+            <Image
+              src={fitting.image}
+              alt={fitting.name}
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </div>
+          
+          {/* Fitting Info */}
+          <div className="p-4 space-y-2">
+            <h3 className="font-bold text-base" style={{ color: "var(--site-text)" }}>
+              {fitting.name}
+            </h3>
+            {fitting.description && (
+              <p className="text-xs" style={{ color: "var(--site-text-muted)" }}>
+                {fitting.description}
+              </p>
+            )}
+            <div className="pt-2 border-t" style={{ borderColor: "var(--site-border)" }}>
+              <div className="text-[10px] font-mono tracking-wider uppercase mb-1" style={{ color: "var(--site-text-soft)" }}>
+                Diametrat
+              </div>
+              <div className="text-sm font-mono font-bold" style={{ color: "var(--site-text)" }}>
+                {fitting.diameters}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -473,61 +641,73 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
       {/* ── Body ─────────────────────────────────────────────────────────── */}
       <div className="site-shell py-10 sm:py-14 space-y-10 sm:space-y-16">
 
-        {/* Description + key specs */}
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          <div className="lg:col-span-3">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-px w-6 bg-cyan-500/50" />
-              <span className="font-mono text-[10px] tracking-widest text-cyan-500/80 uppercase">
-                {t("productDetail.overview")}
+        {/* Description */}
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="h-px w-6 bg-cyan-500/50" />
+            <span className="font-mono text-[10px] tracking-widest text-cyan-500/80 uppercase">
+              {t("productDetail.overview")}
+            </span>
+          </div>
+          <p className="leading-relaxed text-sm sm:text-base max-w-4xl" style={{ color: "var(--site-text-muted)" }}>
+            {tp(product.id, "description", product.description)}
+          </p>
+          {product.tags && product.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-5">
+              {product.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded px-2.5 py-1 text-xs font-mono transition-colors hover:text-cyan-500"
+                  style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Image + Key Properties - Symmetrical Layout */}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+          {/* Additional Image */}
+          {product.additionalImage && (
+            <div className="rounded-xl overflow-hidden relative min-h-[400px]" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
+              <Image
+                src={product.additionalImage}
+                alt={`${tp(product.id, "name", product.name)} - Installation`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          )}
+
+          {/* Key Properties Table */}
+          <div className="rounded-2xl overflow-hidden flex flex-col" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
+            <div className="flex items-center gap-2 px-5 py-3.5 shrink-0" style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
+              <Shield className="w-4 h-4 text-cyan-400" />
+              <span className="text-[11px] font-mono tracking-wider uppercase" style={{ color: "var(--site-text-soft)" }}>
+                {t("productDetail.keyProperties")}
               </span>
             </div>
-            <p className="leading-relaxed text-sm sm:text-base" style={{ color: "var(--site-text-muted)" }}>
-              {tp(product.id, "description", product.description)}
-            </p>
-
-            {product.tags && product.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-5">
-                {product.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded px-2.5 py-1 text-xs font-mono transition-colors hover:text-cyan-500"
-                    style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)", color: "var(--site-text-soft)" }}
+            <table className="w-full flex-1">
+              <tbody>
+                {Object.entries(product.keyProperties).map(([k, v]) => (
+                  <tr
+                    key={k}
+                    style={{ borderBottom: "1px solid var(--site-border)" }}
+                    className="last:border-0"
                   >
-                    #{tag}
-                  </span>
+                    <td className="px-5 py-3 font-mono text-[10px] tracking-wider uppercase w-[42%] align-top" style={{ color: "var(--site-text-soft)" }}>
+                      {k}
+                    </td>
+                    <td className="px-5 py-3 text-xs" style={{ color: "var(--site-text-muted)" }}>
+                      {v}
+                    </td>
+                  </tr>
                 ))}
-              </div>
-            )}
-          </div>
-
-          <div className="lg:col-span-2">
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--site-border)", backgroundColor: "var(--site-surface-strong)" }}>
-              <div className="flex items-center gap-2 px-5 py-3.5" style={{ borderBottom: "1px solid var(--site-border)", backgroundColor: "var(--site-surface)" }}>
-                <Shield className="w-4 h-4 text-cyan-400" />
-                <span className="text-[11px] font-mono tracking-wider uppercase" style={{ color: "var(--site-text-soft)" }}>
-                  {t("productDetail.keyProperties")}
-                </span>
-              </div>
-              <table className="w-full">
-                <tbody>
-                  {Object.entries(product.keyProperties).map(([k, v]) => (
-                    <tr
-                      key={k}
-                      style={{ borderBottom: "1px solid var(--site-border)" }}
-                      className="last:border-0"
-                    >
-                      <td className="px-5 py-3 font-mono text-[10px] tracking-wider uppercase w-[42%] align-top" style={{ color: "var(--site-text-soft)" }}>
-                        {k}
-                      </td>
-                      <td className="px-5 py-3 text-xs" style={{ color: "var(--site-text-muted)" }}>
-                        {v}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -552,9 +732,9 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
           <div
             className={`grid gap-5 ${
               product.suppliers.length === 1
-                ? "max-w-sm"
+                ? "max-w-2xl mx-auto"
                 : product.suppliers.length === 2
-                ? "sm:grid-cols-2 max-w-2xl"
+                ? "sm:grid-cols-2 max-w-2xl mx-auto"
                 : "sm:grid-cols-2 lg:grid-cols-3"
             }`}
           >
@@ -623,6 +803,38 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
               </div>
             </div>
             <DimensionTable rows={product.dimensions} labels={{ inStock: t("catalog.inStock"), partial: t("catalog.partial"), onOrder: t("catalog.onOrder"), status: "Status" }} />
+          </div>
+        )}
+
+        {/* ── Fittings ── */}
+        {product.fittings && product.fittings.length > 0 && (
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <Layers className="w-5 h-5 text-cyan-400 shrink-0" />
+              <h2 className="text-lg font-bold" style={{ color: "var(--site-text)" }}>{t("productDetail.fittings")}</h2>
+            </div>
+            <FittingsSection fittings={product.fittings} />
+          </div>
+        )}
+
+        {/* ── Technical Tables ── */}
+        {product.technicalTables && product.technicalTables.length > 0 && (
+          <div>
+            <div className="flex flex-wrap items-center gap-3 mb-5">
+              <Layers className="w-5 h-5 text-cyan-400 shrink-0" />
+              <h2 className="text-lg font-bold" style={{ color: "var(--site-text)" }}>{t("productDetail.technicalSpecs")}</h2>
+              <div className="ml-auto flex flex-wrap items-center gap-x-5 gap-y-2">
+                <span className="flex items-center gap-1.5 text-xs" style={{ color: "var(--site-text-muted)" }}>
+                  <span className="h-2 w-2 rounded-full bg-green-500" />
+                  {t("catalog.inStock")}
+                </span>
+                <span className="flex items-center gap-1.5 text-xs" style={{ color: "var(--site-text-muted)" }}>
+                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  {t("catalog.onOrder")}
+                </span>
+              </div>
+            </div>
+            <TechnicalTables tables={product.technicalTables} labels={{ inStock: t("catalog.inStock"), onOrder: t("catalog.onOrder") }} />
           </div>
         )}
 

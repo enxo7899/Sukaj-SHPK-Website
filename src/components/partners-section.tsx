@@ -104,7 +104,7 @@ function PartnerCard({
         {/* Header: Logo + name + country */}
         <div className="flex items-start gap-3.5">
           <div
-            className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden transition-all duration-300"
+            className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-xl overflow-hidden transition-all duration-300 p-2"
             style={{
               backgroundColor: `${accent}12`,
               border: `1px solid ${accent}25`,
@@ -115,17 +115,17 @@ function PartnerCard({
                 <Image
                   src={partner.logo.dark}
                   alt={partner.name}
-                  width={32}
-                  height={32}
-                  className="logo-dark-variant h-6 w-auto object-contain opacity-80 transition-opacity group-hover:opacity-100"
+                  width={40}
+                  height={40}
+                  className="logo-dark-variant h-auto w-full object-contain opacity-80 transition-opacity group-hover:opacity-100"
                 />
                 {partner.logo.light && (
                   <Image
                     src={partner.logo.light}
                     alt={partner.name}
-                    width={32}
-                    height={32}
-                    className="logo-light-variant h-6 w-auto object-contain opacity-75 transition-opacity group-hover:opacity-100"
+                    width={40}
+                    height={40}
+                    className="logo-light-variant h-auto w-full object-contain opacity-75 transition-opacity group-hover:opacity-100"
                   />
                 )}
               </>
