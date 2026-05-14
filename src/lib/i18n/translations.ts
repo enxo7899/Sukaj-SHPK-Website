@@ -879,46 +879,6 @@ export const productTranslations: Record<
     },
   },
 
-  "hdpe-socket-coupling": {
-    name: { sq: "Bashkues Socket HDPE", en: "HDPE Socket Coupling" },
-    shortName: { sq: "Bashkues Socket", en: "Socket Coupler" },
-    description: {
-      sq: "Bashkues HDPE të formuar me injeksion dhe rrotullim për lidhjen e tubave të korruguar të kanalizimit dhe kullimit.",
-      en: "Injection-moulded and rotomoulded HDPE sockets for joining corrugated sewage and drainage pipes.",
-    },
-  },
-  "decorative-plastic-planters": {
-    name: { sq: "Vazo Dekorative Plastike Roto", en: "Roto Decorative Plastic Planters" },
-    shortName: { sq: "Vazo Dekorative", en: "Roto Planters" },
-    description: {
-      sq: "Koleksion i plotë vazosh dekorative plastike nga Roto (Maqedonia e Veriut): Edelweis (teksturë guri, drejtkëndëshe S/L/XL), Stoniness (rrumbullakët efekt guri S/M/L/XL), Jazz (elegante S/M/L), Rumba (grykë e gjerë S/M/L), Barrel (formë fuçie S/M/L), Nusa (me brinjë, drejtkëndëshe dhe rrumbullakët) dhe gamë fantazi Tulip, Shoe, Elephant e të tjera.",
-      en: "Full collection of decorative plastic planters by Roto (North Macedonia): Edelweis (stone-texture rectangular S/L/XL), Stoniness (round stone-effect S/M/L/XL), Jazz (sleek S/M/L), Rumba (wide-mouth S/M/L), Barrel (barrel-shaped S/M/L), Nusa (ribbed rectangular and round), plus the novelty Tulip, Shoe, Elephant and more.",
-    },
-  },
-  "palaplast-hdpe100-irrigation": {
-    name: { sq: "Tuba Ujitjeje Palaplast — LDPE, HDPE & PE100", en: "Palaplast Irrigation Pipes — LDPE, HDPE & PE100" },
-    shortName: { sq: "Palaplast Ujitje", en: "Palaplast Irrigation" },
-    description: {
-      sq: "Gamë e plotë tubash ujitjeje nga Palaplast: LDPE 6 ATM (Ø20–32 mm), HDPE 6 ATM (Ø40–110 mm), HDPE 10 ATM (Ø20–75 mm) dhe PE100 PN4–PN16 (Ø16–160 mm) sipas EN 12201-2.",
-      en: "Full Palaplast irrigation pipe range: LDPE 6 ATM (Ø20–32 mm), HDPE 6 ATM (Ø40–110 mm), HDPE 10 ATM (Ø20–75 mm), and PE100 PN4–PN16 (Ø16–160 mm) to EN 12201-2.",
-    },
-  },
-  "palaplast-compression-fittings": {
-    name: { sq: "Fitingje Kompresioni Palaplast", en: "Palaplast Compression Fittings" },
-    shortName: { sq: "Fitingje PE", en: "PE Compression Fittings" },
-    description: {
-      sq: "Fitingje kompresioni PN10 ATM nga polipropilen i cilësisë së lartë për lidhje pa vegla të tubave PE dhe HDPE. Gama Rekorder 10 ATM për presione më të larta.",
-      en: "PN10 ATM compression fittings from high-quality polypropylene for tool-free connections to PE and HDPE pipes. Rekorder 10 ATM range for higher-pressure applications.",
-    },
-  },
-  "palaplast-irrigation-filter": {
-    name: { sq: "Filtër Ujitjeje Palaplast", en: "Palaplast Irrigation Filter" },
-    shortName: { sq: "Filtër PP", en: "PP Filter" },
-    description: {
-      sq: "Filtra plastikë ujitjeje për mbrojtjen e emetuesve, mikro-spërkatësve dhe valvolave nga rëra dhe sedimenti.",
-      en: "Plastic irrigation filters for protecting drip emitters, micro-sprinklers, and valves from sand and sediment.",
-    },
-  },
   "ferplast-drainage-pipe": {
     name: { sq: "Tub Dranazhimi HDPE-LDPE", en: "HDPE Perforated Sub-Surface Drainage Pipe" },
     shortName: { sq: "HDPE-LDPE Drenazh", en: "Perforated Drainage" },
@@ -1111,134 +1071,12 @@ export const productTranslations: Record<
       en: "The Polins L35 Eko plastic shovel with handle, code 1012, is a practical solution for snow clearing and various uses in yards, work environments and home spaces. The L35 Eko design offers good functionality for everyday use, maintaining low weight and easy manoeuvring.",
     },
   },
-  "polins-manual-sprayer": {
-    name: { sq: "Spërkatës Manual Kopshti Polins", en: "Polins Manual Garden Sprayer" },
-    shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer Range" },
-    description: {
-      sq: "Gamë e plotë spërkatësish manualë me pompë për kopësht nga Polins doo. Të gjithë modelet kanë pompë bronzi dhe grykë bakri.",
-      en: "Complete range of manual pump-action garden sprayers from Polins doo. All models feature brass pump and copper nozzle.",
-    },
-  },
-  "polins-water-trough": {
-    name: { sq: "Valetë Uji për Shpendë Polins", en: "Polins Livestock Water Trough" },
-    shortName: { sq: "Valetë Uji", en: "Water Trough" },
-    description: {
-      sq: "Valetë uji HDPE të qëndrueshme për shpendë dhe bagëti të vogla. Prodhuar nga Polins doo, Serbi.",
-      en: "Durable HDPE livestock water troughs for poultry and small livestock. Manufactured by Polins doo, Serbia.",
-    },
-  },
-  "polins-feed-trough": {
-    name: { sq: "Valetë Ushqyese për Shpendë Polins", en: "Polins Livestock Feed Trough" },
-    shortName: { sq: "Valetë Ushqimi", en: "Feed Trough" },
-    description: {
-      sq: "Valetë ushqyese polipropileni për shpendë dhe bagëti të vogla. Ndërtim i fortë PP me jetëgjatësi të lartë.",
-      en: "Polypropylene feed troughs for poultry and small livestock. Robust PP construction with long service life.",
-    },
-  },
-  "polins-milk-canister": {
-    name: { sq: "Bidon Qumështi & Mjalti Polins", en: "Polins Food-Grade Milk & Honey Canister" },
-    shortName: { sq: "Bidon Qumështi", en: "Milk Canister" },
-    description: {
-      sq: "Bidona HDPE për kontakt me ushqime për magazinim të sigurt të qumështit, mjaltit dhe lëngjeve ushqimore në ferma.",
-      en: "Food-grade HDPE canisters for safe storage of milk, honey, and food liquids on farms.",
-    },
-  },
-  "polins-water-canister": {
-    name: { sq: "Bidon Uji HDPE Polins", en: "Polins HDPE Water Canister" },
-    shortName: { sq: "Bidon Uji", en: "Water Canister" },
-    description: {
-      sq: "Bidona HDPE për magazinim uji të pijshëm dhe lëngje të përgjithshme. Në 10 L dhe 20 L.",
-      en: "HDPE water storage canisters for drinking water and general purpose liquid storage. Available in 10 L and 20 L.",
-    },
-  },
-  "palaplast-end-caps-joiners": {
-    name: { sq: "Tapa, Bashkuese & Emetues Pikash Palaplast", en: "Palaplast End Caps, Pipe Joiners & Drip Emitters" },
-    shortName: { sq: "Tapa · Bashkuese · Emetues", en: "Caps · Joiners · Emitters" },
-    description: {
-      sq: "Aksesorë ujitjeje Palaplast: tapa tubash, bashkuese kallami dhe emetues pikash për sisteme ujitjeje.",
-      en: "Palaplast irrigation accessories: pipe end caps, pipe joiners/couplings, and drip emitters for irrigation systems.",
-    },
-  },
-  "palaplast-saracineska-valve": {
-    name: { sq: "Saracineska Plastike Palaplast", en: "Palaplast Plastic Stopcock (Saracineska)" },
-    shortName: { sq: "Saracineska", en: "Saracineska Valve" },
-    description: {
-      sq: "Valvola saracineska plastike për tuba ujitjeje PE dhe LDPE. Modele standarde dhe kompakte për menaxhim rrjeti.",
-      en: "Plastic inline stopcock valves for PE and LDPE irrigation pipes. Standard and compact models for network management.",
-    },
-  },
   "perplast-pvc-hose": {
     name: { sq: "Zorrë PVC Perplast — Classic & Flexoper-3", en: "Perplast PVC Hose — Classic & Flexoper-3" },
     shortName: { sq: "Perplast PVC", en: "Perplast PVC" },
     description: {
       sq: "Gama e zorrave PVC nga Perplast Kompani: Classic me shumë shtresa për ujitje të përgjithshme kopshti dhe Flexoper-3 me tre shtresa e përforcuar me rezistencë më të lartë presioni.",
       en: "Perplast's PVC hose range: Classic multi-layer for general garden and agricultural watering, and Flexoper-3 reinforced three-layer with improved burst pressure resistance.",
-    },
-  },
-  "confort-ppht-pipes": {
-    name: { sq: "Tuba & Fitingje Kullimi PPHT Confort", en: "Confort PPHT Building Drainage Pipe & Fittings" },
-    shortName: { sq: "Tub PPHT", en: "PPHT Pipe" },
-    description: {
-      sq: "Tuba dhe fitingje PPHT me dy shtresa sipas EN 1329-1 për kanalizim të brendshëm ndërtesash.",
-      en: "Two-layer PPHT pipes and fittings to EN 1329-1 for internal building sewage and waste-water drainage.",
-    },
-  },
-  "confort-pvc-fittings": {
-    name: { sq: "Fitingje Kanalizimi & Kullimi PVC Confort", en: "Confort PVC Sewage & Drainage Fittings" },
-    shortName: { sq: "Fitingje PVC", en: "PVC Fittings" },
-    description: {
-      sq: "Fitingje PVC nga Confort për sisteme tubash me temperaturë të lartë e të ulët, kanalizim nëntokësor dhe kullim.",
-      en: "PVC fittings from Confort for high and low temperature piping, buried sewage, and drainage systems.",
-    },
-  },
-  "confort-ppr-pipes": {
-    name: { sq: "Tuba & Fitingje PPR për Ujë të Nxehtë & të Ftohtë Confort", en: "Confort PPR Hot & Cold Water Pipe & Fittings" },
-    shortName: { sq: "Tub PPR", en: "PPR Pipe" },
-    description: {
-      sq: "Tuba dhe fitingje PPR për ujë të pijshëm të nxehtë e të ftohtë, ngrohje qendrore dhe ngrohje nën dysheme.",
-      en: "PPR pipes and fittings for hot and cold potable water, central heating, and underfloor heating systems.",
-    },
-  },
-  "confort-pvc-gutters": {
-    name: { sq: "Llukat & Ullukë Shiu PVC Confort", en: "Confort PVC Rectangular Gutters & Rainpipes" },
-    shortName: { sq: "Llukat PVC", en: "PVC Gutters" },
-    description: {
-      sq: "Llukat drejtkëndëshe PVC dhe ullukë shiu për kullim ujërash. Sistem i plotë me mbajtëse dhe lidhëse.",
-      en: "PVC rectangular gutters and downpipes for rainwater drainage. Full system with brackets and connectors.",
-    },
-  },
-  "confort-pp-manholes": {
-    name: { sq: "Pusëta & Inspektime PP Confort", en: "Confort PP Manholes & Inspection Sumps" },
-    shortName: { sq: "Pusëtë PP", en: "PP Manhole" },
-    description: {
-      sq: "Pusëta dhe gropa inspektimi polipropileni për sisteme kanalizimi nëntokësor. Prodhuar në Shqipëri.",
-      en: "Polypropylene manholes and inspection sumps for underground sewage systems. Made in Albania.",
-    },
-  },
-  "xier-upvc-ball-valve": {
-    name: { sq: "Valvol Sferike UPVC Xier — Dorezë e Gjatë", en: "Xier UPVC Compact Ball Valve — Long Handle" },
-    shortName: { sq: "Valvol UPVC", en: "UPVC Ball Valve" },
-    description: {
-      sq: "Valvol sferike kompakte UPVC me hapje të plotë për furnizim uji, ujitje dhe aplikime industriale.",
-      en: "Full-bore UPVC compact ball valve for water supply, irrigation, and industrial applications.",
-    },
-  },
-  "polins-battery-sprayer-electra-lux": {
-    name: { sq: "Spërkatës me Bateri Polins Electra Lux", en: "Polins Battery Sprayer Electra Lux" },
-    shortName: { sq: "Electra Lux", en: "Electra Lux" },
-    description: {
-      sq: "Spërkatës shpine me bateri nga gama Electra Lux për pemëtore, vreshta dhe sipërfaqe të gjera bujqësore. Disponueshëm në 12 L dhe 16 L.",
-      en: "Battery backpack sprayer in the Electra Lux range for orchards, vineyards, and broad-acre application. Available in 12 L and 16 L.",
-    },
-  },
-
-  // ── AGRI (new consolidated entries) ────────────────────────────────────────
-  "plastika-nv-agri-film": {
-    name: { sq: "Film Bujqësor PE Plastika NV", en: "Plastika NV Agricultural PE Film" },
-    shortName: { sq: "Film Bujqësor", en: "Agri Film" },
-    description: {
-      sq: "Film polietileni i stabilizuar ndaj UV nga Plastika NV për mbulesë serrash dhe bujqësi. Disponueshëm: 2-vjeçar (4 m × 100 m në 50 kg ose 60 kg), 2-vjeçar ekstra i gjerë (6.3 m × 100 m) dhe film i bardhë (4 m × 100 m).",
-      en: "UV-stabilised polyethylene film from Plastika NV for greenhouse and agricultural use. Available as: 2-year (4 m × 100 m in 50 kg or 60 kg rolls), 2-year extra-wide (6.3 m × 100 m), and white PE film (4 m × 100 m).",
     },
   },
 
@@ -1251,24 +1089,7 @@ export const productTranslations: Record<
       en: "PE-100 RC (Resistance to Crack) — a specialist variant of PE-100 with exceptional resistance to slow crack growth. Ideal for trenchless installation and high-stress environments.",
     },
   },
-  "roto-water-tanks": {
-    name: { sq: "Depozitë Uji HDPE Roto", en: "Roto HDPE Water Storage Tanks" },
-    shortName: { sq: "Depozitë Roto", en: "Roto Water Tanks" },
-    description: {
-      sq: "Gamë e plotë depozitash uji HDPE të formuara me rrotullim nga Roto (Maqedonia e Veriut). Kapacitete nga 60 L deri 5000 L — modelet Barrel OTW (katrore), Cisternë OTW (të mëdha), TCW Vezake (ovale vertikale) dhe tanke me kapacitet të madh.",
-      en: "Complete range of rotationally moulded HDPE water storage tanks by Roto (North Macedonia). Capacities from 60 L to 5000 L — Barrel OTW (square), OTW Cisterna (large), TCW Vezake (vertical oval), and large-capacity tanks.",
-    },
-  },
 
-  // ── INDUSTRIAL ─────────────────────────────────────────────────────────────
-  "sel-polimer-pvc-hoses": {
-    name: { sq: "Zorrë PVC & Spirale SEL-Polimer", en: "SEL-Polimer PVC & Spiral Hoses" },
-    shortName: { sq: "SEL-Polimer", en: "SEL-Polimer" },
-    description: {
-      sq: "Gamë e plotë zorrave PVC nga SEL-Polimer: Troy ST transparente me spirale PVC (Ø13–120 mm, thithëse & shpërndarëse), Troy Green spirale me ngjyrë (Ø19–120 mm) dhe Caramel zorrë kopshti (½″–1″) për ujitje dhe lidhje të përgjithshme.",
-      en: "Full PVC hose range from SEL-Polimer: Troy ST clear spiral hose (Ø13–120 mm, suction & delivery), Troy Green coloured spiral (Ø19–120 mm), and Caramel garden hose (½″–1″) for irrigation and general connection.",
-    },
-  },
 };
 
 export type TranslationKey = string;
