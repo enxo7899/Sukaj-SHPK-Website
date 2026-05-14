@@ -951,6 +951,166 @@ export const productTranslations: Record<
       en: "HDPE bitube (dual tube) double-wall pipes for optical cable protection. Dual-tube system optimizes space and installation. Smooth interior and corrugated exterior surface. 50+ years service life.",
     },
   },
+  "polins-sprayer-garden-micro-1l": {
+    name: { sq: "Spërkatëse Polins Garden Micro 1L", en: "Polins Sprayer Garden Micro 1L" },
+    shortName: { sq: "Garden Micro 1L", en: "Garden Micro 1L" },
+    description: {
+      sq: "Spërkatësja Polins Garden Micro 1L është një zgjidhje praktike dhe e lehtë për spërkatje të përditshme në kopsht, ballkon, serrë ose ambiente shtëpie. Kapaciteti 1 litër e bën të përshtatshme për përdorim të shpejtë me ujë ose preparate të tretshme për kujdesin e bimëve. Forma kompakte, pesha e ulët dhe përdorimi i thjeshtë e bëjnë ideale për lule, fidanë, bimë dekorative dhe mirëmbajtje të gjelbërimit.",
+      en: "The Polins Garden Micro 1L is a practical and lightweight solution for everyday spraying in gardens, balconies, greenhouses or home environments. The 1-litre capacity makes it suitable for quick use with water or water-soluble preparations for plant care. Its compact form, low weight and simple use make it ideal for flowers, seedlings, decorative plants and greenery maintenance.",
+    },
+  },
+  "polins-sprayer-clear-2-0": {
+    name: { sq: "Spërkatëse Polins Clear 2.0", en: "Polins Sprayer Clear 2.0" },
+    shortName: { sq: "Clear 2.0", en: "Clear 2.0" },
+    description: {
+      sq: "Spërkatësja Polins Clear 2.0 është projektuar për përdorim me preparate të tretshme në ujë për kujdesin e bimëve, si produkte ushqyese, herbicide, insekticide ose fungicide. Trupi transparent ndihmon në kontrollin e nivelit të lëngut gjatë punës, ndërsa kapaciteti 2 litra ofron balancë të mirë mes praktikës dhe autonomisë. E përshtatshme për përdorim në kopshte, sera, ambiente bujqësore të vogla dhe mirëmbajtje të bimëve dekorative.",
+      en: "The Polins Clear 2.0 sprayer is designed for use with water-soluble preparations for plant care, such as nutrients, herbicides, insecticides or fungicides. The transparent body helps monitor the liquid level during work, while the 2-litre capacity offers a good balance between practicality and autonomy. Suitable for gardens, greenhouses, small agricultural areas and decorative plant maintenance.",
+    },
+  },
+  "polins-sprayer-garden-mini": {
+    name: { sq: "Spërkatëse Polins Garden Mini 1.5L / 2.5L", en: "Polins Sprayer Garden Mini 1.5L / 2.5L" },
+    shortName: { sq: "Garden Mini", en: "Garden Mini" },
+    description: {
+      sq: "Polins Garden Mini është spërkatëse kompakte me pompë, e përshtatshme për përdorim me preparate të tretshme në ujë për kujdesin e bimëve. Modelet 1.5L dhe 2.5L janë praktike për përdorim në ballkone, kopshte të vogla, sera dhe hapësira ku kërkohet kontroll i saktë gjatë spërkatjes. Produkti është i lehtë për t'u mbajtur, i thjeshtë për t'u përdorur dhe i përshtatshëm për lule, fidanë dhe bimë dekorative.",
+      en: "The Polins Garden Mini is a compact pump sprayer suitable for use with water-soluble preparations for plant care. The 1.5L and 2.5L models are practical for use on balconies, small gardens, greenhouses and spaces where precise spraying control is required. The product is easy to carry, simple to use and suitable for flowers, seedlings and decorative plants.",
+    },
+  },
+  "polins-sprayer-garden-5-8-10": {
+    name: { sq: "Spërkatëse Polins Garden 5L / 8L / 10L", en: "Polins Sprayer Garden 5L / 8L / 10L" },
+    shortName: { sq: "Garden 5-8-10", en: "Garden 5-8-10" },
+    description: {
+      sq: "Seria Polins Garden 5, 8 dhe 10 është krijuar për spërkatje të bimëve me preparate të tretshme në ujë, përfshirë produkte ushqyese, insekticide, fungicide dhe herbicide. Çdo set përfshin rezervuarin me pompë, valvul sigurie, rrip mbajtës, tubin me dorezë, zgjatuesin e spërkatjes dhe manualin e përdorimit. Është një zgjidhje praktike për kopshte, pemishte të vogla, sera dhe punë bujqësore të përditshme.",
+      en: "The Polins Garden 5, 8 and 10 series is designed for spraying plants with water-soluble preparations, including nutrients, insecticides, fungicides and herbicides. Each set includes the tank with pump, safety valve, carry strap, hose with handle, spray lance and user manual. A practical solution for gardens, small orchards, greenhouses and everyday agricultural work.",
+    },
+  },
+  "polins-sprayer-garden-hobby-5-8-10": {
+    name: { sq: "Spërkatëse Polins Garden Hobby 5L / 8L / 10L", en: "Polins Sprayer Garden Hobby 5L / 8L / 10L" },
+    shortName: { sq: "Garden Hobby 5-8-10", en: "Garden Hobby 5-8-10" },
+    description: {
+      sq: "Polins Garden Hobby është linjë spërkatësesh presioni për përdorues që kërkojnë pajisje të besueshme për kopshtari, lule, pemë dhe bimë dekorative. Produkti është i përshtatshëm për preparate të tretshme në ujë dhe vjen me rezervuar, pompë, rrip mbajtës, tub me dorezë, zgjatues spërkatjeje dhe manual përdorimi. Variantet 5L, 8L dhe 10L mbulojnë nevoja të ndryshme nga përdorimi shtëpiak deri te punët më të gjera në kopsht.",
+      en: "The Polins Garden Hobby is a line of pressure sprayers for users who need reliable equipment for gardening, flowers, trees and decorative plants. The product is suitable for water-soluble preparations and comes with a tank, pump, carry strap, hose with handle, spray lance and user manual. The 5L, 8L and 10L variants cover different needs from home use to larger garden tasks.",
+    },
+  },
+  "polins-back-sprayer-garden-hobby-12-16": {
+    name: { sq: "Spërkatëse Shpine Polins Garden Hobby 12L / 16L", en: "Polins Back Sprayer Garden Hobby 12L / 16L" },
+    shortName: { sq: "Spërkatëse Shpine 12-16L", en: "Back Sprayer Hobby 12-16" },
+    description: {
+      sq: "Spërkatësja e shpinës Polins Garden Hobby 12/16 është projektuar për përdorim më intensiv në kopshte, pemishte, sera dhe sipërfaqe bujqësore. Kapacitetet 12L dhe 16L mundësojnë autonomi më të madhe gjatë punës, ndërsa forma e shpinës e bën më të lehtë mbajtjen gjatë spërkatjes. Produkti përdoret me preparate të tretshme në ujë për kujdesin e bimëve dhe është i përshtatshëm për përdorues që kërkojnë volum më të madh se spërkatëset klasike të dorës.",
+      en: "The Polins Garden Hobby 12/16 back sprayer is designed for more intensive use in gardens, orchards, greenhouses and agricultural surfaces. The 12L and 16L capacities allow greater autonomy during work, while the backpack design makes carrying easier during spraying. Suitable for users who need a larger volume than classic hand sprayers.",
+    },
+  },
+  "polins-bins-screw-cap": {
+    name: { sq: "Kova Polins me Kapak me Vidë dhe Gomine", en: "Polins Bins with Screw Cap and Gasket" },
+    shortName: { sq: "Kova me Kapak Vidë", en: "Bins with Screw Cap" },
+    description: {
+      sq: "Kovat Polins me kapak me vidë dhe gomine janë të përshtatshme për ruajtje, transport dhe ambalazhim të produkteve të ndryshme. Kapaku me vidë ndihmon në mbyllje më të sigurt, ndërsa gomina rrit izolimin dhe praktikën në përdorim. Variantet 5L, 10L, 15L dhe 20L i bëjnë këto enë të përshtatshme për përdorim në ekonomi familjare, bujqësi, industri të lehtë dhe magazinim.",
+      en: "Polins bins with screw cap and gasket are suitable for storage, transport and packaging of various products. The screw cap helps achieve a more secure closure, while the gasket increases insulation and practicality in use. The 5L, 10L, 15L and 20L variants make these containers suitable for home economy, agriculture, light industry and storage.",
+    },
+  },
+  "polins-bucket-with-handles-20l": {
+    name: { sq: "Kovë Polins 20L me Doreza", en: "Polins Bucket with Handles 20L" },
+    shortName: { sq: "Kovë 20L me Doreza", en: "Bucket 20L with Handles" },
+    description: {
+      sq: "Kova Polins 20L me doreza është zgjidhje praktike për mbajtje, transport dhe përdorim të përditshëm në ambiente shtëpiake, bujqësore ose industriale të lehta. Dorezat ndihmojnë në kapje dhe lëvizje më të lehtë, ndërsa kapaciteti 20L e bën të përshtatshme për sasi më të mëdha materiali ose lëngu.",
+      en: "The Polins 20L bucket with handles is a practical solution for holding, transporting and everyday use in home, agricultural or light industrial environments. The handles make it easier to grip and move, while the 20L capacity makes it suitable for larger quantities of material or liquid.",
+    },
+  },
+  "polins-hanging-poultry-feeder-18kg": {
+    name: { sq: "Ushqyes i Varur Polins për Shpendë 18kg", en: "Polins Hanging Poultry Feeder 18kg" },
+    shortName: { sq: "Ushqyes i Varur 18kg", en: "Hanging Feeder 18kg" },
+    description: {
+      sq: "Ushqyesi i varur Polins për shpendë është i përshtatshëm për ferma, oborre dhe ambiente ku kërkohet furnizim i rregullt me ushqim për pula ose shpendë të tjerë. Kapaciteti 18kg redukton nevojën për rimbushje të shpeshta, ndërsa forma e varur ndihmon në mbajtjen e ushqimit më të pastër dhe më të aksesueshëm për shpendët.",
+      en: "The Polins hanging poultry feeder is suitable for farms, yards and environments where regular food supply is needed for chickens or other poultry. The 18kg capacity reduces the need for frequent refilling, while the hanging design helps keep the feed cleaner and more accessible for the birds.",
+    },
+  },
+  "polins-poultry-feeder-400": {
+    name: { sq: "Ushqyes Polins Ø400 për Shpendë", en: "Polins Poultry Feeder Ø400" },
+    shortName: { sq: "Ushqyes Ø400", en: "Feeder Ø400" },
+    description: {
+      sq: "Ushqyesi Polins Ø400 është projektuar për ushqimin e shpendëve me kapacitet 13kg. Diametri 400mm ofron hapësirë të mirë aksesimi për shpendët, ndërsa materiali plastik është praktik për pastrim dhe përdorim të përditshëm. I përshtatshëm për ferma të vogla, oborre familjare dhe përdorim bujqësor.",
+      en: "The Polins Ø400 feeder is designed for feeding poultry with a 13kg capacity. The 400mm diameter provides good access space for the birds, while the plastic material is practical for cleaning and everyday use. Suitable for small farms, family yards and agricultural use.",
+    },
+  },
+  "polins-poultry-feeder-250": {
+    name: { sq: "Ushqyes Polins Ø250 për Shpendë", en: "Polins Poultry Feeder Ø250" },
+    shortName: { sq: "Ushqyes Ø250", en: "Feeder Ø250" },
+    description: {
+      sq: "Ushqyesi Polins Ø250 është i përshtatshëm për ambiente më të vogla, oborre familjare dhe grupe më të vogla shpendësh. Kapaciteti 3.5kg dhe forma kompakte e bëjnë të lehtë për vendosje, mbushje dhe pastrim. Produkt praktik për ushqim të grimcuar ose pluhur.",
+      en: "The Polins Ø250 feeder is suitable for smaller environments, family yards and smaller groups of poultry. The 3.5kg capacity and compact form make it easy to place, fill and clean. A practical product for pellet or powder feed.",
+    },
+  },
+  "polins-poultry-feeder-200": {
+    name: { sq: "Ushqyes Polins Ø200 për Shpendë", en: "Polins Poultry Feeder Ø200" },
+    shortName: { sq: "Ushqyes Ø200", en: "Feeder Ø200" },
+    description: {
+      sq: "Ushqyesi Polins Ø200 është model kompakt për furnizimin e shpendëve me ushqim të grimcuar ose pluhur. Me kapacitet 3kg, është i përshtatshëm për përdorim të përditshëm në oborre, ferma të vogla dhe ambiente ku kërkohet zgjidhje e thjeshtë dhe higjienike.",
+      en: "The Polins Ø200 feeder is a compact model for supplying poultry with pellet or powder feed. With a 3kg capacity, it is suitable for everyday use in yards, small farms and environments where a simple and hygienic solution is needed.",
+    },
+  },
+  "polins-hanging-poultry-drinker-10l": {
+    name: { sq: "Pijëse e Varur Polins për Shpendë 10L", en: "Polins Hanging Poultry Drinker 10L" },
+    shortName: { sq: "Pijëse e Varur 10L", en: "Hanging Drinker 10L" },
+    description: {
+      sq: "Pijësja e varur Polins 10L është projektuar për furnizim të pastër dhe të qëndrueshëm me ujë për shpendët. Forma e varur ndihmon në reduktimin e ndotjes së ujit, ndërsa kapaciteti 10L e bën të përshtatshme për përdorim në ferma, oborre dhe ambiente ku mbahen shpendë.",
+      en: "The Polins hanging drinker 10L is designed for clean and consistent water supply for poultry. The hanging design helps reduce water contamination, while the 10L capacity makes it suitable for use on farms, in yards and environments where poultry are kept.",
+    },
+  },
+  "polins-poultry-drinker-250-5l": {
+    name: { sq: "Pijëse Polins Ø250 për Shpendë 5L", en: "Polins Poultry Drinker Ø250 5L" },
+    shortName: { sq: "Pijëse Ø250 5L", en: "Drinker Ø250 5L" },
+    description: {
+      sq: "Pijësja Polins Ø250 me kapacitet 5L është zgjidhje praktike për furnizim me ujë në oborre, ferma të vogla dhe ambiente të kujdesit për shpendë. Diametri i tabakasë dhe lartësia e saj janë të përshtatshme për përdorim të përditshëm, ndërsa materiali plastik lehtëson pastrimin.",
+      en: "The Polins Ø250 drinker with 5L capacity is a practical solution for water supply in yards, small farms and poultry care environments. The tray diameter and height are suitable for everyday use, while the plastic material makes cleaning easy.",
+    },
+  },
+  "polins-poultry-drinker-200-4l": {
+    name: { sq: "Pijëse Polins Ø200 për Shpendë 4L", en: "Polins Poultry Drinker Ø200 4L" },
+    shortName: { sq: "Pijëse Ø200 4L", en: "Drinker Ø200 4L" },
+    description: {
+      sq: "Pijësja Polins Ø200 është model kompakt me kapacitet 4L, e përshtatshme për grupe më të vogla shpendësh dhe përdorim familjar. Forma e saj praktike mundëson furnizim të vazhdueshëm me ujë, ndërsa materiali plastik është i lehtë për pastrim dhe mirëmbajtje.",
+      en: "The Polins Ø200 drinker is a compact model with 4L capacity, suitable for smaller groups of poultry and family use. Its practical design enables continuous water supply, while the plastic material is easy to clean and maintain.",
+    },
+  },
+  "polins-drinker-with-bottle-thread": {
+    name: { sq: "Pijëse Polins me Filetë për Shishe", en: "Polins Drinker with Bottle Thread" },
+    shortName: { sq: "Pijëse me Filetë Shishe", en: "Bottle Thread Drinker" },
+    description: {
+      sq: "Pijësja Polins me filetë për shishe është zgjidhje ekonomike dhe praktike për furnizimin e shpendëve me ujë. Produkti lidhet me shishe të përshtatshme, ndaj kapaciteti përcaktohet nga madhësia e shishes së përdorur. Është e lehtë, kompakte dhe e përshtatshme për oborre, përdorim familjar dhe ferma të vogla.",
+      en: "The Polins drinker with bottle thread is an economical and practical solution for supplying poultry with water. The product connects to a suitable bottle, so the capacity is determined by the size of the bottle used. It is lightweight, compact and suitable for yards, family use and small farms.",
+    },
+  },
+  "polins-planter-fruit-vegetable-growing": {
+    name: { sq: "Mbjellëse Polins për Fruta dhe Perime", en: "Polins Planter for Fruit and Vegetable Growing" },
+    shortName: { sq: "Mbjellëse Fruta-Perime", en: "Fruit & Vegetable Planter" },
+    description: {
+      sq: "Mbjellësja Polins për fruta dhe perime është pajisje praktike për punë bujqësore dhe kopshtari, e projektuar për të ndihmuar në mbjellje më të rregullt dhe më efikase. Produkti është i lehtë, i thjeshtë për përdorim dhe i përshtatshëm për ferma, kopshte, sera dhe kultivues që kërkojnë mjete praktike për mbjellje.",
+      en: "The Polins planter for fruit and vegetable growing is a practical tool for agricultural and gardening work, designed to help with more regular and efficient planting. The product is lightweight, simple to use and suitable for farms, gardens, greenhouses and growers who need practical planting tools.",
+    },
+  },
+  "polins-plastic-shovel-with-handle-1002": {
+    name: { sq: "Lopatë Plastike Polins me Dorezë", en: "Polins Plastic Shovel with Handle" },
+    shortName: { sq: "Lopatë Plastike 1002", en: "Plastic Shovel 1002" },
+    description: {
+      sq: "Lopata plastike Polins me dorezë, kodi 1002, është e përshtatshme për pastrim bore dhe përdorime të ndryshme praktike në ambiente shtëpiake, oborre, magazina ose hapësira pune. Trupi plastik e bën më të lehtë në përdorim, ndërsa doreza ndihmon në kapje dhe manovrim më të mirë.",
+      en: "The Polins plastic shovel with handle, code 1002, is suitable for snow clearing and various practical uses in home environments, yards, warehouses or work spaces. The plastic body makes it lighter in use, while the handle helps with better grip and manoeuvring.",
+    },
+  },
+  "polins-plastic-shovel-l35-handle-alu-profile-1014": {
+    name: { sq: "Lopatë Plastike Polins L35 me Dorezë dhe Profil Alumini", en: "Polins Plastic Shovel L35 with Handle and Aluminium Profile" },
+    shortName: { sq: "Lopatë L35 Alu 1014", en: "Shovel L35 Alu 1014" },
+    description: {
+      sq: "Lopata plastike Polins L35 me dorezë dhe profil alumini, kodi 1014, është projektuar për përdorim më të qëndrueshëm në pastrim bore dhe punë të ndryshme jashtë. Profili i aluminit ndihmon në forcimin e pjesës së punës, ndërsa doreza e bën produktin më praktik për përdorim të përditshëm.",
+      en: "The Polins L35 plastic shovel with handle and aluminium profile, code 1014, is designed for more durable use in snow clearing and various outdoor tasks. The aluminium profile helps reinforce the working part, while the handle makes the product more practical for everyday use.",
+    },
+  },
+  "polins-plastic-shovel-l35-eko-with-handle-1012": {
+    name: { sq: "Lopatë Plastike Polins L35 Eko me Dorezë", en: "Polins Plastic Shovel L35 Eko with Handle" },
+    shortName: { sq: "Lopatë L35 Eko 1012", en: "Shovel L35 Eko 1012" },
+    description: {
+      sq: "Lopata plastike Polins L35 Eko me dorezë, kodi 1012, është zgjidhje praktike për pastrim bore dhe përdorime të ndryshme në oborre, ambiente pune dhe hapësira shtëpiake. Dizajni L35 Eko ofron funksionalitet të mirë për përdorim të përditshëm, duke ruajtur peshë të ulët dhe manovrim të lehtë.",
+      en: "The Polins L35 Eko plastic shovel with handle, code 1012, is a practical solution for snow clearing and various uses in yards, work environments and home spaces. The L35 Eko design offers good functionality for everyday use, maintaining low weight and easy manoeuvring.",
+    },
+  },
   "polins-manual-sprayer": {
     name: { sq: "Spërkatës Manual Kopshti Polins", en: "Polins Manual Garden Sprayer" },
     shortName: { sq: "Spërkatës Manual", en: "Manual Sprayer Range" },
