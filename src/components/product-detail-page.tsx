@@ -704,7 +704,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                 src={product.additionalImage}
                 alt={`${tp(product.id, "name", product.name)} - Installation`}
                 fill
-                className="object-cover"
+                className={product.suppliers.some((s) => s.partnerId === "roto" || s.partnerId === "polins") ? "object-contain p-6" : "object-cover"}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
