@@ -606,6 +606,70 @@ export const productTranslations: Record<
       en: "Durable three-layer PVC hose for garden and agricultural watering. Reinforced 3-layer construction for long-lasting performance. Multi-layer design provides superior strength and flexibility. Made in Kosovo by Pista Ekoplast. Multiple diameters for different needs. Standard 50m length. Suitable for garden irrigation, agricultural watering, and water distribution.",
     },
   },
+  "roto-jazz-planter": {
+    name: { sq: "Vazo Jazz ROTO", en: "ROTO Jazz Planter" },
+    shortName: { sq: "Jazz", en: "Jazz" },
+    description: {
+      sq: "Vazo dekorative ROTO Jazz me siluetë të rrumbullakët dhe linja moderne, e prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit. E përshtatshme për tarraca, kopshte, hyrje dhe ambiente komerciale. E lehtë, rezistente ndaj ngricës dhe e qëndrueshme ndaj kushteve atmosferike dhe rrezeve UV. E disponueshme në tri madhësi: S, M dhe L.",
+      en: "The ROTO Jazz planter is a decorative rotomoulded planter with a rounded shoulder silhouette and clean modern lines. Manufactured from UV-stabilised polyethylene, it is suitable for terraces, gardens, entrance areas and commercial landscaping. It is lightweight, weather-resistant, frost-resistant and durable against UV exposure. Available in three sizes: S, M and L.",
+    },
+  },
+  "roto-rumba-planter": {
+    name: { sq: "Vazo Rumba ROTO", en: "ROTO Rumba Planter" },
+    shortName: { sq: "Rumba", en: "Rumba" },
+    description: {
+      sq: "Vazo ROTO Rumba me formë të rrumbullakët dhe grykë të gjerë, ideale për shkurre, bimë zbukuruese dhe kompozime sezonale. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit. E qëndrueshme ndaj ngricës, rrezeve UV dhe kushteve atmosferike, si dhe e lehtë për t'u zhvendosur. E përshtatshme për kopshte, tarraca dhe ambiente publike. E disponueshme në tri madhësi: S, M dhe L.",
+      en: "The ROTO Rumba planter is a low, wide-mouth rotomoulded bowl planter ideal for shrubs, ornamental grasses and seasonal arrangements. Manufactured from UV-stabilised polyethylene, it resists frost, UV exposure and outdoor weather conditions while remaining lightweight and easy to reposition. Suitable for gardens, terraces and public landscaping. Available in three sizes: S, M and L.",
+    },
+  },
+  "roto-barrel-standalone": {
+    name: { sq: "Vazo Barrel Standalone ROTO", en: "ROTO Barrel Standalone Planter" },
+    shortName: { sq: "Barrel Standalone", en: "Barrel Standalone" },
+    description: {
+      sq: "Vazo Barrel Standalone ROTO është një element dekorativ në formë fuçie tradicionale, me pamje rustike dhe imitim druri. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit, është e përshtatshme për kopshte, tarraca, lokale, ambiente verore dhe hyrje dekorative. Ky model trajtohet si produkt i veçantë nga familja Barrel me madhësi S–XXL.",
+      en: "The ROTO Barrel Standalone is a decorative barrel-style planter with a rustic wood-grain appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for gardens, terraces, hospitality venues, summer spaces and decorative entrance areas. This standalone model must be treated separately from the Barrel size-range family.",
+    },
+  },
+  "roto-barrel-planter": {
+    name: { sq: "Vazo Barrel ROTO", en: "ROTO Barrel Planter Family" },
+    shortName: { sq: "Barrel Family", en: "Barrel Family" },
+    description: {
+      sq: "Vazo ROTO Barrel është një familje vazosh dekorative në imitim druri me dizajn fuçie tradicionale. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit, sjell një pamje rustike dhe të ngrohtë në kopshte, tarraca, lokale, ambiente verore dhe hapësira komerciale. E lehtë, praktike dhe e qëndrueshme për përdorim të jashtëm. E disponueshme në madhësi S, M, L, XL dhe XXL.",
+      en: "The ROTO Barrel planter family is a range of decorative wood-grain barrel-style planters. Manufactured from UV-stabilised polyethylene using rotational moulding, it brings a rustic and warm character to gardens, terraces, hospitality venues, summer spaces and commercial outdoor areas. Lightweight, practical and weather-resistant for outdoor use. Available in sizes S, M, L, XL and XXL.",
+    },
+  },
+  "roto-polka-planter": {
+    name: { sq: "Vazo Polka ROTO", en: "ROTO Polka Planter" },
+    shortName: { sq: "Polka", en: "Polka" },
+    description: {
+      sq: "Vazo ROTO Polka ka dizajn klasik me imitim druri dhe formë të rrumbullakët dekorative. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit, ofron pamje tradicionale, përdorim praktik dhe qëndrueshmëri ndaj kushteve atmosferike. E përshtatshme për tarraca, kopshte, hyrje dhe ambiente dekorative. E disponueshme në tri madhësi: S, M dhe L.",
+      en: "The ROTO Polka planter is a classic rounded decorative planter with a wood-imitation finish. Manufactured from UV-stabilised polyethylene using rotational moulding, it combines a traditional appearance with practical handling and outdoor durability. Suitable for terraces, gardens, entrances and decorative outdoor spaces. Available in three sizes: S, M and L.",
+    },
+  },
+  "roto-quadro-planter": {
+    name: { sq: "Vazo Quadro ROTO", en: "ROTO Quadro Planter" },
+    shortName: { sq: "Quadro", en: "Quadro" },
+    description: {
+      sq: "Vazo ROTO Quadro ka formë katrore të zgjatur dhe dizajn modern, e prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit. Profili i lartë dhe i ngushtuar pak nga fundi e bën të përshtatshme për bimë vertikale, palma të vogla dhe ambiente moderne si tarraca, hotele, hyrje zyrash dhe hapësira komerciale. E disponueshme në tri madhësi: S, M dhe L.",
+      en: "The ROTO Quadro planter is a tall, tapered square planter with a contemporary architectural profile. Manufactured from UV-stabilised polyethylene using rotational moulding, its upright proportions suit ornamental grasses, small palms and modern planting arrangements. Well suited to terraces, hotel entrances, office entrances and commercial spaces. Available in three sizes: S, M and L.",
+    },
+  },
+  "roto-tango-line-planter": {
+    name: { sq: "Vazo Tango / Line ROTO", en: "ROTO Tango / Line Planter" },
+    shortName: { sq: "Tango / Line", en: "Tango / Line" },
+    description: {
+      sq: "Vazo ROTO Tango / Line ka dizajn drejtkëndor me linja të pastra arkitekturore, ideale për ndarje hapësire, ballkone, dyqane, tarraca dhe kopshte moderne. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit, është e qëndrueshme ndaj ngricës, rrezeve UV dhe përdorimit të jashtëm. Për këtë test, publikohen variantet Line L dhe Line XL.",
+      en: "The ROTO Tango / Line planter is a low-profile architectural planter with clean rectangular lines, ideal for space division, balconies, retail areas, terraces and modern gardens. Manufactured from UV-stabilised polyethylene using rotational moulding, it is resistant to frost, UV exposure and outdoor conditions. For this test, publish the Line L and Line XL variants.",
+    },
+  },
+  "roto-basket-planter": {
+    name: { sq: "Vazo Basket ROTO", en: "ROTO Basket Planter" },
+    shortName: { sq: "Basket", en: "Basket" },
+    description: {
+      sq: "Vazo ROTO Basket ka sipërfaqe të strukturuar në imitim të një shporte të thurur. E prodhuar nga polietileni i stabilizuar UV me teknologjinë e rotomoldimit, sjell pamje të ngrohtë dhe natyrale në ambiente komerciale, hotele, restorante, hyrje, tarraca dhe hapësira publike. E disponueshme në formate të mëdha: Basket, Basket XL dhe Basket XXL.",
+      en: "The ROTO Basket planter is a textured planter with a woven-basket appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it brings a warm and natural look to commercial spaces, hotels, restaurants, entrances, terraces and public landscaping. Available in large formats: Basket, Basket XL and Basket XXL.",
+    },
+  },
   "hdpe-socket-coupling": {
     name: { sq: "Bashkues Socket HDPE", en: "HDPE Socket Coupling" },
     shortName: { sq: "Bashkues Socket", en: "Socket Coupler" },

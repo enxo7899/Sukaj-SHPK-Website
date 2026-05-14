@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     localPatterns: [
+      { pathname: '/images/**' },
       { pathname: '/products/**' },
       { pathname: '/media/**' },
     ],
