@@ -606,6 +606,126 @@ export const productTranslations: Record<
       en: "Durable three-layer PVC hose for garden and agricultural watering. Reinforced 3-layer construction for long-lasting performance. Multi-layer design provides superior strength and flexibility. Made in Kosovo by Pista Ekoplast. Multiple diameters for different needs. Standard 50m length. Suitable for garden irrigation, agricultural watering, and water distribution.",
     },
   },
+  "roto-teak-planter": {
+    name: { sq: "Vazo Teak ROTO", en: "ROTO Teak Planter" },
+    shortName: { sq: "Teak", en: "Teak" },
+    description: {
+      sq: "Vazoja ROTO Teak ka një sipërfaqe që imiton drurin e tikut dhe një formë moderne dekorative. E prodhuar nga polietileni i stabilizuar UV me anë të rotomoldimit, ajo ofron pamjen e drurit me peshën e lehtë dhe qëndrueshmërinë e plastikës. E përshtatshme për tarraca, ambiente mikpritjeje, hyrje, kopshte dhe si ndarëse hapësirash. E disponueshme në dy madhësi: katrore S dhe e zgjatur L.",
+      en: "The ROTO Teak planter has a teak-wood imitation surface and a modern decorative form. Manufactured from UV-stabilised polyethylene using rotational moulding, it delivers the appearance of wood with the light weight and durability of rotomoulded plastic. Suitable for terraces, hospitality spaces, entrances, gardens and space dividers. Available in two sizes: square S and elongated L.",
+    },
+  },
+  "roto-samba-planter": {
+    name: { sq: "Vazo Samba ROTO", en: "ROTO Samba Planter" },
+    shortName: { sq: "Samba", en: "Samba" },
+    description: {
+      sq: "Vazoja ROTO Samba është një vazo e gjatë skulpturore dhe elegante, e prodhuar nga polietileni i stabilizuar UV. Përmasat e saj vertikale dhe sipërfaqja dekorative e bëjnë atë një element të fortë vizual për hyrjet e hoteleve, restoranteve, tarracave premium dhe peizazheve komerciale. E disponueshme në madhësitë M dhe L.",
+      en: "The ROTO Samba planter is a tall, elegant sculptural planter manufactured from UV-stabilised polyethylene using rotational moulding. Its vertical proportions and decorative surface make it a strong statement piece for hotel entrances, restaurants, premium terraces and commercial landscaping. Available in sizes M and L.",
+    },
+  },
+  "roto-balcone-planter": {
+    name: { sq: "Vazo Balcone ROTO", en: "ROTO Balcone Planter" },
+    shortName: { sq: "Balcone", en: "Balcone" },
+    description: {
+      sq: "Vazoja ROTO Balcone është projektuar për t'u vendosur mbi parmakët e ballkoneve ose çative. Forma e saj përshtatet mbi hekurin dhe ofron një zgjidhje praktike dekorative për ballkone, tarraca dhe hapësira të vogla urbane. E prodhuar nga polietileni i stabilizuar UV. E disponueshme në versionet standarde dhe Duo-Ovale.",
+      en: "The ROTO Balcone planter is designed to sit over balcony or roof railings. Its shaped form fits over the rail and provides a practical decorative planting solution for balconies, terraces and compact urban spaces. Manufactured from UV-stabilised polyethylene using rotational moulding. Available in standard and Duo-Ovale versions.",
+    },
+  },
+  "roto-edelweis-planter": {
+    name: { sq: "Vazo Edelweis ROTO", en: "ROTO Edelweis Planter" },
+    shortName: { sq: "Edelweis", en: "Edelweis" },
+    description: {
+      sq: "Vazoja ROTO Edelweis është një vazo drejtkëndëshe me një përfundim me teksturë guri, e prodhuar nga polietileni i stabilizuar UV me anë të rotomoldimit. Është e përshtatshme për ballkone, hyrje, kopshte dhe ndarjen e hapësirave të jashtme. E disponueshme në madhësitë S, L dhe XL.",
+      en: "The ROTO Edelweis planter is a rectangular trough planter with a stone-textured finish, manufactured from UV-stabilised polyethylene using rotational moulding. It is suitable for balconies, entrances, gardens and outdoor space division. Available in sizes S, L and XL.",
+    },
+  },
+  "roto-edelweis-ovale": {
+    name: { sq: "Vazo Edelweis Ovale ROTO", en: "ROTO Edelweis Ovale Planter" },
+    shortName: { sq: "Edelweis Ovale", en: "Edelweis Ovale" },
+    description: {
+      sq: "ROTO Edelweis Ovale është varianti oval i familjes Edelweis, me një formë eliptike të zgjatur dhe pamje dekorative guri. E prodhuar nga polietileni i stabilizuar UV, është e përshtatshme për mbjellje lineare në tarraca, hyrje, ballkone dhe oborre.",
+      en: "The ROTO Edelweis Ovale is the oval variant of the Edelweis family, with an elongated elliptical form and decorative stone-look appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for linear planting on terraces, entrances, balconies and courtyards.",
+    },
+  },
+  "roto-edelweis-round": {
+    name: { sq: "Vazo Edelweis E Rrumbullakët ROTO", en: "ROTO Edelweis Round Planter" },
+    shortName: { sq: "Edelweis Round", en: "Edelweis Round" },
+    description: {
+      sq: "ROTO Edelweis Round është varianti i rrumbullakët i familjes Edelweis, me formën e një tasi të ulët dhe përfundim dekorativ guri. E përshtatshme për lule sezonale, bimë dekorative, kopshte, tarraca dhe hyrje. E disponueshme në madhësitë S dhe M.",
+      en: "The ROTO Edelweis Round is the round variant of the Edelweis family, with a low bowl form and decorative stone-look finish. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for seasonal flowers, decorative plants, gardens, terraces and entrance areas. Available in sizes S and M.",
+    },
+  },
+  "roto-wall-murale-planter": {
+    name: { sq: "Vazo Muri Murale ROTO", en: "ROTO Wall / Murale Planter" },
+    shortName: { sq: "Murale", en: "Murale" },
+    description: {
+      sq: "Vazoja ROTO Wall / Murale është një gjysmë-tas i montuar në mur me detaje klasike dhe formë dekorative. E prodhuar nga polietileni i stabilizuar UV, është ideale për fasada, oborre të vegjël, ballkone dhe hapësira me sipërfaqe të kufizuar dyshemeje.",
+      en: "The ROTO Wall / Murale planter is a half-bowl wall-mounted planter with classical detailing and a decorative form. Manufactured from UV-stabilised polyethylene, it is ideal for facades, small courtyards, balconies and spaces where floor area is limited.",
+    },
+  },
+  "roto-stoniness-planter": {
+    name: { sq: "Vazo Stoniness ROTO", en: "ROTO Stoniness Planter" },
+    shortName: { sq: "Stoniness", en: "Stoniness" },
+    description: {
+      sq: "Vazoja ROTO Stoniness ka një teksturë natyrale të theksuar guri dhe pamje dekorative rustike. Ajo jep përshtypjen e një vazoje të rëndë guri, por është e lehtë dhe më praktike për përdorim në natyrë falë polietilenit. E përshtatshme për kopshte dhe peizazhe urbane. E disponueshme në S, M, L dhe XL.",
+      en: "The ROTO Stoniness planter has a pronounced natural stone-look texture and a rustic decorative appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it gives the impression of a heavy stone planter while remaining more practical for outdoor use. Suitable for gardens, public entrances and urban landscapes. Available in sizes S, M, L and XL.",
+    },
+  },
+  "roto-tulip-planter": {
+    name: { sq: "Vazo Tulip ROTO", en: "ROTO Tulip Planter" },
+    shortName: { sq: "Tulip", en: "Tulip" },
+    description: {
+      sq: "Vazoja ROTO Tulip është një vazo katrore në formë kupe me buzë të zgjeruara dhe motiv dekorativ tulipani. E prodhuar nga polietileni i stabilizuar UV, është e përshtatshme për tarraca, kopshte tradicionale dhe hapësira dekorative. E disponueshme në S, L dhe XL.",
+      en: "The ROTO Tulip planter is a square cupped planter with a flared rim and decorative tulip motif on the outer surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for terraces, traditional gardens, entrances and decorative spaces. Available in sizes S, L and XL.",
+    },
+  },
+  "roto-shoe-planter": {
+    name: { sq: "Vazo Këpucë ROTO", en: "ROTO Shoe Planter" },
+    shortName: { sq: "Shoe", en: "Shoe Planter" },
+    description: {
+      sq: "Vazoja ROTO Shoe është një vazo dekorative me formën e një këpuce të vjetër, ideale si një element vizual në kopshte, oborre rustike dhe hapësira verore. E prodhuar nga polietileni i stabilizuar UV me anë të rotomoldimit. E disponueshme në madhësitë S dhe L.",
+      en: "The ROTO Shoe planter is a novelty decorative planter shaped like an old shoe, ideal as a visual feature in gardens, rustic courtyards and summer outdoor spaces. Manufactured from UV-stabilised polyethylene using rotational moulding. Available in sizes S and L.",
+    },
+  },
+  "roto-elephant-planter": {
+    name: { sq: "Vazo Elefant ROTO", en: "ROTO Elephant Planter" },
+    shortName: { sq: "Elephant", en: "Elephant" },
+    description: {
+      sq: "ROTO Elephant është një element dekorativ kopshti në formë elefanti. Mund të përdoret si vazo ose si një zbukurim i veçantë në kopshte, oborre dhe hapësira familjare në natyrë. E prodhuar nga polietileni i stabilizuar UV.",
+      en: "The ROTO Elephant is a decorative elephant-shaped garden piece manufactured from UV-stabilised polyethylene using rotational moulding. It can be used as a decorative planter or as a standalone ornament in gardens, courtyards and family outdoor spaces.",
+    },
+  },
+  "roto-sack-bag-planter": {
+    name: { sq: "Vazo Thes ROTO", en: "ROTO Sack / Bag Planter" },
+    shortName: { sq: "Thes", en: "Sack / Bag" },
+    description: {
+      sq: "Vazoja ROTO Thes ka formën e një thesi të lidhur dhe pamje dekorative rustike. E prodhuar nga polietileni i stabilizuar UV, është e përshtatshme për lule, erëza ose si një pjesë dekorative dalluese në kopshte dhe tarraca.",
+      en: "The ROTO Sack / Bag planter is shaped like a tied sack and has a rustic decorative appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for flowers, herbs or as a distinctive decorative piece in gardens and terraces.",
+    },
+  },
+  "roto-nusa-squared-s-planter": {
+    name: { sq: "Vazo Nusa Katror S ROTO", en: "ROTO Nusa Squared S Planter" },
+    shortName: { sq: "Nusa Squared", en: "Nusa Squared S" },
+    description: {
+      sq: "ROTO Nusa Squared S është një variant kompakt katror i familjes Nusa, me sipërfaqe me teksturë. E përshtatshme për ballkone, tarraca, hyrje dhe hapësira kompakte dekorative. E prodhuar nga polietileni i stabilizuar UV.",
+      en: "The ROTO Nusa Squared S is a compact square variant of the Nusa family, with a textured surface and decorative form. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for balconies, terraces, entrances and compact decorative spaces.",
+    },
+  },
+  "roto-nusa-planter": {
+    name: { sq: "Vazo Nusa ROTO", en: "ROTO Nusa Planter" },
+    shortName: { sq: "Nusa", en: "Nusa" },
+    description: {
+      sq: "Vazoja ROTO Nusa është një vazo dekorative e zgjatur me sipërfaqe me teksturë. E prodhuar nga polietileni i stabilizuar UV, është e përshtatshme për ballkone, tarraca, hyrje dhe ndarje të hapësirave. Përfshin variantet Nusa S dhe Nusa XL.",
+      en: "The ROTO Nusa planter is a decorative elongated planter with a textured surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for balconies, terraces, entrances and outdoor space division. This product includes the Nusa S and Nusa XL variants.",
+    },
+  },
+  "roto-nusa-round-planter": {
+    name: { sq: "Vazo Nusa e Rrumbullakët ROTO", en: "ROTO Nusa Round Planter" },
+    shortName: { sq: "Nusa Round", en: "Nusa Round" },
+    description: {
+      sq: "ROTO Nusa Round është varianti i rrumbullakët i familjes Nusa, me formë kompakte dhe sipërfaqe dekorative me teksturë. E përshtatshme për lule, bimë dekorative, ballkone, tarraca dhe hapësira të vogla kopshti.",
+      en: "The ROTO Nusa Round is the round variant of the Nusa family, with a compact form and decorative textured surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for flowers, decorative plants, balconies, terraces and small garden spaces.",
+    },
+  },
   "roto-jazz-planter": {
     name: { sq: "Vazo Jazz ROTO", en: "ROTO Jazz Planter" },
     shortName: { sq: "Jazz", en: "Jazz" },

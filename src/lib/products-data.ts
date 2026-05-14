@@ -1044,6 +1044,626 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "roto-teak-planter",
+    slug: "roto-teak-planter",
+    name: "ROTO Teak Planter",
+    shortName: "Teak Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Teak planter has a teak-wood imitation surface and a modern decorative form. Manufactured from UV-stabilised polyethylene using rotational moulding, it delivers the appearance of wood with the light weight and durability of rotomoulded plastic. Suitable for terraces, hospitality spaces, entrances, gardens and space dividers. Available in two sizes: square S and elongated L.",
+    image: "/images/products/roto/roto-teak-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · L",
+      "Design": "Teak-wood imitation surface",
+      "Application": "Terraces · Hospitality spaces · Entrances · Gardens",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Teak S", lengths: "KODI 16158 — 400 × 400 × 400", available: "stock" },
+      { dn: 1, size: "Teak L", lengths: "KODI 16157 — 780 × 400 × 400", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "rotomoulded", "teak", "wood-imitation"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Teak S (KODI 16158) · Teak L (KODI 16157)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Teak S": "KODI 16158 — 400 × 400 × 400",
+          "Teak L": "KODI 16157 — 780 × 400 × 400",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-samba-planter",
+    slug: "roto-samba-planter",
+    name: "ROTO Samba Planter",
+    shortName: "Samba Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Samba planter is a tall, elegant sculptural planter manufactured from UV-stabilised polyethylene using rotational moulding. Its vertical proportions and decorative surface make it a strong statement piece for hotel entrances, restaurants, premium terraces and commercial landscaping. Available in sizes M and L.",
+    image: "/images/products/roto/roto-samba-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "M · L",
+      "Design": "Tall elegant sculptural silhouette",
+      "Application": "Hotel entrances · Restaurants · Premium terraces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Samba M", lengths: "KODI 6016", available: "stock" },
+      { dn: 1, size: "Samba L", lengths: "KODI 6156", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "tall", "sculptural"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Samba M (KODI 6016) · Samba L (KODI 6156)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Samba M": "KODI 6016",
+          "Samba L": "KODI 6156",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-balcone-planter",
+    slug: "roto-balcone-planter",
+    name: "ROTO Balcone Planter",
+    shortName: "Balcone Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Balcone planter is designed to sit over balcony or roof railings. Its shaped form fits over the rail and provides a practical decorative planting solution for balconies, terraces and compact urban spaces. Manufactured from UV-stabilised polyethylene using rotational moulding. Available in standard and Duo-Ovale versions.",
+    image: "/images/products/roto/roto-balcone-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "Standard · Duo-Ovale",
+      "Design": "Balcony railing fit",
+      "Application": "Balconies · Terraces · Compact urban spaces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Balcone", lengths: "KODI 13128 — 300 × 300", available: "stock" },
+      { dn: 1, size: "Balcone Duo-Ovale", lengths: "KODI 16659 — 600 × 300", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "balcony", "railing"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Balcone (KODI 13128) · Duo-Ovale (KODI 16659)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Balcone": "KODI 13128 — 300 × 300",
+          "Balcone Duo-Ovale": "KODI 16659 — 600 × 300",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-edelweis-planter",
+    slug: "roto-edelweis-planter",
+    name: "ROTO Edelweis Planter",
+    shortName: "Edelweis Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Edelweis planter is a rectangular trough planter with a stone-textured finish, manufactured from UV-stabilised polyethylene using rotational moulding. It is suitable for balconies, entrances, gardens and outdoor space division. Available in sizes S, L and XL.",
+    image: "/images/products/roto/roto-edelweis-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · L · XL",
+      "Design": "Rectangular trough with stone texture",
+      "Application": "Balconies · Entrances · Gardens · Space division",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Edelweis S", lengths: "KODI 16138", available: "stock" },
+      { dn: 1, size: "Edelweis L", lengths: "KODI 16139", available: "stock" },
+      { dn: 2, size: "Edelweis XL", lengths: "KODI 16199", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "rectangular", "stone-texture"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Edelweis S (KODI 16138) · L (KODI 16139) · XL (KODI 16199)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Edelweis S": "KODI 16138",
+          "Edelweis L": "KODI 16139",
+          "Edelweis XL": "KODI 16199",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-edelweis-ovale",
+    slug: "roto-edelweis-ovale",
+    name: "ROTO Edelweis Ovale Planter",
+    shortName: "Edelweis Ovale",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Edelweis Ovale is the oval variant of the Edelweis family, with an elongated elliptical form and decorative stone-look appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for linear planting on terraces, entrances, balconies and courtyards.",
+    image: "/images/products/roto/roto-edelweis-ovale.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Elongated elliptical stone-look",
+      "Application": "Terraces · Entrances · Balconies · Courtyards",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Edelweis Ovale", lengths: "KODI 16198", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "oval", "stone-texture"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Edelweis Ovale (KODI 16198)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16198 — Edelweis Ovale",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-edelweis-round",
+    slug: "roto-edelweis-round",
+    name: "ROTO Edelweis Round Planter",
+    shortName: "Edelweis Round",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Edelweis Round is the round variant of the Edelweis family, with a low bowl form and decorative stone-look finish. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for seasonal flowers, decorative plants, gardens, terraces and entrance areas. Available in sizes S and M.",
+    image: "/images/products/roto/roto-edelweis-round.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · M",
+      "Design": "Low bowl stone-look form",
+      "Application": "Seasonal flowers · Gardens · Terraces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Edelweis Round S", lengths: "KODI 16113", available: "stock" },
+      { dn: 1, size: "Edelweis Round M", lengths: "KODI 16154", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "round", "bowl", "stone-texture"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Edelweis Round S (KODI 16113) · M (KODI 16154)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Edelweis Round S": "KODI 16113",
+          "Edelweis Round M": "KODI 16154",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-wall-murale-planter",
+    slug: "roto-wall-murale-planter",
+    name: "ROTO Wall / Murale Planter",
+    shortName: "Wall / Murale Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Wall / Murale planter is a half-bowl wall-mounted planter with classical detailing and a decorative form. Manufactured from UV-stabilised polyethylene, it is ideal for facades, small courtyards, balconies and spaces where floor area is limited.",
+    image: "/images/products/roto/roto-wall-murale.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Wall-mounted half-bowl",
+      "Application": "Facades · Small courtyards · Balconies",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Wall / Murale", lengths: "KODI 16035", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "wall-mounted"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Wall / Murale (KODI 16035)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16035 — Wall / Murale",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-stoniness-planter",
+    slug: "roto-stoniness-planter",
+    name: "ROTO Stoniness Planter",
+    shortName: "Stoniness Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Stoniness planter has a pronounced natural stone-look texture and a rustic decorative appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it gives the impression of a heavy stone planter while remaining more practical for outdoor use. Suitable for gardens, public entrances and urban landscapes. Available in sizes S, M, L and XL.",
+    image: "/images/products/roto/roto-stoniness-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · M · L · XL",
+      "Design": "Pronounced natural stone texture",
+      "Application": "Gardens · Public entrances · Urban landscapes",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Stoniness S", lengths: "KODI 16144", available: "stock" },
+      { dn: 1, size: "Stoniness M", lengths: "KODI 16143", available: "stock" },
+      { dn: 2, size: "Stoniness L", lengths: "KODI 16142", available: "stock" },
+      { dn: 3, size: "Stoniness XL", lengths: "KODI 16159", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "stone-look", "rustic"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Stoniness S/M/L/XL (KODI 16144/16143/16142/16159)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Stoniness S": "KODI 16144",
+          "Stoniness M": "KODI 16143",
+          "Stoniness L": "KODI 16142",
+          "Stoniness XL": "KODI 16159",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-tulip-planter",
+    slug: "roto-tulip-planter",
+    name: "ROTO Tulip Planter",
+    shortName: "Tulip Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Tulip planter is a square cupped planter with a flared rim and decorative tulip motif on the outer surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for terraces, traditional gardens, entrances and decorative spaces. Available in sizes S, L and XL.",
+    image: "/images/products/roto/roto-tulip-family.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · L · XL",
+      "Design": "Square cupped with tulip motif",
+      "Application": "Terraces · Traditional gardens · Entrances",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Tulip S", lengths: "KODI 16032 — 440 × 440 × 330", available: "stock" },
+      { dn: 1, size: "Tulip L", lengths: "KODI 16036 — 525 × 525 × 430", available: "stock" },
+      { dn: 2, size: "Tulip XL", lengths: "KODI 16666 — 935 × 370 × 390", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "tulip-motif"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Tulip S (KODI 16032) · L (KODI 16036) · XL (KODI 16666)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Tulip S": "KODI 16032 — 440 × 440 × 330",
+          "Tulip L": "KODI 16036 — 525 × 525 × 430",
+          "Tulip XL": "KODI 16666 — 935 × 370 × 390",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-shoe-planter",
+    slug: "roto-shoe-planter",
+    name: "ROTO Shoe Planter",
+    shortName: "Shoe Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Shoe planter is a novelty decorative planter shaped like an old shoe, ideal as a visual feature in gardens, rustic courtyards and summer outdoor spaces. Manufactured from UV-stabilised polyethylene using rotational moulding. Available in sizes S and L.",
+    image: "/images/products/roto/roto-shoe-novelty.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · L",
+      "Design": "Novelty old shoe shape",
+      "Application": "Gardens · Rustic courtyards · Summer spaces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Shoe S", lengths: "KODI 16015 — 235 × 380", available: "stock" },
+      { dn: 1, size: "Shoe L", lengths: "KODI 16103 — 315 × 545", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "novelty", "shoe-shape"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Shoe S (KODI 16015) · Shoe L (KODI 16103)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Shoe S": "KODI 16015 — 235 × 380",
+          "Shoe L": "KODI 16103 — 315 × 545",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-elephant-planter",
+    slug: "roto-elephant-planter",
+    name: "ROTO Elephant Planter",
+    shortName: "Elephant Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Elephant is a decorative elephant-shaped garden piece manufactured from UV-stabilised polyethylene using rotational moulding. It can be used as a decorative planter or as a standalone ornament in gardens, courtyards and family outdoor spaces.",
+    image: "/images/products/roto/roto-elephant-novelty.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Novelty elephant shape",
+      "Application": "Gardens · Courtyards · Family spaces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Elephant", lengths: "KODI 16149", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "novelty", "elephant-shape"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Elephant (KODI 16149)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16149 — Elephant",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-sack-bag-planter",
+    slug: "roto-sack-bag-planter",
+    name: "ROTO Sack / Bag Planter",
+    shortName: "Sack / Bag Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Sack / Bag planter is shaped like a tied sack and has a rustic decorative appearance. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for flowers, herbs or as a distinctive decorative piece in gardens and terraces.",
+    image: "/images/products/roto/roto-sack-bag.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Rustic tied sack shape",
+      "Application": "Flowers · Herbs · Gardens · Terraces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Sack / Thes", lengths: "KODI 16000", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "sack-shape", "rustic"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Sack / Thes (KODI 16000)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16000 — Sack / Thes",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-nusa-squared-s-planter",
+    slug: "roto-nusa-squared-s-planter",
+    name: "ROTO Nusa Squared S Planter",
+    shortName: "Nusa Squared S",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Nusa Squared S is a compact square variant of the Nusa family, with a textured surface and decorative form. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for balconies, terraces, entrances and compact decorative spaces.",
+    image: "/images/products/roto/roto-nusa-squared-s.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Compact square textured",
+      "Application": "Balconies · Terraces · Entrances",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Nusa Squareds S", lengths: "KODI 16160", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "square", "textured"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Nusa Squareds S (KODI 16160)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16160 — Nusa Squareds S",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-nusa-planter",
+    slug: "roto-nusa-planter",
+    name: "ROTO Nusa Planter",
+    shortName: "Nusa Planter",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Nusa planter is a decorative elongated planter with a textured surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for balconies, terraces, entrances and outdoor space division. This product includes the Nusa S and Nusa XL variants.",
+    image: "/images/products/roto/roto-nusa.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Available Sizes": "S · XL",
+      "Design": "Elongated textured form",
+      "Application": "Balconies · Terraces · Space division",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Nusa S", lengths: "KODI 16030", available: "stock" },
+      { dn: 1, size: "Nusa XL", lengths: "KODI 16076", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "elongated", "textured"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Nusa S (KODI 16030) · Nusa XL (KODI 16076)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Nusa S": "KODI 16030",
+          "Nusa XL": "KODI 16076",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "roto-nusa-round-planter",
+    slug: "roto-nusa-round-planter",
+    name: "ROTO Nusa Round Planter",
+    shortName: "Nusa Round",
+    category: "agri",
+    material: "UV-stabilised polyethylene, rotomoulded",
+    application: "Decorative Garden Planters",
+    description:
+      "The ROTO Nusa Round is the round variant of the Nusa family, with a compact form and decorative textured surface. Manufactured from UV-stabilised polyethylene using rotational moulding, it is suitable for flowers, decorative plants, balconies, terraces and small garden spaces.",
+    image: "/images/products/roto/roto-nusa-round.png",
+    standards: [],
+    keyProperties: {
+      "Material": "UV-stabilised polyethylene, rotomoulded",
+      "Design": "Compact round textured",
+      "Application": "Flowers · Balconies · Terraces",
+      "Weather Resistance": "UV-resistant · Outdoor rated",
+    },
+    dimensions: [
+      { dn: 0, size: "Nusa Round", lengths: "KODI 16014", available: "stock" },
+    ],
+    tags: ["planter", "decorative", "garden", "ROTO", "round", "textured"],
+    suppliers: [
+      {
+        partnerId: "roto",
+        partnerName: "Roto",
+        country: "North Macedonia",
+        color: "#14b8a6",
+        availability: "in-stock",
+        stockNote: "Nusa Round (KODI 16014)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Model": "KODI 16014 — Nusa Round",
+        },
+      },
+    ],
+  },
+
   // ── ROTO PLANTERS ─────────────────────────────────────────────────────────
 
   {

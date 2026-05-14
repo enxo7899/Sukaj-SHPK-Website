@@ -261,7 +261,9 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
                 alt={group.name}
                 fill
                 loading="lazy"
-                className={`object-cover transition-opacity duration-300 ${
+                className={`${
+                  group.suppliers.some((s) => s.partnerId === "roto") ? "object-contain p-4" : "object-cover"
+                } transition-opacity duration-300 ${
                   imgLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 onLoad={() => setImgLoaded(true)}
