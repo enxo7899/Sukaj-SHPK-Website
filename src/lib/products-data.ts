@@ -3473,6 +3473,51 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "viokon-fuci-ushqimore-50l",
+    slug: "viokon-fuci-ushqimore-50l",
+    name: "Fuçi ushqimore plastike Viokon 50L",
+    shortName: "Fuçi Ushqimore Viokon 50L",
+    category: "agri",
+    material: "Plastikë ushqimore e certifikuar — polietilen me densitet të lartë (HDPE)",
+    application: "Ambalazh plastike - fuçi dhe bidona",
+    description:
+      "Fuçi ushqimore plastike Viokon 50L (kodi K7722) është enë cilindrike me kapacitet 50 litrash, e prodhuar nga Viokon (Greqi) nga polietilen i certifikuar për kontakt me ushqim. E pajisur me kapak të gjerë me vidë (Φ22) dhe dy dorezë kapse anash për transport të sigurt dhe të lehtë, kjo fuçi është projektuar posaçërisht për ruajtje dhe transport të qumështit, djathit, kosit dhe produkteve të tjera ushqimore. Materiali HDPE ushqimor garanton higjienë, rezistencë ndaj ndryshimit të temperaturës dhe jetëgjatësi të lartë. Dimensionet 65 × 34 cm e bëjnë praktike për ferma, blegtori, industri ushqimore dhe çdo ambient ku kërkohet enë plastike e sigurt për kontakt me produktet ushqimore.",
+    image: "/images/products/viokon/viokon_fuci_ushqimore_50l_cover.webp",
+    additionalImage: "/images/products/viokon/viokon_fuci_ushqimore_50l_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Prodhuesi": "Viokon, Greqi",
+      "SKU / Kodi": "K7722",
+      "Materiali": "HDPE — plastikë e certifikuar ushqimore",
+      "Kapaciteti": "50 L",
+      "Dimensionet": "65 × 34 cm",
+      "Kapaku": "Φ22 (me vidë)",
+      "Dorezat": "Dy dorezë kapse — transport i sigurt",
+      "Aplikimi": "Qumësht · Djathë · Kos · Produkte ushqimore",
+    },
+    dimensions: [
+      { dn: 50, size: "Fuçi ushqimore 50L", lengths: "SKU K7722 — 50 L | 65 × 34 cm | Kapaku Φ22", available: "stock" },
+    ],
+    tags: ["viokon", "fuçi", "ushqimore", "50l", "qumësht", "djathë", "hdpe", "ambalazh"],
+    sourceUrl: "https://viokon.gr/product/βαρέλι-γάλακτος-καφέ-50lt66x34πώμα-φ22/",
+    suppliers: [
+      {
+        partnerId: "viokon",
+        partnerName: "Viokon",
+        country: "Greece",
+        color: "#16a34a",
+        availability: "in-stock",
+        stockNote: "Fuçi ushqimore 50L (SKU K7722) — në magazinë",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Fuçi ushqimore 50L": "SKU K7722 — 50 L | 65 × 34 cm | Kapaku Φ22",
+        },
+      },
+    ],
+  },
+
   // ─── PLASTIKA NOVA VAROŠ — Ambalazh plastike (PDF order: plastika_nova_varos) ─
 
   {
@@ -6247,6 +6292,103 @@ export const productGroups: ProductGroup[] = [
         diameterMax: 0,
         specificSpecs: {
           "Model": "KODI 16191 — Wheelbarrow",
+        },
+      },
+    ],
+  },
+
+  // ─── PRODHIM VENDAS / IMPORT — Produkte të ndryshme ────────────────────────
+
+  {
+    id: "sprucatore-plastik-turqi",
+    slug: "sprucatore-plastik-turqi",
+    name: "Sprucatore Plastik",
+    shortName: "Sprucatore Plastik",
+    category: "agri",
+    material: "Plastikë teknike — polipropilen rezistent ndaj UV",
+    application: "Bujqësi - Sisteme vaditjeje dhe mikro-ujitje",
+    description:
+      "Sprucatori plastik është pajisje mikro-vaditjeje me hu tokësor, e prodhuar nga plastikë teknike e cilësisë së lartë me rezistencë ndaj UV dhe kushteve atmosferike. Trupi i errët siguron mbrojtje nga rrezet diellore dhe jetëgjatësi të shtuar, ndërsa koka sprucos shpërndan ujin në mënyrë të rregullt dhe të kontrolluar rreth bimës. Hoja e mprehtë e poshtme futet lehtë në tokë pa ndonjë mjet, duke e bërë montimin dhe çmontimin të shpejtë. I përshtatshëm për serrë, kopshte, sisteme pikë-vaditjeje, kultivim perimesh dhe frutash. Importohet nga Turqia dhe kombinon çmim të përballueshëm me performancë të qëndrueshme në kushtet e bujqësisë intensive.",
+    image: "/images/products/domestic/sprucatore_plastik_cover.webp",
+    additionalImage: "/images/products/domestic/sprucatore_plastik_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Prodhuesi": "Import Turqie",
+      "Materiali": "Polipropilen rezistent ndaj UV",
+      "Ngjyrat": "Portokalli / Gri-blu",
+      "Montimi": "Hu tokësor — futet direkt në tokë",
+      "Aplikimi": "Serrë · Kopsht · Mikro-vaditje · Pikë-vaditje",
+    },
+    dimensions: [
+      { dn: 1, size: "Sprucatore standarde", lengths: "Sprucatore plastik — import Turqie", available: "stock" },
+    ],
+    tags: ["sprucatore", "vaditje", "mikro-ujitje", "pikë-vaditje", "serrë", "kopsht", "import", "turqi"],
+    suppliers: [
+      {
+        partnerId: "import-turqi",
+        partnerName: "Import Turqie",
+        country: "Turkey",
+        color: "#f59e0b",
+        availability: "in-stock",
+        stockNote: "Sprucatore plastik — import Turqie, në magazinë",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Sprucatore standarde": "Sprucatore plastik — import Turqie",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "gozhda-greke-vendi",
+    slug: "gozhda-greke-vendi",
+    name: "Gozhda Greke/Vendi",
+    shortName: "Gozhda",
+    category: "civil",
+    material: "Çelik karboni i galvanizuar — prodhim grek dhe vendas",
+    application: "Vegla dhe materiale ndërtimi",
+    description:
+      "Gozhdat Greke/Vendi janë thonj çeliku cilësor të disponueshëm në dy variante origjine: prodhim grek me çelik të galvanizuar me cilësi të lartë dhe prodhim vendas shqiptar me raport optimal çmim-cilësi. Të dyja variantet janë të përshtatshme për punë ndërtimi, karpenterie, instalime të ndryshme dhe aplikime të përgjithshme ku kërkohet lidhje e sigurt e materialeve të drurit, konstruksioneve të lehta dhe ambalazheve. Gozhdat greke dallohen për rezistencë të shtuar ndaj ndryshkut dhe konsistencë dimensionale, ndërsa gozhdat vendase ofrojnë zgjidhje ekonomike pa kompromis në funksion për kushtet normale të ndërtimit.",
+    image: "/images/products/domestic/gozhda_greke_vendi_cover.webp",
+    additionalImage: "/images/products/domestic/gozhda_greke_vendi_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Materiali": "Çelik karboni",
+      "Varianti 1": "Grek — çelik i galvanizuar, cilësi e lartë",
+      "Varianti 2": "Vendas — prodhim shqiptar, raport çmim-cilësi",
+      "Aplikimi": "Ndërtim · Karpenterie · Instalime · Ambalazh druri",
+    },
+    dimensions: [
+      { dn: 1, size: "Gozhda Greke", lengths: "Prodhim grek — çelik i galvanizuar", available: "stock" },
+      { dn: 2, size: "Gozhda Vendi", lengths: "Prodhim vendas shqiptar", available: "stock" },
+    ],
+    tags: ["gozhda", "thonjë", "çelik", "ndërtim", "karpenterie", "greke", "vendas"],
+    suppliers: [
+      {
+        partnerId: "import-gr",
+        partnerName: "Import Greqi",
+        country: "Greece",
+        color: "#2563eb",
+        availability: "in-stock",
+        stockNote: "Gozhda greke — çelik i galvanizuar, në magazinë",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Gozhda Greke": "Çelik i galvanizuar — prodhim grek",
+        },
+      },
+      {
+        partnerId: "domestic",
+        partnerName: "Furnizues Vendas",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Gozhda vendase — prodhim shqiptar, në magazinë",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Gozhda Vendi": "Çelik — prodhim vendas shqiptar",
         },
       },
     ],
