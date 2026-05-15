@@ -948,23 +948,23 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
-  // ─── IMPORT BULLGARI — Tuba PVC shkarkime nëndhëshme ────────────────────────
+  // ─── PVC IMPORT — Tuba & Rekorderi shkarkime nëndhëshme ─────────────────────
 
   {
-    id: "tuba-pvc-bullgari",
-    slug: "tuba-pvc-bullgari",
-    name: "Tuba PVC Bullgari — SN2 & SN4 për Shkarkime Nëndhëshme",
-    shortName: "Tuba PVC Bullgari",
+    id: "tuba-pvc-import",
+    slug: "tuba-pvc-import",
+    name: "Tuba PVC Import — SN2 & SN4 për Shkarkime Nëndhëshme",
+    shortName: "Tuba PVC Import",
     category: "civil",
     material: "PVC-U — polikloridrur vinili i papërzier, ngjyrë portokalli/keramike",
     application: "Rrjete kanalizimi nëndhëshëm me gravitet, sisteme drenazhimi, mbrojtje kabllosh",
     description:
-      "Tuba PVC për shkarkime nëndhëshme me gravitet, të importuara nga Bullgaria. Disponohen në dy klasa ngurtësie — SN2 (I Hollë) dhe SN4 (I Mesëm) — me diametra nga Ø110 mm deri Ø315 mm. Dimensionet e disponueshme: Ø110×3.2, Ø125×3.2, Ø160×3.2, Ø200×3.9, Ø200×4.9, Ø250×6.2 dhe Ø315×7.7 mm. Gjatësia standarde 3 metra për shufër. Instalimi bëhet me sistem lidhje me rrip gomë. Rezistencë e lartë kimike dhe mekanike, të përshtatshme për rrjete komunale dhe industriale.",
+      "Tuba PVC për shkarkime nëndhëshme me gravitet, të importuara. Disponohen në dy klasa ngurtësie — SN2 (I Hollë) dhe SN4 (I Mesëm) — me diametra nga Ø110 mm deri Ø315 mm. Dimensionet e disponueshme: Ø160×3.2, Ø200×3.9 (SN2) dhe Ø110×3.2, Ø125×3.2, Ø200×4.9, Ø250×6.2, Ø315×7.7 mm (SN4). Gjatësia standarde 3 metra për shufër. Instalimi bëhet me sistem lidhje me rrip gomë. Rezistencë e lartë kimike dhe mekanike, të përshtatshme për rrjete komunale dhe industriale.",
     image: "/images/products/teqja/tuba_pvc_bullgari_cover.webp",
     additionalImage: "/images/products/teqja/tuba_pvc_bullgari_cover.webp",
     standards: ["EN 1401-1", "ISO 4435"],
     keyProperties: {
-      "Origjina": "Bullgari",
+      "Origjina": "Import",
       "Materiali": "PVC-U",
       "Ngjyra": "Portokalli / Keramike",
       "Gjatësia": "3 m / shufër",
@@ -976,18 +976,6 @@ export const productGroups: ProductGroup[] = [
     },
     dimensions: [
       {
-        dn: 110,
-        size: "Ø110 × 3.2 mm — SN4",
-        lengths: "Kodi A0988 · Gjatësia 3 m",
-        available: "stock" as const,
-      },
-      {
-        dn: 125,
-        size: "Ø125 × 3.2 mm — SN4",
-        lengths: "Kodi A0989 · Gjatësia 3 m",
-        available: "stock" as const,
-      },
-      {
         dn: 160,
         size: "Ø160 × 3.2 mm — SN2",
         lengths: "Kodi A0990 · Gjatësia 3 m",
@@ -997,6 +985,18 @@ export const productGroups: ProductGroup[] = [
         dn: 200,
         size: "Ø200 × 3.9 mm — SN2",
         lengths: "Kodi A0994 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 110,
+        size: "Ø110 × 3.2 mm — SN4",
+        lengths: "Kodi A0988 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 125,
+        size: "Ø125 × 3.2 mm — SN4",
+        lengths: "Kodi A0989 · Gjatësia 3 m",
         available: "stock" as const,
       },
       {
@@ -1018,21 +1018,103 @@ export const productGroups: ProductGroup[] = [
         available: "stock" as const,
       },
     ],
-    tags: ["pvc", "tuba", "bullgari", "kanalizim", "shkarkime", "sn2", "sn4", "nëndhëshme"],
+    tags: ["pvc", "tuba", "import", "kanalizim", "shkarkime", "sn2", "sn4", "nëndhëshme"],
     sourceUrl: "",
     suppliers: [
       {
-        partnerId: "bullgari-import",
-        partnerName: "Import Bullgari",
-        country: "Bulgaria",
+        partnerId: "pvc-import",
+        partnerName: "Import",
+        country: "Import",
         color: "#c2410c",
         availability: "in-stock",
-        stockNote: "Tuba PVC Bullgari — SN2 & SN4 · Ø110–315 mm · Gjatësi 3 m",
+        stockNote: "Tuba PVC Import — SN2 & SN4 · Ø110–315 mm · Gjatësi 3 m",
         diameterMin: 110,
         diameterMax: 315,
         specificSpecs: {
           "SN2 — I Hollë": "Ø160×3.2 (A0990) · Ø200×3.9 (A0994)",
           "SN4 — I Mesëm": "Ø110×3.2 (A0988) · Ø125×3.2 (A0989) · Ø200×4.9 (A0991) · Ø250×6.2 (A0992) · Ø315×7.7 (A0993)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "rekorderi-pvc-import",
+    slug: "rekorderi-pvc-import",
+    name: "Rekorderi PVC Import — Dimensione & Forma të Ndryshme",
+    shortName: "Rekorderi PVC Import",
+    category: "civil",
+    material: "PVC-U — të pajtueshëm me tubat SN2 & SN4 Ø110–315 mm",
+    application: "Bashkim tubash PVC për rrjete kanalizimi nëndhëshëm komunal",
+    description:
+      "Rekorderi PVC për bashkimin e tubave të shkarkimit nëndhëshëm. Disponohen në forma të ndryshme: bërryla 45° dhe 90°, T-degëzime, Y-degëzime, rreduktues, mufë lidhëse dhe kapele mbyllëse. Të prodhuar nga PVC-U i cilësisë së lartë, plotësisht të pajtueshëm me tubat PVC SN2 dhe SN4 në gamën Ø110–315 mm. Lidhja bëhet me rrip gomë për montim të shpejtë dhe impermeabilitet të plotë. Të përshtatshëm për rrjete kanalizimi komunal, sistemeve drenazhimit dhe mbrojtjes nëndhëshme.",
+    image: "/images/products/teqja/rekorderi_pvc_pe_ppr_cover.webp",
+    additionalImage: "/images/products/teqja/rekorderi_pvc_pe_ppr_cover.webp",
+    standards: ["EN 1401-1", "ISO 4435"],
+    keyProperties: {
+      "Origjina": "Import",
+      "Materiali": "PVC-U",
+      "Ngjyra": "Portokalli / Keramike",
+      "Llojet": "Bërryla 45° · Bërryla 90° · T-degëzime · Y-degëzime · Rreduktues · Mufë · Kapele",
+      "Bashkimi": "Me rrip gomë (rubber ring socket)",
+      "Pajtueshmëria": "Tuba PVC SN2 & SN4 · Ø110–315 mm",
+      "Standarde": "EN 1401-1 · ISO 4435",
+    },
+    dimensions: [
+      {
+        dn: 110,
+        size: "Ø110 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+      {
+        dn: 125,
+        size: "Ø125 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+      {
+        dn: 160,
+        size: "Ø160 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+      {
+        dn: 200,
+        size: "Ø200 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+      {
+        dn: 250,
+        size: "Ø250 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+      {
+        dn: 315,
+        size: "Ø315 mm",
+        lengths: "Bërryla 45° · 90° · T/Y-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["rekorderi", "pvc", "import", "kanalizim", "bashkim", "fitting", "sn2", "sn4"],
+    sourceUrl: "",
+    suppliers: [
+      {
+        partnerId: "pvc-import",
+        partnerName: "Import",
+        country: "Import",
+        color: "#c2410c",
+        availability: "in-stock",
+        stockNote: "Rekorderi PVC Import — Ø110–315 mm · forma të ndryshme",
+        diameterMin: 110,
+        diameterMax: 315,
+        specificSpecs: {
+          "Bërryla 45°": "Ø110 · Ø125 · Ø160 · Ø200 · Ø250 · Ø315",
+          "Bërryla 90°": "Ø110 · Ø125 · Ø160 · Ø200 · Ø250 · Ø315",
+          "T/Y-degëzime": "Ø110 · Ø125 · Ø160 · Ø200 · Ø250 · Ø315",
+          "Rreduktues & Mufë": "Ø110 · Ø125 · Ø160 · Ø200 · Ø250 · Ø315",
         },
       },
     ],
