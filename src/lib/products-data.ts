@@ -6387,6 +6387,308 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  // ─── GROUNER — Sprucatorë ujitjeje ─────────────────────────────────────────
+
+  {
+    id: "grouner-sprucator-metalik-380-trup-plastik",
+    slug: "grouner-sprucator-metalik-380-trup-plastik",
+    name: "Sprucator Grouner Metalik 380 me trup plastik",
+    shortName: "Sprucator Metalik 380",
+    category: "agri",
+    material: "Plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner Metalik 380 me trup plastik është projektuar për ujitje bujqësore dhe përdorim në kopshte ose lëndina. Produkti punon me rreth të plotë ujitjeje dhe ka 2 grykë për shpërndarje të mirë të ujit. Kombinimi i plastikës së përforcuar, çelikut inox dhe bronzit e bën të përshtatshëm për përdorim në kushte të ndryshme presioni, si në sisteme me presion të ulët ashtu edhe në presion më të lartë.",
+    image: "/images/products/grouner/grouner_sprucator_metalik_380_trup_plastik_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_metalik_380_trup_plastik_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-103",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+      "Korpusi": "Plastik",
+      "Fileto hyrëse": '1"',
+      "Tipi": "Rreth i plotë, 2 grykë",
+      "Presioni": "I ulët dhe i lartë",
+      "Pesha": "0.70 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: 'Fileto 1"',
+        lengths: "Ujitje me rreth të plotë",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "metalik", "380"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-μεταλλικό-380-πλαστικός-κορμός/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator Metalik 380 me trup plastik (Kodi 700-103)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner Metalik 380 (Kodi 700-103)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "grouner-sprucator-metalik-341-tip-izrael",
+    slug: "grouner-sprucator-metalik-341-tip-izrael",
+    name: "Sprucator Grouner Metalik 341 Tip Izrael",
+    shortName: "Sprucator Metalik 341",
+    category: "agri",
+    material: "Plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner Metalik 341 Tip Izrael është sprucator me rreth të plotë, i përshtatshëm për ujitje bujqësore, kopshte dhe lëndina. Ai është projektuar për ujitje me pika të imëta dhe shpërndarje të mirë të ujit. Trupi prej bronzi dhe materialet rezistente e bëjnë të përshtatshëm për përdorim në presione të ulëta dhe të larta.",
+    image: "/images/products/grouner/grouner_sprucator_metalik_341_tip_izrael_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_metalik_341_tip_izrael_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-109",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Plastikë e përforcuar me fibra qelqi, çelik inox",
+      "Korpusi": "Bronz",
+      "Fileto hyrëse": '1"',
+      "Tipi": "Rreth i plotë, pika të imëta",
+      "Presioni": "I ulët dhe i lartë",
+      "Pesha": "0.70 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: 'Fileto 1"',
+        lengths: "Ujitje me rreth të plotë, pika të imëta",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "metalik", "341", "izrael"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-μεταλλικό-341-τύπου-ισραήλ/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator Metalik 341 Tip Izrael (Kodi 700-109)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner Metalik 341 Tip Izrael (Kodi 700-109)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "grouner-sprucator-metalik-471-rregullues",
+    slug: "grouner-sprucator-metalik-471-rregullues",
+    name: "Sprucator Grouner Metalik 471 Rregullues",
+    shortName: "Sprucator Metalik 471",
+    category: "agri",
+    material: "Plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner Metalik 471 Rregullues është sprucator me rreth të plotë, 2 grykë dhe kënd të rregullueshëm ujitjeje. Produkti është i përshtatshëm për kultura bujqësore, kopshte dhe lëndina, duke ofruar shpërndarje të mirë të ujit në presione të ulëta dhe të larta. Trupi prej bronzi dhe materialet rezistente ndihmojnë në përdorim të qëndrueshëm në sisteme ujitjeje.",
+    image: "/images/products/grouner/grouner_sprucator_metalik_471_rregullues_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_metalik_471_rregullues_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-106",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Plastikë e përforcuar me fibra qelqi, çelik inox",
+      "Korpusi": "Bronz",
+      "Fileto hyrëse": '1"',
+      "Tipi": "Rreth i plotë, 2 grykë, kënd i rregullueshëm",
+      "Presioni": "I ulët dhe i lartë",
+      "Pesha": "0.70 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: 'Fileto 1"',
+        lengths: "Ujitje me rreth të plotë, kënd i rregullueshëm",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "metalik", "471", "rregullues"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-μεταλλικό-472-ρυθμιζόμενο/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator Metalik 471 Rregullues (Kodi 700-106)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner Metalik 471 Rregullues (Kodi 700-106)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "grouner-sprucator-metalik-472-rregullues",
+    slug: "grouner-sprucator-metalik-472-rregullues",
+    name: "Sprucator Grouner Metalik 472 Rregullues",
+    shortName: "Sprucator Metalik 472",
+    category: "agri",
+    material: "Plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner Metalik 472 Rregullues është projektuar për ujitje me rreth të plotë dhe shpërndarje uniforme të ujit. Produkti ka 2 grykë dhe kënd të rregullueshëm, duke e bërë të përshtatshëm për kultura bujqësore, kopshte dhe lëndina. Punon në presione të ulëta dhe të larta dhe përdoret në sisteme ujitjeje ku kërkohet mbulim i mirë i sipërfaqes.",
+    image: "/images/products/grouner/grouner_sprucator_metalik_472_rregullues_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_metalik_472_rregullues_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-107",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Plastikë e përforcuar me fibra qelqi, çelik inox",
+      "Korpusi": "Bronz",
+      "Fileto hyrëse": '1"',
+      "Tipi": "Rreth i plotë, 2 grykë, kënd i rregullueshëm",
+      "Presioni": "I ulët dhe i lartë",
+      "Pesha": "0.70 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: 'Fileto 1"',
+        lengths: "Ujitje me rreth të plotë, kënd i rregullueshëm",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "metalik", "472", "rregullues"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-μεταλλικό-472-ρυθμιζόμενο-2/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator Metalik 472 Rregullues (Kodi 700-107)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner Metalik 472 Rregullues (Kodi 700-107)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "grouner-sprucator-2001-plastik-rregullues",
+    slug: "grouner-sprucator-2001-plastik-rregullues",
+    name: "Sprucator Grouner 2001 Plastik Rregullues",
+    shortName: "Sprucator 2001 Plastik",
+    category: "agri",
+    material: "Alumini, plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner 2001 Plastik Rregullues është sprucator ujitjeje me rreth të plotë, i përshtatshëm për sisteme me presion mesatar dhe të lartë. Produkti është i pajisur me madhësi të ndryshme grykash dhe ofron ujitje të butë dhe të njëtrajtshme përgjatë rrezes së ujit. Këndi i rregullueshëm e bën të përshtatshëm për kultura bujqësore, kopshte dhe lëndina.",
+    image: "/images/products/grouner/grouner_sprucator_2001_plastik_rregullues_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_2001_plastik_rregullues_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-111",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Alumini, plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+      "Korpusi": "Bronz",
+      "Fileto hyrëse": '1 1/2"',
+      "Tipi": "Rreth i plotë, grykë të ndryshme, kënd i rregullueshëm",
+      "Presioni": "Mesatar dhe i lartë",
+      "Pesha": "2 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: '1 1/2"',
+        lengths: "Ujitje me rreth të plotë, kënd i rregullueshëm",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "plastik", "2001", "rregullues"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-2001-πλαστικό-ρυθμιζόμενο/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator 2001 Plastik Rregullues (Kodi 700-111)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner 2001 Plastik Rregullues (Kodi 700-111)",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "grouner-sprucator-2001-metalik-rregullues",
+    slug: "grouner-sprucator-2001-metalik-rregullues",
+    name: "Sprucator Grouner 2001 Metalik Rregullues",
+    shortName: "Sprucator 2001 Metalik",
+    category: "agri",
+    material: "Alumini, plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+    application: "Bujqësi - Ujitje / Sprucatorë",
+    description:
+      "Sprucatori Grouner 2001 Metalik Rregullues është sprucator me rreth të plotë për sisteme ujitjeje bujqësore, kopshte dhe lëndina. Produkti është i përshtatshëm për presion mesatar dhe të lartë, ka kënd të rregullueshëm dhe është i pajisur me madhësi të ndryshme grykash për shpërndarje të butë dhe uniforme të ujit. Materialet si alumini, çeliku inox dhe bronzi e bëjnë të përshtatshëm për përdorim më të rëndë.",
+    image: "/images/products/grouner/grouner_sprucator_2001_metalik_rregullues_cover.webp",
+    additionalImage: "/images/products/grouner/grouner_sprucator_2001_metalik_rregullues_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Kodi": "700-113",
+      "Prodhuesi": "Grouner",
+      "Materiali": "Alumini, plastikë e përforcuar me fibra qelqi, çelik inox, bronz",
+      "Korpusi": "Bronz",
+      "Fileto hyrëse": '1 1/2"',
+      "Tipi": "Rreth i plotë, grykë të ndryshme, kënd i rregullueshëm",
+      "Presioni": "Mesatar dhe i lartë",
+      "Pesha": "2 kg",
+    },
+    dimensions: [
+      {
+        dn: 1,
+        size: '1 1/2"',
+        lengths: "Ujitje me rreth të plotë, kënd i rregullueshëm",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["grouner", "sprucator", "ujitje", "bujqësi", "metalik", "2001", "rregullues"],
+    sourceUrl: "https://www.tsintsis.com/product/grouner-μπεκ-2001-μεταλλικό-ρυθμιζόμενο/",
+    suppliers: [
+      {
+        partnerId: "grouner",
+        partnerName: "Grouner / Tsintsis",
+        country: "Greece",
+        color: "#4CAF50",
+        availability: "in-stock",
+        stockNote: "Sprucator 2001 Metalik Rregullues (Kodi 700-113)",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Modeli": "Grouner 2001 Metalik Rregullues (Kodi 700-113)",
+        },
+      },
+    ],
+  },
+
   // ─── PRODHIM VENDAS / IMPORT — Produkte të ndryshme ────────────────────────
 
   {

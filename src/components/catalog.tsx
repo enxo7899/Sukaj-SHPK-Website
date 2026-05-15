@@ -262,7 +262,7 @@ function ProductGroupCard({ group }: { group: ProductGroup }) {
                 fill
                 loading="lazy"
                 className={`${
-                  group.suppliers.some((s) => s.partnerId === "roto" || s.partnerId === "polins" || s.partnerId === "plastika-nv" || s.partnerId === "viokon") ? "object-contain p-4" : "object-cover"
+                  group.suppliers.some((s) => s.partnerId === "roto" || s.partnerId === "polins" || s.partnerId === "plastika-nv" || s.partnerId === "viokon" || s.partnerId === "grouner") ? "object-contain p-4" : "object-cover"
                 } transition-opacity duration-300 ${
                   imgLoaded ? "opacity-100" : "opacity-0"
                 }`}
