@@ -704,7 +704,7 @@ export function ProductDetailPage({ product }: { product: ProductGroup }) {
                 src={product.additionalImage}
                 alt={`${tp(product.id, "name", product.name)} - Installation`}
                 fill
-                className={product.suppliers.some((s) => s.partnerId === "roto" || s.partnerId === "polins" || s.partnerId === "plastika-nv" || s.partnerId === "viokon" || s.partnerId === "grouner") ? "object-contain p-6" : "object-cover"}
+                className={product.suppliers.some((s) => s.partnerId === "roto" || s.partnerId === "polins" || s.partnerId === "plastika-nv" || s.partnerId === "viokon" || s.partnerId === "grouner" || s.partnerId === "xier") ? "object-contain p-6" : "object-cover"}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>

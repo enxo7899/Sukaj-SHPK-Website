@@ -2202,6 +2202,76 @@ export const productGroups: ProductGroup[] = [
   },
 
 
+  // ─── XIER — Saraçineska uPVC import Kinë ────────────────────────────────────
+
+  {
+    id: "saracineske-gri-kineze-upvc",
+    slug: "saracineske-gri-kineze-upvc",
+    name: "Saracineske Gri Kineze — uPVC Long Handle",
+    shortName: "Saracineske Gri Kineze",
+    category: "agri",
+    material: "uPVC (trup), PP (top), TPE (unazë vendosje), NBR (o-ring), uPVC/ABS (dorezë)",
+    application: "Sisteme ujitjeje, ujësjellës, pishinë, ndërtim",
+    description:
+      "Saraçineskë kompakte uPVC me dorezë të gjatë, trup gri dhe dorezë të kuqe. Disponohet në tre madhësi: 2½\", 3\" dhe 4\" (kodet XE01007, XE01008, XE01009). Përshtatet me standardet DIN, JIS, BS, ANSI, CNS dhe BSPT/NPT. Materiali uPVC i bën rezistente ndaj korrozionit dhe të përshtatshme për ujë, acide dhe baza të dobëta. Ideale për sisteme ujitjeje bujqësore, ujësjellës, pishina dhe ndërtim. Certifikuara ISO9001:2015.",
+    image: "/images/products/xier/saracineske_gri_kineze_cover.webp",
+    additionalImage: "/images/products/xier/saracineske_gri_kineze_diagram.webp",
+    standards: ["ISO9001:2015", "DIN", "JIS", "BS", "ANSI"],
+    keyProperties: {
+      "Prodhuesi": "Xier Valve",
+      "Origjina": "Kinë",
+      "Materiali trupit": "uPVC",
+      "Top (ball)": "PP",
+      "Unaza vendosje": "TPE",
+      "O-ring": "NBR",
+      "Doreza": "uPVC / ABS",
+      "Ngjyra": "Gri (trup) · E kuqe (dorezë)",
+      "Fileto": "DIN · JIS · BS · ANSI · CNS · NPT · BSPT",
+      "Madhësitë": '2½" · 3" · 4"',
+      "Media": "Ujë · acide të dobëta · baza të dobëta",
+      "Certifikim": "ISO9001:2015 · SGS",
+    },
+    dimensions: [
+      {
+        dn: 63,
+        size: '2½" (DN63)',
+        lengths: "Kodi XE01007",
+        available: "stock" as const,
+      },
+      {
+        dn: 75,
+        size: '3" (DN75)',
+        lengths: "Kodi XE01008",
+        available: "stock" as const,
+      },
+      {
+        dn: 110,
+        size: '4" (DN110)',
+        lengths: "Kodi XE01009",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["saracineske", "upvc", "kinë", "ball valve", "ujitje", "gri", "xier"],
+    sourceUrl: "https://www.xiervalve.com/product/upvc-compact-ball-valve/upvc-compact-ball-valve-upvc-compact-ball-valve/xe01007-xe01009-long-handle.html",
+    suppliers: [
+      {
+        partnerId: "xier",
+        partnerName: "Xier Valve",
+        country: "China",
+        color: "#6b7280",
+        availability: "in-stock",
+        stockNote: "Saracineske Gri Kineze uPVC — 2½\" (XE01007) · 3\" (XE01008) · 4\" (XE01009)",
+        diameterMin: 63,
+        diameterMax: 110,
+        specificSpecs: {
+          '2½"': "Kodi XE01007",
+          '3"': "Kodi XE01008",
+          '4"': "Kodi XE01009",
+        },
+      },
+    ],
+  },
+
   // Consolidated from: hdpe-socket-coupling + konti-kan-socket-fitting
   {
     id: "polins-sprayer-garden-micro-1l",
