@@ -828,6 +828,126 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  // ─── TEQJA — Tuba PVC & Rekorderi për shkarkime nëndhëshme ─────────────────
+
+  {
+    id: "tuba-pvc-shkarkime-nendhe",
+    slug: "tuba-pvc-shkarkime-nendhe",
+    name: "Tuba PVC për Shkarkime Nëndhëshme Komunale",
+    shortName: "Tuba PVC Shkarkime",
+    category: "civil",
+    material: "PVC 100 — polikloridrur vinili i papërzier, rezistent ndaj korrozionit dhe ndikimeve kimike",
+    application: "Rrjete kanalizimi komunal, sisteme ujësjellësi nëndhëshëm, mbrojtje kabllosh",
+    description:
+      "Tuba plastike PVC me ngjyrë keramike (RAL 8023) të prodhuara nga PVC 100, të destinuara për rrjete shkarkimi nëndhëshëm komunal dhe mbrojtje kabllosh. Disponohen në tre klasa trashësie murit — I Hollë (2.5 ATM), I Mesëm (4 ATM) dhe I Trashë (6 ATM) — që mbulojnë gamën e diametrave DN 40 deri DN 200. Gjatësia standarde e çdo shufre është 3 metra. Instalimi bëhet me sistem bashkimi me priza dhe ngjitës PVC. Rezistencë e lartë kimike, mekanike dhe jetëgjatësi e zgjatur nën tokë.",
+    image: "/images/products/teqja/tuba_pvc_shkarkime_nendhe_cover.webp",
+    additionalImage: "/images/products/teqja/tuba_pvc_shkarkime_nendhe_cover.webp",
+    standards: ["EN 1329-1", "EN 13476", "ISO 9001"],
+    keyProperties: {
+      "Prodhuesi": "Teqja International",
+      "Origjina": "Shqipëri",
+      "Materiali": "PVC 100",
+      "Ngjyra": "Keramike — RAL 8023",
+      "Gjatësia": "3 m / shufër",
+      "Bashkimi": "Me prizë dhe ngjitës PVC",
+      "Diametri": "DN 40 – DN 200",
+      "Klasa I Hollë (2.5 ATM)": "DN 40–200 · Trashësi: 1.6–3.0 mm",
+      "Klasa I Mesëm (4 ATM)": "DN 100–200 · Trashësi: 2.4–3.6 mm",
+      "Klasa I Trashë (6 ATM)": "DN 40–140 · Trashësi: 2.4–3.3 mm",
+      "Aplikimi": "Kanalizim komunal · ujësjellës nëndhëshëm · mbrojtje kabllosh",
+    },
+    dimensions: [
+      {
+        dn: 40,
+        size: "I Hollë — 2.5 ATM",
+        lengths: "DN 40 – DN 200 · Trashësi muri: 1.6–3.0 mm · Gjatësia: 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 100,
+        size: "I Mesëm — 4 ATM",
+        lengths: "DN 100 – DN 200 · Trashësi muri: 2.4–3.6 mm · Gjatësia: 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 40,
+        size: "I Trashë — 6 ATM",
+        lengths: "DN 40 – DN 140 · Trashësi muri: 2.4–3.3 mm · Gjatësia: 3 m",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["pvc", "tuba", "kanalizim", "shkarkime", "nëndhëshme", "komunal", "teqja", "keramike"],
+    sourceUrl: "https://teqja.com.al/project/teqja-international-prodhimi-i-tubave-plastike-pvc-per-shkarkime-te-nendheshme-komunale-mbrojtje-kabllosh/",
+    suppliers: [
+      {
+        partnerId: "teqja",
+        partnerName: "Teqja International",
+        country: "Albania",
+        color: "#e05a00",
+        availability: "in-stock",
+        stockNote: "Tuba PVC shkarkime nëndhëshme — I Hollë / I Mesëm / I Trashë · DN 40–200 · Gjatësi 3 m",
+        diameterMin: 40,
+        diameterMax: 200,
+        specificSpecs: {
+          "I Hollë (2.5 ATM)": "DN 40–200 · Trashësi: 1.6–3.0 mm",
+          "I Mesëm (4 ATM)": "DN 100–200 · Trashësi: 2.4–3.6 mm",
+          "I Trashë (6 ATM)": "DN 40–140 · Trashësi: 2.4–3.3 mm",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "rekorderi-pvc-pe-ppr",
+    slug: "rekorderi-pvc-pe-ppr",
+    name: "Rekorderi PVC-PE-PPR — Dimensione & Forma të Ndryshme",
+    shortName: "Rekorderi PVC-PE-PPR",
+    category: "civil",
+    material: "PVC · PE · PPR — sipas dimensionit dhe llojit të rekorderit",
+    application: "Bashkim tubash PVC, PE dhe PPR — kanalizim, ujësjellës, sisteme ngrohje",
+    description:
+      "Rekorderi janë elementë lidhës të sistemeve të tubave dhe disponohen në dimensione e forma të shumta: bërryla (45° dhe 90°), T-degëzime, rreduktues, mufë lidhëse, kapele mbyllëse dhe forma të tjera. Prodhuar nga PVC, PE dhe PPR, janë të pajtueshëm me tubat e shkarkimit nëndhëshëm komunal, sistemet e ujësjellësit dhe sistemet e ngrohjes me ujë. Ngjyra keramike/portokalli për PVC-in komunal. Disponohen në madhësi që mbulojnë gamën e plotë DN 40 – DN 200.",
+    image: "/images/products/teqja/rekorderi_pvc_pe_ppr_cover.webp",
+    additionalImage: "/images/products/teqja/rekorderi_pvc_pe_ppr_cover.webp",
+    standards: ["EN 1329-1", "EN 13476", "ISO 9001"],
+    keyProperties: {
+      "Llojet": "Bërryla 45° · Bërryla 90° · T-degëzime · Rreduktues · Mufë · Kapele mbyllëse",
+      "Materialet": "PVC · PE · PPR",
+      "Ngjyra PVC": "Keramike / portokalli (RAL 8023)",
+      "Diametri": "DN 40 – DN 200",
+      "Bashkimi": "Me ngjitës (PVC) · me kompresion (PE) · me saldim (PPR)",
+      "Aplikimi": "Kanalizim komunal · ujësjellës · ngrohje me ujë",
+      "Origjina": "Shqipëri / Import",
+    },
+    dimensions: [
+      {
+        dn: 40,
+        size: "DN 40 – DN 200",
+        lengths: "Bërryla 45° · 90° · T-degëzime · Rreduktues · Mufë",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["rekorderi", "pvc", "pe", "ppr", "bashkim", "kanalizim", "fitting", "teqja"],
+    sourceUrl: "https://teqja.com.al/project/teqja-international-prodhimi-i-tubave-plastike-pvc-per-shkarkime-te-nendheshme-komunale-mbrojtje-kabllosh/",
+    suppliers: [
+      {
+        partnerId: "teqja",
+        partnerName: "Teqja International",
+        country: "Albania",
+        color: "#e05a00",
+        availability: "in-stock",
+        stockNote: "Rekorderi PVC-PE-PPR — dimensione & forma të ndryshme · DN 40–200",
+        diameterMin: 40,
+        diameterMax: 200,
+        specificSpecs: {
+          "PVC": "Bërryla · T-degëzime · Rreduktues · Mufë (ngjitës)",
+          "PE": "Rakorderi kompresioni — DN 40–200",
+          "PPR": "Rakorderi saldimi — për sisteme ngrohje",
+        },
+      },
+    ],
+  },
+
   {
     id: "fitt-mint",
     slug: "fitt-mint",
