@@ -3072,6 +3072,96 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  {
+    id: "polins-bidon-uji-kapak-vide",
+    slug: "polins-bidon-uji-kapak-vide",
+    name: "Bidon Uji Polins me Kapak Vidë",
+    shortName: "Bidon Uji me Kapak Vidë",
+    category: "agri",
+    material: "Polietilen me densitet të lartë HDPE — i certifikuar për kontakt me ujë të pijshëm",
+    application: "Kova dhe enë plastike",
+    description:
+      "Bidoni i ujit Polins me kapak vidë është enë plastike e fortë dhe hermetike, e prodhuar nga HDPE i certifikuar për kontakt me ujë të pijshëm dhe lëngje ushqimore. Forma drejtkëndore kompakte, doreza e integruar dhe kapaku me vidë e bëjnë të lehtë për transport, magazinim dhe vendosje. I disponueshëm në dy kapacitete — 10 litrash dhe 20 litrash — për t'u përshtatur me nevojat e çdo familjeje, ferme ose kantieri. Materiali HDPE i qëndrueshëm siguron rezistencë ndaj goditjeve, temperaturave të ndryshme dhe përdorimit të zgjatur pa deformim. I përshtatshëm për ruajtje dhe transport uji, lëngjesh ushqimore dhe lëndësh të tjera jo-agresive.",
+    image: "/images/products/polins/polins_bidon_uji_kapak_vide_cover.webp",
+    additionalImage: "/images/products/polins/polins_bidon_uji_kapak_vide_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Prodhuesi": "Polins doo, Odžaci, Serbia",
+      "Materiali": "HDPE — i certifikuar për ujë të pijshëm",
+      "Kapaku": "Vidë e zezë — mbyllje hermetike",
+      "Kapaciteti": "10 L · 20 L",
+      "Aplikimi": "Ruajtje uji · Transport · Fermë · Kamp · Kantier",
+    },
+    dimensions: [
+      { dn: 10, size: "Bidon 10L", lengths: "Bidon uji 10L — kapak vidë i zi", available: "stock" },
+      { dn: 20, size: "Bidon 20L", lengths: "Bidon uji 20L — kapak vidë i zi", available: "stock" },
+    ],
+    tags: ["bidon", "polins", "uji", "kapak", "vidë", "10l", "20l", "hdpe", "transport"],
+    sourceUrl: "https://polins.co.rs/products/?lang=en",
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "Bidon uji me kapak vidë — 10L · 20L, në magazinë",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Bidon 10L": "Kapak vidë i zi — 10 L",
+          "Bidon 20L": "Kapak vidë i zi — 20 L",
+        },
+      },
+    ],
+  },
+
+  {
+    id: "polins-bidon-uji-rubinet-dozues",
+    slug: "polins-bidon-uji-rubinet-dozues",
+    name: "Bidon Uji Polins me Rubinet Dozues",
+    shortName: "Bidon Uji me Rubinet të Kuq",
+    category: "agri",
+    material: "Polietilen me densitet të lartë HDPE — i certifikuar për kontakt me ujë të pijshëm",
+    application: "Kova dhe enë plastike",
+    description:
+      "Bidoni i ujit Polins me rubinet dozues është enë plastike praktike e prodhuar nga HDPE i certifikuar, e pajisur me rubinet të kuq dozues për dozim të kontrolluar dhe të lehtë pa e kthyer bidonen. Rubineti i montuar anash lejon shërbimin e drejtpërdrejtë nga bidoni i vendosur horizontalisht ose në sipërfaqe të lartë, duke eliminuar derdhjet dhe duke rritur higjienën. I disponueshëm në dy kapacitete — 10 litrash dhe 20 litrash — me kod art. 2140. Ideal për kampe, pikniqe, kantiere ndërtimi, ferma dhe çdo situatë ku nevojitet akses i shpejtë dhe i rregullt te uji pa pasur nevojë të ngrihet ose kthehet bidoni.",
+    image: "/images/products/polins/polins_bidon_uji_rubinet_dozues_cover.webp",
+    additionalImage: "/images/products/polins/polins_bidon_uji_rubinet_dozues_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Prodhuesi": "Polins doo, Odžaci, Serbia",
+      "KODI": "art. 2140",
+      "Materiali": "HDPE — i certifikuar për ujë të pijshëm",
+      "Rubineti": "Dozues i kuq — dozim i kontrolluar",
+      "Kapaciteti": "10 L · 20 L",
+      "Paketimi": "3 copë në qese PE",
+      "Aplikimi": "Kamp · Pikniq · Fermë · Kantier · Ambient pune",
+    },
+    dimensions: [
+      { dn: 10, size: "Bidon 10L me rubinet", lengths: "KODI art. 2140 — 10 L | 3 copë/qese PE", available: "stock" },
+      { dn: 20, size: "Bidon 20L me rubinet", lengths: "KODI art. 2140 — 20 L | 3 copë/qese PE", available: "stock" },
+    ],
+    tags: ["bidon", "polins", "uji", "rubinet", "dozues", "i kuq", "10l", "20l", "kamp", "hdpe"],
+    sourceUrl: "https://polins.co.rs/products/kamper/?lang=en",
+    suppliers: [
+      {
+        partnerId: "polins",
+        partnerName: "Polins",
+        country: "Serbia",
+        color: "#64748b",
+        availability: "in-stock",
+        stockNote: "Bidon uji me rubinet dozues (art. 2140) — 10L · 20L | 3 copë/qese PE",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Bidon 10L me rubinet": "KODI art. 2140 — 10 L",
+          "Bidon 20L me rubinet": "KODI art. 2140 — 20 L",
+        },
+      },
+    ],
+  },
+
   // ─── VIOKON — Ambalazh plastike - fuçi dhe bidona ──────────────────────────────
 
   {
