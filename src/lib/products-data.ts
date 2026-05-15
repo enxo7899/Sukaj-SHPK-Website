@@ -6251,6 +6251,57 @@ export const productGroups: ProductGroup[] = [
       },
     ],
   },
+
+  // ─── PRODHIM VENDAS — Plastmas bujqësor ─────────────────────────────────────
+
+  {
+    id: "plastmas-vendit-bardhe-jeshil",
+    slug: "plastmas-vendit-bardhe-jeshil",
+    name: "Plastmas i Vendit, I bardhë/Jeshil",
+    shortName: "Plastmas Vendas",
+    category: "agri",
+    material: "Polietilen (PE) — plastmas bujqësor",
+    application: "Bujqësi - Plastmas dhe mbulesa bujqësore",
+    description:
+      "Plastmas bujqësor i prodhimit vendas, i disponueshëm në ngjyrë të bardhë dhe jeshile, është material plastik me përdorim të gjerë në bujqësi dhe hortikulturë. Përdoret si mbulues toke (mulch) për mbrojtje nga barërat e këqija, ruajtje të lagështirës, rritje të temperaturës së tokës dhe nxitje të zhvillimit të bimëve. Disponohet në rrotuj me pesë variante peshe — 10 kg, 20 kg, 30 kg, 40 kg dhe 50 kg — duke ofruar fleksibilitet të plotë sipas sipërfaqes dhe nevojave të çdo ferme ose serre. Ngjyra e bardhë reflekton dritën dhe është ideale për klimat e nxehta, ndërsa ngjyra jeshile siguron mbrojtje shtesë nga rrezet ultraviolet dhe integrohet me natyrshëm në mjedis.",
+    image: "/images/products/domestic/plastmas_vendit_bardhe_jeshil_cover.webp",
+    additionalImage: "/images/products/domestic/plastmas_vendit_bardhe_jeshil_cover.webp",
+    standards: [],
+    keyProperties: {
+      "Prodhuesi": "Prodhim vendas, Shqipëri",
+      "Materiali": "Polietilen (PE)",
+      "Ngjyrat": "I bardhë · Jeshil",
+      "Variante peshe": "10 kg · 20 kg · 30 kg · 40 kg · 50 kg",
+      "Aplikimi": "Mbulim toke · Serrë · Kopsht · Kultivim perimesh",
+    },
+    dimensions: [
+      { dn: 10, size: "Rrotull 10 kg", lengths: "Plastmas vendas — 10 kg | I bardhë / Jeshil", available: "stock" },
+      { dn: 20, size: "Rrotull 20 kg", lengths: "Plastmas vendas — 20 kg | I bardhë / Jeshil", available: "stock" },
+      { dn: 30, size: "Rrotull 30 kg", lengths: "Plastmas vendas — 30 kg | I bardhë / Jeshil", available: "stock" },
+      { dn: 40, size: "Rrotull 40 kg", lengths: "Plastmas vendas — 40 kg | I bardhë / Jeshil", available: "stock" },
+      { dn: 50, size: "Rrotull 50 kg", lengths: "Plastmas vendas — 50 kg | I bardhë / Jeshil", available: "stock" },
+    ],
+    tags: ["plastmas", "vendas", "bardhë", "jeshil", "bujqësi", "serrë", "mbulim toke", "mulch", "pe"],
+    suppliers: [
+      {
+        partnerId: "domestic",
+        partnerName: "Furnizues Vendas",
+        country: "Albania",
+        color: "#dc2626",
+        availability: "in-stock",
+        stockNote: "Plastmas vendas I bardhë/Jeshil — 10 kg · 20 kg · 30 kg · 40 kg · 50 kg",
+        diameterMin: 0,
+        diameterMax: 0,
+        specificSpecs: {
+          "Rrotull 10 kg": "Plastmas vendas — 10 kg | I bardhë / Jeshil",
+          "Rrotull 20 kg": "Plastmas vendas — 20 kg | I bardhë / Jeshil",
+          "Rrotull 30 kg": "Plastmas vendas — 30 kg | I bardhë / Jeshil",
+          "Rrotull 40 kg": "Plastmas vendas — 40 kg | I bardhë / Jeshil",
+          "Rrotull 50 kg": "Plastmas vendas — 50 kg | I bardhë / Jeshil",
+        },
+      },
+    ],
+  },
 ];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
