@@ -948,6 +948,96 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 
+  // ─── IMPORT BULLGARI — Tuba PVC shkarkime nëndhëshme ────────────────────────
+
+  {
+    id: "tuba-pvc-bullgari",
+    slug: "tuba-pvc-bullgari",
+    name: "Tuba PVC Bullgari — SN2 & SN4 për Shkarkime Nëndhëshme",
+    shortName: "Tuba PVC Bullgari",
+    category: "civil",
+    material: "PVC-U — polikloridrur vinili i papërzier, ngjyrë portokalli/keramike",
+    application: "Rrjete kanalizimi nëndhëshëm me gravitet, sisteme drenazhimi, mbrojtje kabllosh",
+    description:
+      "Tuba PVC për shkarkime nëndhëshme me gravitet, të importuara nga Bullgaria. Disponohen në dy klasa ngurtësie — SN2 (I Hollë) dhe SN4 (I Mesëm) — me diametra nga Ø110 mm deri Ø315 mm. Dimensionet e disponueshme: Ø110×3.2, Ø125×3.2, Ø160×3.2, Ø200×3.9, Ø200×4.9, Ø250×6.2 dhe Ø315×7.7 mm. Gjatësia standarde 3 metra për shufër. Instalimi bëhet me sistem lidhje me rrip gomë. Rezistencë e lartë kimike dhe mekanike, të përshtatshme për rrjete komunale dhe industriale.",
+    image: "/images/products/teqja/tuba_pvc_bullgari_cover.webp",
+    additionalImage: "/images/products/teqja/tuba_pvc_bullgari_cover.webp",
+    standards: ["EN 1401-1", "ISO 4435"],
+    keyProperties: {
+      "Origjina": "Bullgari",
+      "Materiali": "PVC-U",
+      "Ngjyra": "Portokalli / Keramike",
+      "Gjatësia": "3 m / shufër",
+      "Bashkimi": "Me rrip gomë (rubber ring socket)",
+      "Klasa SN2 (I Hollë)": "Ø160×3.2 · Ø200×3.9",
+      "Klasa SN4 (I Mesëm)": "Ø110×3.2 · Ø125×3.2 · Ø200×4.9 · Ø250×6.2 · Ø315×7.7",
+      "Diametri": "Ø110 – Ø315 mm",
+      "Standarde": "EN 1401-1 · ISO 4435",
+    },
+    dimensions: [
+      {
+        dn: 110,
+        size: "Ø110 × 3.2 mm — SN4",
+        lengths: "Kodi A0988 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 125,
+        size: "Ø125 × 3.2 mm — SN4",
+        lengths: "Kodi A0989 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 160,
+        size: "Ø160 × 3.2 mm — SN2",
+        lengths: "Kodi A0990 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 200,
+        size: "Ø200 × 3.9 mm — SN2",
+        lengths: "Kodi A0994 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 200,
+        size: "Ø200 × 4.9 mm — SN4",
+        lengths: "Kodi A0991 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 250,
+        size: "Ø250 × 6.2 mm — SN4",
+        lengths: "Kodi A0992 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+      {
+        dn: 315,
+        size: "Ø315 × 7.7 mm — SN4",
+        lengths: "Kodi A0993 · Gjatësia 3 m",
+        available: "stock" as const,
+      },
+    ],
+    tags: ["pvc", "tuba", "bullgari", "kanalizim", "shkarkime", "sn2", "sn4", "nëndhëshme"],
+    sourceUrl: "",
+    suppliers: [
+      {
+        partnerId: "bullgari-import",
+        partnerName: "Import Bullgari",
+        country: "Bulgaria",
+        color: "#c2410c",
+        availability: "in-stock",
+        stockNote: "Tuba PVC Bullgari — SN2 & SN4 · Ø110–315 mm · Gjatësi 3 m",
+        diameterMin: 110,
+        diameterMax: 315,
+        specificSpecs: {
+          "SN2 — I Hollë": "Ø160×3.2 (A0990) · Ø200×3.9 (A0994)",
+          "SN4 — I Mesëm": "Ø110×3.2 (A0988) · Ø125×3.2 (A0989) · Ø200×4.9 (A0991) · Ø250×6.2 (A0992) · Ø315×7.7 (A0993)",
+        },
+      },
+    ],
+  },
+
   {
     id: "fitt-mint",
     slug: "fitt-mint",

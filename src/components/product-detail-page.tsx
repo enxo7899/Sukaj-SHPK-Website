@@ -306,12 +306,12 @@ function DimensionTable({ rows, labels }: { rows: DimensionRow[]; labels: { inSt
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => {
+          {rows.map((row, rowIdx) => {
             const base = rowAvailConfigBase[row.available];
             const label = row.available === "stock" ? labels.inStock : row.available === "partial" ? labels.partial : labels.onOrder;
             return (
               <tr
-                key={row.dn}
+                key={`${rowIdx}-${row.dn}`}
                 className="transition-colors last:border-0"
                 style={{ borderBottom: "1px solid var(--site-border)", ...base.rowStyle }}
               >
